@@ -1,32 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Даскал GPT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customized Fullscreen Chatbot</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #chat-container {
+            width: 100%;
+            height: 100%;
+        }
+        /* Add your custom styles here */
+        #custom-chat-iframe {
+            background-color: #ffffff;
+            border: 2px solid #2563eb;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 20;
+        }
+        .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
+            background-color: #cf2c2c;
+        }
+    </style>
 </head>
 <body>
+    <div id="chat-container"></div>
+
+   // Import the Botpress WebChat JavaScript file
 <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+ 
+// Initialize the Botpress WebChat with the required parameters
 <script>
     window.botpressWebChat.init({
-        // Replace <your-bot-id> and <your-client-id> with your actual bot and client IDs
-        "botId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
-        "clientId": "e37872fb-85d7-499e-9a72-719e96ab9f30",
-
-        // Set the URL for the Botpress WebChat JavaScript file and the messaging server
+        "botId": "dec7ae95-d874-4f04-ac5c-03d5b5a425bf",
+        "clientId": "dec7ae95-d874-4f04-ac5c-03d5b5a425bf",
         "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
         "messagingUrl": "https://messaging.botpress.cloud",
-
-        // Set the name of the bot that will be displayed in the WebChat interface
-        "botName": "Даскала",
-
+        "botName": "Customized Botpress Full Screen Bot",
+        "avatarUrl": "https://sagerock.com/wp-content/uploads/2024/05/ai-lady.png",
+          "phoneNumber": "330-416-7519",
+          "termsConditions": "https://sagerock.com",
+          "privacyPolicy": "https://sagerock.com",
+          "emailAddress": "sage@sagerock.com",
+          "website": "https://sagerock.com",
+          "showBotInfoPage": true,
+ 
         // Set the width of the WebChat container and layout to 100% (Full Screen)
         "containerWidth": "100%25",
         "layoutWidth": "100%25",
-
+		
+		 "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/51a24706-66e4-4f9d-a30d-f1a9591f4f2e/v19170/style.css",
+		 
+		 "enableConversationDeletion": true,
+ 
         // Hide the widget and disable animations
         "hideWidget": true,
         "disableAnimations": true,
     });
-
+ 
     // Opens up the Chatbot by default
     // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
     window.botpressWebChat.onEvent(
