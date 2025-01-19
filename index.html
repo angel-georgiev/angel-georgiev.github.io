@@ -1,1 +1,63 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Даскал GPT</title>
+</head>
+<body>
+  <div class="webchat" style="height: 100vh; width: 100vw;">
+  <iframe
+    style="height: 100%; width: 100%; border: none;"
+    srcdoc='
+    <!doctype html>
+    <html lang="en">
+      <head></head>
+      <body>
+        <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+        <script defer>
+          window.botpress.on("webchat:ready", (conversationId) => {
+            botpress.open();
+          });
+          window.botpress.init({
+  "botId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
+  "configuration": {
+    "composerPlaceholder": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ...",
+    "botName": "Ð”Ð°ÑÐºÐ°Ð» GPT 2.0",
+    "botAvatar": "https://files.bpcontent.cloud/2025/01/18/16/20250118160048-99EQ6TMY.png",
+    "botDescription": "",
+    "website": {
+      "title": "sindeo.org",
+      "link": "sindeo.org"
+    },
+    "email": {
+      "title": "angel@sindeo.org",
+      "link": "angel@sindeo.org"
+    },
+    "phone": {
+      "title": "+359878511226",
+      "link": "+359878511226"
+    },
+    "termsOfService": {
+      "title": "https://sindeo.org/terms-and-conditions/",
+      "link": "https://sindeo.org/terms-and-conditions/"
+    },
+    "privacyPolicy": {
+      "title": "https://sindeo.org/politika-za-poveritelnost/",
+      "link": "https://sindeo.org/politika-za-poveritelnost/"
+    },
+    "color": "#1E443D",
+    "variant": "solid",
+    "themeMode": "light",
+    "fontFamily": "rubik",
+    "radius": 1,
+    "showPoweredBy": true,
+    "allowFileUpload": true
+  },
+  "clientId": "e37872fb-85d7-499e-9a72-719e96ab9f30"
+});
+        </script>
+      </body>
+    </html>'
+  ></iframe>
+</div>
+</body>
+</html>
