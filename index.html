@@ -4,76 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Даскал GPT 2.0</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
-        }
-        #chat-container {
-            width: 100%;
-            height: 100%;
-        }
-        /* Add your custom styles here */
-        #custom-chat-iframe {
-            background-color: #ffffff;
-            border: 2px solid #2563eb;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 20;
-        }
-        .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
-            background-color: #cf2c2c;
-        }
-    </style>
 </head>
 <body>
-    <div id="chat-container"></div>
-
-<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
- 
-<script>
-    window.botpressWebChat.init({
-        "botId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
-        "clientId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
-        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
-        "messagingUrl": "https://messaging.botpress.cloud",
-        "botName": "Даскал GPT 2.0",
-        "avatarUrl": "https://files.bpcontent.cloud/2025/01/18/16/20250118160048-99EQ6TMY.png",
-          "phoneNumber": "330-416-7519",
-          "termsConditions": "https://sindeo.org/terms-and-conditions/",
-          "privacyPolicy": "https://sindeo.org/politika-za-poveritelnost/",
-          "emailAddress": "angel@znam.be",
-          "website": "https://sindeo.org/",
-          "showBotInfoPage": true,
- 
-        // Set the width of the WebChat container and layout to 100% (Full Screen)
-        "containerWidth": "100%25",
-        "layoutWidth": "100%25",
-		
-		 "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/51a24706-66e4-4f9d-a30d-f1a9591f4f2e/v19170/style.css",
-		 
-		 "enableConversationDeletion": true,
- 
-        // Hide the widget and disable animations
-        "hideWidget": true,
-        "disableAnimations": true,
-    });
- 
-    // Opens up the Chatbot by default
-    // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
-    window.botpressWebChat.onEvent(
-        function () {
-            window.botpressWebChat.sendEvent({ type: "show" });
-        },
-        ["LIFECYCLE.LOADED"]
-    );
-</script>
+	<div id="chat-container"></div>
+	
+	// Import the Botpress WebChat JavaScript file
+	<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+	
+	// Initialize the Botpress WebChat with the required parameters
+	<script>
+	    window.botpressWebChat.init({
+	        // Replace <your-bot-id> and <your-client-id> with your actual bot and client IDs
+	        "botId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
+	        "clientId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
+	
+	        // Set the URL for the Botpress WebChat JavaScript file and the messaging server
+	        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+	        "messagingUrl": "https://messaging.botpress.cloud",
+	
+	        // Set the name of the bot that will be displayed in the WebChat interface
+	        "botName": "Даскал GPT 2.0",
+	
+	        // Set the width of the WebChat container and layout to 100% (Full Screen)
+	        "containerWidth": "100%25",
+	        "layoutWidth": "100%25",
+	
+	        // Hide the widget and disable animations
+	        "hideWidget": true,
+	        "disableAnimations": true,
+	    });
+	
+	    // Opens up the Chatbot by default
+	    // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
+	    window.botpressWebChat.onEvent(
+	        function () {
+	            window.botpressWebChat.sendEvent({ type: "show" });
+	        },
+	        ["LIFECYCLE.LOADED"]
+	    );
+	</script>
 </body>
 </html>
