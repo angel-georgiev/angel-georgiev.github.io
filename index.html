@@ -1,45 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Даскал GPT 2.0</title>
 </head>
 <body>
-	<div id="chat-container"></div>
-	
-	<script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
-	
-	<script>
-	    window.botpressWebChat.init({
-	        // Replace <your-bot-id> and <your-client-id> with your actual bot and client IDs
-	        "botId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
-	        "clientId": "e37872fb-85d7-499e-9a72-719e96ab9f30",
-	
-	        // Set the URL for the Botpress WebChat JavaScript file and the messaging server
-	        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
-	        "messagingUrl": "https://messaging.botpress.cloud",
-	
-	        // Set the name of the bot that will be displayed in the WebChat interface
-	        "botName": "Даскал GPT 2.0",
-	
-	        // Set the width of the WebChat container and layout to 100% (Full Screen)
-	        "containerWidth": "100%25",
-	        "layoutWidth": "100%25",
-	
-	        // Hide the widget and disable animations
-	        "hideWidget": true,
-	        "disableAnimations": true,
-	    });
-	
-	    // Opens up the Chatbot by default
-	    // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
-	    window.botpressWebChat.onEvent(
-	        function () {
-	            window.botpressWebChat.sendEvent({ type: "show" });
-	        },
-	        ["LIFECYCLE.LOADED"]
-	    );
-	</script>
+	<div class="webchat" style="height: 600px; width: 400px;">
+  <iframe
+    style="height: 100%; width: 100%; border: none;"
+    srcdoc='
+    <!doctype html>
+    <html lang="en">
+      <head></head>
+      <body>
+        <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+        <script defer>
+          window.botpress.on("webchat:ready", (conversationId) => {
+            botpress.open();
+          });
+	  window.botpress.init({
+		  "botId": "9bb99f7b-7dea-4417-b4da-689f312eff2c",
+		  "configuration": {
+		    "composerPlaceholder": "Съобщение...",
+		    "botName": "Даскал GPT 2.0",
+		    "botAvatar": "https://files.bpcontent.cloud/2025/01/18/16/20250118160048-99EQ6TMY.png",
+		    "botDescription": "",
+		    "website": {
+		      "title": "sindeo.org",
+		      "link": "sindeo.org"
+		    },
+		    "email": {
+		      "title": "angel@sindeo.org",
+		      "link": "angel@sindeo.org"
+		    },
+		    "phone": {
+		      "title": "+359878511226",
+		      "link": "+359878511226"
+		    },
+		    "termsOfService": {
+		      "title": "https://sindeo.org/terms-and-conditions/",
+		      "link": "https://sindeo.org/terms-and-conditions/"
+		    },
+		    "privacyPolicy": {
+		      "title": "https://sindeo.org/politika-za-poveritelnost/",
+		      "link": "https://sindeo.org/politika-za-poveritelnost/"
+		    },
+		    "color": "#1E443D",
+		    "variant": "solid",
+		    "themeMode": "light",
+		    "fontFamily": "rubik",
+		    "radius": 1,
+		    "showPoweredBy": false,
+		    "allowFileUpload": true
+		  },
+		  "clientId": "e37872fb-85d7-499e-9a72-719e96ab9f30"
+		});
+        </script>
+      </body>
+    </html>'
+  ></iframe>
+</div>
 </body>
 </html>
