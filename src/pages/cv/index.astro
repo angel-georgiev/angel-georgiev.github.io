@@ -1,0 +1,7 @@
+---
+import Redirect from '../../components/Redirect.astro';
+import { load } from '../../lib/content';
+const site = await load('site');
+const r = await load('resume');
+---
+<Redirect to="/resume/" text={site.pages.redirect.cv_text} title={r.meta.title} />

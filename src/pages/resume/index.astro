@@ -1,6 +1,219 @@
 ---
-import Shell from '../../components/Shell.astro';
-import { load } from '../../lib/content';
+import Base from '../../layouts/Base.astro';
+import Pic from '../../components/Pic.astro';
+import Btn from '../../components/Btn.astro';
+import CopyButton from '../../components/CopyButton.astro';
+import { load, photo, nbsp } from '../../lib/content';
+import { person } from '../../lib/jsonld';
+
 const r = await load('resume');
+const site = await load('site');
+const head = await photo(r.header.photo);
+const downloads = await Promise.all(r.photos.items.map(async (it) => ({ ...it, p: await photo(it.id) })));
+
+// Archive: newest year first, then month (items without a month last within their year), stable otherwise.
+const label = Object.fromEntries(r.archive.filters.map((f) => [f.key, f.label]));
+const items = r.archive.items
+  .map((it, i) => ({ ...it, i }))
+  .sort((a, b) => b.year - a.year || (b.month ?? 0) - (a.month ?? 0) || a.i - b.i);
+const years = [...new Set(items.map((it) => it.year))];
+const counts: Record<string, number> = { all: items.length };
+for (const it of items) counts[it.type] = (counts[it.type] ?? 0) + 1;
+const filters = r.archive.filters.filter((f) => (counts[f.key] ?? 0) > 0);
+const when = (it: (typeof items)[number]) =>
+  [it.outlet, it.month ? `${r.archive.months[it.month - 1]} ${it.year}` : String(it.year)].filter(Boolean).join(' · ');
+
+const p = await person(Astro.site!);
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'ProfilePage', url: new URL('/resume/', Astro.site).href, dateModified: new Date().toISOString().slice(0, 10), mainEntity: { '@id': p['@id'] } },
+    p,
+    {
+      '@type': 'Book', name: site.book.title_bg, alternateName: site.book.title_en, author: { '@id': p['@id'] },
+      isbn: site.book.isbn, inLanguage: 'bg', datePublished: String(site.book.year),
+      publisher: { '@type': 'Organization', name: site.book.publisher.bg }, url: site.book.url,
+    },
+  ],
+};
 ---
-<Shell theme="light" title={r.meta.title} description={r.meta.description} kicker={r.header.role} h1={r.header.name} lede={r.bio.text} photoId={r.header.photo} />
+<Base theme="light" title={r.meta.title} description={r.meta.description} credit={head.credit} jsonld={jsonld} ogImage="/og/resume.png">
+  <div class="wrap">
+    <section class="head" id="bio">
+      <div class="frame"><Pic id={r.header.photo} aspect={[4, 5]} eager sizes="(min-width: 720px) 240px, 180px" maxWidth={480} /></div>
+      <div class="head-text">
+        <h1>{r.header.name}</h1>
+        <p class="role">{r.header.role}</p>
+        <div class="bio card">
+          <div class="bio-top">
+            <h2>{r.bio.heading}</h2>
+            <CopyButton text={r.bio.text} label={r.bio.copy_button} copied={r.bio.copied} />
+          </div>
+          <p class="bio-text">{nbsp(r.bio.text)}</p>
+          <p class="note">{r.bio.note}</p>
+        </div>
+        <div class="cta-row">
+          <Btn variant="gold" text={r.header.linkedin.text} href={r.header.linkedin.href} />
+          <Btn variant="outline" text={r.header.email.text} href={r.header.email.href} />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="photos">
+      <h2>{r.photos.heading}</h2>
+      <p class="muted">{r.photos.note}</p>
+      <ul class="downloads">
+        {downloads.map((d) => (
+          <li class="dl card">
+            <Pic id={d.id} aspect={[4, 5]} sizes="(min-width: 900px) 260px, (min-width: 520px) 45vw, 90vw" maxWidth={640} />
+            <div class="dl-body">
+              <h3>{d.label}</h3>
+              <p class="dims">JPG · {d.p.img.width}×{d.p.img.height}</p>
+              <a class="btn btn-outline dl-btn" href={d.p.img.src} download={d.p.file}>{r.photos.button}<span class="visually-hidden">: {d.label}</span></a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section" id="archive" data-archive>
+      <h2>{r.archive.heading}</h2>
+      <p class="muted">{r.archive.intro}</p>
+      <div class="filterbar" data-filterbar hidden>
+        <label class="visually-hidden" for="archive-q">{r.archive.search_placeholder}</label>
+        <input id="archive-q" type="search" placeholder={r.archive.search_placeholder} autocomplete="off" data-q />
+        <div class="chips" role="group" aria-label={r.archive.heading}>
+          {filters.map((f, i) => (
+            <button type="button" class="chip" data-type={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>
+              {f.label} <span class="count" data-count>{counts[f.key]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      <p class="empty" data-empty hidden aria-live="polite">{r.archive.empty}</p>
+      {years.map((y) => (
+        <div class="year" data-year>
+          <h3 class="year-h">{y}</h3>
+          <ul class="rows">
+            {items.filter((it) => it.year === y).map((it) => (
+              <li class="row" data-type={it.type} data-text={`${it.title} ${it.outlet}`.toLowerCase()}>
+                <span class:list={['tag', `t-${it.type}`]}>{label[it.type]}</span>
+                <span class="row-main">
+                  {it.url ? <a href={it.url} class="row-title">{it.title}</a> : <span class="row-title">{it.title}</span>}
+                  <span class="row-meta">{when(it)}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+  </div>
+</Base>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-archive]');
+  if (root) {
+    const bar = root.querySelector<HTMLElement>('[data-filterbar]')!;
+    const q = root.querySelector<HTMLInputElement>('[data-q]')!;
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>('.chip'));
+    const rows = Array.from(root.querySelectorAll<HTMLElement>('.row'));
+    const yearsEl = Array.from(root.querySelectorAll<HTMLElement>('[data-year]'));
+    const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+    bar.hidden = false;
+    // Keep focused rows clear of the sticky bar (PRD §6.4: focus never hidden behind sticky elements)
+    const pad = () => document.documentElement.style.setProperty('scroll-padding-top', `${bar.offsetHeight + 16}px`);
+    pad(); window.addEventListener('resize', pad);
+    let type = 'all';
+    const apply = () => {
+      const term = q.value.trim().toLowerCase();
+      const counts: Record<string, number> = { all: 0 };
+      for (const r of rows) {
+        const textOk = !term || r.dataset.text!.includes(term);
+        if (textOk) { counts.all++; counts[r.dataset.type!] = (counts[r.dataset.type!] ?? 0) + 1; }
+        r.hidden = !(textOk && (type === 'all' || r.dataset.type === type));
+      }
+      for (const c of chips) {
+        const n = counts[c.dataset.type!] ?? 0;
+        c.querySelector('[data-count]')!.textContent = String(n);
+        c.hidden = n === 0 && c.dataset.type !== 'all' && c.dataset.type !== type;
+      }
+      let any = false;
+      for (const y of yearsEl) {
+        const vis = Array.from(y.querySelectorAll<HTMLElement>('.row')).some((r) => !r.hidden);
+        y.hidden = !vis; any ||= vis;
+      }
+      empty.hidden = any;
+    };
+    for (const c of chips) c.addEventListener('click', () => {
+      type = c.dataset.type!;
+      chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+      apply();
+    });
+    q.addEventListener('input', apply);
+  }
+</script>
+
+<style>
+  .head { display: grid; gap: 1.75rem; padding-top: 2rem; }
+  @media (min-width: 720px) { .head { grid-template-columns: 240px minmax(0, 1fr); gap: 2.75rem; align-items: start; } }
+  .frame { position: relative; width: 180px; margin: 0 14px 14px 0; }
+  @media (min-width: 720px) { .frame { width: 240px; } }
+  .frame::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; background: var(--gold); border-radius: var(--radius-lg); }
+  .frame :global(img) { position: relative; width: 100%; height: auto; border-radius: var(--radius-lg); }
+  h1 { margin-bottom: 0.2rem; }
+  .role { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 1.1rem; }
+  .bio { padding: clamp(1.1rem, 3vw, 1.6rem); margin-bottom: 1.1rem; }
+  .bio-top { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+  .bio-top h2 { margin: 0; }
+  .bio-text { max-width: none; }
+  .note { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+
+  .downloads { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 520px) { .downloads { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 900px) { .downloads { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .dl { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .dl :global(img) { width: 100%; height: auto; }
+  .dl-body { padding: 0.9rem 1rem 1.1rem; }
+  .dl h3 { font-family: var(--font-body); font-weight: 700; font-size: 1rem; margin-bottom: 0.15rem; }
+  .dims { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.7rem; }
+  .dl-btn { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+
+  .filterbar { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 0.9rem 0 0.75rem; border-bottom: 1px solid var(--border); margin-top: 1rem; }
+  .filterbar[hidden] { display: none; }
+  input[type='search'] {
+    width: 100%; font: inherit; font-size: 1rem; color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.9rem; min-height: 44px;
+  }
+  input[type='search']::placeholder { color: var(--text-muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+  .chip {
+    font: inherit; font-size: 0.82rem; font-weight: 700; color: var(--text); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.75rem; min-height: 32px; cursor: pointer;
+  }
+  .chip[aria-pressed='true'] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .chip[hidden] { display: none; }
+  @media (max-width: 719px) {
+    /* One scrollable row on phones, so the sticky bar stays short */
+    .chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { flex: none; }
+    .filterbar { padding-top: 0.6rem; }
+  }
+  .count { font-size: 0.72rem; font-weight: 600; opacity: 0.8; margin-left: 0.15rem; }
+  .empty { margin-top: 1.5rem; }
+  .year[hidden], .row[hidden] { display: none; }
+  .year-h { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold-text); margin: 1.75rem 0 0.4rem; }
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0.4rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+  @media (max-width: 559px) { .row { grid-template-columns: 1fr; } }
+  .tag {
+    justify-self: start; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    background: color-mix(in srgb, var(--border) 60%, var(--surface)); color: var(--text); border-radius: 999px; padding: 0.2rem 0.6rem; margin-top: 0.15rem;
+  }
+  .t-award { background: var(--gold); color: var(--on-gold); }
+  .row-main { display: flex; flex-direction: column; gap: 0.15rem; }
+  .row-title { font-weight: 600; color: var(--text); }
+  a.row-title { text-decoration-color: var(--gold); text-decoration-thickness: 1.5px; }
+  .row-meta { font-size: 0.8rem; color: var(--text-muted); }
+</style>
