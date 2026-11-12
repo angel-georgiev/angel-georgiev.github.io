@@ -105,7 +105,7 @@ page:
       - { q: "Ако срещата не ми помогне?", a: "Пишете ми до 2 дни след нея и ви връщам парите." }
 
   ladder:
-    heading: "Как мога да помогна още"   # section name from PRD §5.3 (added by Claude Code, M4); cards come from offers.yml
+    heading: "Как мога да помогна още"   # section name from PRD §5.3, confirmed by Angel 12 Nov 2026; cards come from offers.yml
 
   cta:
     button: "Поискайте моята помощ · 29 €"   # price must match price.value

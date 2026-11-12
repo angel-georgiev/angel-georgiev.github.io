@@ -8,8 +8,6 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 
 | # | Item | Where it shows | Status |
 |---|---|---|---|
-| C7 | Case-card labels on `/companies/` („Задача / Истинският проблем / Решение / Резултат“) were not in `companies.yml` | `/companies/` "От практиката" | Taken from mockup v5 into `companies.yml → cases.labels`. **Angel to confirm** |
-| C8 | Heading „Как мога да помогна още“ for the offer ladder on `/support/` existed only as a PRD/comment string | `/support/` last section | Added to `support.yml → page.ladder.heading` from PRD §5.3. **Angel to confirm** |
 | G1 | Stripe after-payment redirect points to `angel-georgiev.github.io/support/thanks/` | Stripe dashboard | **At go-live (M6)** change it to `https://daskal.ai/support/thanks/` |
 | 2a | Stripe checkout dropdown: "Работя в компания" (`support.yml`) vs "Организация" (PRD) | Stripe dashboard only | Angel's choice when setting up the link |
 | 15 | Angel reviews all Bulgarian copy | All pages | **Open**, after M2–M4 (before M6) |
@@ -30,6 +28,8 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | S1 | 900 € for every school format | Confirmed; VERIFY removed from `schools.yml` |
 | 2 | Stripe Payment Link | `https://buy.stripe.com/28E3cufB39tQh2IeYe1ZS01` in `support.yml → product.stripe_link`. One link only, also for `/daskal/` in Phase 2 |
 | R1 | Refund window | 2 days, not 7 (Angel, 12 Nov 2026): `support.yml` guarantee + FAQ, PRD §5.3. Must match the refund policy text in Stripe |
+| C7 | Case-card labels on `/companies/` („Задача / Истинският проблем / Решение / Резултат“) | Confirmed by Angel (12 Nov 2026), `companies.yml → cases.labels` |
+| C8 | Heading „Как мога да помогна още“ on `/support/` | Confirmed by Angel (12 Nov 2026), `support.yml → page.ladder.heading` |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
 
