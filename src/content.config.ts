@@ -164,6 +164,7 @@ const support = obj({
     guarantee: obj({ heading: s, text: s }),
     price: obj({ label: s, value: s, intro_note: s, includes: s }),
     faq: obj({ heading: s, items: z.array(obj({ q: s, a: s })) }),
+    ladder: obj({ heading: s }),
     cta: obj({ button: s, note: s, repeat: s }),
   }),
   thank_you: obj({

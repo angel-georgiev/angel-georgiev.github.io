@@ -1,10 +1,10 @@
 ---
 import { splitPrice, nbsp } from '../../lib/content';
 interface Props {
-  offer: { key: string; title: string; for: string; partner?: string; what: string; price_line?: string; cta: { text: string; href: string } };
-  featured?: boolean; teaser?: boolean;
+  offer: { key: string; title: string; for: string; partner?: string; what: string; includes?: string[]; price_line?: string; note?: string; cta: { text: string; href: string } };
+  featured?: boolean; teaser?: boolean; detailed?: boolean;   // detailed: also show `includes` and `note` (the /support/ ladder)
 }
-const { offer: o, featured = false, teaser = false } = Astro.props;
+const { offer: o, featured = false, teaser = false, detailed = false } = Astro.props;
 const price = !teaser && o.price_line ? splitPrice(o.price_line) : undefined;
 ---
 <article class:list={['offer', { featured }]}>
@@ -12,9 +12,11 @@ const price = !teaser && o.price_line ? splitPrice(o.price_line) : undefined;
   <h3>{o.title}</h3>
   {o.partner && !teaser && <p class="partner">{o.partner}</p>}
   <p class="what">{o.what}</p>
+  {detailed && o.includes && <ul class="includes">{o.includes.map((i) => <li>{i}</li>)}</ul>}
   {price && (
     <p class="price"><span class="amount">{nbsp(price.price)}</span>{price.rest && <span class="rest">{price.rest}</span>}</p>
   )}
+  {detailed && o.note && <p class="note">{o.note}</p>}
   <a class="go" href={o.cta.href}>{o.cta.text}</a>
 </article>
 <style>
@@ -26,9 +28,12 @@ const price = !teaser && o.price_line ? splitPrice(o.price_line) : undefined;
   .price { margin: auto 0 0.9rem; display: flex; flex-direction: column; }
   .amount { font-family: var(--font-display); font-weight: 900; font-size: 1.8rem; line-height: 1.1; }
   .rest { font-size: 0.78rem; color: var(--text-muted); }
+  .includes { margin: -0.4rem 0 1rem; padding-left: 1.1rem; font-size: 0.88rem; color: var(--text-muted); }
+  .includes li { margin-bottom: 0.2rem; }
+  .note { font-size: 0.78rem; color: var(--text-muted); margin: -0.4rem 0 0.8rem; }
   .go { margin-top: auto; align-self: flex-start; font-weight: 800; color: var(--link); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.35em; padding-block: 0.25rem; }
   .price + .go { margin-top: 0; }
   .featured { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
-  .featured .for, .featured .what, .featured .rest { color: var(--on-gold); }
+  .featured .for, .featured .what, .featured .rest, .featured .includes, .featured .note { color: var(--on-gold); }
   .featured .go { color: var(--on-gold); }
 </style>

@@ -11,6 +11,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 2 | Stripe Payment Link (+ optional second link for `/daskal/`) | `/support/` both CTAs render disabled as "Скоро" | **Open**, kept as is for now (Angel, 12 Nov). `support.yml → product.stripe_link` |
 | 2a | Stripe checkout dropdown: `support.yml` says "Работя в компания", PRD §5.3 says "Организация" | Stripe dashboard only, not the site | **Open**, Angel picks one when creating the link |
 | C7 | Case-card labels on `/companies/` („Задача / Истинският проблем / Решение / Резултат“) were not in `companies.yml` | `/companies/` "От практиката" | Taken from mockup v5 into `companies.yml → cases.labels`. **Angel to confirm** |
+| C8 | Heading „Как мога да помогна още“ for the offer ladder on `/support/` existed only as a PRD/comment string | `/support/` last section | Added to `support.yml → page.ladder.heading` from PRD §5.3. **Angel to confirm** |
 | 15 | Angel reviews all Bulgarian copy | All pages | **Open**, after M2–M4 (before M6) |
 
 ## Resolved (12 Nov 2026, Angel)

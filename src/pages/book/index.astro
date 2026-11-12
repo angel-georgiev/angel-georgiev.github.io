@@ -1,0 +1,7 @@
+---
+import Redirect from '../../components/Redirect.astro';
+import { load } from '../../lib/content';
+const site = await load('site');
+const l = await load('landing');
+---
+<Redirect to={site.book.url} text={site.pages.redirect.book_text} title={l.book.kicker} />

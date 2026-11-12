@@ -1,0 +1,23 @@
+---
+// The single paid CTA (PRD §5.3). Opens the Stripe Payment Link; disabled with "Скоро" while the link is not set.
+import Btn from './Btn.astro';
+import { load } from '../lib/content';
+import { stripeReady } from '../lib/rules';
+interface Props { id?: string }
+const { id } = Astro.props;
+const s = await load('support');
+const site = await load('site');
+const ready = stripeReady(s.product.stripe_link);
+const note = s.page.cta.note.replace(site.person.email, '\u0000');
+const [before, after] = note.split('\u0000');
+---
+<div class="support-cta" id={id}>
+  {ready
+    ? <Btn variant="gold" text={s.page.cta.button} href={s.product.stripe_link} />
+    : <Btn variant="gold" text={site.ui.soon.bg} small={s.page.cta.button} disabled />}
+  <p class="cta-note">{before}{after !== undefined && <><a href={`mailto:${site.person.email}`}>{site.person.email}</a>{after}</>}</p>
+</div>
+<style>
+  .support-cta { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  .cta-note { font-size: 0.82rem; color: var(--text-muted); margin: 0; max-width: 60ch; }
+</style>
