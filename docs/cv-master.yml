@@ -1,0 +1,202 @@
+# NOT BUILT. Master career data (moved from content/cv.yml on 12 Nov 2026). The site has no CV page; /resume/ replaced it.
+# Use: source for tailored CVs per job application, together with the latest LinkedIn export.
+# CV page — /cv/ (EN) and /bg/cv/ (BG). Light theme only. Prints to a 2-page A4 PDF.
+# Writing rule: plain, objective language. No "revolutionized", "pioneering", "transformed".
+
+meta:
+  title: { en: "CV — Angel Georgiev", bg: "CV | Ангел Георгиев" }
+  description:
+    en: "Trainer, author and educator with 20 years in corporate training, edtech and schools."
+    bg: "Обучител, автор и преподавател с 20 години опит в корпоративните обучения, образователните технологии и училищата."
+
+header:
+  photo: portrait-light   # id from content/photos.yml — square crop, head and shoulders
+  name: { en: "Angel Georgiev", bg: "Ангел Георгиев" }
+  role: { en: "Trainer · Consultant · Author", bg: "Обучител · Консултант · Автор" }
+  summary:
+    en: "I design and deliver learning that works — for companies, schools and individual learners. Over 20 years I have trained more than 20,000 people, built training programs and edtech products, and written a book on how we learn."
+    bg: "Обучавам и консултирам училища, компании и отделни хора. За 20 години съм обучил над 20 000 души, изградил съм обучителни програми в СофтУни и Musala Soft, основал съм две образователни организации и съм написал книга за това как учим."
+
+now:
+  heading: { en: "Now", bg: "В момента" }
+  roles:
+    - org: "ITCE"
+      title: { en: "Sales & Training Portfolio Product Manager · Architect Consultant and Trainer", bg: "Продуктов мениджър „Продажби и обучително портфолио“ · Консултант и обучител" }
+      since: "2025-07"
+      text: { en: "Own the catalogue of technical trainings (Microsoft, AWS, AI CERTs, ServiceNow, ITIL), lead presales for large training projects, and deliver training in ITSM, AI, software development and project management.", bg: "Отговарям за каталога с технически обучения (Microsoft, AWS, AI CERTs, ServiceNow, ITIL), водя предпродажбите при големи обучителни проекти и преподавам ITSM, изкуствен интелект, софтуерна разработка и управление на проекти." }
+    - org: "SmarTest"
+      title: { en: "Partner", bg: "Партньор" }
+      since: "2023-11"
+      text: { en: "Business development for an educational assessment platform: growth from 80 to 200+ subscribing schools, a PISA-preparation partnership with the Ministry of Education, international presence at BETT London and World Expo Osaka.", bg: "Развивам бизнеса на платформа за образователно оценяване. С екипа разширихме мрежата от 80 до над 200 училища с абонамент, сключихме партньорство с МОН за подготовка за PISA и представихме платформата на BETT London и World Expo Osaka." }
+    - org: "obr.education"
+      org_full: { en: "Education Without Backpacks (obr.education) — TO CONFIRM NAME", bg: "Образование без раници (obr.education) · ДА СЕ ПОТВЪРДИ" }
+      title: { en: "Board Member and Finance Controller", bg: "Член на УС и финансов контрольор" }
+      since: "2026-05"
+  also:
+    label: { en: "Also", bg: "Също" }
+    items:
+      - { en: "Board Member, BAIT (since 2025)", bg: "Член на УС на БАИТ (от 2025)" }
+      - { en: "AICT Advisory Board, AI CERTs", bg: "Консултативен съвет AICT, AI CERTs" }
+      - { en: "Founder, HomoDeus Tech", bg: "Основател, HomoDeus Tech" }
+      - { en: "Founder, Znam.be (now an NGO)", bg: "Основател, Знам.бе (днес НПО)" }
+      - { en: "Honorary IT & Design teacher, Uwekind International School", bg: "Хоноруван учител по ИТ и дизайн, Международно училище „Увекинд“" }
+      - { en: "Jury member, Агент на промяната award", bg: "Член на журито, награда „Агент на промяната“" }
+  studying:
+    - { en: "MSc Digital Business — in progress (expected 2027). INSTITUTION TBC", bg: "Магистър „Дигитален бизнес“, в процес (2027). УНИВЕРСИТЕТ: ДА СЕ ПОТВЪРДИ" }
+
+logos:
+  heading: { en: "Organisations I've trained, advised and built for", bg: "Организации, с които съм работил като обучител и консултант" }
+  # Greyscale (CSS filter or pre-processed SVG), uniform height ~32px, ~60% opacity, no links, alt = company name.
+  # Files supplied by Angel from official brand pages into /public/logos/. Until supplied, render the name as text in the same slot.
+  items: ["Sony", "Samsung", "SoftUni", "Avenga (Musala Soft)", "ITCE", "UniCredit Bulbank", "Coca-Cola", "Postbank", "Huvepharma", "DXC Technology", "KPMG"]
+
+work:
+  heading: { en: "Selected work", bg: "Избрани проекти" }
+  items:
+    - id: softuni-qa
+      title: { en: "QA Engineer program, SoftUni", bg: "Програма „QA инженер“, СофтУни" }
+      years: "2021–2023"
+      role: { en: "Educational Director", bg: "Образователен директор" }
+      # Case-study format: the ask → the real problem → the decision → the result (all facts from Angel's CV)
+      ask: { en: "SoftUni needed a new program to strengthen its market position.", bg: "СофтУни търсеше нова програма, която да укрепи позициите ѝ на пазара." }
+      problem: { en: "Companies were short of QA engineers, and no provider was training them; academic-only curricula would not have fixed that.", bg: "Компаниите търсеха QA инженери, а никой не ги обучаваше. Академична програма нямаше да реши проблема." }
+      decision: { en: "Designed the curriculum together with industry companies and field experts over an eight-month cycle; led a team of 20+ trainers and taught 100+ hours myself.", bg: "За осем месеца разработихме програмата заедно с компании и експерти от индустрията. Ръководих екип от над 20 преподаватели и преподавах над 100 часа." }
+      result: { en: "SoftUni's first new program in five years; 5,000+ enrollments in the first year.", bg: "Първата нова програма на СофтУни от пет години. През първата година се записаха над 5 000 души." }
+    - id: softuni-hybrid
+      title: { en: "Hybrid learning setup, SoftUni", bg: "Хибридно обучение, СофтУни" }
+      years: "2017–2018"
+      role: { en: "Director of Research and Development", bg: "Директор „Изследвания и развитие“" }
+      ask: { en: "SoftUni wanted online students to get the same learning experience as students in the room.", bg: "СофтУни искаше онлайн студентите да учат със същото качество като тези в залата." }
+      problem: { en: "No existing learning platform could handle that scale together with live, in-room teaching.", bg: "Готовите платформи не поемаха този мащаб заедно с живите занятия в залата." }
+      decision: { en: "Designed a custom setup instead of buying one, and scaled it lean: one pilot room first, then 10 rooms.", bg: "Проектирах собствена система. Започнахме с една пилотна зала и стигнахме до десет." }
+      result: { en: "18+ concurrent streams; SoftUni still runs on the same core setup.", bg: "Над 18 едновременни потока. СофтУни и днес работи със същата система." }
+      open_item: "CV claims 10,000+ students daily today — Angel to confirm before adding."
+    - id: sindeo
+      title: { en: "Sindeo Academy", bg: "Академия „Синдео“" }
+      years: "2022–2026"
+      role: { en: "Founder", bg: "Основател" }
+      text: { en: "An online academy for new and practising teachers in Bulgaria. A community of 30,000+ teachers; 8,000 took the AI in Education course; 69,000+ hours of professional development.", bg: "Основах онлайн академия за нови и практикуващи учители. В общността ѝ влязоха над 30 000 учители, 8 000 от тях преминаха курса за AI в образованието, а общо учителите натрупаха над 69 000 часа обучение." }
+    - id: daskal-ai
+      title: { en: "Daskal AI", bg: "Даскал AI" }
+      years: "2025"
+      role: { en: "Initiator and developer", bg: "Инициатор и разработчик" }
+      text: { en: "A free AI assistant for Bulgarian teachers, launched in March 2025. Retired once general AI tools could do the same job — the method now lives on as a build-it-yourself guide.", bg: "През март 2025 г. пуснах безплатен AI асистент за българските учители. Спрях го, когато общите AI инструменти започнаха да вършат същото, и сега споделям метода като умение, което всеки може да инсталира." }
+      href: "/daskal/"
+    - id: znambe
+      title: { en: "Znam.be", bg: "Знам.бе" }
+      years: "2019–"
+      role: { en: "Founder", bg: "Основател" }
+      text: { en: "A free career-guidance platform for students and teachers. Two national tours reached 20,000+ students with career assessments; 85-episode podcast for teachers. Now run as an NGO.", bg: "Създадох безплатна платформа за кариерно ориентиране. С две национални турнета направихме кариерна диагностика на над 20 000 ученици, а с подкаста „За учителите“ записахме 85 епизода. Днес Знам.бе работи като НПО." }
+  more:
+    label: { en: "Also", bg: "Още" }
+    items:
+      - { en: "Curriculum and program design for schools, including Uwekind International School, the Prof. Ivan Apostolov school complex (Аз-буки) and the British School of Sofia.", bg: "Създавах учебни програми и курсове за училища, сред които Международно училище „Увекинд“, училищният комплекс „Проф. Иван Апостолов“ („Аз-буки“) и Британското училище в София." }
+      - { en: "Skills matrix and personalised development paths at Musala Soft; elements later adopted by the acquiring company's global excellence centre.", bg: "Изградих матрица на уменията и лични пътеки за развитие в Musala Soft. Компанията, която придоби Musala, внедри части от тях в своя глобален център." }
+      - { en: "Train-the-Trainer methodology at SoftUni, still used to onboard new trainers.", bg: "Създадох методиката за обучение на обучители в СофтУни. С нея СофтУни и днес въвежда новите си преподаватели." }
+
+book_section:
+  id: book
+  heading: { en: "The book", bg: "Книгата" }
+  text:
+    en: "The Green Book of Learning (Зелената книга за ученето) gathers seven research-based principles for learning faster and remembering longer — for students, parents, teachers and professionals. Locus Publishing, 2025. In Bulgarian."
+    bg: "В „Зелената книга за ученето“ събрах седем научно обосновани принципа за по-бързо учене и по-трайно запомняне. Написах я за ученици, родители, учители и професионалисти. Локус Пъблишинг, 2025."
+  cta: { en: "See the book →", bg: "Вижте книгата →" }
+  href: "/book/"     # redirects to uchene.com in Phase 1–2
+
+recognition:
+  id: recognition
+  heading: { en: "Recognition", bg: "Отличия" }
+  personal_label: { en: "Personal", bg: "Лични" }
+  personal:
+    - { year: 2026, en: "Outstanding Trainer of the Year – Europe, AI CERTs Partner Excellence Awards", bg: "Обучител на годината за Европа, AI CERTs Partner Excellence Awards", src: "https://natlawreview.com/press-releases/ai-certsr-announces-winners-partner-excellence-awards-2026" }
+    - { year: 2025, en: "b2b Media Annual Awards — personal award, AI in education (Daskal AI)", bg: "Годишни награди на b2b Media: лична награда, AI в образованието (Даскал AI)", src: "https://b2bmedia.bg/news/koi-sa-otlichenite-v-godishnite-nagradi-na-b2b-media-2025-JlWR7" }
+    - { year: 2022, en: "Darik Radio “40 under 40”, Education", bg: "„40 до 40“ на Дарик радио, категория „Образование“", src: "https://www.poc-doverie.bg/en/news/a-special-ceremony-gathered-the-honorees-in-the-9th-edition-of-the-40-to-40-project-of-darik-radio-530" }
+  ventures_label: { en: "For ventures I founded", bg: "За проекти, които основах" }
+  ventures:
+    - { year: 2024, en: "Sindeo — ARC Fund Innovative Enterprise of the Year finalist, Excellence in Innovation mark", bg: "Синдео: финалист „Иновативно предприятие на годината 2024“ на ФПИ, знак „Високи постижения в иновациите“", src: "https://arcfund.net/bg/category-events/inovativno-predpriatie-na-godinata-2024/" }
+    - { year: 2023, en: "Sindeo — Агент на промяната, 3rd place, Business", bg: "Синдео: „Агент на промяната“, 3-то място, категория „Бизнес“", src: "https://darikradio.bg/agent-na-promanata-obavi-dobrotvorcite-za-2023-g-na-specialna-ceremonia.html" }
+    - { year: 2023, en: "Sindeo platform — ARC Fund Innovative Enterprise of the Year finalist, Excellence in Innovation label", bg: "Платформата на Синдео: финалист „Иновативно предприятие на годината 2023“ на ФПИ, знак за високи постижения", src: "https://een.bg/en/news/awarded-innovative-bulgarian-companies-and-finalists-in-the-innovative-enterprise-of-the-year-contest-2023/" }
+    - { year: 2021, en: "Znam.be — Будител на годината (BNR), Vivacom special award", bg: "Знам.бе: „Будител на годината“ (БНР), специална награда на Виваком", src: "https://duma.bg/albanets-specheli-vota-za-buditel-na-godinata-n247797" }
+    - { year: 2019, en: "Znam.be — BAIT Education Award", bg: "Знам.бе: образователна награда на БАИТ", src: "https://www.techtrends.bg/2020/02/26/bait-awards-2019-education-5571/" }
+    - { year: 2019, en: "Znam.be — Агент на промяната, honorary diploma", bg: "Знам.бе: „Агент на промяната“, почетен диплом", src: "https://www.idea-agency.bg/bg/tiding/143/Rabotilnica-za-reporteri-s-pocheten-diplom-Agent-na-promyanata" }
+
+podcasts:
+  id: podcasts
+  heading: { en: "Podcasts", bg: "Подкасти" }
+  guest_label: { en: "As a guest", bg: "Като гост" }
+  guest:   # newest first; all in Bulgarian — show the "in Bulgarian" label
+    - { date: "2026-03", show: "Digitalks", ep: "#255", title: "AI революция на уменията в бизнеса", url: "https://podcasts.apple.com/bg/podcast/255-ai-%D1%80%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D0%BC%D0%B5%D0%BD%D0%B8%D1%8F%D1%82%D0%B0-%D0%B2-%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0/id1508163042?i=1000757200497" }
+    - { date: "2026-02", show: "Xplore Marketing", ep: "ep. 217", title: "Изкуството на научаването в AI ерата", url: "https://xplora.bg/podcasts/xplore-marketing-episode-217/" }
+    - { date: "2024-10", show: "Impact със Стан и Никола", ep: "", title: "Ангел Георгиев – най-важната професия в България", url: "https://metacast.app/podcast/impact-ss-stan-i-nikola/WieSvMNa/angel-georgiev---nay-vazhnata-profesiya-v-blgariya/PNfLNCDv" }
+    - { date: "2024", show: "Hack Bulgaria — Гласът на IT индустрията", ep: "ep. 2", title: "Липсата на учители и как да променим това?", url: "https://www.youtube.com/watch?v=cbloR0P9hxU" }
+    - { date: "2024-08", show: "Говори ѝнтернет", ep: "", title: "Кой учи учителите", url: "https://govori-internet.com/uchi-uchiteli/" }
+    - { date: "2022-01", show: "Дизайнът на Нещата", ep: "e108", title: "Мотивацията да учим и новите форми на обучение", url: "https://designofthings.fm/e108/" }
+    - { date: "2021-06", show: "Българи на света", ep: "E008", title: "За образованието", url: "https://podcasts.apple.com/us/podcast/%D0%B1%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D0%B8-%D0%BD%D0%B0-%D1%81%D0%B2%D0%B5%D1%82%D0%B0-bulgarians-of-the-world/id1560192577" }
+    - { date: "2020-05", show: "Свръхчовекът", ep: "ep. 189", title: "Как се програмира успех?", url: "https://www.thesuperhumanpodcast.net/episode/189-angel-georgiev/" }
+  host_label: { en: "As host", bg: "Като водещ" }
+  host:
+    show: "За учителите (Znam.be)"
+    years: "2020–2022"
+    text: { en: "85 episodes with Bulgaria's teachers on their classroom practice. 10,000+ listens.", bg: "Записах 85 епизода с български учители за практиката им в класната стая. Подкастът събра над 10 000 слушания." }
+    url: "https://znam.be/podcast"
+
+media_highlights:
+  id: media
+  heading: { en: "Media and talks", bg: "Медии и лекции" }
+  count_line: { en: "100+ TV, radio and press appearances since 2014", bg: "Над 100 участия в телевизия, радио и преса от 2014 г." }
+  outlets: ["BNT", "Bloomberg TV Bulgaria", "BNR", "Bulgaria ON AIR", "Forbes Bulgaria", "Darik Radio", "Euronews Bulgaria", "Investor.bg", "Economy.bg", "BTA"]   # text only, no logos
+  featured:
+    - { date: "2019-09", en: "TEDxSerdikaSalon — The role of the teacher in the future of education (talk, English)", bg: "TEDxSerdikaSalon: Ролята на учителя в бъдещето на образованието (лекция на английски)", url: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education" }
+    - { date: "2026-09", en: "Ratio — panel “Digital childhood: curse or blessing”", bg: "Ratio: панел „Дигитално детство: проклятие или благословия“", url: "https://ratio.bg/events/digitalyouth/" }
+    - { date: "2025-10", en: "Forbes Bulgaria — How Sindeo prepares the next generation of Bulgarian teachers", bg: "Forbes България: Как „Синдео“ подготвя новото поколение български учители", url: "https://forbesbulgaria.com/2025/10/17/kak-sindeo-podgotvya-novoto-pokolenie-balgarski-uchiteli/" }
+    - { date: "2025-03", en: "Bloomberg TV Bulgaria — A Bulgarian AI tool to raise the level of Bulgarian schools", bg: "Bloomberg TV Bulgaria: „Български AI инструмент носи потенциала да се вдигне нивото в българското училище“", url: "https://www.bloombergtv.bg/a/28-update/142959-balgarski-ai-instrument-nosi-potentsiala-da-se-vdigne-nivoto-v-balgarskoto-uchilishte" }
+    - { date: "2025-06", en: "BNR — Let's promote the teachers and schools that use technology", bg: "БНР: Да популяризираме учители и училища, които прилагат технологиите", url: "https://bnr.bg/post/102172229/angel-georgiev-da-popularizirame-uchiteli-i-uchilishta-koito-prilagat-tehnologiite" }
+    - { date: "2024-03", en: "BNT 1, 100% будни — A positive look at the PISA results", bg: "БНТ 1, „100% будни“: Позитивен поглед върху резултатите от PISA", url: "https://bnt.bg/news/pozitiven-pogled-varhu-rezultatite-ot-pisa-v-balgariya-v363015-326774news.html" }
+    - { date: "2025-01", en: "Bulgaria ON AIR — Is there room for AI in school?", bg: "Bulgaria ON AIR: Има ли място изкуственият интелект в училище", url: "https://www.bgonair.bg/a/36-sutreshen-blok/370510-ima-li-myasto-izkustveniyat-intelekt-v-uchilishte-i-zashto-uchiteli-gledat-s-nedoverie" }
+    - { date: "2025-02", en: "Economy.bg — What will the school of the future look like (interview)", bg: "Economy.bg: Как ще изглежда училището на бъдещето (интервю)", url: "https://www.economy.bg/bulgaria/view/60750/Kak-shte-izglezhda-uchilishteto-na-bydeshteto-i-kakva-shte-e-rolyata-na-AI-v-nego" }
+  all_link: { en: "All appearances →", bg: "Всички участия →", href: "/media/" }
+
+experience:
+  heading: { en: "Experience", bg: "Професионален опит" }
+  # newest first; bold job titles (recruiters fixate on titles)
+  items:
+    - { org: "ITCE", title: { en: "Sales & Training Portfolio Product Manager; Architect Consultant and Trainer", bg: "Продуктов мениджър и консултант-обучител" }, from: "2025-07", to: null }
+    - { org: "obr.education", title: { en: "Board Member and Finance Controller", bg: "Член на УС и финансов контрольор" }, from: "2026-05", to: null }
+    - { org: "SmarTest", title: { en: "Partner", bg: "Партньор" }, from: "2023-11", to: null }
+    - { org: "Sindeo Academy", title: { en: "Founder", bg: "Основател" }, from: "2022-10", to: "2026-08" }
+    - { org: "HomoDeus Tech", title: { en: "Founder — training, AI adoption consulting, venture incubation", bg: "Основател: обучения, консултации за внедряване на AI, инкубиране на проекти" }, from: "2020-06", to: null }
+    - { org: "Uwekind International School", title: { en: "Honorary teacher, IT and IB Design (grades 5–10)", bg: "Хоноруван учител по ИТ и IB Design (5.–10. клас)" }, from: "2020-10", to: null }
+    - { org: "Znam.be", title: { en: "Founder", bg: "Основател" }, from: "2019-01", to: null }
+    - org: "SoftUni"
+      title: { en: "Trainer (2014–2024) · Learning Innovation Manager (2023–2024) · Educational Director (2021–2023) · Director of R&D (2017–2018) · Training Director (2015–2016)", bg: "Преподавател (2014–2024) · Мениджър „Иновации в обучението“ (2023–2024) · Образователен директор (2021–2023) · Директор „Изследвания и развитие“ (2017–2018) · Директор „Обучения“ (2015–2016)" }
+      from: "2014-09"
+      to: "2024-04"
+    - { org: "Musala Soft (now Avenga)", title: { en: "Technical Training Lead · Product Owner · Technical and Soft Skills Trainer", bg: "Ръководител технически обучения · Продуктов собственик · Обучител" }, from: "2018-02", to: "2021-02" }
+    - { org: "Prof. Ivan Apostolov English School", title: { en: "Information and Software Technologies Teacher", bg: "Учител по информационни и софтуерни технологии" }, from: "2017-12", to: "2020-07" }
+    - { org: "Vision for Sofia", title: { en: "Technical Lead, methodological guidelines · Technical Monitor", bg: "Технически ръководител, методически указания · Технически мониторинг" }, from: "2016-11", to: "2019-12" }
+    - { org: "Sony Mobile Communications", title: { en: "Marketing Manager, Local Marketing — national training and marketing representative", bg: "Мениджър „Локален маркетинг“, национален представител за обучения и маркетинг" }, from: "2014", to: "2016" }
+    - { org: "Sony Middle East and Africa", title: { en: "Marketing Manager · Trade Marketing Manager", bg: "Маркетинг мениджър · Мениджър „Търговски маркетинг“" }, from: "2011", to: "2013" }
+    - { org: "Samsung Electronics", title: { en: "Merchandising Expert", bg: "Експерт „Мърчандайзинг“" }, from: "2009", to: "2011" }
+    - { org: "Sony Ericsson", title: { en: "Market Development Manager", bg: "Мениджър „Развитие на пазара“" }, from: "2006", to: "2008" }
+
+credentials:
+  heading: { en: "Credentials", bg: "Квалификации" }
+  trainer_label: { en: "Trainer accreditations", bg: "Акредитации като обучител" }
+  trainer: ["Microsoft Certified Trainer (MCT)", "ITIL® accredited trainer", "AI CERTs Certified Trainer (AICT)"]
+  certs_label: { en: "Certifications", bg: "Сертификати" }   # collapsed <details> by default
+  certs:
+    - "AI+ Prompt Engineer™ · AI+ Executive™ · AI+ Agent™ · AI+ Ethics™ · AI+ Everyone™ (AI CERTs)"
+    - "ITIL® 4 Foundation · ITIL® v5 Foundation · ITIL® 4 Specialist: Monitor, Support and Fulfil"
+    - "Microsoft AB-730 · AB-731 — OFFICIAL TITLES TBC"
+    - "aMBA"
+  education_label: { en: "Education", bg: "Образование" }
+  education:
+    - { en: "MSc Digital Business — in progress. INSTITUTION TBC", bg: "Магистър „Дигитален бизнес“, в процес. УНИВЕРСИТЕТ: ДА СЕ ПОТВЪРДИ" }
+    - { en: "Bachelor's, Management in Information Technology — MT&M College (2015–2017)", bg: "Бакалавър „Мениджмънт в информационните технологии“, Колеж МТ&М (2015–2017)" }
+    - { en: "Computer Science — Software University (SoftUni), 2014–2017", bg: "Компютърни науки, Софтуерен университет (СофтУни), 2014–2017" }
+    - { en: "Behavioural Design Masterclass — Octalysis Group (2020)", bg: "Behavioural Design Masterclass — Octalysis Group (2020)" }
+    - { en: "The Podcasting Workshop — Akimbo (2020)", bg: "The Podcasting Workshop — Akimbo (2020)" }
+
+contact:
+  line: { en: "For training, consulting or speaking: angel@daskal.ai", bg: "За обучения, консултации или лекции: angel@daskal.ai" }
+  support_cta: { en: "Have one specific question? Book a 30-minute support session →", bg: "Имате конкретен въпрос? Поискайте моята помощ →", href: "/support/" }

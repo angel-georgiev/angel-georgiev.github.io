@@ -1,0 +1,24 @@
+---
+import { load } from '../lib/content';
+import Motif from './Motif.astro';
+interface Props { credit?: string }
+const { credit } = Astro.props;
+const site = await load('site');
+const href = (key: string) => (site.links as Record<string, string>)[key];
+---
+<Motif full />
+<footer class="site-footer wrap">
+  <p class="row">
+    <span>{site.footer.line.bg} <a href={`mailto:${site.person.email}`}>{site.person.email}</a></span>
+    {site.footer.links.map((l) => <a href={href(l.key)}>{l.bg}</a>)}
+  </p>
+  <p class="row muted">
+    <span>{site.domain.meaning.bg}</span>
+    {credit && <span>{credit}</span>}
+  </p>
+</footer>
+<style>
+  .site-footer { padding-bottom: 2.5rem; font-size: 0.9rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 0.35rem 1.4rem; margin: 0 0 0.5rem; max-width: none; }
+  a { color: var(--text); }
+</style>

@@ -1,0 +1,7 @@
+---
+// Renders a content string. Placeholder strings (TBD, VERIFY, PLACEHOLDER, [АНГЕЛ ПИШЕ]) get a visible marker.
+import { isPlaceholder } from '../lib/content';
+interface Props { s: string }
+const { s } = Astro.props;
+---
+{isPlaceholder(s) ? <mark class="ph" data-placeholder>{s}</mark> : s}

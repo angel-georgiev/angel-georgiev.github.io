@@ -1,0 +1,36 @@
+# Offer ladder: shown on /support/ (section "Как мога да помогна още") and as a short line on the landing page and CV.
+# Two steps only, by Angel's decision (8 Nov 2026). No audit product.
+
+offers:
+  - key: session
+    title: "Помощ по конкретен въпрос"
+    for: "За вас"
+    what: "Идвате с един въпрос за AI, технологиите, ученето или преподаването. За един учебен час търсим отговор заедно, а до 24 часа получавате „План в 1 страница“. Ако срещата не ви е помогнала, връщам парите."
+    price_line: "29 € встъпителна цена за първите 30 срещи (редовна цена 39 €)"
+    cta: { text: "Поискайте моята помощ →", href: "/support/#cta" }
+
+  - key: school-training
+    title: "AI в класната стая"
+    for: "За училища"
+    partner: "в партньорство със СмарТест"   # accredited provider; issues the certificate and invoices
+    what: "Практическо обучение в училището или онлайн: учителите подготвят уроци, материали и тестове с AI и научават как да покажат на учениците да го използват честно."
+    includes:
+      - "8 академични часа заедно: в училището или онлайн"
+      - "Проект след обучението, който учителите ми изпращат"
+      - "Удостоверение с 1 квалификационен кредит"   # confirmed 11 Nov 2026: issued through SmarTest (accredited provider)
+    price_line: "900 € за училище"   # internally: one group = up to 20 teachers; more than 20 = a second group (second day, 900 €). Do NOT show group size or per-teacher price on the site.
+    cta: { text: "Вижте обучението за училища →", href: "/schools/" }
+    note: "Плащане по банков път срещу фактура."   # invoiced by SmarTest (confirmed 11 Nov 2026)
+
+  - key: companies
+    title: "По-добри процеси, с AI и без него"
+    for: "За компании"
+    what: "Консултирам и обучавам екипи да подобряват начина, по който работят. Използваме AI само там, където помага."
+    cta: { text: "Вижте как работя с компании →", href: "/companies/" }   # teaser only; same link style as the other cards
+
+  - key: events
+    title: "Лекции, панели и интервюта"
+    for: "За събития и медии"
+    what: "Говоря за AI в образованието, ученето и бъдещето на работата."
+    price_line: "По запитване"
+    cta: { text: "Пишете ми →", href: "mailto:angel@daskal.ai?subject=Лекция%20или%20интервю" }

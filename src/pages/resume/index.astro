@@ -1,0 +1,6 @@
+---
+import Shell from '../../components/Shell.astro';
+import { load } from '../../lib/content';
+const r = await load('resume');
+---
+<Shell theme="light" title={r.meta.title} description={r.meta.description} kicker={r.header.role} h1={r.header.name} lede={r.bio.text} photoId={r.header.photo} />

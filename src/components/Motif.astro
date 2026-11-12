@@ -1,0 +1,22 @@
+---
+// Heritage motif (PRD §6.1): original pattern — gold ring with a mint centre on a gold line, repeated. Decorative only.
+interface Props { full?: boolean }
+const { full = false } = Astro.props;
+const pid = `motif-${Math.random().toString(36).slice(2, 8)}`;
+---
+<div class:list={['motif', { full }]} aria-hidden="true">
+  <svg width="100%" height="14" focusable="false">
+    <defs>
+      <pattern id={pid} width="26" height="14" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="7" x2="26" y2="7" stroke="var(--gold)" stroke-width="1.2" />
+        <circle cx="13" cy="7" r="4.2" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.4" />
+        <circle cx="13" cy="7" r="1.5" fill="var(--mint)" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="14" fill={`url(#${pid})`} />
+  </svg>
+</div>
+<style>
+  .motif { margin-block: 2.5rem; line-height: 0; }
+  .motif svg { display: block; }
+</style>

@@ -1,0 +1,18 @@
+---
+// M1 only: a page shell that shows theme, fonts, header and footer. Replaced page by page in M2–M4.
+import Base from '../layouts/Base.astro';
+import Motif from './Motif.astro';
+import { photo } from '../lib/content';
+interface Props { title: string; description: string; theme: 'dark' | 'light'; kicker?: string; h1: string; lede?: string; photoId?: string }
+const p = Astro.props;
+const ph = p.photoId ? await photo(p.photoId) : undefined;
+---
+<Base title={p.title} description={p.description} theme={p.theme} credit={ph?.credit}>
+  <section class="wrap shell">
+    {p.kicker && <p class="kicker">{p.kicker}</p>}
+    <h1>{p.h1}</h1>
+    {p.lede && <p class="muted">{p.lede}</p>}
+  </section>
+  <div class="wrap"><Motif /></div>
+</Base>
+<style>.shell { padding-block: 3rem 1rem; max-width: calc(var(--w-text) + 2 * var(--gutter)); margin-inline: 0; } @media (min-width: 1168px) { .shell { margin-inline: auto; max-width: calc(var(--w-grid) + 2 * var(--gutter)); } }</style>
