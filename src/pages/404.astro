@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { load } from '../lib/content';
+const site = await load('site');
+const n = site.pages.not_found;
+---
+<Base theme="light" title={n.meta_title} description={n.text} noindex>
+  <section class="wrap nf">
+    <h1>{n.h1}</h1>
+    <p class="lede">{n.text}</p>
+    <p class="links"><a class="textlink" href="/">{n.home}</a><a class="textlink" href="/support/">{n.support}</a></p>
+  </section>
+</Base>
+<style>
+  .nf { padding-block: 4rem 2rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
+</style>

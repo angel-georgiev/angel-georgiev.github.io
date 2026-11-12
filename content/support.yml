@@ -72,6 +72,8 @@ page:
       - { text: "Създател на Даскал AI и академия „Синдео“", href: "/resume/#archive" }
     testimonials:
       min_to_show: 3      # hidden until 3+ consented testimonials exist (founding sessions)
+      # Shape of one item (named testimonials only, PRD §4):
+      #   - { name: "Име Фамилия", role: "Учител по история, София", text: "Какво се промени след срещата.", consent: true }
       items: []
 
   how:
@@ -101,6 +103,9 @@ page:
       - { q: "Може ли училището или фирмата ми да плати?", a: "Да, по банков път срещу фактура. Пишете ми на angel@daskal.ai." }
       - { q: "Ще получа ли документ за плащането?", a: "Да, Stripe изпраща автоматично разписка на имейла ви." }
       - { q: "Ако срещата не ми помогне?", a: "Пишете ми до 7 дни след нея и ви връщам парите." }
+
+  ladder:
+    heading: "Как мога да помогна още"   # section name from PRD §5.3 (added by Claude Code, M4); cards come from offers.yml
 
   cta:
     button: "Поискайте моята помощ · 29 €"   # price must match price.value
