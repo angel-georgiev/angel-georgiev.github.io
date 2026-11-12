@@ -1,0 +1,13 @@
+---
+// Static redirect page (PRD §3): meta refresh + JS location.replace + canonical + visible fallback link.
+import Base from '../layouts/Base.astro';
+interface Props { to: string; text: string; title: string }
+const { to, text, title } = Astro.props;
+const target = new URL(to, Astro.site).href;
+---
+<Base title={title} description={text} theme="light" noindex canonical={target} bare>
+  <meta slot="head" http-equiv="refresh" content={`0; url=${to}`} />
+  <script slot="head" is:inline define:vars={{ to }}>location.replace(to);</script>
+  <main class="wrap redirect"><p><a href={to}>{text}</a></p></main>
+</Base>
+<style>.redirect { padding-block: 4rem; font-size: 1.2rem; }</style>

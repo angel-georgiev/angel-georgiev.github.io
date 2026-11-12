@@ -1,0 +1,33 @@
+---
+// Copies `text` as exact plain text (Clipboard API). Label switches to `copied` for 1.6 s; the result is
+// announced through an aria-live region (PRD §8). Hidden without JS, since it cannot work there.
+interface Props { text: string; label: string; copied: string }
+const { text, label, copied } = Astro.props;
+---
+<span class="copy" data-copy hidden>
+  <button type="button" class="btn btn-outline copy-btn" data-label={label} data-copied={copied}>{label}</button>
+  <span class="visually-hidden" aria-live="polite" data-status></span>
+  <template data-text>{text}</template>
+</span>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-copy]').forEach((root) => {
+    const btn = root.querySelector('button')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const text = (root.querySelector('template') as HTMLTemplateElement).content.textContent ?? '';
+    if (!navigator.clipboard) return;
+    root.hidden = false;
+    let t: number | undefined;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = btn.dataset.copied!;
+        status.textContent = btn.dataset.copied!;
+        window.clearTimeout(t);
+        t = window.setTimeout(() => { btn.textContent = btn.dataset.label!; status.textContent = ''; }, 1600);
+      } catch { /* permission denied: leave the label unchanged */ }
+    });
+  });
+</script>
+<style>
+  .copy-btn { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.85rem; flex-direction: row; }
+</style>
