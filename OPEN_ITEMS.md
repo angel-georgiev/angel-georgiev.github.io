@@ -10,7 +10,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 |---|---|---|---|
 | 2 | Stripe Payment Link (+ optional second link for `/daskal/`) | `/support/` both CTAs render disabled as "Скоро" | **Open**, kept as is for now (Angel, 12 Nov). `support.yml → product.stripe_link` |
 | 2a | Stripe checkout dropdown: `support.yml` says "Работя в компания", PRD §5.3 says "Организация" | Stripe dashboard only, not the site | **Open**, Angel picks one when creating the link |
-| B1 | Book publisher: the cover from uchene.com shows the imprint **"A5 books"**, but `site.yml → book.publisher`, the landing "Пиша" card and the résumé bio say „Локус“ / Locus Publishing | Landing, `/resume/` bio, JSON-LD `Book` | **Open**, Angel to confirm which is correct (or that A5 books is a Locus imprint) |
+| C7 | Case-card labels on `/companies/` („Задача / Истинският проблем / Решение / Резултат“) were not in `companies.yml` | `/companies/` "От практиката" | Taken from mockup v5 into `companies.yml → cases.labels`. **Angel to confirm** |
 | 15 | Angel reviews all Bulgarian copy | All pages | **Open**, after M2–M4 (before M6) |
 
 ## Resolved (12 Nov 2026, Angel)
@@ -27,6 +27,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | C5 | Award pill link | `/resume/#archive` (`landing.yml → hero.award_href`) |
 | C6 | Footer photo credit | „Снимка: Даниел Колев / DK Photography“ from `photos.yml`, one per page |
 | S1 | 900 € for every school format | Confirmed; VERIFY removed from `schools.yml` |
+| B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
 
 ## Not blocking / later phases

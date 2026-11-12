@@ -1,17 +1,26 @@
 /* Design system — PRD §6. Both token sets live here; a page picks one with data-theme on <html>. */
 
-/* Metric-adjusted fallbacks so the swap to Sofia Sans barely moves text (values measured, see scripts/measure-fallback.mjs). */
+/* Metric-adjusted fallbacks so the swap to Sofia Sans barely moves text.
+   Values come from scripts/measure-fallback.mjs (width of Sofia vs the real fallback face, same weight).
+   Roboto (Android) is last in each list: close to Arial in width, not measured. */
 @font-face {
   font-family: 'Sofia Sans Fallback';
-  src: local('Arial'), local('Liberation Sans'), local('Helvetica');
-  size-adjust: 95.8%;
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Helvetica'), local('Roboto');
+  font-weight: 1 550;
+  size-adjust: 96.3%;
+}
+@font-face {
+  font-family: 'Sofia Sans Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Helvetica Bold'), local('Roboto Bold');
+  font-weight: 551 1000;
+  size-adjust: 91.8%;
 }
 @font-face {
   font-family: 'Sofia Sans Condensed Fallback';
-  src: local('Arial Narrow'), local('Liberation Sans Narrow'), local('Arial'), local('Liberation Sans');
-  size-adjust: 76.3%;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Helvetica Bold'), local('Roboto Bold');
+  font-weight: 1 1000;
+  size-adjust: 76.5%;
 }
-
 :root {
   --font-body: 'Sofia Sans Variable', 'Sofia Sans Fallback', sans-serif;
   --font-display: 'Sofia Sans Condensed Variable', 'Sofia Sans Condensed Fallback', sans-serif;
@@ -140,3 +149,55 @@ mark.ph {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Components (shared) ---------- */
+.section { padding-block: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.section:last-of-type { padding-bottom: 1rem; }
+
+.btn {
+  display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0.1rem;
+  min-height: 48px; padding: 0.7rem 1.15rem; border-radius: 12px; border: 2px solid transparent;
+  font-weight: 800; text-decoration: none; line-height: 1.2; transition: transform var(--ease), background-color var(--ease);
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.btn-text { font-size: 1rem; }
+.btn-small { font-size: 0.72rem; font-weight: 500; opacity: 0.85; }
+.btn-gold { background: var(--gold); color: var(--on-gold); }
+.btn-outline { border-color: var(--text); color: var(--text); background: transparent; }
+.btn-dark { background: #10261d; color: #f4efe4; }
+.btn.is-disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: stretch; }
+@media (max-width: 519px) { .cta-row .btn { width: 100%; } }
+
+.textlink {
+  display: inline-block; padding: 0.3rem 0.2rem; color: var(--text); font-weight: 700;
+  text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 0.35em;
+}
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.25rem; }
+.card h3 { margin-bottom: 0.4rem; }
+
+.hl { color: var(--gold-text); }
+
+.grid-2 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+.grid-3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Final gold call-to-action block */
+.gold-block { background: var(--gold); color: var(--on-gold); border-radius: 22px; padding: clamp(1.5rem, 4vw, 2.75rem); }
+.gold-block h2 { color: var(--on-gold); margin-bottom: 0.4rem; }
+.gold-block p { color: var(--on-gold); }
+.gold-block a:not(.btn) { color: var(--on-gold); }
+
+/* Two-column page hero with a 4:5 photo */
+.hero { display: grid; gap: 2rem; padding-block: 1.25rem 0; align-items: start; }
+@media (min-width: 900px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; } }
+.hero-photo { position: relative; justify-self: center; width: 100%; }
+@media (min-width: 900px) { .hero-photo { justify-self: end; width: auto; } }
+.hero-photo img {
+  width: 100%; height: auto; border-radius: var(--radius-lg); object-fit: cover;
+}
+@media (min-width: 900px) { .hero-photo img { height: min(640px, calc(100vh - 150px)); width: auto; } }
+.lede { font-size: 1.05rem; color: var(--text-muted); max-width: 52ch; }
+.lede strong { color: var(--text); }

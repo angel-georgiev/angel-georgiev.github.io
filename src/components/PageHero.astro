@@ -1,0 +1,29 @@
+---
+// Hero for /schools/ and /companies/: kicker, H1 with highlight, lede, optional partner line, two CTAs, 4:5 photo.
+import Btn from './Btn.astro';
+import Pic from './Pic.astro';
+type Cta = { text: string; small?: string; href: string };
+interface Props { kicker: string; before: string; highlight: string; lede: string; partner?: string; primary: Cta; secondary: Cta; photo: string }
+const p = Astro.props;
+---
+<section class="hero page-hero">
+  <div>
+    <p class="kicker">{p.kicker}</p>
+    <h1>{p.before} <span class="hl">{p.highlight}</span></h1>
+    <p class="lede">{p.lede}</p>
+    {p.partner && <p class="partner">{p.partner}</p>}
+    <div class="cta-row">
+      <Btn variant="gold" text={p.primary.text} small={p.primary.small} href={p.primary.href} />
+      <Btn variant="outline" text={p.secondary.text} small={p.secondary.small} href={p.secondary.href} />
+    </div>
+  </div>
+  <div class="hero-photo">
+    <Pic id={p.photo} aspect={[4, 5]} eager sizes="(min-width: 900px) 512px, calc(100vw - 32px)" maxWidth={1024} />
+  </div>
+</section>
+<style>
+  .page-hero { padding-top: 2rem; }
+  h1 { font-size: clamp(2.25rem, 5vw, 3.6rem); }
+  .partner { font-size: 0.8rem; font-weight: 800; color: var(--gold-text); margin: -0.3rem 0 1.2rem; }
+  .lede { margin-bottom: 1.4rem; }
+</style>

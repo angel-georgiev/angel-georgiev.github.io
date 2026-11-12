@@ -116,6 +116,7 @@ const companies = obj({
   cases: obj({
     kicker: s, h2: s,
     items: z.array(obj({ title: s, meta: s, ask: s, problem: s, decision: s, result: s })),
+    labels: obj({ ask: s, problem: s, decision: s, result: s }),
     credentials: z.array(s),
   }),
   final_cta: obj({ h2: s, text: s, cta: link }),

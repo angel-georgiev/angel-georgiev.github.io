@@ -98,7 +98,7 @@ book_section:
   id: book
   heading: { en: "The book", bg: "Книгата" }
   text:
-    en: "The Green Book of Learning (Зелената книга за ученето) gathers seven research-based principles for learning faster and remembering longer — for students, parents, teachers and professionals. Locus Publishing, 2025. In Bulgarian."
+    en: "The Green Book of Learning (Зелената книга за ученето) gathers seven research-based principles for learning faster and remembering longer — for students, parents, teachers and professionals. A5 books, 2025. In Bulgarian."
     bg: "В „Зелената книга за ученето“ събрах седем научно обосновани принципа за по-бързо учене и по-трайно запомняне. Написах я за ученици, родители, учители и професионалисти. Локус Пъблишинг, 2025."
   cta: { en: "See the book →", bg: "Вижте книгата →" }
   href: "/book/"     # redirects to uchene.com in Phase 1–2
