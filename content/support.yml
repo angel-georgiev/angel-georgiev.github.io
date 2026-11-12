@@ -14,7 +14,7 @@ product:
   format: "Онлайн видеосреща"
   deliverable: "План в 1 страница"     # sent by email within 24 h of the session
   price_eur: 29           # launch price (Angel, 8 Nov 2026); review via founding-sessions thresholds
-  stripe_link: "TBD — Angel creates the Stripe Payment Link"
+  stripe_link: "https://buy.stripe.com/28E3cufB39tQh2IeYe1ZS01"   # live Payment Link (Angel, 12 Nov 2026). The only link: used on every entry point, incl. /daskal/ in Phase 2
   stripe_settings:   # Angel configures in the Stripe dashboard; Claude Code only links to the URL
     locale: "bg"
     collect: ["name", "email"]
@@ -23,8 +23,8 @@ product:
       - { type: "text", label: "С какво да помогна?", max: 255, required: true }
     receipts: "automatic email receipts ON"
     policies_shown: "refund policy + contact email shown on checkout"
-    after_payment_redirect: "https://<domain>/support/thanks/"
-    daskal_entry_link: "optional second Payment Link, same price, used only on /daskal/ — to see where buyers come from"
+    after_payment_redirect: "https://angel-georgiev.github.io/support/thanks/"   # change to https://daskal.ai/support/thanks/ at go-live (M6)
+    daskal_entry_link: "none: Angel decided on one link only (12 Nov 2026)"
 
 page:
   # Copy revised 11 Nov 2026 with the write-article pass: general audience, no em dashes, active voice.
@@ -86,7 +86,7 @@ page:
 
   guarantee:
     heading: "Без риск"
-    text: "Ако срещата не ви е помогнала, пишете ми до 7 дни след нея и ви връщам парите. Без въпроси."
+    text: "Ако срещата не ви е помогнала, пишете ми до 2 дни след нея и ви връщам парите. Без въпроси."   # refund window: 2 days (Angel, 12 Nov 2026)
 
   price:
     label: "Цена"
@@ -102,10 +102,10 @@ page:
       - { q: "Ако никой от предложените часове не ми е удобен?", a: "Пишете ми и ще намерим друг час." }
       - { q: "Може ли училището или фирмата ми да плати?", a: "Да, по банков път срещу фактура. Пишете ми на angel@daskal.ai." }
       - { q: "Ще получа ли документ за плащането?", a: "Да, Stripe изпраща автоматично разписка на имейла ви." }
-      - { q: "Ако срещата не ми помогне?", a: "Пишете ми до 7 дни след нея и ви връщам парите." }
+      - { q: "Ако срещата не ми помогне?", a: "Пишете ми до 2 дни след нея и ви връщам парите." }
 
   ladder:
-    heading: "Как мога да помогна още"   # section name from PRD §5.3 (added by Claude Code, M4); cards come from offers.yml
+    heading: "Как мога да помогна още"   # section name from PRD §5.3, confirmed by Angel 12 Nov 2026; cards come from offers.yml
 
   cta:
     button: "Поискайте моята помощ · 29 €"   # price must match price.value
