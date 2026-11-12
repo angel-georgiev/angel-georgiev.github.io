@@ -18,11 +18,15 @@ interface Props {
   jsonld?: object | object[];
   ogImage?: string;          // path under the site, e.g. /og/index.png
   bare?: boolean;            // no header/footer (redirect pages)
+  noTracking?: boolean;      // never load analytics (e.g. /support/thanks/)
 }
-const { title, description, theme, credit, noindex = false, canonical, jsonld, ogImage, bare = false } = Astro.props;
+const { title, description, theme, credit, noindex = false, canonical, jsonld, ogImage, bare = false, noTracking = false } = Astro.props;
 const site = await load('site');
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 const og = ogImage ? new URL(ogImage, Astro.site).href : undefined;
+const cfToken = site.analytics.cloudflare_token.trim();
+const analytics = !noTracking && !bare && /^[0-9a-f]{32}$/i.test(cfToken);
+if (cfToken && !/^[0-9a-f]{32}$/i.test(cfToken)) throw new Error('site.yml: analytics.cloudflare_token must be the 32-character hex token from Cloudflare');
 ---
 <!doctype html>
 <html lang="bg" data-theme={theme}>
@@ -48,6 +52,7 @@ const og = ogImage ? new URL(ogImage, Astro.site).href : undefined;
     <meta name="twitter:card" content={og ? 'summary_large_image' : 'summary'} />
     <slot name="head" />
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+    {analytics && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: cfToken })}></script>}
   </head>
   <body>
     {bare ? <slot /> : (

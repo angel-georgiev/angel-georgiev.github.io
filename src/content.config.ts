@@ -32,6 +32,7 @@ const site = obj({
     languages: z.array(bi),
   }),
   links: obj({ linkedin: s, substack: s, substack_subscribe: s, book_shop: s, tedx: s, github: s }),
+  analytics: obj({ cloudflare_token: s }),
   domain: obj({ preview: s, production: s, meaning: bi }),
   nav: z.array(obj({ key: s, bg: s, en: s, href: s, phase })),
   ui: z.record(s, bi),

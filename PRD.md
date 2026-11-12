@@ -412,6 +412,7 @@ Keep both token sets in CSS, so a page's theme can change with one attribute.
 - No cookies and no third-party scripts on page load.
 - The Stripe Payment Link is a plain outbound link: no embedded Stripe.js.
 - Analytics stay off until Angel decides. If added, use a cookieless tool such as GoatCounter.
+- **Decision (Angel, 12 Nov 2026):** Cloudflare Web Analytics, cookieless, page views only. This is the one allowed exception to "no third-party scripts": the beacon from `static.cloudflareinsights.com`, loaded with `defer`, never on `/support/thanks/`. Token in `site.yml → analytics.cloudflare_token`; empty = off.
 - Contact is by mailto only. No forms.
 
 ---

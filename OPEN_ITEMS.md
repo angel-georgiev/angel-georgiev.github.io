@@ -47,7 +47,8 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 11 | Daskal: skill content, fallback instructions, repo name, licence, install steps, screenshots, directory listing | Phase 2 |
 | 12 | Re-verify skills on free plans (Claude custom upload; ChatGPT Free/Go) | Phase 2 |
 | 13 | Old daskal.ai paths | Phase 2 |
-| 14 | Analytics | **Open**, Angel deciding (12 Nov 2026). Options compared: none, Umami Cloud Hobby (free, custom events), GoatCounter (free only non-commercial), Cloudflare (free, no events), Plausible (paid). Any choice needs an exception to PRD §7.6 (no third-party scripts) |
+| 14 | Analytics | **Decided: Cloudflare Web Analytics** (Angel, 12 Nov 2026). Code is ready; off until the token is set (A1). Page views only, no button-click counts. Exception recorded in PRD §7.6 |
+| A1 | Cloudflare Web Analytics token | **Angel:** in Cloudflare, add the site `angel-georgiev.github.io` under Web Analytics, copy the `token` from the JS snippet into `site.yml → analytics.cloudflare_token`, or send it to Claude. At go-live (M6), check whether `daskal.ai` needs to be added as its own site in Cloudflare (not verified) |
 | 16 | 3+ consented testimonials | Later (Angel, 12 Nov 2026). Block hidden until then |
 | 17 | "План в 1 страница" template | Angel, outside repo |
 | 18–20 | School credit, invoicing, group size, schools page | Resolved |
