@@ -106,3 +106,15 @@ test('refund window reads the same everywhere it appears (PRD §11)', () => {
   expect(days.length).toBeGreaterThanOrEqual(2);
   expect(new Set(days).size).toBe(1);
 });
+
+test('analytics: Cloudflare beacon only when a token is set, never on /support/thanks/', async ({ page }) => {
+  const token = String(site.analytics.cloudflare_token ?? '').trim();
+  const beacon = 'script[src="https://static.cloudflareinsights.com/beacon.min.js"]';
+  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/']) {
+    await page.goto(p);
+    await expect(page.locator(beacon)).toHaveCount(token ? 1 : 0);
+    if (token) await expect(page.locator(beacon)).toHaveAttribute('data-cf-beacon', JSON.stringify({ token }));
+  }
+  await page.goto('/support/thanks/');
+  await expect(page.locator(beacon)).toHaveCount(0);
+});

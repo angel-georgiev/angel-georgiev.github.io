@@ -6,7 +6,7 @@ const site = await load('site');
 const t = s.thank_you;
 const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
 ---
-<Base theme="dark" title={`${t.h1} | ${site.person.name.bg}`} description={t.text} noindex>
+<Base theme="dark" title={`${t.h1} | ${site.person.name.bg}`} description={t.text} noindex noTracking>
   <section class="wrap thanks">
     <h1>{t.h1}</h1>
     <p class="lede">{t.text}</p>
