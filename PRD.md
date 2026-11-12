@@ -230,7 +230,7 @@ Replaces the CV page (decided 12 Nov 2026). The full career history lives on **L
 - **Source data and upkeep:** the archive comes from the project docs "Media Appearances" and "Awards". New items are one line each in `resume.yml`. `docs/cv-master.yml` is the old CV data: **not built**, kept as source for tailored CVs.
 
 ### 5.3 Support session — `/support/` (`support.yml`) · Phase 1
-**One product, one price, one Stripe Payment Link,** entered from the landing page, the CV and (in Phase 2) `/daskal/`. The offer: **one class hour online (up to 45 min; may end earlier) + a written „План в 1 страница“ within 24 h + a no-questions refund within 7 days.**
+**One product, one price, one Stripe Payment Link,** entered from the landing page, the CV and (in Phase 2) `/daskal/`. The offer: **one class hour online (up to 45 min; may end earlier) + a written „План в 1 страница“ within 24 h + a no-questions refund within 2 days.** *(Changed from 7 days by Angel, 12 Nov 2026.)*
 
 - **Page order** (NN/g commitment levels: show relevance and proof before asking for payment):
   1. eyebrow, H1, intro;

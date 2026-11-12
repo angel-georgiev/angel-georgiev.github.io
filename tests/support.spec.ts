@@ -99,3 +99,10 @@ test('every page has a canonical URL and exactly one H1', async ({ page }) => {
     await expect(page.locator('h1')).toHaveCount(1);
   }
 });
+
+test('refund window reads the same everywhere it appears (PRD §11)', () => {
+  const raw = readFileSync('content/support.yml', 'utf8').split('\n').filter((l) => !l.trim().startsWith('#')).join('\n');
+  const days = [...raw.matchAll(/до (\d+) дни след нея/g)].map((m) => m[1]);
+  expect(days.length).toBeGreaterThanOrEqual(2);
+  expect(new Set(days).size).toBe(1);
+});
