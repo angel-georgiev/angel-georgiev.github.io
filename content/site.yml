@@ -7,7 +7,7 @@ person:
   email: "angel@daskal.ai"
   location: { en: "Sofia, Bulgaria", bg: "София, България" }
   pronunciation:
-    en: "AHN-gel geh-OR-gee-ev (TO CONFIRM WITH ANGEL)"
+    en: "AHN-gel geh-OR-gee-ev"   # confirmed by Angel 12 Nov 2026
     bg: "А̀нгел Гео̀ргиев"
   languages:
     - { en: "Bulgarian — native", bg: "Български, роден" }
@@ -46,12 +46,12 @@ ui:
   in_bulgarian: { en: "in Bulgarian", bg: "на български" }
   last_updated: { en: "Last updated", bg: "Последна актуализация" }
   skip_link:   { en: "Skip to content", bg: "Към съдържанието" }
-  soon:        { en: "Soon", bg: "Скоро" }   # added by Claude Code (M1): disabled Stripe CTA label, literal from PRD §5.3
+  soon:        { en: "Soon", bg: "Скоро" }   # disabled Stripe CTA label (PRD §5.3, confirmed 12 Nov 2026)
 
 footer:
   line: { en: "Training, consulting and speaking:", bg: "Обучения, консултации и лекции:" }
   rights: { en: "© Angel Georgiev", bg: "© Ангел Георгиев" }
-  # Added by Claude Code (M1): link labels shown in the mockup footer. Brand names only. Angel to confirm (OPEN_ITEMS).
+  # Link labels in the footer (confirmed by Angel 12 Nov 2026). URLs come from `links` above.
   links:
     - { key: linkedin, bg: "LinkedIn" }
     - { key: substack, bg: "The Paideia Method" }
@@ -82,16 +82,18 @@ book:
     - { en: "Memory", bg: "Памет" }
     - { en: "Lifelong learning", bg: "Учене през целия живот" }
   url: "https://uchene.com"
+  cover:   # flat cover from uchene.com (Angel, 12 Nov 2026). The cover shows the imprint "A5 books"; see OPEN_ITEMS B1.
+    file: "zelenata-kniga-cover.jpg"   # src/assets/book/, 471×650
+    alt: "Корицата на „Зелената книга за ученето“ от Ангел Георгиев"
 
-# Added by Claude Code (M1): pages the PRD requires that had no copy in any content file.
-# The unfinished strings below render visibly on preview builds and block the production build (PRD §0.2). Angel writes them.
+# Copy for pages the PRD requires that no other content file covers. Approved by Angel 12 Nov 2026.
 pages:
   not_found:
-    meta_title: "PLACEHOLDER: заглавие на 404 (title)"
-    h1: "PLACEHOLDER: заглавие на страницата 404"
-    text: "PLACEHOLDER: едно изречение за 404"
-    home: "PLACEHOLDER: текст на връзката към началото"
-    support: "PLACEHOLDER: текст на връзката към /support/"
+    meta_title: "Страницата не е намерена | Ангел Георгиев"
+    h1: "Тази страница не съществува."
+    text: "Може адресът да е сгрешен или страницата да е преместена."
+    home: "Към началото →"
+    support: "Поискайте моята помощ →"
   redirect:
-    book_text: "PLACEHOLDER: текст на резервната връзка към uchene.com (/book/)"
-    cv_text: "PLACEHOLDER: текст на резервната връзка към /resume/ (/cv/)"
+    book_text: "Към книгата на uchene.com →"
+    cv_text: "Към резюмето →"

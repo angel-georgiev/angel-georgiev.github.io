@@ -40,6 +40,7 @@ const site = obj({
   book: obj({
     title_bg: s, subtitle_bg: s, title_en: s, subtitle_en: s, note_en: s,
     publisher: bi, year: z.number(), isbn: s, pages: s, parts: z.array(bi), url: s,
+    cover: obj({ file: s, alt: s }),
   }),
   pages: obj({
     not_found: obj({ meta_title: s, h1: s, text: s, home: s, support: s }),
@@ -62,7 +63,7 @@ const meta = obj({ title: s, description: s });
 const landing = obj({
   meta,
   hero: obj({
-    award: s, h1_static_lines: z.array(s).length(2), h1_rotating: z.array(s).min(1),
+    award: s, award_href: s, h1_static_lines: z.array(s).length(2), h1_rotating: z.array(s).min(1),
     lede: s, lede_bold: s, cta_primary: cta, cta_secondary: cta, textlink: link,
     photo: s, badge: obj({ value: s, label: s }),
   }),

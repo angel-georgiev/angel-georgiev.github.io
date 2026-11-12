@@ -8,17 +8,26 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 
 | # | Item | Where it shows | Status |
 |---|---|---|---|
-| 2 | Stripe Payment Link (+ optional second link for `/daskal/`) | `/support/` both CTAs render disabled as "Скоро" | Open: `support.yml → product.stripe_link` |
-| 4 | 11 company logo files (official SVG/PNG) | `/companies/` logo strip shows the names as grey text until then | Open |
-| 5 | Book cover (flat 2D image) | Landing book block shows a typographic cover from `site.yml → book` until then | Open |
-| 3 | Photo consent / credits | All photos are DK only (`photos.yml`, 12 Nov). PRD §13 item 3 still mentions non-DK photos; those were removed, so nothing open on the site side | Resolved by `photos.yml` |
-| C1 | 404 page copy: title, heading, one line, two link labels | `/404.html` | Open: `site.yml → pages.not_found` (PLACEHOLDER) |
-| C2 | Fallback link text on the redirect pages `/book/` and `/cv/` | Seen only without JS / for <1 s | Open: `site.yml → pages.redirect` (PLACEHOLDER) |
-| C3 | Footer link labels "LinkedIn" and "The Paideia Method" | Footer, every page | Added by Claude Code from the mockup (brand names). Angel to confirm |
-| C4 | "Скоро" label on disabled CTAs | `/support/` while there is no Stripe link | Added to `site.yml → ui.soon`, literal from PRD §5.3 |
-| C5 | Award pill on landing links to `/cv/#recognition` (does not exist) | Landing hero | Decision: links to `/resume/#archive` |
-| C6 | Footer credit: PRD says "Снимки: …", only YAML string is `photos.yml → credits.dk` ("Снимка: …") | Footer | Decision: each page shows the credit of its one photo, verbatim |
-| 15 | Angel reviews all Bulgarian copy | All pages | Open (before M6) |
+| 2 | Stripe Payment Link (+ optional second link for `/daskal/`) | `/support/` both CTAs render disabled as "Скоро" | **Open**, kept as is for now (Angel, 12 Nov). `support.yml → product.stripe_link` |
+| 2a | Stripe checkout dropdown: `support.yml` says "Работя в компания", PRD §5.3 says "Организация" | Stripe dashboard only, not the site | **Open**, Angel picks one when creating the link |
+| B1 | Book publisher: the cover from uchene.com shows the imprint **"A5 books"**, but `site.yml → book.publisher`, the landing "Пиша" card and the résumé bio say „Локус“ / Locus Publishing | Landing, `/resume/` bio, JSON-LD `Book` | **Open**, Angel to confirm which is correct (or that A5 books is a Locus imprint) |
+| 15 | Angel reviews all Bulgarian copy | All pages | **Open**, after M2–M4 (before M6) |
+
+## Resolved (12 Nov 2026, Angel)
+
+| # | Item | Resolution |
+|---|---|---|
+| 3 | Photo consent / credits | DK photos only (`photos.yml`). Non-DK photos removed |
+| 4 | 11 company logo files | Names as grey text for now (`companies.yml → logos.items`). Can be swapped for files later |
+| 5 | Book cover | Flat cover taken from uchene.com → `src/assets/book/zelenata-kniga-cover.jpg` (471×650), registered in `site.yml → book.cover` |
+| C1 | 404 page copy | `site.yml → pages.not_found` |
+| C2 | Fallback link text on `/book/` and `/cv/` | `site.yml → pages.redirect` |
+| C3 | Footer link labels "LinkedIn", "The Paideia Method" | Confirmed. URLs from `site.yml → links` (Substack returns 200; LinkedIn blocks automated checks with code 999, so that one is unverified by script) |
+| C4 | "Скоро" on disabled CTAs | Confirmed (`site.yml → ui.soon`) |
+| C5 | Award pill link | `/resume/#archive` (`landing.yml → hero.award_href`) |
+| C6 | Footer photo credit | „Снимка: Даниел Колев / DK Photography“ from `photos.yml`, one per page |
+| S1 | 900 € for every school format | Confirmed; VERIFY removed from `schools.yml` |
+| P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
 
 ## Not blocking / later phases
 
@@ -38,7 +47,6 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 17 | "План в 1 страница" template | Angel, outside repo |
 | 18–20 | School credit, invoicing, group size, schools page | Resolved |
 | 21 | `/now` page | Backlog |
-| S1 | `schools.yml` comment: 900 € assumed for every format (VERIFY) | Open: confirm, then delete the word VERIFY |
 | S2 | Existing `index.html` on `main` was a Chatbase iframe (current bot). The first Pages deploy replaces it | Angel accepted on merge |
 | S3 | CV print stylesheet and 2-page check (PRD §7.4) | Dropped by Angel (12 Nov): online only |
 
@@ -49,18 +57,9 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 
 | Where | Kind | Line |
 |---|---|---|
-| `content/schools.yml:7` | comment | `#   Price 900 € per school assumed for every format (VERIFY).` |
-| `content/site.yml:10` | value | `en: "AHN-gel geh-OR-gee-ev (TO CONFIRM WITH ANGEL)"` |
-| `content/site.yml:90` | value | `meta_title: "PLACEHOLDER: заглавие на 404 (title)"` |
-| `content/site.yml:91` | value | `h1: "PLACEHOLDER: заглавие на страницата 404"` |
-| `content/site.yml:92` | value | `text: "PLACEHOLDER: едно изречение за 404"` |
-| `content/site.yml:93` | value | `home: "PLACEHOLDER: текст на връзката към началото"` |
-| `content/site.yml:94` | value | `support: "PLACEHOLDER: текст на връзката към /support/"` |
-| `content/site.yml:96` | value | `book_text: "PLACEHOLDER: текст на резервната връзка към uchene.com (/book/)"` |
-| `content/site.yml:97` | value | `cv_text: "PLACEHOLDER: текст на резервната връзка към /resume/ (/cv/)"` |
 | `content/support.yml:17` | value | `stripe_link: "TBD — Angel creates the Stripe Payment Link"` |
 
-### Later-phase files (information only)
+### English-only values and later-phase files (information only)
 
 | Where | Kind | Line |
 |---|---|---|
@@ -75,6 +74,5 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | `content/daskal.yml:44` | value | `alt: "Или го инсталирайте директно от каталога с умения на Claude → (TBD линк)"` |
 | `content/daskal.yml:50` | value | `- "[АНГЕЛ ПИШЕ: път в ChatGPT за качване на умение. VERIFY]"` |
 | `content/daskal.yml:66` | value | `copy_block: "[АНГЕЛ ПИШЕ: съкратените инструкции на Даскал, с бутон „Копирайте“]"` |
-| `content/press.yml:15` | value | `text: { en: "AHN-gel geh-OR-gee-ev (TO CONFIRM)", bg: "А̀нгел Гео̀ргиев" }` |
 
 <!-- AUTO:END -->

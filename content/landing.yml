@@ -7,7 +7,8 @@ meta:
   description: "Помагам на хора и екипи да работят с AI. От 20 години обучавам хора в училища, компании и онлайн."
 
 hero:
-  award: "Обучител на годината · Европа 2026"          # gold pill above H1; links to /cv/#recognition
+  award: "Обучител на годината · Европа 2026"          # gold pill above H1
+  award_href: "/resume/#archive"                       # decided by Angel 12 Nov 2026 (was /cv/#recognition, which does not exist)
   h1_static_lines: ["Помагам на хора", "и екипи да"]   # always lines 1–2, fixed breaks, never wrap; never change
   h1_rotating: ["работят с AI.", "учат с AI.", "преподават с AI.", "създават с AI."]   # always line 3, whole line rotates, gold, every 2.4 s
   # Layout rule: line 2 never wraps (white-space: nowrap) and its box is sized to the longest item, so nothing on the page moves.

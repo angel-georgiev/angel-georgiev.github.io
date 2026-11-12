@@ -17,7 +17,9 @@ export function scan() {
       if (!MARKER.test(line)) return;
       const hash = line.search(/\s#\s/);
       const inComment = line.trimStart().startsWith('#') || (hash >= 0 && line.slice(hash).match(MARKER) && !line.slice(0, hash).match(MARKER));
-      hits.push({ file: `content/${f}`, line: i + 1, text: line.trim().slice(0, 160), phase1: PHASE1.includes(name), inComment: !!inComment });
+      // English-only values are not shown until Phase 3, so they never block (Angel, 12 Nov 2026).
+      const enOnly = /(^|[\s{,])en:\s*"[^"]*$|(^|[\s{,])en:\s*"[^"]*?(TBD|TBC|VERIFY|PLACEHOLDER|TO CONFIRM)/.test(line.replace(/\s#\s.*$/, ''));
+      hits.push({ file: `content/${f}`, line: i + 1, text: line.trim().slice(0, 160), phase1: PHASE1.includes(name) && !enOnly, enOnly, inComment: !!inComment });
     });
   }
   return hits;
@@ -34,7 +36,7 @@ export function writeOpenItems(hits = scan()) {
     '## Unresolved markers in content files',
     '',
     block('Phase 1 files (block the production build)', hits.filter((h) => h.phase1)),
-    block('Later-phase files (information only)', hits.filter((h) => !h.phase1)),
+    block('English-only values and later-phase files (information only)', hits.filter((h) => !h.phase1)),
     '<!-- AUTO:END -->',
   ].join('\n');
   const out = md.replace(/<!-- AUTO:START[\s\S]*<!-- AUTO:END -->/, auto);
