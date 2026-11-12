@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs';
 import { load as parseYaml } from 'js-yaml';
 import { scan, writeOpenItems } from './scripts/open-items.mjs';
 import { priceProblems } from './src/lib/rules.ts';
+import { processDist } from './scripts/external-links.mjs';
+import { fileURLToPath } from 'node:url';
 
 const siteYml = parseYaml(readFileSync(new URL('./content/site.yml', import.meta.url), 'utf8'));
 // The one value to switch at go-live (PRD §7.2): preview → production.
@@ -27,6 +29,11 @@ const openItems = {
       if (process.env.SITE_ENV === 'production' && blocking.length) {
         throw new Error(`Production build blocked: ${blocking.length} unresolved markers in Phase 1 content. See OPEN_ITEMS.md.`);
       }
+    },
+    // External links open in a new window (Angel, 12 Nov 2026)
+    'astro:build:done': ({ dir, logger }) => {
+      const r = processDist(fileURLToPath(dir), SITE);
+      logger.info(`external links open in a new window: ${r.links} links in ${r.files} pages`);
     },
   },
 };
