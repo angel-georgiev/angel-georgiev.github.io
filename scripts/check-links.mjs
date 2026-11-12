@@ -2,6 +2,7 @@
 // Also parses every JSON-LD block. External URLs are not fetched here (they are not ours to keep stable).
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { isExternal } from './external-links.mjs';
 
 const DIST = new URL('../dist/', import.meta.url).pathname;
 const pages = [];
@@ -38,6 +39,15 @@ for (const [p, s] of html) {
     if (!existsSync(target)) { errors.push(`${from}: broken ${ref}`); continue; }
     const hash = ref.split('#')[1];
     if (hash && target.endsWith('.html') && !ids.get(target)?.has(hash)) errors.push(`${from}: missing anchor ${ref}`);
+  }
+  // External links open in a new window (Angel, 12 Nov 2026); internal ones never do.
+  const siteHost = new URL(process.env.SITE_ENV === 'production' ? 'https://daskal.ai' : 'https://angel-georgiev.github.io').host;
+  for (const m of s.matchAll(/<a\b([^>]*)>/g)) {
+    const a = m[1]; const href = a.match(/\shref="([^"]*)"/)?.[1] ?? '';
+    const ext = isExternal(href, siteHost) && !/data-same-window/.test(a);
+    const blank = /\starget="_blank"/.test(a);
+    if (ext && !(blank && /\srel="[^"]*\bnoopener\b/.test(a))) errors.push(`${from}: external link without target=_blank rel=noopener: ${href}`);
+    if (!ext && blank) errors.push(`${from}: internal link opens a new window: ${href}`);
   }
   for (const m of s.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { const j = JSON.parse(m[1]); if (!j['@context']) errors.push(`${from}: JSON-LD without @context`); }
