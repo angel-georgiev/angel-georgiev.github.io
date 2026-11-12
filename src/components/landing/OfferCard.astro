@@ -1,0 +1,34 @@
+---
+import { splitPrice, nbsp } from '../../lib/content';
+interface Props {
+  offer: { key: string; title: string; for: string; partner?: string; what: string; price_line?: string; cta: { text: string; href: string } };
+  featured?: boolean; teaser?: boolean;
+}
+const { offer: o, featured = false, teaser = false } = Astro.props;
+const price = !teaser && o.price_line ? splitPrice(o.price_line) : undefined;
+---
+<article class:list={['offer', { featured }]}>
+  <p class="for">{o.for}</p>
+  <h3>{o.title}</h3>
+  {o.partner && !teaser && <p class="partner">{o.partner}</p>}
+  <p class="what">{o.what}</p>
+  {price && (
+    <p class="price"><span class="amount">{nbsp(price.price)}</span>{price.rest && <span class="rest">{price.rest}</span>}</p>
+  )}
+  <a class="go" href={o.cta.href}>{o.cta.text}</a>
+</article>
+<style>
+  .offer { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.4rem 1.4rem 1.5rem; }
+  .for { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.35rem; color: var(--text-muted); }
+  h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+  .partner { font-size: 0.8rem; font-weight: 700; color: var(--gold-text); margin: -0.1rem 0 0.6rem; }
+  .what { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .price { margin: auto 0 0.9rem; display: flex; flex-direction: column; }
+  .amount { font-family: var(--font-display); font-weight: 900; font-size: 1.8rem; line-height: 1.1; }
+  .rest { font-size: 0.78rem; color: var(--text-muted); }
+  .go { margin-top: auto; align-self: flex-start; font-weight: 800; color: var(--link); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.35em; padding-block: 0.25rem; }
+  .price + .go { margin-top: 0; }
+  .featured { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+  .featured .for, .featured .what, .featured .rest { color: var(--on-gold); }
+  .featured .go { color: var(--on-gold); }
+</style>

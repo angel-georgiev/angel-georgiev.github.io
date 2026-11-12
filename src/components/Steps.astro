@@ -1,0 +1,21 @@
+---
+// Numbered cards. Items are either plain strings or { title, text }.
+interface Props { items: (string | { title: string; text: string })[]; cols?: 3 | 4 }
+const { items, cols = 4 } = Astro.props;
+---
+<ol class:list={['steps', `cols-${cols}`]}>
+  {items.map((it, i) => (
+    <li class="card">
+      <span class="n" aria-hidden="true">{i + 1}</span>
+      {typeof it === 'string' ? <p>{it}</p> : (<><h3>{it.title}</h3><p>{it.text}</p></>)}
+    </li>
+  ))}
+</ol>
+<style>
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 960px) { .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .n { display: block; font-family: var(--font-display); font-weight: 900; font-size: 1.8rem; line-height: 1; color: var(--gold-text); margin-bottom: 0.6rem; }
+  h3 { margin-bottom: 0.4rem; }
+  p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+</style>

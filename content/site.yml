@@ -69,7 +69,7 @@ book:
   title_en: "The Green Book of Learning"
   subtitle_en: "7 principles that will change the way you learn"
   note_en: "Published in Bulgarian. English digital edition planned."
-  publisher: { en: "Locus Publishing", bg: "Локус Пъблишинг" }
+  publisher: { en: "A5 books", bg: "A5 books" }   # imprint of Locus Publishing; use "A5 books" everywhere (Angel, 12 Nov 2026)
   year: 2025
   isbn: "978-954-783-445-3"
   pages: "320+"
@@ -82,7 +82,7 @@ book:
     - { en: "Memory", bg: "Памет" }
     - { en: "Lifelong learning", bg: "Учене през целия живот" }
   url: "https://uchene.com"
-  cover:   # flat cover from uchene.com (Angel, 12 Nov 2026). The cover shows the imprint "A5 books"; see OPEN_ITEMS B1.
+  cover:   # flat cover from uchene.com (Angel, 12 Nov 2026). Publisher on the cover: A5 books.
     file: "zelenata-kniga-cover.jpg"   # src/assets/book/, 471×650
     alt: "Корицата на „Зелената книга за ученето“ от Ангел Георгиев"
 

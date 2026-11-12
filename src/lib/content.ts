@@ -29,3 +29,12 @@ export async function photo(id: string) {
   if (!credit) throw new Error(`photos.yml: unknown credit "${p.credit}" on ${id}`);
   return { ...p, img: mod.default, credit: credit.bg, position: `${p.focal[0]}% ${p.focal[1]}%` };
 }
+
+/** Splits a price line from YAML into the price and the rest, for display only ("900 € за училище" → "900 €" + "за училище"). */
+export function splitPrice(line: string) {
+  const m = line.match(/^(\d[\d\s ]*\s?€)\s*(.*)$/);
+  return m ? { price: m[1], rest: m[2] } : { price: line, rest: '' };
+}
+
+/** Bulgarian numbers use a non-breaking space as thousands separator (PRD §4). */
+export const nbsp = (s: string) => s.replace(/(\d) (\d{3})/g, '$1 $2');

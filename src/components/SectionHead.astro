@@ -1,0 +1,14 @@
+---
+interface Props { kicker?: string; h2: string; intro?: string }
+const { kicker, h2, intro } = Astro.props;
+---
+<div class="section-head">
+  {kicker && <p class="kicker">{kicker}</p>}
+  <h2>{h2}</h2>
+  {intro && <p class="muted intro">{intro}</p>}
+</div>
+<style>
+  .section-head { margin-bottom: 1.5rem; }
+  .section-head h2 { margin-bottom: 0.3em; }
+  .intro { margin: 0; }
+</style>

@@ -1,0 +1,16 @@
+---
+import { nbsp } from '../lib/content';
+interface Props { text: string; small?: string; href?: string; variant?: 'gold' | 'outline' | 'dark'; disabled?: boolean; id?: string }
+const { text, small, href, variant = 'gold', disabled = false, id } = Astro.props;
+---
+{disabled || !href ? (
+  <span class:list={['btn', `btn-${variant}`, 'is-disabled']} aria-disabled="true" id={id}>
+    <span class="btn-text">{text}</span>
+    {small && <span class="btn-small">{nbsp(small)}</span>}
+  </span>
+) : (
+  <a class:list={['btn', `btn-${variant}`]} href={href} id={id}>
+    <span class="btn-text">{text}</span>
+    {small && <span class="btn-small">{nbsp(small)}</span>}
+  </a>
+)}

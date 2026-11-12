@@ -1,0 +1,14 @@
+---
+// Organisations as grey text until the logo files arrive (OPEN_ITEMS #4). Same component will be reused elsewhere.
+interface Props { label: string; items: string[] }
+const { label, items } = Astro.props;
+---
+<section class="logos" aria-labelledby="logos-label">
+  <p class="kicker" id="logos-label">{label}</p>
+  <ul>{items.map((n) => <li>{n}</li>)}</ul>
+</section>
+<style>
+  .logos { margin-top: 2.5rem; border-block: 1px solid var(--border); padding-block: 1.25rem; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; }
+  li { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--text-muted); }
+</style>

@@ -1,0 +1,19 @@
+---
+// Responsive AVIF/WebP from a photos.yml id. Never upscales. The crop to `aspect` happens in CSS around the
+// photo's focal point (object-fit: cover + object-position), because sharp has no percentage crop position.
+import { Picture } from 'astro:assets';
+import { photo } from '../lib/content';
+interface Props { id: string; aspect: [number, number]; sizes: string; eager?: boolean; class?: string; maxWidth?: number }
+const { id, aspect, sizes, eager = false, class: cls, maxWidth = 1200 } = Astro.props;
+const p = await photo(id);
+const [aw, ah] = aspect;
+const w = Math.min(p.img.width, maxWidth);
+const widths = [320, 480, 640, 800, 960, 1200, 1600].filter((x) => x < w);
+widths.push(w);
+---
+<Picture
+  src={p.img} alt={p.alt} width={w} widths={widths} sizes={sizes}
+  formats={['avif', 'webp']} fallbackFormat="jpg"
+  loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async"
+  class={cls} style={`aspect-ratio:${aw}/${ah};object-fit:cover;object-position:${p.position}`}
+/>

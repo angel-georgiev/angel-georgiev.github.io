@@ -1,0 +1,16 @@
+---
+interface Props { items: (string | { text: string; href?: string })[]; marker?: 'dot' | 'ring' }
+const { items, marker = 'dot' } = Astro.props;
+---
+<ul class:list={['checklist', marker]}>
+  {items.map((it) => {
+    const t = typeof it === 'string' ? { text: it } : it;
+    return <li>{t.href ? <a href={t.href}>{t.text}</a> : t.text}</li>;
+  })}
+</ul>
+<style>
+  .checklist { list-style: none; margin: 0; padding: 0; }
+  li { position: relative; padding: 0.55rem 0 0.55rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+  li::before { content: ''; position: absolute; left: 0.15rem; top: 1.05rem; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--gold); }
+  .ring li::before { background: transparent; border: 2px solid var(--text-muted); width: 0.6rem; height: 0.6rem; top: 1rem; }
+</style>
