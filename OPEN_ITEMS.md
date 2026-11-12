@@ -9,6 +9,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | # | Item | Where it shows | Status |
 |---|---|---|---|
 | G1 | Stripe after-payment redirect points to `angel-georgiev.github.io/support/thanks/` | Stripe dashboard | **At go-live (M6)** change it to `https://daskal.ai/support/thanks/` |
+| A1 | Cloudflare Web Analytics token | Cloudflare dashboard + `site.yml` | **At go-live (M6), one time** (Angel, 12 Nov 2026): add `daskal.ai` under Web Analytics (JS snippet, not proxy), put the token in `site.yml → analytics.cloudflare_token`. Off until then |
 
 ## Resolved (12 Nov 2026, Angel)
 
@@ -47,8 +48,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 11 | Daskal: skill content, fallback instructions, repo name, licence, install steps, screenshots, directory listing | Phase 2 |
 | 12 | Re-verify skills on free plans (Claude custom upload; ChatGPT Free/Go) | Phase 2 |
 | 13 | Old daskal.ai paths | Phase 2 |
-| 14 | Analytics | **Decided: Cloudflare Web Analytics** (Angel, 12 Nov 2026). Code is ready; off until the token is set (A1). Page views only, no button-click counts. Exception recorded in PRD §7.6 |
-| A1 | Cloudflare Web Analytics token | **Angel:** in Cloudflare, add the site `angel-georgiev.github.io` under Web Analytics, copy the `token` from the JS snippet into `site.yml → analytics.cloudflare_token`, or send it to Claude. At go-live (M6), check whether `daskal.ai` needs to be added as its own site in Cloudflare (not verified) |
+| 14 | Analytics | **Decided: Cloudflare Web Analytics** (Angel, 12 Nov 2026). Code is ready; stays off until go-live (A1). Page views only, no button-click counts. Exception recorded in PRD §7.6 |
 | 16 | 3+ consented testimonials | Later (Angel, 12 Nov 2026). Block hidden until then |
 | 17 | "План в 1 страница" template | Angel, outside repo |
 | 18–20 | School credit, invoicing, group size, schools page | Resolved |
