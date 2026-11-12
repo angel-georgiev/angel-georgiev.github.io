@@ -1,0 +1,50 @@
+# Course placeholder — /course/ (EN) and /bg/course/ (BG). Themes: light + dark, same behaviour as the landing page.
+# Phase 1–2: no lessons yet. The only call to action is subscribing to The Paideia Method (Substack) to get the course first.
+
+meta:
+  title: { en: "The Paideia Method — a free course on learning how to learn", bg: "The Paideia Method — безплатен курс за това как да се учим" }
+  description:
+    en: "A free introductory course for adults who need to keep up with fast-changing technology. Seven principles, one textbook."
+    bg: "Безплатен въвеждащ курс за хора, които искат да не изостават от бързо променящите се технологии. Седем принципа, един учебник."
+
+hero:
+  eyebrow: { en: "Free course · coming soon", bg: "Безплатен курс · скоро" }
+  h1: { en: "The Paideia Method", bg: "The Paideia Method" }
+  sub:
+    en: "Technology changes faster than any course can keep up with. The one skill that keeps you relevant is knowing how to learn the next thing. This free introductory course teaches it."
+    bg: "Технологиите се променят по-бързо, отколкото който и да е курс може да навакса. Умението, което ви държи актуални, е да знаете как да научите следващото нещо. Този безплатен въвеждащ курс учи точно на това."
+
+for_whom:
+  heading: { en: "Who it's for", bg: "За кого е" }
+  items:
+    - { en: "Professionals whose tools and roles keep changing", bg: "Професионалисти, чиито инструменти и роли непрекъснато се променят" }
+    - { en: "Anyone returning to learning after years away from it", bg: "Всеки, който се връща към ученето след години пауза" }
+    - { en: "Team leads who want their people to learn faster", bg: "Ръководители, които искат екипите им да учат по-бързо" }
+
+principles:
+  heading: { en: "Seven principles", bg: "Седем принципа" }
+  # Same seven parts as the book (site.yml → book.parts). One-line descriptions:
+  items:
+    - { en: "Mindset — why we want to learn and how to keep the motivation", bg: "Нагласа — защо искаме да учим и как да запазим мотивацията" }
+    - { en: "Method — when and how we learn best", bg: "Метод — кога и как учим най-ефективно" }
+    - { en: "Form — the different ways to organise learning", bg: "Форма — различните начини да организираме ученето" }
+    - { en: "Retention & practice — making knowledge stick", bg: "Запомняне и практика — как знанието да остане" }
+    - { en: "Assessment — checking your own progress", bg: "Проверка — как да оценяваме напредъка си" }
+    - { en: "Memory — how the brain stores what we learn", bg: "Памет — как мозъкът съхранява наученото" }
+    - { en: "Lifelong learning — turning learning into a habit", bg: "Учене през целия живот — как ученето да стане навик" }
+
+textbook:
+  heading: { en: "The textbook", bg: "Учебникът" }
+  text:
+    en: "The course follows The Green Book of Learning, my book on the seven principles. It is published in Bulgarian; an English digital edition is planned."
+    bg: "Курсът следва „Зелената книга за ученето“ — моята книга за седемте принципа."
+  href: "/book/"
+
+cta:
+  heading: { en: "Get it first", bg: "Вземете го първи" }
+  text:
+    en: "Subscribe to The Paideia Method, my newsletter on learning in the AI era. Subscribers get the course the day it opens."
+    bg: "Абонирайте се за The Paideia Method — моя бюлетин за ученето в ерата на AI (на английски). Абонатите получават курса в деня, в който стартира."
+  button: { en: "Subscribe — free →", bg: "Абонирай се — безплатно →" }
+  href: "https://thepaideiamethod.substack.com/subscribe"
+  note: "No launch date shown. Do not show Substack post dates (no posts since Jul 2026)."

@@ -1,0 +1,62 @@
+# Landing page — / (BG). DARK THEME ONLY (decided 11 Nov 2026). No theme toggle, no language switch.
+# Copy approved 11 Nov 2026 (edited with Angel's write-article skill: no em dashes, active voice).
+# Rule: no third-party brand logos on this page (outlet names in text are fine).
+
+meta:
+  title: "Ангел Георгиев: обучения и консултации за AI, учене и преподаване"
+  description: "Помагам на хора и екипи да работят с AI. От 20 години обучавам хора в училища, компании и онлайн."
+
+hero:
+  award: "Обучител на годината · Европа 2026"          # gold pill above H1
+  award_href: "/resume/#archive"                       # decided by Angel 12 Nov 2026 (was /cv/#recognition, which does not exist)
+  h1_static_lines: ["Помагам на хора", "и екипи да"]   # always lines 1–2, fixed breaks, never wrap; never change
+  h1_rotating: ["работят с AI.", "учат с AI.", "преподават с AI.", "създават с AI."]   # always line 3, whole line rotates, gold, every 2.4 s
+  # Layout rule: line 2 never wraps (white-space: nowrap) and its box is sized to the longest item, so nothing on the page moves.
+  # prefers-reduced-motion: show the first item only.
+  lede: "От 20 години обучавам хора в училища, компании и онлайн. През обученията ми са минали над 20 000 души, от бъдещи QA инженери в СофтУни до учители от цялата страна."
+  lede_bold: "над 20 000 души"
+  cta_primary: { text: "Поискайте моята помощ →", small: "Един учебен час онлайн · 29 €", href: "/support/" }
+  cta_secondary: { text: "Обучение за вашия екип →", small: "За училища и компании", href: "#offers" }
+  textlink: { text: "Вижте резюмето ми", href: "/resume/" }
+  photo: desk-smile             # photos.yml id · eye contact with the visitor (swapped 11 Nov 2026)
+  badge: { value: "20 000+", label: "обучени души" }
+
+numbers:   # static, no animation
+  - { value: "20 000+", label: "обучени души" }
+  - { value: "100+", label: "участия в телевизия, радио и преса" }
+  - { value: "85", label: "епизода на „За учителите“" }
+  - { value: "TEDx", label: "„Ролята на учителя в бъдещето на образованието“" }
+
+perspectives:
+  - { title: "Преподавам", text: "Създавам програми и обучения за училища и компании, от QA програмата в СофтУни до AI в класната стая. Акредитиран обучител съм на Microsoft, ITIL и AI CERTs." }
+  - { title: "Говоря", text: "Водих 85 епизода на подкаста „За учителите“. Говорих на TEDx и имам над 100 участия в телевизия, радио и преса, от БНТ до Bloomberg TV." }
+  - { title: "Пиша", text: "Автор съм на „Зелената книга за ученето“ (Локус, 2025) и пиша бюлетина The Paideia Method за ученето в ерата на AI." }
+
+offers:
+  id: offers
+  kicker: "Как да работим заедно"
+  h2: "Изберете какво ви трябва."
+  intro: "За отделен човек, за училище или за компания."
+  # Cards from offers.yml in order: session (featured), school-training, companies (teaser + button to /companies/), events.
+
+in_action:
+  kicker: "Вижте ме в действие"
+  h2: "На сцена, в студио и в ефир."
+  intro: "Над 100 участия от 2014 г. насам, ето няколко от тях."
+  items:
+    - { src: "TEDx", title: "Ролята на учителя в бъдещето на образованието", meta: "Лекция · на английски", url: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education" }
+    - { src: "Bloomberg TV", title: "Български AI инструмент носи потенциала да се вдигне нивото в българското училище", meta: "Телевизия · 2025", url: "https://www.bloombergtv.bg/a/28-update/142959-balgarski-ai-instrument-nosi-potentsiala-da-se-vdigne-nivoto-v-balgarskoto-uchilishte" }
+    - { src: "БНТ 1", title: "„100% будни“: позитивен поглед върху PISA", meta: "Телевизия · 2024", url: "https://bnt.bg/news/pozitiven-pogled-varhu-rezultatite-ot-pisa-v-balgariya-v363015-326774news.html" }
+    - { src: "Forbes", title: "Как „Синдео“ подготвя новото поколение учители", meta: "Статия · 2025", url: "https://forbesbulgaria.com/2025/10/17/kak-sindeo-podgotvya-novoto-pokolenie-balgarski-uchiteli/" }
+  also: "Също: БНР · Bulgaria ON AIR · Darik · Euronews Bulgaria · Investor.bg · Economy.bg · БТА"
+
+book:
+  kicker: "Книгата"
+  h2: "7 принципа, които ще променят начина ви на учене."
+  text: "В книгата събрах седем принципа: нагласа, метод, форма, практика, проверка, памет и учене през целия живот."
+  cta: { text: "Към книгата →", href: "/book/" }
+
+footer:
+  meaning: "даскал означава учител"
+
+daskal_banner: { text: "Търсите Даскал AI? →", href: "/daskal/", phase: 2 }

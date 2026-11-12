@@ -1,0 +1,124 @@
+# Support session — /support/ (BG) and its thank-you page /support/thanks/.
+# One product, one price, one Stripe Payment Link. Entered from the landing page, the CV and (Phase 2) /daskal/.
+# Wording rule: product = "Помощ по конкретен въпрос", CTA = "Поискайте моята помощ". Never "коучинг" or "менторство".
+# Theme: DARK ONLY (continues from the landing page's primary CTA). Decided 11 Nov 2026.
+# Page order follows NN/g commitment levels: result → for whom → proof → price → steps → guarantee → FAQ → CTA (repeated once).
+
+meta:
+  title: "Помощ по конкретен въпрос | Ангел Георгиев"
+  description: "Един учебен час (до 45 минути) онлайн за вашия въпрос по AI, технологии, учене или преподаване, плюс писмен план след срещата. Ако срещата не ви помогне, връщам парите."
+
+product:
+  name: "Помощ по конкретен въпрос"        # product name; CTA label is "Поискайте моята помощ"
+  length_min: 45          # "един учебен час"; may end earlier if the question is solved
+  format: "Онлайн видеосреща"
+  deliverable: "План в 1 страница"     # sent by email within 24 h of the session
+  price_eur: 29           # launch price (Angel, 8 Nov 2026); review via founding-sessions thresholds
+  stripe_link: "TBD — Angel creates the Stripe Payment Link"
+  stripe_settings:   # Angel configures in the Stripe dashboard; Claude Code only links to the URL
+    locale: "bg"
+    collect: ["name", "email"]
+    custom_fields:
+      - { type: "dropdown", label: "Вие сте", options: ["Учител", "Работя в компания", "Друго"], required: true }
+      - { type: "text", label: "С какво да помогна?", max: 255, required: true }
+    receipts: "automatic email receipts ON"
+    policies_shown: "refund policy + contact email shown on checkout"
+    after_payment_redirect: "https://<domain>/support/thanks/"
+    daskal_entry_link: "optional second Payment Link, same price, used only on /daskal/ — to see where buyers come from"
+
+page:
+  # Copy revised 11 Nov 2026 with the write-article pass: general audience, no em dashes, active voice.
+  eyebrow: "Помощ по конкретен въпрос · един учебен час · онлайн"
+  h1: "Един учебен час за вашия въпрос и писмен план след срещата."
+  h1_highlight: "и писмен план след срещата."   # rendered in gold
+  intro: "Ако работите с AI, въвеждате нов инструмент, подготвяте обучение или не знаете откъде да започнете, разкажете ми с какво сте се захванали. За един учебен час ще намерим следващите стъпки заедно."
+
+  outcome:
+    heading: "Какво получавате"
+    items:
+      - "До 45 минути онлайн разговор само за вашия въпрос. Ако приключим по-рано, толкова по-добре."
+      - "„План в 1 страница“ на имейл до 24 часа след срещата: вашият въпрос, какво решихме, 3 следващи стъпки и полезни връзки."
+      - "Ако срещата не ви е помогнала, връщам парите."
+
+  for_what:
+    heading: "С какво мога да помогна"
+    items:
+      - "Да използвате AI в ежедневната си работа или в класната стая"
+      - "Да изберете и въведете дигитален инструмент в екипа"
+      - "Да подготвите обучение, курс или учебна програма"
+      - "Да научите нещо ново по-бързо или да помогнете на други да го научат"
+      - { text: "Да настроите Даскал AI за вашия предмет и класове", phase: 2 }
+
+  for_whom:
+    heading: "За кого е"
+    items:
+      - "За всеки, който иска да използва AI и технологиите в работата си"
+      - "За учители, които искат да пестят време в подготовката"
+      - "За ръководители и обучители, които въвеждат промяна в екипа си"
+  not_for:
+    heading: "За кого не е"
+    items:
+      - "За дългосрочна програма или абонамент. Това е една среща."
+      - "За изпълнение на цял проект. За това вижте страницата „За компании“."
+      - "За обещан резултат без вашето участие. Планът е ваш и вие решавате как да го приложите."
+
+  proof:
+    photo: desk-landscape
+    heading: "Защо мен"
+    items:
+      - { text: "20 години преподаване в училища, компании и онлайн; над 20 000 обучени души" }
+      - { text: "Обучител на годината, Европа 2026 (AI CERTs)", href: "/resume/#archive" }
+      - { text: "Автор на „Зелената книга за ученето“ (2025)", href: "/resume/#archive" }
+      - { text: "Създател на Даскал AI и академия „Синдео“", href: "/resume/#archive" }
+    testimonials:
+      min_to_show: 3      # hidden until 3+ consented testimonials exist (founding sessions)
+      items: []
+
+  how:
+    heading: "Как работи"
+    steps:
+      - "Плащате онлайн и пишете накратко с какво да помогна."
+      - "До 1 работен ден се свързвам с вас лично и ви изпращам линк за избор на час."
+      - "Срещаме се онлайн за един учебен час, до 45 минути."
+      - "До 24 часа след срещата получавате „План в 1 страница“."
+
+  guarantee:
+    heading: "Без риск"
+    text: "Ако срещата не ви е помогнала, пишете ми до 7 дни след нея и ви връщам парите. Без въпроси."
+
+  price:
+    label: "Цена"
+    value: "29 €"
+    intro_note: "Встъпителна цена за първите 30 срещи. Редовна цена: 39 €."
+    includes: "Един учебен час (до 45 мин.) + „План в 1 страница“"
+
+  faq:
+    heading: "Чести въпроси"
+    items:
+      - { q: "Как се провежда срещата?", a: "Онлайн, по видеовръзка. Линкът идва заедно с избора на час." }
+      - { q: "Кога ще се свържете с мен?", a: "До 1 работен ден след плащането, на имейла, който сте посочили." }
+      - { q: "Ако никой от предложените часове не ми е удобен?", a: "Пишете ми и ще намерим друг час." }
+      - { q: "Може ли училището или фирмата ми да плати?", a: "Да, по банков път срещу фактура. Пишете ми на angel@daskal.ai." }
+      - { q: "Ще получа ли документ за плащането?", a: "Да, Stripe изпраща автоматично разписка на имейла ви." }
+      - { q: "Ако срещата не ми помогне?", a: "Пишете ми до 7 дни след нея и ви връщам парите." }
+
+  cta:
+    button: "Поискайте моята помощ · 29 €"   # price must match price.value
+    note: "Плащането е през Stripe. Ако училището или фирмата ви иска да плати по банков път, пишете ми на angel@daskal.ai."
+    repeat: "after proof and again after FAQ"
+
+thank_you:
+  path: "/support/thanks/"
+  robots: "noindex"
+  h1: "Благодаря! Получих заявката ви."
+  text: "До 1 работен ден ще се свържа с вас лично на имейла, който посочихте, и ще ви изпратя линк за избор на час. Разписката от Stripe вече е в пощата ви."
+  fallback: "Ако не получите имейл от мен до 1 работен ден, проверете папката „Спам“ или пишете на angel@daskal.ai."
+  prepare:
+    heading: "Докато чакате"
+    text: "Помислете кога за последно се сблъскахте с този въпрос и какво опитахте тогава. Така ще използваме времето най-добре."   # Mom Test: past behaviour, not hypotheticals
+  back: "Обратно към началото →"
+
+follow_up:   # not on the site — Angel's process after each session (Mom Test learning loop)
+  - "Send „План в 1 страница“ within 24 h."
+  - "After 2 weeks, one question: „Какво направихте след срещата?“ — record the answer."
+  - "Ask for a testimonial only after the plan has been used."

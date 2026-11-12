@@ -1,0 +1,99 @@
+# Global site content. Bilingual fields use { en, bg }.
+# Source of truth for every page. Claude Code must not invent copy that is not here or in the other content files.
+
+person:
+  name: { en: "Angel Georgiev", bg: "Ангел Георгиев" }
+  alternate_names: ["Ангел Георгиев", "Angel Georgiev"]
+  email: "angel@daskal.ai"
+  location: { en: "Sofia, Bulgaria", bg: "София, България" }
+  pronunciation:
+    en: "AHN-gel geh-OR-gee-ev"   # confirmed by Angel 12 Nov 2026
+    bg: "А̀нгел Гео̀ргиев"
+  languages:
+    - { en: "Bulgarian — native", bg: "Български, роден" }
+    - { en: "English — professional working", bg: "Английски, професионално ниво" }
+    - { en: "Italian — limited working", bg: "Италиански, основно ниво" }
+
+links:
+  linkedin: "https://www.linkedin.com/in/angeorgiev"
+  substack: "https://thepaideiamethod.substack.com/"
+  substack_subscribe: "https://thepaideiamethod.substack.com/subscribe"
+  book_shop: "https://uchene.com"
+  tedx: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education"
+  github: "https://github.com/angel-georgiev"
+
+domain:
+  preview: "https://angel-georgiev.github.io"
+  production: "https://daskal.ai"          # switch at the end of Phase 2 (see PRD §2)
+  meaning: { en: "daskal (даскал) — Bulgarian for “teacher”.", bg: "даскал означава учител" }
+
+nav:
+  # Phase 1 (BG only, at root). EN routes later under /en/.
+  # Logo links to "/". Order matches PRD §4: Помощ · Училища · Компании · Резюме.
+  - { key: support,   bg: "Помощ",     en: "Help",      href: "/support/" }
+  - { key: schools,   bg: "Училища",   en: "Schools",   href: "/schools/" }
+  - { key: companies, bg: "Компании",  en: "Companies", href: "/companies/" }
+  - { key: resume,    bg: "Резюме",    en: "Résumé",    href: "/resume/" }   # /cv/ redirects here
+  - { key: daskal,  bg: "Даскал AI",        en: "Daskal AI",       href: "/daskal/", phase: 2 }
+
+ui:
+  lang_switch: { en: "Български", bg: "English" }
+  theme_light: { en: "Light", bg: "Светла" }
+  theme_dark:  { en: "Dark",  bg: "Тъмна" }
+  copy:        { en: "Copy",  bg: "Копирайте" }
+  copied:      { en: "Copied", bg: "Копирано" }
+  download:    { en: "Download", bg: "Изтеглете" }
+  in_bulgarian: { en: "in Bulgarian", bg: "на български" }
+  last_updated: { en: "Last updated", bg: "Последна актуализация" }
+  skip_link:   { en: "Skip to content", bg: "Към съдържанието" }
+  soon:        { en: "Soon", bg: "Скоро" }   # disabled Stripe CTA label (PRD §5.3, confirmed 12 Nov 2026)
+
+footer:
+  line: { en: "Training, consulting and speaking:", bg: "Обучения, консултации и лекции:" }
+  rights: { en: "© Angel Georgiev", bg: "© Ангел Георгиев" }
+  # Link labels in the footer (confirmed by Angel 12 Nov 2026). URLs come from `links` above.
+  links:
+    - { key: linkedin, bg: "LinkedIn" }
+    - { key: substack, bg: "The Paideia Method" }
+
+# Key numbers. Wording is fixed — always "trained", never "transformed". Never show a combined total.
+numbers:
+  - { value: "20,000+", value_bg: "20 000+", en: "people trained over 20 years", bg: "обучени души за 20 години" }
+  - { value: "20,000+", value_bg: "20 000+", en: "students assessed on Znam.be career tours", bg: "ученици с кариерна диагностика по турнетата на Знам.бе" }
+  - { value: "85",      value_bg: "85",      en: "podcast episodes hosted", bg: "епизода на подкаста „За учителите“" }
+  - { value: "100+",    value_bg: "100+",    en: "TV, radio and press appearances", bg: "участия в телевизия, радио и преса" }
+
+book:
+  title_bg: "Зелената книга за ученето"
+  subtitle_bg: "7-те принципа, които ще променят начина ви на учене"
+  title_en: "The Green Book of Learning"
+  subtitle_en: "7 principles that will change the way you learn"
+  note_en: "Published in Bulgarian. English digital edition planned."
+  publisher: { en: "Locus Publishing", bg: "Локус Пъблишинг" }
+  year: 2025
+  isbn: "978-954-783-445-3"
+  pages: "320+"
+  parts:
+    - { en: "Mindset", bg: "Нагласа" }
+    - { en: "Method", bg: "Метод" }
+    - { en: "Form", bg: "Форма" }
+    - { en: "Retention & practice", bg: "Запомняне и практика" }
+    - { en: "Assessment", bg: "Проверка" }
+    - { en: "Memory", bg: "Памет" }
+    - { en: "Lifelong learning", bg: "Учене през целия живот" }
+  url: "https://uchene.com"
+  cover:   # flat cover from uchene.com (Angel, 12 Nov 2026). The cover shows the imprint "A5 books"; see OPEN_ITEMS B1.
+    file: "zelenata-kniga-cover.jpg"   # src/assets/book/, 471×650
+    alt: "Корицата на „Зелената книга за ученето“ от Ангел Георгиев"
+
+# Copy for pages the PRD requires that no other content file covers. Approved by Angel 12 Nov 2026.
+pages:
+  not_found:
+    meta_title: "Страницата не е намерена | Ангел Георгиев"
+    h1: "Тази страница не съществува."
+    text: "Може адресът да е сгрешен или страницата да е преместена."
+    home: "Към началото →"
+    support: "Поискайте моята помощ →"
+  redirect:
+    book_text: "Към книгата на uchene.com →"
+    cv_text: "Към резюмето →"

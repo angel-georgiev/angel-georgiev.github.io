@@ -1,0 +1,7 @@
+---
+import Shell from '../components/Shell.astro';
+import { load } from '../lib/content';
+const l = await load('landing');
+---
+<Shell theme="dark" title={l.meta.title} description={l.meta.description} kicker={l.hero.award}
+  h1={[...l.hero.h1_static_lines, l.hero.h1_rotating[0]].join(' ')} lede={l.hero.lede} photoId={l.hero.photo} />
