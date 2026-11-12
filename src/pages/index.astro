@@ -7,7 +7,7 @@ import Numbers from '../components/Numbers.astro';
 import Motif from '../components/Motif.astro';
 import SectionHead from '../components/SectionHead.astro';
 import OfferCard from '../components/landing/OfferCard.astro';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { load, photo, inPhase, nbsp } from '../lib/content';
 import { profilePage } from '../lib/jsonld';
 
@@ -92,7 +92,7 @@ const jsonld = await profilePage(Astro.site!, new URL('/', Astro.site).href);
 
     <section class="section">
       <div class="book card">
-        <Image src={cover} alt={site.book.cover.alt} width={240} widths={[240, 471]} sizes="(min-width: 760px) 240px, 180px" formats={['avif', 'webp']} class="cover" loading="lazy" />
+        <Picture src={cover} alt={site.book.cover.alt} width={240} widths={[240, 471]} sizes="(min-width: 760px) 240px, 180px" formats={['avif', 'webp']} class="cover" loading="lazy" />
         <div>
           <p class="kicker">{l.book.kicker}</p>
           <h2>{l.book.h2}</h2>

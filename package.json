@@ -26,5 +26,10 @@
     "playwright": "^1.63.0",
     "satori": "^0.63.2",
     "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "@axe-core/playwright": {
+      "playwright-core": "1.63.0"
+    }
   }
 }

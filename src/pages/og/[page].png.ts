@@ -25,5 +25,5 @@ export const GET: APIRoute = async ({ props }) => {
   const p = await photo(props.photoId);
   const path = join(process.cwd(), 'src/assets/photos', p.file);
   const png = await ogPng({ name: props.name, kicker: props.kicker, title: props.title, highlight: props.highlight, photoPath: path, focal: p.focal as [number, number] });
-  return new Response(png, { headers: { 'Content-Type': 'image/png' } });
+  return new Response(new Uint8Array(png), { headers: { 'Content-Type': 'image/png' } });
 };
