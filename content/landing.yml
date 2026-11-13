@@ -59,4 +59,6 @@ book:
 footer:
   meaning: "даскал означава учител"
 
-daskal_banner: { text: "Търсите Даскал AI? →", href: "/daskal/", phase: 2 }
+# Gold bar at the very top of the landing page only (Angel, 13 Nov 2026, option A). Words from the approved /daskal/ H1.
+# On phones only `text` shows; `text_more` is added from 640 px up.
+daskal_banner: { text: "Даскал AI се завръща.", text_more: "Директно във вашия AI асистент.", href: "/daskal/", phase: 2 }

@@ -2,7 +2,7 @@
 # Rewritten 13 Nov 2026 against the skill repo github.com/angel-georgiev/daskal.ai (commit 8b384db, README "проверено през ноември 2026").
 # Naming: „Даскал AI“ in Bulgarian text, „daskal.AI“ for the package/brand in English contexts. Media mostly wrote „Даскал GPT“.
 # Install steps: from the repo README, switched from „ти“ to „вие“ like the rest of the site. Re-check against the README when it changes.
-# Copy edited with the write-article pass (13 Nov 2026). DRAFT until Angel approves.
+# Copy edited with the write-article pass and approved by Angel (13 Nov 2026).
 
 meta:
   title: "Даскал AI: безплатен помощник за учители във вашия AI асистент"

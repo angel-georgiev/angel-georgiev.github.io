@@ -78,7 +78,7 @@ const landing = obj({
   }),
   book: obj({ kicker: s, h2: s, text: s, cta: link }),
   footer: obj({ meaning: s }),
-  daskal_banner: obj({ text: s, href: s, phase }),
+  daskal_banner: obj({ text: s, text_more: s, href: s, phase }),
 });
 
 const offers = obj({

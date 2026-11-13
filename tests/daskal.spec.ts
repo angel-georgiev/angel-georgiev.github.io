@@ -55,7 +55,15 @@ test('download and repo links, Phase 2 entry points', async ({ page }) => {
   // nav item and landing banner
   await page.goto('/');
   await expect(page.locator('header a[href="/daskal/"]')).toHaveCount(1);
-  await expect(page.locator('.daskal-banner')).toHaveAttribute('href', '/daskal/');
+  const banner = page.locator('.daskal-banner');
+  await expect(banner).toHaveAttribute('href', '/daskal/');
+  // first thing on the landing page: above the header
+  expect((await banner.boundingBox())!.y).toBeLessThan((await page.locator('header').boundingBox())!.y);
+  // landing page only
+  for (const p of ['/schools/', '/companies/', '/resume/', '/support/', '/daskal/']) {
+    await page.goto(p);
+    await expect(page.locator('.daskal-banner')).toHaveCount(0);
+  }
 });
 
 test('404 page mentions Daskal AI first', async ({ page }) => {
