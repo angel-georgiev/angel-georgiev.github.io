@@ -44,23 +44,22 @@ const jsonld = {
 <Base theme="light" title={r.meta.title} description={r.meta.description} credit={head.credit} jsonld={jsonld} ogImage={lang === 'en' ? '/og/en-resume.png' : '/og/resume.png'}>
   <div class="wrap">
     <section class="head" id="bio">
-      <div class="frame"><Pic id={r.header.photo} aspect={[4, 5]} eager sizes="(min-width: 720px) 240px, 180px" maxWidth={480} /></div>
-      <div class="head-text">
+      <div class="head-title">
         <h1>{r.header.name}</h1>
         <p class="role">{r.header.role}</p>
-        <div class="bio card">
-          <div class="bio-top">
-            <h2>{r.bio.heading}</h2>
-            <CopyButton text={r.bio.text} label={r.bio.copy_button} copied={r.bio.copied} />
-          </div>
-          <p class="bio-text">{nbsp(r.bio.text)}</p>
-          <p class="note">{r.bio.note}</p>
-        </div>
-        <div class="cta-row">
-          <Btn variant="gold" text={r.header.linkedin.text} href={r.header.linkedin.href} />
-          <Btn variant="outline" text={r.header.email.text} href={r.header.email.href} />
-        </div>
+        <p class="pron"><span class="pron-label">{press.pronunciation.label[lang]}:</span> <span lang={lang === 'en' ? 'en' : 'bg'}>{press.pronunciation.text[lang]}</span></p>
       </div>
+      <div class="frame"><Pic id={r.header.photo} aspect={[4, 5]} eager sizes="(min-width: 720px) 300px, 180px" maxWidth={600} /></div>
+      <div class="bio card">
+        <div class="bio-top">
+          <h2>{r.bio.heading}</h2>
+          <CopyButton text={r.bio.text} label={r.bio.copy_button} copied={r.bio.copied} />
+        </div>
+        <p class="bio-text">{nbsp(r.bio.text)}</p>
+        <p class="note">{r.bio.note}</p>
+      </div>
+      <div class="cta-mail"><Btn variant="outline" text={r.header.email.text} href={r.header.email.href} /></div>
+      <div class="cta-li"><Btn variant="gold" text={r.header.linkedin.text} href={r.header.linkedin.href} /></div>
     </section>
 
     <section class="section" id="photos">
@@ -83,7 +82,6 @@ const jsonld = {
     <section class="section press" id="press">
       <h2>{press.meta.title[lang].split('|')[0].trim()}</h2>
       <p class="muted">{press.intro[lang]}</p>
-      <p class="pron"><span class="pron-label">{press.pronunciation.label[lang]}:</span> {press.pronunciation.text[lang]}</p>
       <div class="bios">
         {press.bios.map((b) => (
           <div class="card bio-item">
@@ -185,12 +183,24 @@ const jsonld = {
 </script>
 
 <style>
-  .head { display: grid; gap: 1.75rem; padding-top: 2rem; }
-  @media (min-width: 720px) { .head { grid-template-columns: 240px minmax(0, 1fr); gap: 2.75rem; align-items: start; } }
-  .frame { position: relative; width: 180px; margin: 0 14px 14px 0; }
-  @media (min-width: 720px) { .frame { width: 240px; } }
+  /* Name on top; photo as tall as the bio box; email under the photo, LinkedIn under the bio (Angel, 13 Nov 2026) */
+  .head { display: grid; gap: 1.25rem; padding-top: 2rem; grid-template-areas: 'title' 'photo' 'bio' 'li' 'mail'; }
+  .head-title { grid-area: title; }
+  .frame { grid-area: photo; position: relative; width: 180px; margin: 0 14px 14px 0; }
+  .bio { grid-area: bio; }
+  .cta-mail { grid-area: mail; }
+  .cta-li { grid-area: li; }
   .frame::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; background: var(--gold); border-radius: var(--radius-lg); }
   .frame :global(img) { position: relative; width: 100%; height: auto; border-radius: var(--radius-lg); }
+  @media (min-width: 720px) {
+    .head { grid-template-columns: 280px minmax(0, 1fr); grid-template-areas: 'title title' 'photo bio' 'mail li'; column-gap: 2.75rem; row-gap: 1.25rem; align-items: stretch; }
+    .frame { width: auto; margin: 0 14px 14px 0; }
+    .frame :global(picture) { position: absolute; inset: 0; }
+    .frame :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; aspect-ratio: auto !important; }
+    .bio { margin-bottom: 0 !important; }
+    .cta-mail, .cta-li { align-self: start; }
+    .cta-mail :global(.btn) { width: calc(100% - 14px); align-items: center; }
+  }
   h1 { margin-bottom: 0.2rem; }
   .role { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 1.1rem; }
   .bio { padding: clamp(1.1rem, 3vw, 1.6rem); margin-bottom: 1.1rem; }
@@ -213,7 +223,7 @@ const jsonld = {
   .bio-item p { max-width: none; font-size: 0.95rem; }
   .bio-item p:last-child { margin-bottom: 0; }
   .bio-item .bio-top h3 { font-size: 1.15rem; margin: 0; }
-  .pron { margin: 0.75rem 0 0; }
+  .pron { margin: -0.6rem 0 1.1rem; font-size: 0.9rem; color: var(--text-muted); }
   .pron-label { font-weight: 700; }
   .topics-h { margin-top: 1.5rem; }
   .topics { margin: 0; padding-left: 1.2rem; }

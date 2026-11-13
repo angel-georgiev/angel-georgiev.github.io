@@ -1,5 +1,5 @@
 # Support session in English: /en/support/ and /en/support/thanks/ (Phase 3).
-# DRAFT translation of the approved content/support.yml (13 Nov 2026). Same product and price; its own Stripe Payment Link
+# Translation, approved by Angel (13 Nov 2026), of content/support.yml (13 Nov 2026). Same product and price; its own Stripe Payment Link
 # with English checkout that redirects to https://daskal.ai/en/support/thanks/ (Angel creates it).
 
 meta:

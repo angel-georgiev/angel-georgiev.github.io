@@ -22,9 +22,9 @@ links:
   tedx: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education"
   github: "https://github.com/angel-georgiev"
 
-# Phase 3: English pages ship in draft mode first (noindex, not in the sitemap) until Angel approves the copy (13 Nov 2026).
+# Phase 3: English pages shipped in draft mode (noindex, not in the sitemap); Angel approved them on 13 Nov 2026.
 i18n:
-  en_draft: true
+  en_draft: false   # English approved by Angel, 13 Nov 2026
 
 # Analytics (Angel chose Cloudflare Web Analytics, 12 Nov 2026). Cookieless, page views only (no custom events).
 # On since go-live on daskal.ai (13 Nov 2026). Empty token = off. Paste the token from Cloudflare → Web Analytics → your site → "Manage site" (the JS snippet's "token" value).
@@ -57,7 +57,7 @@ ui:
   last_updated: { en: "Last updated", bg: "Последна актуализация" }
   skip_link:   { en: "Skip to content", bg: "Към съдържанието" }
   soon:        { en: "Soon", bg: "Скоро" }
-  # Phase 3 (DRAFT, 13 Nov 2026): one-time language suggestion bar, shown only when the browser language does not match the page.
+  # Phase 3 (approved 13 Nov 2026): one-time language suggestion bar, shown only when the browser language does not match the page.
   # Keyed by the language of the page it appears on: `bg` is shown on Bulgarian pages (pointing to English), `en` on English pages.
   lang_suggest: { en: "Тази страница е достъпна и на български.", bg: "This page is also available in English." }
   lang_suggest_go: { en: "Към българската версия →", bg: "Read it in English →" }
@@ -111,7 +111,7 @@ pages:
     daskal: "Търсите Даскал AI? Разберете повече за него тук:"   # shown first on the 404 page (Angel, 13 Nov 2026; „вие“ like the rest of the site)
     home: "Към началото →"
     support: "Поискайте моята помощ →"
-  not_found_en:   # English half of the bilingual 404 page (DRAFT, Phase 3)
+  not_found_en:   # English half of the bilingual 404 page (Phase 3, approved 13 Nov 2026)
     h1: "This page doesn't exist."
     text: "The address may be wrong, or the page may have moved."
     daskal: "Looking for daskal.AI? Find out more here:"
