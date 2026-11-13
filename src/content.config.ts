@@ -45,6 +45,7 @@ const site = obj({
   }),
   pages: obj({
     not_found: obj({ meta_title: s, h1: s, text: s, daskal: s, home: s, support: s }),
+    not_found_en: obj({ h1: s, text: s, daskal: s, home: s, support: s }),
     redirect: obj({ book_text: s, cv_text: s }),
   }),
 });

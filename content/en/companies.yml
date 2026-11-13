@@ -1,0 +1,77 @@
+# Companies page in English: /en/companies/ (Phase 3). DRAFT translation of the approved content/companies.yml (13 Nov 2026).
+
+meta:
+  title: "For companies: better processes, with and without AI | Angel Georgiev"
+  description: "I consult and train teams to improve the way they work. Process diagnostics, training and implementation."
+
+hero:
+  kicker: "For companies"
+  h1_before: "Better processes in your team."
+  h1_highlight: "With AI where it helps."
+  lede: "I consult and train teams to improve the way they work. We start from the process and add AI only where it saves time or reduces errors."
+  cta_primary: { text: "Ask for a meeting →", small: "A conversation about your process", href: "mailto:angel@daskal.ai?subject=Meeting%20about%20a%20process" }
+  cta_secondary: { text: "See the services ↓", small: "Diagnostics, training, implementation", href: "#services" }
+  photo: laptop
+
+logos:
+  label: "Organisations I have worked with as a trainer and consultant"
+  items: ["Sony", "Samsung", "SoftUni", "Avenga (Musala Soft)", "ITCE", "UniCredit Bulbank", "Coca-Cola", "Postbank", "Huvepharma", "DXC Technology", "KPMG"]
+
+how:
+  kicker: "How I work"
+  h2: "The process first, then the tool."
+  steps:
+    - { title: "We look at the process", text: "Together with the people who do it every day, we describe how the work runs now and where time is lost." }
+    - { title: "We decide what to change", text: "For each problem we choose a solution: better organisation, training or an AI tool. Often the best solution involves no technology." }
+    - { title: "We train and measure", text: "The team learns the new way of working on its own real tasks, and then we check whether the change has worked." }
+
+services:
+  id: services
+  kicker: "Services"
+  h2: "Three ways to start."
+  items:
+    - key: diagnostic
+      label: "First step"
+      title: "Process diagnostics"
+      bullets: ["One day with your team", "A map of 2–3 key processes", "A written report with priorities: what to improve, where AI helps and where it doesn't"]
+      price: "€900"
+      price_note: "for one day · the same price as the training for schools"
+      cta: { text: "Ask for a diagnostic →", href: "mailto:angel@daskal.ai?subject=Process%20diagnostics" }
+      featured: true
+    - key: team-training
+      label: "Training"
+      title: "AI in your team's work"
+      bullets: ["A full day of practice", "Exercises on the team's real tasks", "Ready templates the team uses from the next day"]
+      price: "On request"
+      cta: { text: "Write to me →", href: "mailto:angel@daskal.ai?subject=Team%20training" }
+    - key: implementation
+      label: "Consulting"
+      title: "Implementation with support"
+      bullets: ["4–8 weeks", "We redesign 1–2 processes and pilot them", "I support the team until people are used to the new way of working"]
+      price: "On request"
+      cta: { text: "Write to me →", href: "mailto:angel@daskal.ai?subject=Implementation" }
+  also: "Also: an internal academy and train-the-trainer (skills matrix, a method for internal trainers) · a “How to learn faster” workshop for teams, based on The Green Book of Learning."
+
+cases:
+  kicker: "From practice"
+  h2: "What I have done in companies."
+  items:
+    - title: "Skills matrix, Musala Soft"
+      meta: "2018–2021 · Head of technical training"
+      ask: "All employees went through the same general training."
+      problem: "People had no personal development paths, and management could not see who stood where."
+      decision: "I created a skills matrix by role and linked it to trainings from the first working day."
+      result: "The company that acquired Musala Soft adopted parts of the system in its global centre."
+    - title: "Hybrid learning, SoftUni"
+      meta: "2017–2018 · Director of Research and Development"
+      ask: "SoftUni wanted online students to learn with the same quality as those in the classroom."
+      problem: "Off-the-shelf platforms could not handle this scale together with live classes in the room."
+      decision: "I designed our own system. We started with one pilot room and grew to ten."
+      result: "More than 18 simultaneous streams. SoftUni still runs the same system today."
+  labels: { ask: "The task", problem: "The real problem", decision: "Decision", result: "Result" }
+  credentials: ["Microsoft Certified Trainer", "ITIL® accredited trainer", "AI CERTs trainer · Trainer of the Year, Europe 2026", "Experience with ITIL and SAFe"]
+
+final_cta:
+  h2: "Tell me about the process you want to improve."
+  text: "The first conversation is free and takes 30 minutes."
+  cta: { text: "Ask for a meeting →", href: "mailto:angel@daskal.ai?subject=Meeting%20about%20a%20process" }

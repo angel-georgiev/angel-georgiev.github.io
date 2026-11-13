@@ -1,0 +1,35 @@
+# Offer ladder in English (Phase 3). DRAFT translation of the approved content/offers.yml (13 Nov 2026).
+
+offers:
+  - key: session
+    title: "Help with a specific question"
+    for: "For you"
+    what: "Bring one question about AI, technology, learning or teaching. In a 45-minute online session we look for the answer together, and within 24 hours you receive a one-page plan. If the session did not help you, I refund your money."
+    price_line: "€29 introductory price for the first 30 sessions (regular price €39)"
+    cta: { text: "Ask for my help →", href: "/en/support/#cta" }
+
+  - key: school-training
+    title: "AI in the classroom"
+    for: "For schools"
+    partner: "in partnership with SmarTest"
+    what: "Hands-on training at school or online: teachers prepare lessons, materials and tests with AI and learn how to help students use it honestly and responsibly."
+    includes:
+      - "8 academic hours together: at your school or online"
+      - "A project after the training, which the teachers send to me"
+      - "A certificate with 1 qualification credit (Bulgarian system)"
+    price_line: "€900 per school"
+    cta: { text: "See the training for schools →", href: "/en/schools/" }
+    note: "Payment by bank transfer against an invoice."
+
+  - key: companies
+    title: "Better processes, with and without AI"
+    for: "For companies"
+    what: "I consult and train teams to improve the way they work. We use AI only where it helps."
+    cta: { text: "See how I work with companies →", href: "/en/companies/" }
+
+  - key: events
+    title: "Talks, panels and interviews"
+    for: "For events and media"
+    what: "I speak about AI in education, learning and the future of work."
+    price_line: "On request"
+    cta: { text: "Write to me →", href: "mailto:angel@daskal.ai?subject=Talk%20or%20interview" }

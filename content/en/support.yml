@@ -1,0 +1,122 @@
+# Support session in English: /en/support/ and /en/support/thanks/ (Phase 3).
+# DRAFT translation of the approved content/support.yml (13 Nov 2026). Same product and price; its own Stripe Payment Link
+# with English checkout that redirects to https://daskal.ai/en/support/thanks/ (Angel creates it).
+
+meta:
+  title: "Help with a specific question | Angel Georgiev"
+  description: "A 45-minute online session for your question about AI, technology, learning or teaching, plus a written plan after the session. If the session doesn't help you, I refund your money."
+
+product:
+  name: "Help with a specific question"
+  length_min: 45
+  format: "Online video call"
+  deliverable: "One-page plan"
+  price_eur: 29
+  stripe_link: "TBD — Angel creates the English Stripe Payment Link"
+  stripe_settings:
+    locale: "en"
+    collect: ["name", "email"]
+    custom_fields:
+      - { type: "dropdown", label: "You are", options: ["A teacher", "Working in a company", "Other"], required: true }
+      - { type: "text", label: "What can I help with?", max: 255, required: true }
+    receipts: "automatic email receipts ON"
+    policies_shown: "refund policy + contact email shown on checkout (refund within 2 days)"
+    after_payment_redirect: "https://daskal.ai/en/support/thanks/"
+
+page:
+  eyebrow: "Help with a specific question · 45 minutes · online"
+  h1: "45 minutes for your question and a written plan after the session."
+  h1_highlight: "and a written plan after the session."
+  intro: "If you work with AI, are introducing a new tool, are preparing a training or don't know where to start, tell me what you are working on. In 45 minutes we will find the next steps together."
+
+  outcome:
+    heading: "What you get"
+    items:
+      - "Up to 45 minutes of online conversation about your question only. If we finish earlier, all the better."
+      - "A one-page plan by email within 24 hours after the session: your question, what we decided, 3 next steps and useful links."
+      - "If the session did not help you, I refund your money."
+
+  for_what:
+    heading: "What I can help with"
+    items:
+      - "Using AI in your daily work or in the classroom"
+      - "Choosing and introducing a digital tool in your team"
+      - "Preparing a training, a course or a curriculum"
+      - "Learning something new faster, or helping others learn it"
+      - { text: "Setting up daskal.AI for your subject and classes", phase: 2 }
+
+  for_whom:
+    heading: "Who it is for"
+    items:
+      - "Anyone who wants to use AI and technology in their work"
+      - "Teachers who want to save time on preparation"
+      - "Managers and trainers who are bringing change to their team"
+  not_for:
+    heading: "Who it is not for"
+    items:
+      - "A long-term programme or a subscription. This is one session."
+      - "Delivering a whole project. For that, see the page for companies."
+      - "A promised result without your involvement. The plan is yours, and you decide how to apply it."
+
+  proof:
+    photo: desk-landscape
+    heading: "Why me"
+    items:
+      - { text: "20 years of teaching in schools, companies and online; more than 20,000 people trained" }
+      - { text: "Trainer of the Year, Europe 2026 (AI CERTs)", href: "/en/resume/#archive" }
+      - { text: "Author of The Green Book of Learning (2025, in Bulgarian)", href: "/en/resume/#archive" }
+      - { text: "Creator of daskal.AI and founder of Sindeo Academy", href: "/en/resume/#archive" }
+    testimonials:
+      min_to_show: 3
+      items: []
+
+  how:
+    heading: "How it works"
+    steps:
+      - "You pay online and write briefly what I can help with."
+      - "Within 1 working day I contact you personally and send you a link to choose a time."
+      - "We meet online for up to 45 minutes."
+      - "Within 24 hours after the session you receive the one-page plan."
+
+  guarantee:
+    heading: "No risk"
+    text: "If the session did not help you, write to me within 2 days and I will refund your money. No questions asked."
+
+  price:
+    label: "Price"
+    value: "€29"
+    intro_note: "Introductory price for the first 30 sessions. Regular price: €39."
+    includes: "A 45-minute online session + a one-page plan"
+
+  faq:
+    heading: "Frequently asked questions"
+    items:
+      - { q: "How does the session work?", a: "Online, by video call. The link comes with the time you choose." }
+      - { q: "When will you contact me?", a: "Within 1 working day after payment, at the email address you gave." }
+      - { q: "What if none of the offered times suit me?", a: "Write to me and we will find another time." }
+      - { q: "Can my school or company pay?", a: "Yes, by bank transfer against an invoice. Write to me at angel@daskal.ai." }
+      - { q: "Will I get a receipt?", a: "Yes, Stripe sends a receipt to your email automatically." }
+      - { q: "What if the session doesn't help me?", a: "Write to me within 2 days after it and I will refund your money." }
+      - { q: "Which language is the session in?", a: "English or Bulgarian, as you prefer." }
+
+  ladder:
+    heading: "How else I can help"
+
+  cta:
+    button: "Ask for my help · €29"
+    note: "Payment is through Stripe. If your school or company wants to pay by bank transfer, write to me at angel@daskal.ai."
+    repeat: "after proof and again after FAQ"
+
+thank_you:
+  path: "/en/support/thanks/"
+  robots: "noindex"
+  h1: "Thank you! I have received your request."
+  text: "Within 1 working day I will contact you personally at the email address you gave and send you a link to choose a time. Your Stripe receipt is already in your inbox."
+  fallback: "If you don't hear from me within 1 working day, check your spam folder or write to angel@daskal.ai."
+  prepare:
+    heading: "While you wait"
+    text: "Think about the last time you ran into this question and what you tried then. That way we will use the time best."
+  back: "Back to the home page →"
+
+follow_up:
+  - "Same process as the Bulgarian session."

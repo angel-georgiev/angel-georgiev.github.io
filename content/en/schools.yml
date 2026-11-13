@@ -1,0 +1,78 @@
+# Schools page in English: /en/schools/ (Phase 3). DRAFT translation of the approved content/schools.yml (13 Nov 2026).
+# The offer is built on the Bulgarian system (SmarTest, Наредба № 15 credit, МОН curriculum); kept as is (Angel, 13 Nov 2026).
+
+meta:
+  title: "For schools: AI in the classroom | Angel Georgiev"
+  description: "Hands-on AI training for teachers, at your school or online. A project after the training and a certificate with 1 qualification credit. In partnership with SmarTest."
+
+hero:
+  kicker: "For schools"
+  h1_before: "AI in the classroom."
+  h1_highlight: "Teachers use what they learned the very next day."
+  lede: "I come to your school or we meet online. Teachers prepare lessons, materials and tests with AI for their own subject and learn how to help students use AI honestly and responsibly. After the project, each teacher receives a certificate with 1 qualification credit."
+  cta_primary: { text: "Ask for a date →", small: "€900 per school", href: "mailto:angel@daskal.ai?subject=Training%20for%20a%20school" }
+  cta_secondary: { text: "See the programme ↓", small: "What we do together", href: "#program" }
+  partner: "in partnership with SmarTest"
+  photo: writing-laugh
+
+proof_numbers:
+  - { value: "8,000+", label: "teachers took my accredited AI trainings" }
+  - { value: "30,000+", label: "teachers in the Sindeo community" }
+  - { value: "20 years", label: "as a trainer in Europe, the US and the Middle East" }
+  - { value: "1 credit", label: "under Ordinance No. 15, through SmarTest" }
+
+program:
+  id: program
+  kicker: "The programme"
+  h2: "What we do together"
+  for_whom: "For teachers of all subjects and stages, principals and school counsellors. No AI experience needed. 70% of the time is practice."
+  draft_note: ""
+  blocks:
+    - { title: "How AI works and where it gets things wrong", text: "We compare ChatGPT, Claude and Gemini. Teachers see when AI makes things up and what to check: facts, personal data and copyright." }
+    - { title: "Prompts that give a precise result", text: "We practise the “context, instruction, format” method. With it, teachers get the result they need on the first try." }
+    - { title: "Lessons, materials and tests", text: "Each teacher prepares a plan, a lesson, a presentation and a test for their own subject. We also try tools for audio and video." }
+    - { title: "Students and AI", text: "I show teachers how to teach students to ask AI, check the answer and use it honestly in class and at home." }
+
+project:
+  heading: "The project after the training"
+  text: "At the end of the training I give the teachers a project assignment of 8 academic hours. Each teacher works on their own and sends me the project. With it, the teacher completes the training and receives the credit."
+  parts:
+    - "A plan for the school year following the national curriculum: goals, units and assessment"
+    - "One lesson with clear goals, activities and feedback"
+    - "Lesson materials created with AI: text, a presentation, audio or video and a short test"
+
+includes:
+  heading: "What's included"
+  items:
+    - "8 academic hours together: a full day at your school, two days of 4 hours, or live online"
+    - "A project after the training: 8 academic hours of independent work"
+    - "A certificate with 1 qualification credit, issued by SmarTest"
+    - "Each teacher needs a laptop and a free ChatGPT, Claude or Gemini account"
+  price: "€900"
+  price_note: "per school · invoice from SmarTest, paid by bank transfer"
+
+how:
+  heading: "How it works"
+  steps:
+    - "You write to me and we choose a date."
+    - "We hold the training at your school or online, in one day or in two days of 4 hours."
+    - "At the end of the training, the teachers receive the project assignment."
+    - "The teachers send me their projects and receive their certificates."
+
+why:
+  heading: "Why me"
+  items:
+    - { text: "I have delivered accredited AI trainings to more than 8,000 teachers", href: "/en/resume/#archive" }
+    - { text: "I founded Sindeo Academy, which more than 30,000 teachers joined", href: "/en/resume/#archive" }
+    - { text: "I created daskal.AI, the first free AI assistant for Bulgarian teachers", href: "/en/resume/#archive" }
+    - { text: "I have taught at school and designed curricula for schools such as Uwekind International School and the British School of Sofia", href: "/en/resume/#archive" }
+    - { text: "Trainer of the Year for Europe, AI CERTs 2026", href: "/en/resume/#archive" }
+
+individual:
+  text: "Are you a teacher with one specific question?"
+  cta: { text: "Ask for my help →", href: "/en/support/" }
+
+final_cta:
+  h2: "Choose a date for your school."
+  text: "Write to me with the number of teachers and the days that suit you."
+  cta: { text: "Ask for a date →", href: "mailto:angel@daskal.ai?subject=Training%20for%20a%20school" }

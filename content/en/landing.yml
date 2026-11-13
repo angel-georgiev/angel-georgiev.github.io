@@ -1,0 +1,58 @@
+# Landing page in English: /en/ (Phase 3). DRAFT translation of the approved content/landing.yml (13 Nov 2026),
+# write-article pass. Angel approves before it goes live. Same structure and rules as the Bulgarian file.
+
+meta:
+  title: "Angel Georgiev: training and consulting on AI, learning and teaching"
+  description: "I help people and teams work with AI. For 20 years I have trained people in schools, companies and online."
+
+hero:
+  award: "Trainer of the Year · Europe 2026"
+  award_href: "/en/resume/#archive"
+  h1_static_lines: ["I help people", "and teams"]
+  h1_rotating: ["work with AI.", "learn with AI.", "teach with AI.", "create with AI."]
+  lede: "For 20 years I have trained people in schools, companies and online. More than 20,000 people have taken my trainings, from future QA engineers at SoftUni to teachers across Bulgaria."
+  lede_bold: "More than 20,000 people"
+  cta_primary: { text: "Ask for my help →", small: "A 45-minute online session · €29", href: "/en/support/" }
+  cta_secondary: { text: "Training for your team →", small: "For schools and companies", href: "#offers" }
+  textlink: { text: "See my résumé", href: "/en/resume/" }
+  photo: desk-smile
+  badge: { value: "20,000+", label: "people trained" }
+
+numbers:
+  - { value: "20,000+", label: "people trained" }
+  - { value: "100+", label: "TV, radio and press appearances" }
+  - { value: "85", label: "episodes of the teachers' podcast „За учителите“" }
+  - { value: "TEDx", label: "“The role of the teacher in the future of education”" }
+
+perspectives:
+  - { title: "I teach", text: "I design programmes and trainings for schools and companies, from the QA programme at SoftUni to AI in the classroom. I am an accredited Microsoft, ITIL and AI CERTs trainer." }
+  - { title: "I speak", text: "I hosted 85 episodes of the teachers' podcast „За учителите“. I spoke at TEDx and have more than 100 TV, radio and press appearances, from BNT to Bloomberg TV." }
+  - { title: "I write", text: "I wrote The Green Book of Learning (A5 books, 2025, in Bulgarian) and write The Paideia Method, a newsletter about learning in the age of AI." }
+
+offers:
+  id: offers
+  kicker: "How we can work together"
+  h2: "Choose what you need."
+  intro: "For one person, for a school or for a company."
+
+in_action:
+  kicker: "See me in action"
+  h2: "On stage, in the studio and on air."
+  intro: "More than 100 appearances since 2014. Here are a few."
+  items:
+    - { src: "TEDx", title: "The role of the teacher in the future of education", meta: "Talk · in English", url: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education" }
+    - { src: "Bloomberg TV", title: "A Bulgarian AI tool could raise the level of Bulgarian schools", meta: "TV · 2025 · in Bulgarian", url: "https://www.bloombergtv.bg/a/28-update/142959-balgarski-ai-instrument-nosi-potentsiala-da-se-vdigne-nivoto-v-balgarskoto-uchilishte" }
+    - { src: "BNT 1", title: "“100% awake”: a positive look at PISA", meta: "TV · 2024 · in Bulgarian", url: "https://bnt.bg/news/pozitiven-pogled-varhu-rezultatite-ot-pisa-v-balgariya-v363015-326774news.html" }
+    - { src: "Forbes", title: "How Sindeo is preparing the next generation of teachers", meta: "Article · 2025 · in Bulgarian", url: "https://forbesbulgaria.com/2025/10/17/kak-sindeo-podgotvya-novoto-pokolenie-balgarski-uchiteli/" }
+  also: "Also: BNR · Bulgaria ON AIR · Darik · Euronews Bulgaria · Investor.bg · Economy.bg · BTA"
+
+book:
+  kicker: "The book"
+  h2: "7 principles that will change the way you learn."
+  text: "The Green Book of Learning gathers seven principles: mindset, method, form, practice, assessment, memory and lifelong learning. Published in Bulgarian; an English digital edition is planned."
+  cta: { text: "To the book (in Bulgarian) →", href: "/book/" }
+
+footer:
+  meaning: "daskal means teacher"
+
+daskal_banner: { text: "daskal.AI is back.", text_more: "Right inside your AI assistant.", href: "/en/daskal/", phase: 2 }

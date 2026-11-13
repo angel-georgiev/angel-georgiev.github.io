@@ -1,0 +1,63 @@
+# Résumé and press kit in English: /en/resume/ (Phase 3). DRAFT translation (13 Nov 2026), Angel to approve.
+# archive.items are NOT repeated here: the page uses the items from content/resume.yml (titles as published, mostly Bulgarian).
+# Press-kit sections (pronunciation, bios, host introduction, topics) come from content/press.yml (en fields).
+
+meta:
+  title: "Résumé and press kit | Angel Georgiev"
+  description: "A short bio, photos to download, press bios and all media appearances, talks and awards of Angel Georgiev."
+header:
+  name: Angel Georgiev
+  role: Trainer · Consultant · Author
+  photo: portrait-light
+  linkedin:
+    text: My full professional experience is on LinkedIn →
+    href: https://www.linkedin.com/in/angeorgiev
+  email:
+    text: angel@daskal.ai
+    href: mailto:angel@daskal.ai
+bio:
+  heading: Short bio
+  note: 'For organisers and media: copy and use freely.'
+  text: Angel Georgiev is a trainer, consultant and author with 20 years of experience in corporate training, educational technology and schools. More than 20,000 people have taken his trainings. At SoftUni he was educational director and created the QA Engineer programme, and at Musala Soft he led technical training. He founded the educational platform Znam.be and Sindeo Academy, which more than 30,000 teachers joined, and created daskal.AI, the first free AI assistant for Bulgarian teachers. Today he is a product manager and trainer at ITCE and a partner at SmarTest. He is the author of The Green Book of Learning (A5 books, 2025). In 2026 AI CERTs named him Trainer of the Year for Europe.
+  copy_button: Copy the text
+  copied: Copied
+photos:
+  heading: Photos to download
+  note: 'Photo: Daniel Kolev / DK Photography. Free to use when presenting Angel Georgiev.'
+  items:
+  - id: portrait-light
+    label: Portrait, light background
+  - id: portrait-dark
+    label: Portrait, dark background
+  - id: portrait-square
+    label: Square, for avatars
+  - id: desk-smile
+    label: At work
+  button: Download
+archive:
+  heading: Media, talks and awards
+  intro: Every appearance since 2014, with a link to each. Titles are as published, mostly in Bulgarian.
+  search_placeholder: Search by topic or outlet
+  filters:
+  - key: all
+    label: All
+  - key: tv
+    label: TV
+  - key: radio
+    label: Radio
+  - key: press
+    label: Press
+  - key: talk
+    label: Talks and podcasts
+  - key: video
+    label: Video and webinars
+  - key: training
+    label: Trainings
+  - key: award
+    label: Awards
+  - key: article
+    label: My articles
+  - key: book
+    label: Book
+  months: [January, February, March, April, May, June, July, August, September, October, November, December]
+  empty: No results.

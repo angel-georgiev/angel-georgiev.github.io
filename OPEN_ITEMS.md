@@ -10,7 +10,7 @@ DNS on Cloudflare (DNS only, grey cloud) → GitHub Pages; Let's Encrypt certifi
 
 ## Still to do after go-live
 
-Nothing blocking. Open but not blocking: company logo files (4) and testimonials (16), below.
+Nothing blocking. Open but not blocking: testimonials (16), below.
 
 ## Resolved (12 Nov 2026, Angel)
 
@@ -37,6 +37,7 @@ Nothing blocking. Open but not blocking: company logo files (4) and testimonials
 | 12 | Skills/plugins on free plans | Angel checked the install steps in Nov 2026 (repo README): free accounts work on all six platforms. Re-check when the README changes |
 | G1 | Stripe after-payment redirect | Changed to `https://daskal.ai/support/thanks/` by Angel (13 Nov 2026) |
 | 15 | Bulgarian copy review | Done by Angel (13 Nov 2026). Last edits: school-training sentence aligned on landing, `/support/` and `/schools/`; „Какво е Даскал AI“ + Даскал GPT origin (end of 2024) |
+| 4 | Company logo files | Closed (Angel, 13 Nov 2026): no logos. `/companies/` keeps the organisation names as text |
 | A1 | Cloudflare Web Analytics | On since 13 Nov 2026: site `daskal.ai`, token in `site.yml → analytics.cloudflare_token`. Page views only; not on `/support/thanks/` or redirect pages |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
@@ -45,7 +46,6 @@ Nothing blocking. Open but not blocking: company logo files (4) and testimonials
 
 | # | Item | Status |
 |---|---|---|
-| 4 | 11 company logo files | **Open**, not in Phase 1 (Angel, 12 Nov 2026). Names show as grey text (`companies.yml → logos.items`) |
 | 1 | Support price | Decided: 29 € (intro), 39 € regular |
 | 6 | Founder or co-founder for Sindeo and Znam.be | Open (affects `press.yml`, Phase 3) |
 | 7 | Full name of obr.education | Open (`cv-master.yml`, not built) |

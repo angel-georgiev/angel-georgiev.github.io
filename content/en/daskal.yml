@@ -1,0 +1,147 @@
+# daskal.AI in English: /en/daskal/ (Phase 3). DRAFT (13 Nov 2026), Angel to approve.
+# Structure agreed 13 Nov 2026: explanation + "built for the Bulgarian system" disclaimer + all parts of the Bulgarian page
+# (it answers in the teacher's language, SKILL.md) + a banner for teachers under other curricula.
+# Install steps translated from the repo README (github.com/angel-georgiev/daskal.ai).
+
+meta:
+  title: "daskal.AI: a free assistant for teachers in Bulgaria, inside your AI"
+  description: "daskal.AI prepares annual plans, lessons, tests and activities based on the Bulgarian national curriculum, and answers questions on Bulgarian education law. It works in English and is free in Claude, ChatGPT, Gemini, Grok, DeepSeek or BgGPT."
+
+package:
+  repo: "https://github.com/angel-georgiev/daskal.ai"
+  zip: "https://github.com/angel-georgiev/daskal.ai/raw/HEAD/download/daskal.zip"
+  zip_size: "1.6 MB"
+  licence: "MIT"
+  icon: "daskal-icon.png"
+  icon_alt: "The daskal.AI icon: a brain, half human, half circuit board"
+
+hero:
+  eyebrow: "daskal.AI · 2025 → today"
+  h1: "daskal.AI is back. Right inside your AI assistant."
+  sub: "In March 2025 I launched daskal.AI as the first free AI assistant for Bulgarian teachers. The new version prepares annual plans, lessons, tests and activities based on the Bulgarian national curriculum and answers questions on Bulgarian education law. Write to it in English and it answers in English. You install it for free in Claude, ChatGPT, Gemini, Grok, DeepSeek or BgGPT."
+  cta: { text: "Install it in your AI ↓", small: "Free, works with free accounts too", href: "#install" }
+
+notice:
+  heading: "Built for the Bulgarian education system"
+  text: "daskal.AI works with the 112 Bulgarian national curricula for grades 1–12 and the full texts of 38 Bulgarian laws and regulations. It suits teachers who work in Bulgarian schools or follow the Bulgarian curriculum, in English or in Bulgarian. It is an assistant, not legal advice: for important decisions, check the official text in the State Gazette."
+
+story:
+  heading: "What daskal.AI is"
+  facts:
+    - "It started as Daskal GPT at the end of 2024, a free tool for Bulgarian teachers. On 17 March 2025 I launched it for everyone."
+    - "Teachers used it to prepare their lessons: ideas, lesson plans, tasks and assessment."
+    - "For it I received the personal award of b2b Media 2025 in the category “AI in education and science”."
+  why:
+    heading: "Why it is back"
+    text: "Over the past six months I received many requests about daskal.AI. So it is back, free and with all its features, right inside the AI assistant you already use. The new version knows the 112 national curricula for grades 1–12 and the full texts of 38 laws and regulations, current as of 12 November 2026."
+
+install:
+  id: install
+  heading: "Install it in your AI"
+  intro: "Download daskal.zip and upload it to the assistant you use. Unzip it only if the steps for your assistant say so."
+  note: "I checked these steps in November 2026. The platforms change their menus. If a button has a different name, look for Plugins, Skills or Upload."
+  download_button: "Download daskal.zip"
+  repo_link: "The files on GitHub →"
+  tabs:
+    - key: claude
+      label: "Claude"
+      availability: "Plugin · works with a free account"
+      steps:
+        - "Open claude.ai or the desktop app."
+        - "In the side menu, open Plugins. In older versions the path is Customize → Plugins."
+        - "Click Add → Upload plugin and choose daskal.zip."
+        - "In a new chat, type /. daskal should be in the list."
+      notes:
+        - "The plugin is saved to your account and also works in the Claude mobile app."
+        - "For automatic updates, at step 3 choose Add → Add marketplace, enter angel-georgiev/daskal.ai, add daskal and turn on Sync automatically."
+        - "If Claude doesn't see the plugin, open Settings → Capabilities and turn on Code execution and file creation (in the new layout: Create and edit files)."
+    - key: chatgpt
+      label: "ChatGPT"
+      availability: "Plugin · works with a free account"
+      steps:
+        - "Open chatgpt.com on a computer."
+        - "Open the Plugins page from the side menu."
+        - "Click Add next to the search field and choose Upload plugin archive."
+        - "Choose daskal.zip. ChatGPT checks the archive before it adds the plugin."
+    - key: gemini
+      label: "Gemini"
+      availability: "Skill · works with a free account, on a computer only"
+      steps:
+        - "Unzip daskal.zip. On Windows: right-click → Extract All. On a Mac: double-click."
+        - "Open gemini.google.com."
+        - "In the side menu, click Customize. If you don't see it, click More first."
+        - "At the top, choose Skills, then Create → Upload."
+        - "Choose SKILL.md and click Open."
+        - "Add all files from the references/ folder. The files from scripts/ are optional."
+        - "Click Upload, review the skill and click Create."
+    - key: grok
+      label: "Grok"
+      availability: "Attached archive · works with a free account"
+      steps:
+        - "Open a new chat on grok.com."
+        - "Attach daskal.zip with the paperclip."
+        - "Write “Act as daskal” and your task."
+      notes:
+        - "Grok doesn't keep the attached file between chats. Attach it in every new chat."
+    - key: other
+      label: "DeepSeek and others"
+      availability: "Attached files · for assistants without plugins or skills"
+      steps:
+        - "Unzip daskal.zip."
+        - "In a new chat, attach SKILL.md, references/tematichna-karta.md and references/osnova.md."
+        - "If you ask about a specific law or regulation, also attach the matching zakon-….txt."
+        - "Write “Follow the instructions in SKILL.md” and your task."
+    - key: bggpt
+      label: "BgGPT"
+      availability: "Three attached files · works with a free account"
+      steps:
+        - "Unzip daskal.zip."
+        - "Attach SKILL.md, references/tematichna-karta.md and references/osnova.md."
+        - "Write your task."
+      notes:
+        - "The three files are enough for lessons, plans, tests, activities and most questions on regulations. When an exact article of a law is needed, the assistant tells you which zakon-….txt to attach in your next message."
+    - key: claude-code
+      label: "Claude Code"
+      availability: "For AI agents · two commands"
+      copy_blocks:
+        - "claude plugin marketplace add angel-georgiev/daskal.ai"
+        - "claude plugin install daskal@daskal-ai"
+
+usage:
+  heading: "How to work with daskal.AI"
+  intro: "Open a new chat and write your task, for example “Make me a lesson on the Liberation of Bulgaria for grade 4”. You can also start with “Act as daskal”. Write in English and it answers in English."
+  tips:
+    - { title: "A short request is enough.", text: "If you don't give a grade or the number of hours, daskal.AI picks a sensible value and states it in its first sentence so you can correct it." }
+    - { title: "Describe yourself once.", text: "daskal.AI doesn't remember earlier chats. Save your subject, grades, textbooks and hours in your assistant's personal instructions or in a project's instructions. daskal.AI offers you ready text for this." }
+    - { title: "Check before you use it.", text: "daskal.AI names the curriculum and the article it relies on. Under Bulgarian school law (Art. 219), the teacher chooses the methods, so the last word is yours." }
+  disclaimer: "daskal.AI is an assistant, not legal advice. For important decisions, check the text in the State Gazette."
+
+other_system:
+  heading: "Teaching under another curriculum?"
+  text: "daskal.AI follows the Bulgarian system today. If you would like something like it for your country or school system, drop me a line and we will see what is possible."
+  button: "Write to me →"
+  href: "mailto:angel@daskal.ai?subject=daskal.AI%20for%20another%20education%20system"
+
+support:
+  heading: "Want daskal.AI to work for your subject?"
+  text: "In a 45-minute session we will set up daskal.AI for your subject and classes, and I will help with anything else you need. After the session you receive a one-page plan, and if the session did not help you, I refund your money. Installing it is fully covered on this page and needs no paid help."
+  button: "Ask for my help →"
+  href: "/en/support/"
+
+press:
+  heading: "Press about daskal.AI (in Bulgarian)"
+  items:
+    - { outlet: "Bloomberg TV", title: "A Bulgarian AI tool could raise the level of Bulgarian schools", url: "https://www.bloombergtv.bg/a/28-update/142959-balgarski-ai-instrument-nosi-potentsiala-da-se-vdigne-nivoto-v-balgarskoto-uchilishte" }
+    - { outlet: "Bulgaria ON AIR", title: "Daskal GPT saves a lot of time and gives teachers fresh ideas", url: "https://www.bgonair.bg/a/36-sutreshen-blok/385521-daskal-gpt-spestyava-mnogo-vreme-i-dava-svezhi-idei-na-uchitelite" }
+    - { outlet: "Radio Focus", title: "“Daskal GPT” helps with everything a teacher could need", url: "https://www.focus-news.net/novini/Bylgaria/Angel-Georgiev-Daskal-GPT-pomaga-s-vsichko-ot-koeto-edin-uchitel-bi-imal-nuzhda-predi-da-vleze-v-chas-2494110" }
+    - { outlet: "Economy.bg", title: "Bulgaria's first free AI tool for teachers launches", url: "https://economy.bg/innovations/view/60990/Daskal-GPT-V-Bylgariya-startira-pyrviya-bezplaten-AI-instrument-za-uchiteli" }
+    - { outlet: "Digitalk", title: "Transform IT Awards ’25: Daskal GPT", url: "https://digitalk.bg/digitalk_awards/2025/03/12/4755597_transform_it_awards_25_ai_instrumentut_daskal_gpt/" }
+
+next:
+  heading: "More from me"
+  links:
+    - { text: "Who is Angel Georgiev →", href: "/en/" }
+    - { text: "The Green Book of Learning (in Bulgarian) →", href: "/book/" }
+
+legacy_redirects:
+  paths: {}
