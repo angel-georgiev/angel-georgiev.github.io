@@ -33,8 +33,11 @@ async function focalCrop(path: string, focal: [number, number], w: number, h: nu
 type El = { type: string; props: Record<string, unknown> };
 const h = (type: string, style: Record<string, unknown>, children?: unknown): El => ({ type, props: { style, children } });
 
-export async function ogPng(o: { kicker: string; title: string; highlight?: string; name: string; photoPath: string; focal: [number, number] }) {
-  const photo = await focalCrop(o.photoPath, o.focal, 400, 500);
+export async function ogPng(o: { kicker: string; title: string; highlight?: string; name: string; photoPath: string; focal: [number, number]; square?: boolean }) {
+  const [pw, ph] = o.square ? [400, 400] : [400, 500];
+  const photo = o.square
+    ? `data:image/png;base64,${(await sharp(o.photoPath).resize(pw, ph).png().toBuffer()).toString('base64')}`
+    : await focalCrop(o.photoPath, o.focal, pw, ph);
   // Satori has no inline layout: flow the title word by word so the highlight continues on the same line.
   const words = (t: string, color: string) => t.split(/\s+/).filter(Boolean).map((w) => h('span', { color, marginRight: 16 }, w));
   const titleParts: El[] = [...words(o.title, C.text), ...(o.highlight ? words(o.highlight, C.gold) : [])];
@@ -47,7 +50,7 @@ export async function ogPng(o: { kicker: string; title: string; highlight?: stri
       ]),
       h('div', { display: 'flex', height: 1 }),
     ]),
-    { type: 'img', props: { src: photo, width: 400, height: 500, style: { borderRadius: 24, alignSelf: 'center', flexShrink: 0 } } },
+    { type: 'img', props: { src: photo, width: pw, height: ph, style: { borderRadius: 24, alignSelf: 'center', flexShrink: 0 } } },
   ]);
   const svg = await satori(tree as any, { width: 1200, height: 630, fonts });
   return new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();

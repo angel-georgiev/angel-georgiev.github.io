@@ -1,14 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
-import { load } from '../lib/content';
+import { load, inPhase } from '../lib/content';
 const site = await load('site');
 const n = site.pages.not_found;
+const dk = await load('daskal');
+const daskalNav = site.nav.find((x) => x.key === 'daskal');
+const showDaskal = !!daskalNav && inPhase(daskalNav);
+const legacy = dk.legacy_redirects.paths;
 ---
 <Base theme="light" title={n.meta_title} description={n.text} noindex>
+  {Object.keys(legacy).length > 0 && (
+    <script slot="head" is:inline define:vars={{ legacy }}>
+      // Old daskal.ai paths (daskal.yml → legacy_redirects): exact path, with or without trailing slash.
+      (function () { var p = location.pathname.replace(/\/+$/, '') || '/'; var t = legacy[p] || legacy[p + '/']; if (t) location.replace(t); })();
+    </script>
+  )}
   <section class="wrap nf">
     <h1>{n.h1}</h1>
     <p class="lede">{n.text}</p>
-    <p class="links"><a class="textlink" href="/">{n.home}</a><a class="textlink" href="/support/">{n.support}</a></p>
+    <p class="links"><a class="textlink" href="/">{n.home}</a><a class="textlink" href="/support/">{n.support}</a>{showDaskal && daskalNav && <a class="textlink" href={daskalNav.href}>{daskalNav.bg} →</a>}</p>
   </section>
 </Base>
 <style>

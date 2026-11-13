@@ -10,6 +10,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const co = await load('companies');
   const r = await load('resume');
   const su = await load('support');
+  const dk = await load('daskal');
   const name = site.person.name.bg;
   const supTitle = su.page.h1.replace(su.page.h1_highlight, '').trim();
   return [
@@ -17,13 +18,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
     { params: { page: 'schools' }, props: { name, kicker: sc.hero.kicker, title: sc.hero.h1_before, highlight: sc.hero.h1_highlight, photoId: sc.hero.photo } },
     { params: { page: 'companies' }, props: { name, kicker: co.hero.kicker, title: co.hero.h1_before, highlight: co.hero.h1_highlight, photoId: co.hero.photo } },
     { params: { page: 'resume' }, props: { name, kicker: r.header.role, title: r.meta.title.split('|')[0].trim(), photoId: r.header.photo } },
+    { params: { page: 'daskal' }, props: { name, kicker: dk.hero.eyebrow, title: dk.hero.h1, iconFile: dk.package.icon } },
     { params: { page: 'support' }, props: { name, kicker: su.product.name, title: supTitle, highlight: su.page.h1_highlight, photoId: su.page.proof.photo } },
   ];
 };
 
 export const GET: APIRoute = async ({ props }) => {
-  const p = await photo(props.photoId);
-  const path = join(process.cwd(), 'src/assets/photos', p.file);
-  const png = await ogPng({ name: props.name, kicker: props.kicker, title: props.title, highlight: props.highlight, photoPath: path, focal: p.focal as [number, number] });
+  const base = { name: props.name, kicker: props.kicker, title: props.title, highlight: props.highlight };
+  let png;
+  if (props.iconFile) {
+    png = await ogPng({ ...base, photoPath: join(process.cwd(), 'src/assets/daskal', props.iconFile), focal: [50, 50], square: true });
+  } else {
+    const p = await photo(props.photoId);
+    png = await ogPng({ ...base, photoPath: join(process.cwd(), 'src/assets/photos', p.file), focal: p.focal as [number, number] });
+  }
   return new Response(new Uint8Array(png), { headers: { 'Content-Type': 'image/png' } });
 };

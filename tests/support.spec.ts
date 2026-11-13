@@ -53,8 +53,9 @@ test('/support/: testimonials block absent, two CTAs in the right places', async
   for (const t of [s.page.guarantee.heading]) { const v = await y(h(t)); expect(v).toBeGreaterThan(cta1); expect(v).toBeLessThan(cta2); }
   const price = await y('.price-card');
   expect(price).toBeGreaterThan(cta1); expect(price).toBeLessThan(cta2);
-  // Phase 2 item hidden
-  await expect(page.getByText('Даскал AI за вашия предмет')).toHaveCount(0);
+  // Phase 2 is on: the Daskal item shows
+  const dk = s.page.for_what.items.find((i: any) => typeof i === 'object' && i.phase === 2);
+  await expect(page.getByText(dk.text)).toHaveCount(1);
 });
 
 test('/support/thanks/ is noindex and has the fallback line', async ({ page }) => {
