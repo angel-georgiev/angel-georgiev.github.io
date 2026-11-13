@@ -58,6 +58,7 @@ if (cfToken && !/^[0-9a-f]{32}$/i.test(cfToken)) throw new Error('site.yml: anal
     {bare ? <slot /> : (
       <>
         <a class="skip-link" href="#main">{site.ui.skip_link.bg}</a>
+        <slot name="top" />
         <Header />
         <main id="main" tabindex="-1"><slot /></main>
         <Footer credit={credit} />

@@ -17,6 +17,10 @@ const { offers } = await load('offers');
 const ph = await photo(l.hero.photo);
 const covers = import.meta.glob<{ default: ImageMetadata }>('/src/assets/book/*', { eager: true });
 const cover = covers[`/src/assets/book/${site.book.cover.file}`]?.default;
+const dk = await load('daskal');
+const dkIcons = import.meta.glob<{ default: ImageMetadata }>('/src/assets/daskal/*', { eager: true });
+const dkIcon = dkIcons[`/src/assets/daskal/${dk.package.icon}`]?.default;
+if (!dkIcon) throw new Error('daskal icon missing');
 if (!cover) throw new Error(`book cover missing: src/assets/book/${site.book.cover.file}`);
 
 // Lede with the bold phrase (landing.yml: lede + lede_bold)
@@ -31,6 +35,13 @@ const cards = order.map((k) => {
 const jsonld = await profilePage(Astro.site!, new URL('/', Astro.site).href);
 ---
 <Base theme="dark" title={l.meta.title} description={l.meta.description} credit={ph.credit} jsonld={jsonld} ogImage="/og/index.png">
+  {inPhase(l.daskal_banner) && (
+    <a slot="top" class="daskal-banner" href={l.daskal_banner.href}>
+      <Picture src={dkIcon} alt="" width={28} widths={[28, 56]} sizes="28px" formats={['avif', 'webp']} class="dk-banner-icon" loading="eager" />
+      <span>{l.daskal_banner.text}<span class="dk-more"> {l.daskal_banner.text_more}</span></span>
+      <span aria-hidden="true">→</span>
+    </a>
+  )}
   <div class="wrap">
     <section class="hero home-hero">
       <div class="hero-text">
@@ -102,7 +113,6 @@ const jsonld = await profilePage(Astro.site!, new URL('/', Astro.site).href);
       </div>
     </section>
   </div>
-  {inPhase(l.daskal_banner) && <a class="daskal-banner" href={l.daskal_banner.href}>{l.daskal_banner.text}</a>}
 </Base>
 
 <style>
@@ -139,6 +149,14 @@ const jsonld = await profilePage(Astro.site!, new URL('/', Astro.site).href);
   @media (min-width: 760px) { .book { grid-template-columns: 240px 1fr; gap: 2.5rem; } }
   .book :global(.cover) { width: 180px; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.35); }
   @media (min-width: 760px) { .book :global(.cover) { width: 240px; } }
-  .daskal-banner { display: block; text-align: center; padding: 0.9rem var(--gutter); margin-top: 2.5rem; background: var(--surface); border-block: 1px solid var(--border); color: var(--gold-text); font-weight: 800; text-decoration: none; }
+  .daskal-banner {
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 48px;
+    padding: 0.55rem var(--gutter); background: var(--gold); color: var(--on-gold);
+    font-weight: 800; font-size: 0.95rem; text-decoration: none; text-align: center;
+  }
   .daskal-banner:hover { text-decoration: underline; }
+  .daskal-banner:focus-visible { outline-color: var(--on-gold); outline-offset: -4px; }
+  .daskal-banner :global(.dk-banner-icon) { width: 28px; height: 28px; border-radius: 22%; flex: none; }
+  .dk-more { display: none; }
+  @media (min-width: 640px) { .dk-more { display: inline; } }
 </style>
