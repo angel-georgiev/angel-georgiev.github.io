@@ -48,6 +48,7 @@ const jsonld = {
       <div class="head-text">
         <h1>{r.header.name}</h1>
         <p class="role">{r.header.role}</p>
+        <p class="pron"><span class="pron-label">{press.pronunciation.label[lang]}:</span> <span lang={lang === 'en' ? 'en' : 'bg'}>{press.pronunciation.text[lang]}</span></p>
         <div class="bio card">
           <div class="bio-top">
             <h2>{r.bio.heading}</h2>
@@ -83,7 +84,6 @@ const jsonld = {
     <section class="section press" id="press">
       <h2>{press.meta.title[lang].split('|')[0].trim()}</h2>
       <p class="muted">{press.intro[lang]}</p>
-      <p class="pron"><span class="pron-label">{press.pronunciation.label[lang]}:</span> {press.pronunciation.text[lang]}</p>
       <div class="bios">
         {press.bios.map((b) => (
           <div class="card bio-item">
@@ -213,7 +213,7 @@ const jsonld = {
   .bio-item p { max-width: none; font-size: 0.95rem; }
   .bio-item p:last-child { margin-bottom: 0; }
   .bio-item .bio-top h3 { font-size: 1.15rem; margin: 0; }
-  .pron { margin: 0.75rem 0 0; }
+  .pron { margin: -0.6rem 0 1.1rem; font-size: 0.9rem; color: var(--text-muted); }
   .pron-label { font-weight: 700; }
   .topics-h { margin-top: 1.5rem; }
   .topics { margin: 0; padding-left: 1.2rem; }
