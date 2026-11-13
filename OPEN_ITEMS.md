@@ -69,8 +69,6 @@ _None._
 
 ### English-only values and later-phase files (information only)
 
-| Where | Kind | Line |
-|---|---|---|
-| `content/en/support.yml:15` | value | `stripe_link: "TBD — Angel creates the English Stripe Payment Link"` |
+_None._
 
 <!-- AUTO:END -->
