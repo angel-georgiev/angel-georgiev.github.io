@@ -16,7 +16,7 @@ hero:
 
 logos:
   label: "Организации, с които съм работил като обучител и консултант"
-  items: ["Sony", "Samsung", "SoftUni", "Avenga (Musala Soft)", "ITCE", "UniCredit Bulbank", "Coca-Cola", "Postbank", "Huvepharma", "DXC Technology", "KPMG"]   # grayscale logos on the site
+  items: ["Sony", "Samsung", "SoftUni", "Avenga (Musala Soft)", "ITCE", "UniCredit Bulbank", "Coca-Cola", "Postbank", "Huvepharma", "DXC Technology", "KPMG"]   # shown as text; no logo files (Angel, 13 Nov 2026)
 
 how:
   kicker: "Как работя"
