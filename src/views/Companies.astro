@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Steps from '../components/Steps.astro';
+import Btn from '../components/Btn.astro';
+import LogoStrip from '../components/LogoStrip.astro';
+import { load, photo, nbsp } from '../lib/content';
+import { langFromPath } from '../lib/i18n';
+const lang = langFromPath(Astro.url.pathname);
+const c = await load('companies', lang);
+const ph = await photo(c.hero.photo, lang);
+const fields = ['ask', 'problem', 'decision', 'result'] as const;
+---
+<Base theme="light" title={c.meta.title} description={c.meta.description} credit={ph.credit} ogImage={lang === 'en' ? '/og/en-companies.png' : '/og/companies.png'}>
+  <div class="wrap">
+    <PageHero kicker={c.hero.kicker} before={c.hero.h1_before} highlight={c.hero.h1_highlight} lede={c.hero.lede}
+      primary={c.hero.cta_primary} secondary={c.hero.cta_secondary} photo={c.hero.photo} />
+
+    <LogoStrip label={c.logos.label} items={c.logos.items} />
+
+    <section class="section">
+      <SectionHead kicker={c.how.kicker} h2={c.how.h2} />
+      <Steps items={c.how.steps} cols={3} />
+    </section>
+
+    <section class="section" id={c.services.id}>
+      <SectionHead kicker={c.services.kicker} h2={c.services.h2} />
+      <div class="services">
+        {c.services.items.map((s) => (
+          <article class:list={['service', { featured: s.featured }]}>
+            <p class="label">{s.label}</p>
+            <h3>{s.title}</h3>
+            <ul>{s.bullets.map((b) => <li>{b}</li>)}</ul>
+            <p class="price">{nbsp(s.price)}</p>
+            {s.price_note && <p class="note">{s.price_note}</p>}
+            <a class="go" href={s.cta.href}>{s.cta.text}</a>
+          </article>
+        ))}
+      </div>
+      <p class="also">{c.services.also}</p>
+    </section>
+
+    <section class="section">
+      <SectionHead kicker={c.cases.kicker} h2={c.cases.h2} />
+      <div class="grid-2">
+        {c.cases.items.map((k) => (
+          <article class="card case">
+            <h3>{k.title}</h3>
+            <p class="meta">{k.meta}</p>
+            <dl class="parts">{fields.map((f) => <div><dt>{c.cases.labels[f]}</dt><dd>{k[f]}</dd></div>)}</dl>
+          </article>
+        ))}
+      </div>
+      <ul class="chips">{c.cases.credentials.map((x) => <li>{x}</li>)}</ul>
+    </section>
+
+    <section class="section">
+      <div class="gold-block">
+        <h2>{c.final_cta.h2}</h2>
+        <p>{c.final_cta.text}</p>
+        <Btn variant="dark" text={c.final_cta.cta.text} href={c.final_cta.cta.href} />
+      </div>
+    </section>
+  </div>
+</Base>
+<style>
+  .services { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .services { grid-template-columns: 1.2fr 1fr 1fr; } }
+  .service { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.3rem 1.3rem 1.4rem; }
+  .service .label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.35rem; color: var(--text-muted); }
+  .service h3 { font-size: 1.3rem; }
+  .service ul { margin: 0 0 1rem; padding-left: 1.1rem; font-size: 0.88rem; color: var(--text-muted); }
+  .service li { margin-bottom: 0.25rem; }
+  .service .price { margin: auto 0 0.2rem; font-family: var(--font-display); font-weight: 900; font-size: 1.7rem; line-height: 1.1; }
+  .service .note { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 0.6rem; }
+  .go { align-self: flex-start; margin-top: 0.6rem; font-weight: 800; text-decoration-thickness: 2px; text-underline-offset: 0.35em; padding-block: 0.25rem; }
+  .featured { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+  .featured .label, .featured ul, .featured .note, .featured .go { color: var(--on-gold); }
+  .also { margin-top: 1rem; background: color-mix(in srgb, var(--border) 45%, transparent); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1.1rem; font-size: 0.9rem; color: var(--text-muted); max-width: none; }
+  .case .meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+  .parts { margin: 0; display: grid; gap: 0.8rem; }
+  .parts dt { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-text); }
+  .parts dd { margin: 0.15rem 0 0; font-size: 0.92rem; }
+  .chips { list-style: none; margin: 1.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chips li { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.85rem; font-size: 0.8rem; font-weight: 700; }
+</style>

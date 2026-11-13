@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Numbers from '../components/Numbers.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Steps from '../components/Steps.astro';
+import CheckList from '../components/CheckList.astro';
+import Btn from '../components/Btn.astro';
+import T from '../components/T.astro';
+import { load, photo, nbsp } from '../lib/content';
+import { langFromPath } from '../lib/i18n';
+const lang = langFromPath(Astro.url.pathname);
+const c = await load('schools', lang);
+const ph = await photo(c.hero.photo, lang);
+---
+<Base theme="light" title={c.meta.title} description={c.meta.description} credit={ph.credit} ogImage={lang === 'en' ? '/og/en-schools.png' : '/og/schools.png'}>
+  <div class="wrap">
+    <PageHero kicker={c.hero.kicker} before={c.hero.h1_before} highlight={c.hero.h1_highlight} lede={c.hero.lede}
+      partner={c.hero.partner} primary={c.hero.cta_primary} secondary={c.hero.cta_secondary} photo={c.hero.photo} />
+
+    <section class="numbers-wrap"><Numbers items={c.proof_numbers} /></section>
+
+    <section class="section" id={c.program.id}>
+      <SectionHead kicker={c.program.kicker} h2={c.program.h2} intro={c.program.for_whom} />
+      {c.program.draft_note && <p><T s={c.program.draft_note} /></p>}
+      <Steps items={c.program.blocks} cols={4} />
+    </section>
+
+    <section class="section">
+      <SectionHead h2={c.project.heading} intro={c.project.text} />
+      <Steps items={c.project.parts} cols={3} />
+    </section>
+
+    <section class="section grid-2 includes">
+      <div class="card">
+        <h2 class="h3">{c.includes.heading}</h2>
+        <CheckList items={c.includes.items} />
+      </div>
+      <div class="price-card">
+        <p class="price">{nbsp(c.includes.price)}</p>
+        <p class="muted">{c.includes.price_note}</p>
+        <p class="partner">{c.hero.partner}</p>
+        <Btn variant="gold" text={c.hero.cta_primary.text} href={c.hero.cta_primary.href} />
+      </div>
+    </section>
+
+    <section class="section">
+      <SectionHead h2={c.how.heading} />
+      <Steps items={c.how.steps} cols={4} />
+    </section>
+
+    <section class="section">
+      <SectionHead h2={c.why.heading} />
+      <CheckList items={c.why.items} />
+      <p class="individual">{c.individual.text} <a href={c.individual.cta.href}>{c.individual.cta.text}</a></p>
+    </section>
+
+    <section class="section">
+      <div class="gold-block final">
+        <div>
+          <h2>{c.final_cta.h2}</h2>
+          <p>{c.final_cta.text}</p>
+        </div>
+        <Btn variant="dark" text={c.final_cta.cta.text} href={c.final_cta.cta.href} />
+      </div>
+    </section>
+  </div>
+</Base>
+<style>
+  .numbers-wrap { border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 2rem; }
+  .h3 { font-size: var(--fs-md); }
+  .includes { align-items: stretch; }
+  .price-card {
+    border: 2px solid var(--gold); border-radius: var(--radius-lg); background: var(--surface);
+    padding: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  }
+  .price { font-family: var(--font-display); font-weight: 900; font-size: clamp(2.8rem, 6vw, 3.6rem); line-height: 1; margin: 0 0 0.5rem; }
+  .price-card .partner { font-size: 0.8rem; font-weight: 800; color: var(--gold-text); }
+  .individual { margin-top: 1.25rem; }
+  .final { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center; justify-content: space-between; }
+  .final p { margin: 0; }
+</style>

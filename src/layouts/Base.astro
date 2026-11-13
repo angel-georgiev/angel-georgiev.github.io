@@ -7,6 +7,7 @@ import bodyFont from '@fontsource-variable/sofia-sans/files/sofia-sans-cyrillic-
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { load } from '../lib/content';
+import { langFromPath, pathIn, type Lang } from '../lib/i18n';
 
 interface Props {
   title: string;
@@ -19,9 +20,16 @@ interface Props {
   ogImage?: string;          // path under the site, e.g. /og/index.png
   bare?: boolean;            // no header/footer (redirect pages)
   noTracking?: boolean;      // never load analytics (e.g. /support/thanks/)
+  alternate?: string | false; // same page in the other language; false = none (404, redirects)
 }
 const { title, description, theme, credit, noindex = false, canonical, jsonld, ogImage, bare = false, noTracking = false } = Astro.props;
 const site = await load('site');
+const lang: Lang = langFromPath(Astro.url.pathname);
+const other: Lang = lang === 'bg' ? 'en' : 'bg';
+const altPath = Astro.props.alternate === false || bare ? undefined : (Astro.props.alternate ?? pathIn(Astro.url.pathname, other));
+const draft = site.i18n.en_draft;
+// English pages stay out of search engines while in draft (Angel reviews them live first)
+const robotsNoindex = noindex || (lang === 'en' && draft);
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 const og = ogImage ? new URL(ogImage, Astro.site).href : undefined;
 const cfToken = site.analytics.cloudflare_token.trim();
@@ -29,20 +37,23 @@ const analytics = !noTracking && !bare && /^[0-9a-f]{32}$/i.test(cfToken);
 if (cfToken && !/^[0-9a-f]{32}$/i.test(cfToken)) throw new Error('site.yml: analytics.cloudflare_token must be the 32-character hex token from Cloudflare');
 ---
 <!doctype html>
-<html lang="bg" data-theme={theme}>
+<html lang={lang} data-theme={theme}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {robotsNoindex && <meta name="robots" content="noindex" />}
+    {altPath && !draft && !noindex && <link rel="alternate" hreflang={lang} href={canonicalUrl} />}
+    {altPath && !draft && !noindex && <link rel="alternate" hreflang={other} href={new URL(altPath, Astro.site).href} />}
+    {altPath && !draft && !noindex && <link rel="alternate" hreflang="x-default" href={new URL(lang === 'bg' ? Astro.url.pathname : altPath, Astro.site).href} />}
     <meta name="theme-color" content={theme === 'dark' ? '#10261D' : '#F4EFE4'} />
     <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="bg_BG" />
-    <meta property="og:site_name" content={site.person.name.bg} />
+    <meta property="og:locale" content={lang === 'bg' ? 'bg_BG' : 'en_GB'} />
+    <meta property="og:site_name" content={site.person.name[lang]} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -57,12 +68,53 @@ if (cfToken && !/^[0-9a-f]{32}$/i.test(cfToken)) throw new Error('site.yml: anal
   <body>
     {bare ? <slot /> : (
       <>
-        <a class="skip-link" href="#main">{site.ui.skip_link.bg}</a>
+        <a class="skip-link" href="#main">{site.ui.skip_link[lang]}</a>
         <slot name="top" />
-        <Header />
+        <Header lang={lang} altPath={altPath} />
         <main id="main" tabindex="-1"><slot /></main>
-        <Footer credit={credit} />
+        <Footer credit={credit} lang={lang} />
+        {altPath && (
+          <div class="lang-bar" data-lang-bar data-page-lang={lang} hidden>
+            <p lang={other}>{site.ui.lang_suggest[lang]} <a href={altPath} data-lang-choice={other} hreflang={other}>{site.ui.lang_suggest_go[lang]}</a></p>
+            <button type="button" class="lang-close" data-lang-close aria-label={site.ui.close[lang]}>×</button>
+          </div>
+        )}
       </>
+    )}
+    {altPath && (
+      <script is:inline>
+        // One-time language suggestion (Angel, 13 Nov 2026): never redirects. Shows when the browser language
+        // doesn't match the page; any choice (go, close, or the header switch) is remembered in this browser.
+        (function () {
+          var KEY = 'lang-choice';
+          var bar = document.querySelector('[data-lang-bar]');
+          if (!bar) return;
+          var remember = function (v) { try { localStorage.setItem(KEY, v); } catch (e) {} };
+          document.querySelectorAll('[data-lang-choice]').forEach(function (a) { a.addEventListener('click', function () { remember(a.getAttribute('data-lang-choice')); }); });
+          var seen = null; try { seen = localStorage.getItem(KEY); } catch (e) {}
+          if (seen) return;
+          var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(function (l) { return String(l).toLowerCase(); });
+          var page = bar.getAttribute('data-page-lang');
+          var wantsBg = langs.some(function (l) { return l.indexOf('bg') === 0; });
+          var firstBg = (langs[0] || '').indexOf('bg') === 0;
+          if ((page === 'bg' && !wantsBg) || (page === 'en' && firstBg)) {
+            bar.hidden = false;
+            bar.querySelector('[data-lang-close]').addEventListener('click', function () { bar.hidden = true; remember(page); });
+          }
+        })();
+      </script>
     )}
   </body>
 </html>
+<style>
+  .lang-bar {
+    position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 50; width: min(560px, calc(100vw - 32px));
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 0.6rem 0.7rem 1rem;
+    background: #f4efe4; color: #10261d; border: 2px solid #d9a441; border-radius: 14px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.3);
+  }
+  .lang-bar[hidden] { display: none; }
+  .lang-bar p { margin: 0; flex: 1; font-size: 0.92rem; font-weight: 600; }
+  .lang-bar a { color: #237653; font-weight: 800; }
+  .lang-close { flex: none; width: 40px; height: 40px; border: 0; border-radius: 10px; background: transparent; color: #10261d; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+  .lang-close:hover { background: #ddd5c4; }
+</style>

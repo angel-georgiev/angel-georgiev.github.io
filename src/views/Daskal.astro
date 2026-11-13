@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import Btn from '../components/Btn.astro';
+import Tabs from '../components/Tabs.astro';
+import CheckList from '../components/CheckList.astro';
+import CopyButton from '../components/CopyButton.astro';
+import { Picture } from 'astro:assets';
+import { load } from '../lib/content';
+import { person } from '../lib/jsonld';
+
+import { langFromPath } from '../lib/i18n';
+const lang = langFromPath(Astro.url.pathname);
+const d = await load('daskal', lang);
+const site = await load('site');
+const icons = import.meta.glob<{ default: ImageMetadata }>('/src/assets/daskal/*', { eager: true });
+const icon = icons[`/src/assets/daskal/${d.package.icon}`]?.default;
+if (!icon) throw new Error(`daskal icon missing: src/assets/daskal/${d.package.icon}`);
+const ins = d.install;
+
+const p = await person(Astro.site!, lang);
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'daskal.AI',
+  alternateName: ['Даскал AI', 'Даскал GPT'],
+  description: d.meta.description,
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: ins.tabs.map((t) => t.label).join(', '),
+  inLanguage: lang,
+  isAccessibleForFree: true,
+  license: `https://opensource.org/license/${d.package.licence.toLowerCase()}`,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  downloadUrl: d.package.zip,
+  codeRepository: d.package.repo,
+  author: p,
+  url: new URL(Astro.url.pathname, Astro.site).href,
+};
+---
+<Base theme="dark" title={d.meta.title} description={d.meta.description} jsonld={jsonld} ogImage={lang === 'en' ? '/og/en-daskal.png' : '/og/daskal.png'}>
+  <div class="wrap">
+    <section class="hero dk-hero">
+      <div>
+        <p class="kicker">{d.hero.eyebrow}</p>
+        <h1>{d.hero.h1}</h1>
+        <p class="lede">{d.hero.sub}</p>
+        <div class="cta-row"><Btn variant="gold" text={d.hero.cta.text} small={d.hero.cta.small} href={d.hero.cta.href} /></div>
+      </div>
+      <div class="dk-icon-wrap"><Picture src={icon} alt={d.package.icon_alt} width={320} widths={[200, 320, 640]} sizes="(min-width: 900px) 320px, 200px" formats={['avif', 'webp']} class="dk-icon" loading="eager" fetchpriority="high" /></div>
+    </section>
+
+    {d.notice && (
+      <section class="section">
+        <div class="notice card"><h2 class="h3">{d.notice.heading}</h2><p>{d.notice.text}</p></div>
+      </section>
+    )}
+
+    <section class="section grid-2 story">
+      <div class="card"><h2 class="h3">{d.story.heading}</h2><CheckList items={d.story.facts} /></div>
+      <div class="card"><h2 class="h3">{d.story.why.heading}</h2><p>{d.story.why.text}</p></div>
+    </section>
+
+    <section class="section" id={ins.id}>
+      <h2>{ins.heading}</h2>
+      <p class="lede">{ins.intro}</p>
+      <div class="dl-row">
+        <Btn variant="gold" text={ins.download_button} small={`ZIP · ${d.package.zip_size} · ${d.package.licence}`} href={d.package.zip} />
+        <a class="textlink" href={d.package.repo}>{ins.repo_link}</a>
+      </div>
+      <Tabs id="install-tabs" label={ins.heading} tabs={ins.tabs.map((t) => ({ key: t.key, label: t.label }))}>
+        {ins.tabs.map((t) => (
+          <div class="panel card" id={`install-tabs-panel-${t.key}`}>
+            <h3 class="panel-h">{t.label}</h3>
+            <p class="avail">{t.availability}</p>
+            {t.steps && <ol class="steps-list">{t.steps.map((s) => <li>{s}</li>)}</ol>}
+            {t.copy_blocks && t.copy_blocks.map((c) => (
+              <div class="codeblock"><pre><code>{c}</code></pre><CopyButton text={c} label={site.ui.copy[lang]} copied={site.ui.copied[lang]} /></div>
+            ))}
+            {t.notes && <ul class="notes">{t.notes.map((n) => <li>{n}</li>)}</ul>}
+          </div>
+        ))}
+      </Tabs>
+      <p class="note">{ins.note}</p>
+    </section>
+
+    <section class="section">
+      <h2>{d.usage.heading}</h2>
+      <p class="lede">{d.usage.intro}</p>
+      <div class="grid-3 tips">
+        {d.usage.tips.map((t) => <div class="card"><h3>{t.title}</h3><p>{t.text}</p></div>)}
+      </div>
+      <p class="note">{d.usage.disclaimer}</p>
+    </section>
+
+    {d.other_system && (
+      <section class="section">
+        <div class="other card">
+          <div><h2 class="h3">{d.other_system.heading}</h2><p>{d.other_system.text}</p></div>
+          <Btn variant="outline" text={d.other_system.button} href={d.other_system.href} />
+        </div>
+      </section>
+    )}
+
+    <section class="section">
+      <div class="gold-block">
+        <h2>{d.support.heading}</h2>
+        <p class="support-text">{d.support.text}</p>
+        <Btn variant="dark" text={d.support.button} href={d.support.href} />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="h3">{d.press.heading}</h2>
+      <ul class="press">
+        {d.press.items.map((i) => <li><a href={i.url}>{i.title}</a> <span class="muted">· {i.outlet}</span></li>)}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="h3">{d.next.heading}</h2>
+      <p class="next">{d.next.links.map((l) => <a class="textlink" href={l.href}>{l.text}</a>)}</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .dk-hero { padding-top: 2rem; align-items: center; gap: 1rem 3rem; }
+  .dk-hero h1 { font-size: clamp(2.25rem, 5vw, 3.6rem); }
+  .dk-icon-wrap { order: -1; justify-self: start; line-height: 0; }
+  .dk-hero :global(.dk-icon) { width: 96px; height: auto; border-radius: 22%; }
+  @media (min-width: 900px) { .dk-icon-wrap { order: 0; justify-self: end; } .dk-hero :global(.dk-icon) { width: 320px; } }
+  .h3 { font-size: var(--fs-lg) !important; }
+  .notice { border-left: 4px solid var(--gold); }
+  .notice p { margin: 0; color: var(--text); font-size: 0.95rem; max-width: none; }
+  .other { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; border-left: 4px solid var(--gold); }
+  .other p { margin: 0; color: var(--text-muted); }
+  .story p { margin: 0; color: var(--text); font-size: 0.95rem; }
+  .dl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin: 0.5rem 0 1.75rem; }
+  .panel { margin-bottom: 1rem; }
+  [data-enhanced] .panel-h { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .avail { font-size: 0.82rem; font-weight: 700; color: var(--gold-text); margin-bottom: 0.9rem; }
+  .steps-list { margin: 0 0 1rem; padding-left: 1.4rem; }
+  .steps-list li { margin-bottom: 0.45rem; }
+  .notes { margin: 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--text-muted); }
+  .notes li { margin-bottom: 0.35rem; }
+  .codeblock { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+  .codeblock pre { flex: 1 1 18rem; margin: 0; background: #0b1b14; border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.9rem; overflow-x: auto; }
+  .codeblock code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; color: var(--text); }
+  .note { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.75rem; }
+  .tips h3 { font-size: 1.1rem; color: var(--gold-text); }
+  .tips p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+  .support-text { max-width: 60ch; }
+  .press { list-style: none; margin: 0; padding: 0; }
+  .press li { padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  .next { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
+</style>

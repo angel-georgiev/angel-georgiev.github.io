@@ -17,7 +17,7 @@ const norm = (s: string) => s.replace(/[\s ]+/g, ' ').trim();
 export function priceProblems(d: { priceValue: string; priceEur: number; ctaButton: string; landingSmall: string; offerLine: string }): string[] {
   const p = norm(d.priceValue);
   const out: string[] = [];
-  if (p !== `${d.priceEur} €`) out.push(`support.yml: price.value "${d.priceValue}" ≠ product.price_eur ${d.priceEur}`);
+  if (p !== `${d.priceEur} €` && p !== `€${d.priceEur}`) out.push(`support.yml: price.value "${d.priceValue}" ≠ product.price_eur ${d.priceEur}`);
   if (!norm(d.ctaButton).endsWith(p)) out.push(`support.yml: cta.button "${d.ctaButton}" does not end with price.value "${p}"`);
   if (!norm(d.landingSmall).includes(p)) out.push(`landing.yml: hero.cta_primary.small "${d.landingSmall}" does not contain "${p}"`);
   if (!norm(d.offerLine).startsWith(p)) out.push(`offers.yml: session price_line "${d.offerLine}" does not start with "${p}"`);

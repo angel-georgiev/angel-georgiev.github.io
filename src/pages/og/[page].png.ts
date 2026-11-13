@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const dk = await load('daskal');
   const name = site.person.name.bg;
   const supTitle = su.page.h1.replace(su.page.h1_highlight, '').trim();
-  return [
+  const pages = [
     { params: { page: 'index' }, props: { name, kicker: l.hero.award, title: l.hero.h1_static_lines.join(' '), highlight: l.hero.h1_rotating[0], photoId: l.hero.photo } },
     { params: { page: 'schools' }, props: { name, kicker: sc.hero.kicker, title: sc.hero.h1_before, highlight: sc.hero.h1_highlight, photoId: sc.hero.photo } },
     { params: { page: 'companies' }, props: { name, kicker: co.hero.kicker, title: co.hero.h1_before, highlight: co.hero.h1_highlight, photoId: co.hero.photo } },
@@ -21,6 +21,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
     { params: { page: 'daskal' }, props: { name, kicker: dk.hero.eyebrow, title: dk.hero.h1, iconFile: dk.package.icon } },
     { params: { page: 'support' }, props: { name, kicker: su.product.name, title: supTitle, highlight: su.page.h1_highlight, photoId: su.page.proof.photo } },
   ];
+  // English versions: same images, English text
+  const el = await load('landing', 'en'), es = await load('schools', 'en'), ec = await load('companies', 'en');
+  const er = await load('resume', 'en'), eu = await load('support', 'en'), ed = await load('daskal', 'en');
+  const nameEn = site.person.name.en;
+  const euTitle = eu.page.h1.replace(eu.page.h1_highlight, '').trim();
+  pages.push(
+    { params: { page: 'en-index' }, props: { name: nameEn, kicker: el.hero.award, title: el.hero.h1_static_lines.join(' '), highlight: el.hero.h1_rotating[0], photoId: el.hero.photo } },
+    { params: { page: 'en-schools' }, props: { name: nameEn, kicker: es.hero.kicker, title: es.hero.h1_before, highlight: es.hero.h1_highlight, photoId: es.hero.photo } },
+    { params: { page: 'en-companies' }, props: { name: nameEn, kicker: ec.hero.kicker, title: ec.hero.h1_before, highlight: ec.hero.h1_highlight, photoId: ec.hero.photo } },
+    { params: { page: 'en-resume' }, props: { name: nameEn, kicker: er.header.role, title: er.meta.title.split('|')[0].trim(), photoId: er.header.photo } },
+    { params: { page: 'en-daskal' }, props: { name: nameEn, kicker: ed.hero.eyebrow, title: ed.hero.h1, iconFile: ed.package.icon } },
+    { params: { page: 'en-support' }, props: { name: nameEn, kicker: eu.product.name, title: euTitle, highlight: eu.page.h1_highlight, photoId: eu.page.proof.photo } },
+  );
+  return pages;
 };
 
 export const GET: APIRoute = async ({ props }) => {

@@ -1,38 +1,46 @@
 ---
 import { load, inPhase } from '../lib/content';
+import { localize, type Lang } from '../lib/i18n';
+interface Props { lang: Lang; altPath?: string }
+const { lang, altPath } = Astro.props;
 const site = await load('site');
 const path = Astro.url.pathname;
-const nav = site.nav.filter(inPhase);
+const nav = site.nav.filter(inPhase).map((n) => ({ ...n, href: localize(n.href, lang) }));
+const other: Lang = lang === 'bg' ? 'en' : 'bg';
 ---
 <header class="site-header wrap">
-  <a class="wordmark" href="/">{site.person.name.bg}<span class="dot" aria-hidden="true">.</span></a>
+  <a class="wordmark" href={lang === 'en' ? '/en/' : '/'}>{site.person.name[lang]}<span class="dot" aria-hidden="true">.</span></a>
   <nav>
     <ul>
       {nav.map((n) => (
-        <li><a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.bg}</a></li>
+        <li><a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n[lang]}</a></li>
       ))}
     </ul>
   </nav>
+  {altPath && <a class="lang-switch" href={altPath} hreflang={other} lang={other} data-lang-choice={other}>{site.ui.lang_switch[lang]}</a>}
 </header>
 <style>
   .site-header {
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    gap: 0.25rem 1.5rem; padding-block: 1.1rem;
+    display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: 'brand nav lang';
+    align-items: center; gap: 0.25rem 1.5rem; padding-block: 1.1rem;
   }
   .wordmark {
-    font-family: var(--font-display); font-weight: 850; font-size: 1.3rem; letter-spacing: -0.01em;
+    grid-area: brand; font-family: var(--font-display); font-weight: 850; font-size: 1.3rem; letter-spacing: -0.01em;
     color: var(--text); text-decoration: none; padding-block: 0.2rem;
   }
   .dot { color: var(--gold); }
+  nav { grid-area: nav; justify-self: end; }
   ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
-  nav a {
+  nav a, .lang-switch {
     display: inline-block; padding: 0.4rem 0; min-height: 24px;
     color: var(--text); font-weight: 700; text-decoration: none; font-size: 0.95rem;
   }
-  nav a:hover { text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
+  nav a:hover, .lang-switch:hover { text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
   nav a[aria-current='page'] { text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
-  @media (max-width: 519px) {
-    .site-header { flex-direction: column; align-items: flex-start; }
+  .lang-switch { grid-area: lang; border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.8rem; font-size: 0.85rem; }
+  @media (max-width: 899px) {
+    .site-header { grid-template-columns: 1fr auto; grid-template-areas: 'brand lang' 'nav nav'; }
+    nav { justify-self: start; }
     ul { gap: 0 0.9rem; }
     nav a { font-size: 0.9rem; }
   }

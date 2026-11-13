@@ -14,6 +14,7 @@ photos:
     file: angel-desk-smile.jpg        # DSC_4008, 2007×2491
     credit: dk
     alt: "Ангел Георгиев на бюро с лаптоп и тетрадка, усмихнат към камерата"
+    alt_en: "Angel Georgiev at a desk with a laptop and a notebook, smiling at the camera"
     focal: [50, 30]
     use: ["/ landing hero (4:5, with the 20 000+ badge)", "/resume/ downloads", "OG image base"]
     why: "Eye contact. The first impression of the site."
@@ -21,6 +22,7 @@ photos:
     file: angel-writing-laugh.jpg     # DSC_4006, 1909×2617
     credit: dk
     alt: "Ангел Георгиев се смее, докато си води бележки"
+    alt_en: "Angel Georgiev laughing while taking notes"
     focal: [45, 30]
     use: ["/schools/ hero (4:5)"]
     why: "Warm, pen and notebook: preparing a lesson."
@@ -28,6 +30,7 @@ photos:
     file: angel-laptop.jpg            # DSC_4010, 1889×2645
     credit: dk
     alt: "Ангел Георгиев работи на лаптоп"
+    alt_en: "Angel Georgiev working on a laptop"
     focal: [55, 28]
     use: ["/companies/ hero (4:5)"]
     why: "Focused, hands on the keyboard: reads as work, not as a portrait."
@@ -35,6 +38,7 @@ photos:
     file: angel-desk-landscape.jpg    # DSC_4002, 2726×1833
     credit: dk
     alt: "Ангел Георгиев на работното си място, усмихнат"
+    alt_en: "Angel Georgiev at his workplace, smiling"
     focal: [62, 25]
     use: ["/support/ 'Защо мен' (wide, the only photo on that page)"]
     why: "Calm and open: the first minute of a session."
@@ -42,18 +46,21 @@ photos:
     file: angel-portrait-light.jpg    # DSC_3936, 1906×2622
     credit: dk
     alt: "Портрет на Ангел Георгиев"
+    alt_en: "Portrait of Angel Georgiev"
     focal: [50, 18]
     use: ["/resume/ header (framed 4:5)", "/resume/ downloads"]
   - id: portrait-dark
     file: angel-portrait-dark.jpg     # DSC_3938, 1834×2726
     credit: dk
     alt: "Портрет на Ангел Георгиев на тъмен фон"
+    alt_en: "Portrait of Angel Georgiev on a dark background"
     focal: [50, 18]
     use: ["/resume/ downloads only (for dark backgrounds, posters, event slides)"]
   - id: portrait-square
     file: angel-portrait-square.jpg   # square crop of portrait-light, 1906×1906
     credit: dk
     alt: "Портрет на Ангел Георгиев"
+    alt_en: "Portrait of Angel Georgiev"
     focal: [50, 30]
     use: ["/resume/ downloads only (avatars, speaker cards)"]
 

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const PAGES = ['/', '/schools/', '/companies/', '/resume/', '/support/', '/support/thanks/', '/daskal/', '/no-such-page/'];
+const PAGES = ['/', '/schools/', '/companies/', '/resume/', '/support/', '/support/thanks/', '/daskal/', '/no-such-page/', '/en/', '/en/schools/', '/en/companies/', '/en/resume/', '/en/support/', '/en/daskal/'];
 
 // PRD §5.1: the rotating H1 must never move anything. H1 box and the next element are identical for every item.
 for (const [w, h] of [[1440, 900], [390, 844]]) {

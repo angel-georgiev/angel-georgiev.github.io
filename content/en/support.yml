@@ -12,7 +12,7 @@ product:
   format: "Online video call"
   deliverable: "One-page plan"
   price_eur: 29
-  stripe_link: "TBD — Angel creates the English Stripe Payment Link"
+  stripe_link: "https://buy.stripe.com/eVq3cu0G949w7s87vM1ZS02"   # English Payment Link (Angel, 13 Nov 2026)
   stripe_settings:
     locale: "en"
     collect: ["name", "email"]
