@@ -23,10 +23,10 @@ links:
   github: "https://github.com/angel-georgiev"
 
 # Analytics (Angel chose Cloudflare Web Analytics, 12 Nov 2026). Cookieless, page views only (no custom events).
-# Off until the move to daskal.ai (M6, Angel 12 Nov 2026); then add daskal.ai in Cloudflare once. Empty token = off. Paste the token from Cloudflare → Web Analytics → your site → "Manage site" (the JS snippet's "token" value).
+# On since go-live on daskal.ai (13 Nov 2026). Empty token = off. Paste the token from Cloudflare → Web Analytics → your site → "Manage site" (the JS snippet's "token" value).
 # Never loaded on /support/thanks/ (PRD §5.3: no tracking on the post-payment page).
 analytics:
-  cloudflare_token: ""
+  cloudflare_token: "88bb90a7c961424d9c990ee3e5c034b9"   # daskal.ai (Angel, 13 Nov 2026)
 
 domain:
   preview: "https://angel-georgiev.github.io"
