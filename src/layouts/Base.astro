@@ -52,7 +52,7 @@ if (cfToken && !/^[0-9a-f]{32}$/i.test(cfToken)) throw new Error('site.yml: anal
     <meta name="twitter:card" content={og ? 'summary_large_image' : 'summary'} />
     <slot name="head" />
     {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
-    {analytics && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: cfToken })}></script>}
+    {analytics && <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: cfToken })}></script>}
   </head>
   <body>
     {bare ? <slot /> : (

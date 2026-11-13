@@ -4,12 +4,15 @@ Kept current by Claude Code. The **hand-maintained** list comes from PRD §13 pl
 
 On preview builds, placeholder strings render visibly (yellow, dashed). A production build (`SITE_ENV=production npm run build`) fails while any Phase 1 marker remains.
 
-## Blocking go-live (affect a public page)
+## Live on daskal.ai (13 Nov 2026)
+
+DNS on Cloudflare (DNS only, grey cloud) → GitHub Pages; Let's Encrypt certificate for daskal.ai, HTTPS enforced; `www`, `http` and angel-georgiev.github.io redirect (301) to https://daskal.ai. Production build (`SITE_ENV=production`) with 0 open markers. Google Workspace MX/SPF records unchanged. Domain verified for the GitHub account (TXT `_github-pages-challenge-angel-georgiev`).
+
+## Still to do after go-live
 
 | # | Item | Where it shows | Status |
 |---|---|---|---|
 | G1 | Stripe after-payment redirect points to `angel-georgiev.github.io/support/thanks/` | Stripe dashboard | **At go-live (M6)** change it to `https://daskal.ai/support/thanks/` |
-| A1 | Cloudflare Web Analytics token | Cloudflare dashboard + `site.yml` | **At go-live (M6), one time** (Angel, 12 Nov 2026): add `daskal.ai` under Web Analytics (JS snippet, not proxy), put the token in `site.yml → analytics.cloudflare_token`. Off until then |
 
 ## Resolved (12 Nov 2026, Angel)
 
@@ -34,6 +37,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 13 | Old daskal.ai paths | None needed (Angel, 13 Nov 2026): teachers used Daskal AI only at daskal.ai. Other old paths land on the 404 page, which mentions Daskal AI first |
 | 11 | Daskal skill content, repo, licence | Done by Angel: `github.com/angel-georgiev/daskal.ai`, MIT, plugin + skill, `download/daskal.zip` |
 | 12 | Skills/plugins on free plans | Angel checked the install steps in Nov 2026 (repo README): free accounts work on all six platforms. Re-check when the README changes |
+| A1 | Cloudflare Web Analytics | On since 13 Nov 2026: site `daskal.ai`, token in `site.yml → analytics.cloudflare_token`. Page views only; not on `/support/thanks/` or redirect pages |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
 
@@ -49,7 +53,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 8 | MSc Digital Business: institution, year | Open (`cv-master.yml`, not built) |
 | 9 | Official titles Microsoft AB-730, AB-731 | Open (`cv-master.yml`, not built) |
 | 10 | SoftUni "10 000+ students daily" | Omitted on the site |
-| 14 | Analytics | **Decided: Cloudflare Web Analytics** (Angel, 12 Nov 2026). Code is ready; stays off until go-live (A1). Page views only, no button-click counts. Exception recorded in PRD §7.6 |
+| 14 | Analytics | Cloudflare Web Analytics, on since go-live (see A1). Exception recorded in PRD §7.6 |
 | 16 | 3+ consented testimonials | Later (Angel, 12 Nov 2026). Block hidden until then |
 | 17 | "План в 1 страница" template | Angel, outside repo |
 | 18–20 | School credit, invoicing, group size, schools page | Resolved |
