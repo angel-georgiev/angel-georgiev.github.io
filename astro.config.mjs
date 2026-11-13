@@ -20,10 +20,12 @@ const openItems = {
       logger.info(`OPEN_ITEMS.md updated: ${blocking.length} Phase 1 markers`);
       // Build check (PRD §11): the support price reads the same everywhere.
       const y = (f) => parseYaml(readFileSync(new URL(`./content/${f}.yml`, import.meta.url), 'utf8'));
-      const sup = y('support'), land = y('landing'), off = y('offers');
-      const problems = priceProblems({
-        priceValue: sup.page.price.value, priceEur: sup.product.price_eur, ctaButton: sup.page.cta.button,
-        landingSmall: land.hero.cta_primary.small, offerLine: off.offers.find((o) => o.key === 'session').price_line,
+      const problems = ['', 'en/'].flatMap((dir) => {
+        const sup = y(`${dir}support`), land = y(`${dir}landing`), off = y(`${dir}offers`);
+        return priceProblems({
+          priceValue: sup.page.price.value, priceEur: sup.product.price_eur, ctaButton: sup.page.cta.button,
+          landingSmall: land.hero.cta_primary.small, offerLine: off.offers.find((o) => o.key === 'session').price_line,
+        }).map((m) => (dir ? `${dir}${m}` : m));
       });
       if (problems.length) throw new Error(`Price mismatch:\n- ${problems.join('\n- ')}`);
       if (process.env.SITE_ENV === 'production' && blocking.length) {
@@ -38,7 +40,8 @@ const openItems = {
   },
 };
 
-const NOT_IN_SITEMAP = ['/book/', '/cv/', '/404', '/support/thanks/'];
+const EN_DRAFT = siteYml.i18n?.en_draft === true;
+const NOT_IN_SITEMAP = ['/book/', '/cv/', '/404', '/support/thanks/', '/en/support/thanks/', ...(EN_DRAFT ? ['/en/'] : [])];
 
 export default defineConfig({
   site: SITE,

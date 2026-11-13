@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { load } from '../lib/content';
+import { langFromPath } from '../lib/i18n';
+const lang = langFromPath(Astro.url.pathname);
+const s = await load('support', lang);
+const site = await load('site');
+const t = s.thank_you;
+const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
+---
+<Base theme="dark" title={`${t.h1} | ${site.person.name[lang]}`} description={t.text} noindex noTracking>
+  <section class="wrap thanks">
+    <h1>{t.h1}</h1>
+    <p class="lede">{t.text}</p>
+    <p>{fbBefore}{fbAfter !== undefined && <><a href={`mailto:${site.person.email}`}>{site.person.email}</a>{fbAfter}</>}</p>
+    <div class="card prepare">
+      <h2>{t.prepare.heading}</h2>
+      <p>{t.prepare.text}</p>
+    </div>
+    <a class="textlink" href={lang === 'en' ? '/en/' : '/'}>{t.back}</a>
+  </section>
+</Base>
+<style>
+  .thanks { padding-block: 3rem 1rem; max-width: calc(var(--w-text) + 2 * var(--gutter)); }
+  .prepare { margin: 1.5rem 0 2rem; }
+  .prepare h2 { font-size: var(--fs-lg); }
+  .prepare p { margin: 0; }
+</style>

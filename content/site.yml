@@ -10,9 +10,9 @@ person:
     en: "AHN-gel geh-OR-gee-ev"   # confirmed by Angel 12 Nov 2026
     bg: "А̀нгел Гео̀ргиев"
   languages:
-    - { en: "Bulgarian — native", bg: "Български, роден" }
-    - { en: "English — professional working", bg: "Английски, професионално ниво" }
-    - { en: "Italian — limited working", bg: "Италиански, основно ниво" }
+    - { en: "Bulgarian, native", bg: "Български, роден" }
+    - { en: "English, professional working", bg: "Английски, професионално ниво" }
+    - { en: "Italian, limited working", bg: "Италиански, основно ниво" }
 
 links:
   linkedin: "https://www.linkedin.com/in/angeorgiev"
@@ -21,6 +21,10 @@ links:
   book_shop: "https://uchene.com"
   tedx: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education"
   github: "https://github.com/angel-georgiev"
+
+# Phase 3: English pages ship in draft mode first (noindex, not in the sitemap) until Angel approves the copy (13 Nov 2026).
+i18n:
+  en_draft: true
 
 # Analytics (Angel chose Cloudflare Web Analytics, 12 Nov 2026). Cookieless, page views only (no custom events).
 # On since go-live on daskal.ai (13 Nov 2026). Empty token = off. Paste the token from Cloudflare → Web Analytics → your site → "Manage site" (the JS snippet's "token" value).
@@ -31,7 +35,7 @@ analytics:
 domain:
   preview: "https://angel-georgiev.github.io"
   production: "https://daskal.ai"          # switch at the end of Phase 2 (see PRD §2)
-  meaning: { en: "daskal (даскал) — Bulgarian for “teacher”.", bg: "даскал означава учител" }
+  meaning: { en: "daskal means teacher", bg: "даскал означава учител" }
 
 nav:
   # Phase 1 (BG only, at root). EN routes later under /en/.
@@ -40,7 +44,7 @@ nav:
   - { key: schools,   bg: "Училища",   en: "Schools",   href: "/schools/" }
   - { key: companies, bg: "Компании",  en: "Companies", href: "/companies/" }
   - { key: resume,    bg: "Резюме",    en: "Résumé",    href: "/resume/" }   # /cv/ redirects here
-  - { key: daskal,  bg: "Даскал AI",        en: "Daskal AI",       href: "/daskal/", phase: 2 }
+  - { key: daskal,  bg: "Даскал AI",        en: "daskal.AI",       href: "/daskal/", phase: 2 }
 
 ui:
   lang_switch: { en: "Български", bg: "English" }
@@ -67,7 +71,7 @@ footer:
     - { key: linkedin, bg: "LinkedIn" }
     - { key: substack, bg: "The Paideia Method" }
 
-# Key numbers. Wording is fixed — always "trained", never "transformed". Never show a combined total.
+# Key numbers. Wording is fixed: always "trained", never "transformed". Never show a combined total.
 numbers:
   - { value: "20,000+", value_bg: "20 000+", en: "people trained over 20 years", bg: "обучени души за 20 години" }
   - { value: "20,000+", value_bg: "20 000+", en: "students assessed on Znam.be career tours", bg: "ученици с кариерна диагностика по турнетата на Знам.бе" }
@@ -96,6 +100,7 @@ book:
   cover:   # flat cover from uchene.com (Angel, 12 Nov 2026). Publisher on the cover: A5 books.
     file: "zelenata-kniga-cover.jpg"   # src/assets/book/, 471×650
     alt: "Корицата на „Зелената книга за ученето“ от Ангел Георгиев"
+    alt_en: "The cover of The Green Book of Learning by Angel Georgiev"
 
 # Copy for pages the PRD requires that no other content file covers. Approved by Angel 12 Nov 2026.
 pages:

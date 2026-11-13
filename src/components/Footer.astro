@@ -1,19 +1,20 @@
 ---
 import { load } from '../lib/content';
+import type { Lang } from '../lib/i18n';
 import Motif from './Motif.astro';
-interface Props { credit?: string }
-const { credit } = Astro.props;
+interface Props { credit?: string; lang?: Lang }
+const { credit, lang = 'bg' } = Astro.props;
 const site = await load('site');
 const href = (key: string) => (site.links as Record<string, string>)[key];
 ---
 <Motif full />
 <footer class="site-footer wrap">
   <p class="row">
-    <span>{site.footer.line.bg} <a href={`mailto:${site.person.email}`}>{site.person.email}</a></span>
+    <span>{site.footer.line[lang]} <a href={`mailto:${site.person.email}`}>{site.person.email}</a></span>
     {site.footer.links.map((l) => <a href={href(l.key)}>{l.bg}</a>)}
   </p>
   <p class="row muted">
-    <span>{site.domain.meaning.bg}</span>
+    <span>{site.domain.meaning[lang]}</span>
     {credit && <span>{credit}</span>}
   </p>
 </footer>

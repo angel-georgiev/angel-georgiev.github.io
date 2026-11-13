@@ -1,10 +1,14 @@
 import { getEntry, type CollectionEntry } from 'astro:content';
+import type { Lang } from './i18n';
 import type { ImageMetadata } from 'astro';
 
-type Name = 'site' | 'photos' | 'landing' | 'offers' | 'schools' | 'companies' | 'resume' | 'support' | 'daskal';
-export async function load<K extends Name>(name: K): Promise<CollectionEntry<K>['data']> {
-  const entry = await getEntry(name as any, name);
-  if (!entry) throw new Error(`content/${name}.yml did not load`);
+type Name = 'site' | 'photos' | 'landing' | 'offers' | 'schools' | 'companies' | 'resume' | 'support' | 'daskal' | 'press';
+const TRANSLATED = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal'];
+/** Load a content file. With lang 'en', translated files come from content/en/ (same schema). */
+export async function load<K extends Name>(name: K, lang: Lang = 'bg'): Promise<CollectionEntry<K>['data']> {
+  const id = lang === 'en' && TRANSLATED.includes(name) ? `en_${name}` : name;
+  const entry = await getEntry(id as any, id);
+  if (!entry) throw new Error(`content/${lang === 'en' ? 'en/' : ''}${name}.yml did not load`);
   return entry.data as CollectionEntry<K>['data'];
 }
 
@@ -19,7 +23,7 @@ export const inPhase = (x: unknown) =>
 
 const files = import.meta.glob<{ default: ImageMetadata }>('/src/assets/photos/*.jpg', { eager: true });
 
-export async function photo(id: string) {
+export async function photo(id: string, lang: Lang = 'bg') {
   const { photos, credits } = await load('photos');
   const p = photos.find((x) => x.id === id);
   if (!p) throw new Error(`photos.yml has no photo with id "${id}"`);
@@ -27,7 +31,7 @@ export async function photo(id: string) {
   if (!mod) throw new Error(`photo file missing: src/assets/photos/${p.file}`);
   const credit = credits[p.credit];
   if (!credit) throw new Error(`photos.yml: unknown credit "${p.credit}" on ${id}`);
-  return { ...p, img: mod.default, credit: credit.bg, position: `${p.focal[0]}% ${p.focal[1]}%` };
+  return { ...p, alt: lang === 'en' ? p.alt_en : p.alt, img: mod.default, credit: credit[lang], position: `${p.focal[0]}% ${p.focal[1]}%` };
 }
 
 /** Splits a price line from YAML into the price and the rest, for display only ("900 € за училище" → "900 €" + "за училище"). */

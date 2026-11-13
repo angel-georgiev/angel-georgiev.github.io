@@ -5,10 +5,10 @@ import { z } from 'astro/zod';
 import { readFileSync } from 'node:fs';
 import { load as parseYaml } from 'js-yaml';
 
-const fileEntry = (name: string) => ({
+const fileEntry = (name: string, file = `${name}.yml`) => ({
   name: `yaml-${name}`,
   load: async ({ store, parseData }: any) => {
-    const raw = parseYaml(readFileSync(new URL(`../content/${name}.yml`, import.meta.url), 'utf8'));
+    const raw = parseYaml(readFileSync(new URL(`../content/${file}`, import.meta.url), 'utf8'));
     store.clear();
     store.set({ id: name, data: await parseData({ id: name, data: raw }) });
   },
@@ -33,6 +33,7 @@ const site = obj({
   }),
   links: obj({ linkedin: s, substack: s, substack_subscribe: s, book_shop: s, tedx: s, github: s }),
   analytics: obj({ cloudflare_token: s }),
+  i18n: obj({ en_draft: z.boolean() }),
   domain: obj({ preview: s, production: s, meaning: bi }),
   nav: z.array(obj({ key: s, bg: s, en: s, href: s, phase })),
   ui: z.record(s, bi),
@@ -41,7 +42,7 @@ const site = obj({
   book: obj({
     title_bg: s, subtitle_bg: s, title_en: s, subtitle_en: s, note_en: s,
     publisher: bi, year: z.number(), isbn: s, pages: s, parts: z.array(bi), url: s,
-    cover: obj({ file: s, alt: s }),
+    cover: obj({ file: s, alt: s, alt_en: s }),
   }),
   pages: obj({
     not_found: obj({ meta_title: s, h1: s, text: s, daskal: s, home: s, support: s }),
@@ -53,7 +54,7 @@ const site = obj({
 const photos = obj({
   credits: z.record(s, bi),
   photos: z.array(obj({
-    id: s, file: s, credit: s, alt: s,
+    id: s, file: s, credit: s, alt: s, alt_en: s,
     focal: z.tuple([z.number(), z.number()]),
     use: z.array(s), why: s.optional(),
   })),
@@ -138,8 +139,20 @@ const resume = obj({
     items: z.array(obj({
       year: z.number().int(), month: z.number().int().min(1).max(12).optional(),
       type: archiveType, outlet: s, title: s, url: s.optional(),
-    })),
+    })).optional(),   // English file omits them; the page uses the Bulgarian items
   }),
+});
+
+const press = obj({
+  meta: obj({ title: bi, description: bi }),
+  intro: bi,
+  pronunciation: obj({ label: bi, text: bi }),
+  bios: z.array(obj({ key: s, label: bi, en: s, bg: s })),
+  mc_intro: obj({ label: bi, en: s, bg: s }),
+  topics: obj({ label: bi, items: z.array(bi), note: s }),
+  photos: z.record(s, z.unknown()),
+  past_interviews: obj({ label: bi, source: s }),
+  contact: obj({ label: bi, email: s }),
 });
 
 const support = obj({
@@ -188,14 +201,22 @@ const daskal = obj({
       steps: z.array(s).optional(), notes: z.array(s).optional(), copy_blocks: z.array(s).optional(),
     })).min(1),
   }),
+  notice: obj({ heading: s, text: s }).optional(),
   usage: obj({ heading: s, intro: s, tips: z.array(obj({ title: s, text: s })), disclaimer: s }),
+  other_system: obj({ heading: s, text: s, button: s, href: s }).optional(),
   support: obj({ heading: s, text: s, button: s, href: s }),
   press: obj({ heading: s, items: z.array(obj({ outlet: s, title: s, url: s })) }),
   next: obj({ heading: s, links: z.array(link) }),
   legacy_redirects: obj({ paths: z.record(s, s) }),
 });
 
+const EN = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal'] as const;
+const SCHEMAS = { landing, offers, schools, companies, resume, support, daskal } as const;
+const enCollections = Object.fromEntries(EN.map((n) => [`en_${n}`, defineCollection({ loader: fileEntry(`en_${n}`, `en/${n}.yml`), schema: SCHEMAS[n] })]));
+
 export const collections = {
+  ...enCollections,
+  press: defineCollection({ loader: fileEntry('press'), schema: press }),
   daskal: defineCollection({ loader: fileEntry('daskal'), schema: daskal }),
   site: defineCollection({ loader: fileEntry('site'), schema: site }),
   photos: defineCollection({ loader: fileEntry('photos'), schema: photos }),

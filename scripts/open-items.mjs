@@ -8,10 +8,16 @@ const MARKER = /\b(TBD|TBC|VERIFY|PLACEHOLDER|TO CONFIRM)\b|\[АНГЕЛ ПИШ�
 // Phase 1 files gate the production build. The rest are listed for information only.
 export const PHASE1 = ['site', 'landing', 'schools', 'companies', 'resume', 'support', 'offers', 'photos', 'daskal'];   // files that gate production (Phase 1 + Phase 2)
 
+// English files (content/en/) gate production only once Angel takes them out of draft (site.yml → i18n.en_draft).
 export function scan() {
-  const dir = new URL('content/', ROOT);
+  const root = new URL('content/', ROOT);
+  const draft = /en_draft:\s*true/.test(readFileSync(new URL('site.yml', root), 'utf8'));
+  const files = [
+    ...readdirSync(root).filter((f) => f.endsWith('.yml')).map((f) => ({ f, dir: root, label: `content/${f}`, en: false })),
+    ...readdirSync(new URL('en/', root)).filter((f) => f.endsWith('.yml')).map((f) => ({ f, dir: new URL('en/', root), label: `content/en/${f}`, en: true })),
+  ].sort((a, b) => a.label.localeCompare(b.label));
   const hits = [];
-  for (const f of readdirSync(dir).filter((f) => f.endsWith('.yml')).sort()) {
+  for (const { f, dir, label, en } of files) {
     const name = f.replace(/\.yml$/, '');
     readFileSync(new URL(f, dir), 'utf8').split('\n').forEach((line, i) => {
       if (!MARKER.test(line)) return;
@@ -19,7 +25,7 @@ export function scan() {
       const inComment = line.trimStart().startsWith('#') || (hash >= 0 && line.slice(hash).match(MARKER) && !line.slice(0, hash).match(MARKER));
       // English-only values are not shown until Phase 3, so they never block (Angel, 12 Nov 2026).
       const enOnly = /(^|[\s{,])en:\s*"[^"]*$|(^|[\s{,])en:\s*"[^"]*?(TBD|TBC|VERIFY|PLACEHOLDER|TO CONFIRM)/.test(line.replace(/\s#\s.*$/, ''));
-      hits.push({ file: `content/${f}`, line: i + 1, text: line.trim().slice(0, 160), phase1: PHASE1.includes(name) && !enOnly, enOnly, inComment: !!inComment });
+      hits.push({ file: label, line: i + 1, text: line.trim().slice(0, 160), phase1: PHASE1.includes(name) && !enOnly && !(en && draft), enOnly, inComment: !!inComment });
     });
   }
   return hits;

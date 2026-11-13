@@ -3,12 +3,13 @@ import Base from '../layouts/Base.astro';
 import { load, inPhase } from '../lib/content';
 const site = await load('site');
 const n = site.pages.not_found;
+const ne = site.pages.not_found_en;
 const dk = await load('daskal');
 const daskalNav = site.nav.find((x) => x.key === 'daskal');
 const showDaskal = !!daskalNav && inPhase(daskalNav);
 const legacy = dk.legacy_redirects.paths;
 ---
-<Base theme="light" title={n.meta_title} description={n.text} noindex>
+<Base theme="light" title={n.meta_title} description={n.text} noindex alternate={false}>
   {Object.keys(legacy).length > 0 && (
     <script slot="head" is:inline define:vars={{ legacy }}>
       // Old daskal.ai paths (daskal.yml → legacy_redirects): exact path, with or without trailing slash.
@@ -23,10 +24,20 @@ const legacy = dk.legacy_redirects.paths;
     <p class="lede">{n.text}</p>
     <p class="links"><a class="textlink" href="/">{n.home}</a><a class="textlink" href="/support/">{n.support}</a></p>
   </section>
+  <section class="wrap nf nf-en" lang="en">
+    {showDaskal && daskalNav && (
+      <p class="dk-first">{ne.daskal} <a href="/en/daskal/">{daskalNav.en} →</a></p>
+    )}
+    <h2>{ne.h1}</h2>
+    <p class="lede">{ne.text}</p>
+    <p class="links"><a class="textlink" href="/en/">{ne.home}</a><a class="textlink" href="/en/support/">{ne.support}</a></p>
+  </section>
 </Base>
 <style>
   .nf { padding-block: 3rem 2rem; }
   .dk-first { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 0.9rem 1.1rem; font-weight: 700; margin-bottom: 2rem; max-width: 46rem; }
   .dk-first a { font-weight: 800; }
+  .nf-en { border-top: 1px solid var(--border); padding-top: 2.5rem; }
+  .nf-en h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
   .links { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
 </style>

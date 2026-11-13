@@ -68,7 +68,7 @@ test('download and repo links, Phase 2 entry points', async ({ page }) => {
 
 test('404 page mentions Daskal AI first', async ({ page }) => {
   await page.goto('/old-daskal-path/');
-  const first = page.locator('main .dk-first');
+  const first = page.locator('main .dk-first').first();
   await expect(first).toContainText(site.pages.not_found.daskal);
   await expect(first.locator('a')).toHaveAttribute('href', '/daskal/');
   const yFirst = (await first.boundingBox())!.y;

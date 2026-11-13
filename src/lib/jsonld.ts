@@ -1,17 +1,18 @@
 import { getImage } from 'astro:assets';
 import { load, photo } from './content';
+import type { Lang } from './i18n';
 
 /** Person entity (PRD §7.3), from site.yml + resume.yml. */
-export async function person(site: URL) {
+export async function person(site: URL, lang: Lang = 'bg') {
   const s = await load('site');
-  const r = await load('resume');
+  const r = await load('resume', lang);
   const p = await photo('portrait-light');
   const img = await getImage({ src: p.img, width: 800, format: 'jpg' });
   return {
     '@type': 'Person',
     '@id': new URL('/#person', site).href,
-    name: s.person.name.bg,
-    alternateName: s.person.name.en,
+    name: s.person.name[lang],
+    alternateName: s.person.name[lang === 'bg' ? 'en' : 'bg'],
     jobTitle: r.header.role,
     image: new URL(img.src, site).href,
     email: `mailto:${s.person.email}`,
@@ -20,12 +21,13 @@ export async function person(site: URL) {
   };
 }
 
-export async function profilePage(site: URL, pageUrl: string) {
+export async function profilePage(site: URL, pageUrl: string, lang: Lang = 'bg') {
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
     url: pageUrl,
     dateModified: new Date().toISOString().slice(0, 10),
-    mainEntity: await person(site),
+    inLanguage: lang,
+    mainEntity: await person(site, lang),
   };
 }

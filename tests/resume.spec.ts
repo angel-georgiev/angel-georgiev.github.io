@@ -44,10 +44,10 @@ test('bio copy button copies the exact plain text and resets after 1.6 s', async
   const ctx = await browser.newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
   const page = await ctx.newPage();
   await page.goto('/resume/');
-  const btn = page.locator('[data-copy] button');
+  const btn = page.locator('#bio [data-copy] button');
   await btn.click();
   await expect(btn).toHaveText(r.bio.copied);
-  await expect(page.locator('[data-copy] [data-status]')).toHaveText(r.bio.copied);
+  await expect(page.locator('#bio [data-copy] [data-status]')).toHaveText(r.bio.copied);
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(r.bio.text);
   await expect(btn).toHaveText(r.bio.copy_button, { timeout: 2500 });
   await ctx.close();
@@ -73,4 +73,28 @@ test('/cv/ redirects to /resume/ (with and without JS)', async ({ page, browser 
   await p2.goto('/cv/');
   await p2.waitForURL('**/resume/', { timeout: 3000 });
   await ctx.close();
+});
+
+test('press kit: every bio and the host introduction copy their exact text, in both languages', async ({ browser }) => {
+  const press = load(readFileSync('content/press.yml', 'utf8')) as any;
+  const ctx = await browser.newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
+  const page = await ctx.newPage();
+  for (const [path, lang] of [['/resume/', 'bg'], ['/en/resume/', 'en']] as const) {
+    await page.goto(path);
+    const expected = [...press.bios.map((b: any) => b[lang]), press.mc_intro[lang]];
+    const btns = page.locator('#press [data-copy] button');
+    await expect(btns).toHaveCount(expected.length);
+    for (let i = 0; i < expected.length; i++) {
+      await btns.nth(i).click();
+      expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(expected[i]);
+    }
+  }
+  await ctx.close();
+});
+
+test('English résumé shows every archive item from the Bulgarian file, with English labels', async ({ page }) => {
+  const en = load(readFileSync('content/en/resume.yml', 'utf8')) as any;
+  await page.goto('/en/resume/');
+  await expect(page.locator('#archive .row')).toHaveCount(r.archive.items.length);
+  await expect(page.locator('#archive .chip[data-type="all"]')).toContainText(en.archive.filters[0].label);
 });
