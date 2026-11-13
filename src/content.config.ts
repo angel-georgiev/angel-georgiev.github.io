@@ -44,7 +44,7 @@ const site = obj({
     cover: obj({ file: s, alt: s }),
   }),
   pages: obj({
-    not_found: obj({ meta_title: s, h1: s, text: s, home: s, support: s }),
+    not_found: obj({ meta_title: s, h1: s, text: s, daskal: s, home: s, support: s }),
     redirect: obj({ book_text: s, cv_text: s }),
   }),
 });
@@ -175,7 +175,27 @@ const support = obj({
   follow_up: z.array(s),
 });
 
+const daskal = obj({
+  meta,
+  package: obj({ repo: s, zip: s, zip_size: s, licence: s, icon: s, icon_alt: s }),
+  hero: obj({ eyebrow: s, h1: s, sub: s, cta }),
+  story: obj({ heading: s, facts: z.array(s), why: obj({ heading: s, text: s }) }),
+  install: obj({
+    id: s, heading: s, intro: s, note: s, download_button: s, repo_link: s,
+    tabs: z.array(obj({
+      key: s, label: s, availability: s,
+      steps: z.array(s).optional(), notes: z.array(s).optional(), copy_blocks: z.array(s).optional(),
+    })).min(1),
+  }),
+  usage: obj({ heading: s, intro: s, tips: z.array(obj({ title: s, text: s })), disclaimer: s }),
+  support: obj({ heading: s, text: s, button: s, href: s }),
+  press: obj({ heading: s, items: z.array(obj({ outlet: s, title: s, url: s })) }),
+  next: obj({ heading: s, links: z.array(link) }),
+  legacy_redirects: obj({ paths: z.record(s, s) }),
+});
+
 export const collections = {
+  daskal: defineCollection({ loader: fileEntry('daskal'), schema: daskal }),
   site: defineCollection({ loader: fileEntry('site'), schema: site }),
   photos: defineCollection({ loader: fileEntry('photos'), schema: photos }),
   landing: defineCollection({ loader: fileEntry('landing'), schema: landing }),

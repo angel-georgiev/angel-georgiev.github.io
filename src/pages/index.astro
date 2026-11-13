@@ -139,5 +139,6 @@ const jsonld = await profilePage(Astro.site!, new URL('/', Astro.site).href);
   @media (min-width: 760px) { .book { grid-template-columns: 240px 1fr; gap: 2.5rem; } }
   .book :global(.cover) { width: 180px; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgb(0 0 0 / 0.35); }
   @media (min-width: 760px) { .book :global(.cover) { width: 240px; } }
-  .daskal-banner { display: block; text-align: center; padding: 0.8rem; background: #000; color: #fff; font-weight: 700; }
+  .daskal-banner { display: block; text-align: center; padding: 0.9rem var(--gutter); margin-top: 2.5rem; background: var(--surface); border-block: 1px solid var(--border); color: var(--gold-text); font-weight: 800; text-decoration: none; }
+  .daskal-banner:hover { text-decoration: underline; }
 </style>

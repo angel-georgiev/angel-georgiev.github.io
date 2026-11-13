@@ -1,82 +1,132 @@
-# /daskal/ — PHASE 2. Bulgarian only. Dark theme only.
-# Daskal AI returns as a skill (Claude; ChatGPT on paid plans) with a Project fallback.
-# The skill itself is built separately (Phase 2 work) in a public repo — see "skill_repo".
-# Placeholders marked [АНГЕЛ ПИШЕ] / TBD render visibly on preview builds.
+# /daskal/ (BG). PHASE 2. Dark theme only.
+# Rewritten 13 Nov 2026 against the skill repo github.com/angel-georgiev/daskal.ai (commit 8b384db, README "проверено през ноември 2026").
+# Naming: „Даскал AI“ in Bulgarian text, „daskal.AI“ for the package/brand in English contexts. Media mostly wrote „Даскал GPT“.
+# Install steps: from the repo README, switched from „ти“ to „вие“ like the rest of the site. Re-check against the README when it changes.
+# Copy edited with the write-article pass (13 Nov 2026). DRAFT until Angel approves.
 
 meta:
-  title: "Даскал AI: AI асистент за учители, като умение за Claude и ChatGPT"
-  description: "Даскал AI се завръща като безплатно умение за Claude и ChatGPT. Инструкции за инсталиране, резервен вариант като проект и помощ по конкретен въпрос."
+  title: "Даскал AI: безплатен помощник за учители във вашия AI асистент"
+  description: "Даскал AI подготвя годишни разпределения, уроци, контролни и дейности по учебните програми на МОН. Инсталирате го безплатно в Claude, ChatGPT, Gemini, Grok, DeepSeek или BgGPT."
 
-skill_repo:
-  github: "https://github.com/angel-georgiev/daskal-skill"   # name TBC
-  zip_download: "TBD — release asset URL (the .zip of the skill folder)"
-  claude_directory: "TBD — listing URL once published to Claude's skills directory/marketplace"
-  licence: "TBD (proposed: CC BY 4.0 for instructions; MIT for any scripts)"
+package:
+  repo: "https://github.com/angel-georgiev/daskal.ai"
+  zip: "https://github.com/angel-georgiev/daskal.ai/raw/HEAD/download/daskal.zip"   # always the latest version
+  zip_size: "1,6 MB"
+  licence: "MIT"
+  icon: "daskal-icon.png"            # src/assets/daskal/, copied from daskal/.claude-plugin/icon.png in the repo
+  icon_alt: "Иконата на daskal.AI: мозък, наполовина човешки, наполовина от електрически вериги"
 
 hero:
   eyebrow: "Даскал AI · 2025 → днес"
-  h1: "Даскал AI се завръща като умение за вашия AI асистент."
-  sub: "През 2025 г. пуснах Даскал AI като първия безплатен AI асистент за българските учители. Днес го споделям като умение (skill), което инсталирате безплатно в Claude или ChatGPT за няколко минути."
+  h1: "Даскал AI се завръща. Директно във вашия AI асистент."   # Angel, 13 Nov 2026
+  sub: "През март 2025 г. пуснах Даскал AI като първия безплатен AI асистент за българските учители. Новата версия подготвя годишни разпределения, уроци, контролни и дейности по учебните програми на МОН и отговаря на въпроси по ЗПУО и наредбите. Инсталирате я безплатно в Claude, ChatGPT, Gemini, Grok, DeepSeek или BgGPT."
+  cta: { text: "Инсталиране във вашия AI ↓", small: "Безплатно, работи и с безплатен акаунт", href: "#install" }
 
 story:
   heading: "Какво беше Даскал AI"
   facts:
     - "Пуснах го на 17 март 2025 г. като безплатен инструмент за учители. В медиите го наричаха и „Даскал GPT“."
-    - "Помагаше на учителите да подготвят час: идеи, планове, задачи и оценяване."   # Angel to confirm wording
+    - "Учителите го използваха, за да подготвят часа си: идеи, план на урока, задачи и оценяване."
     - "За него получих личната награда на b2b Media 2025 в категория „AI в образованието и научната сфера“."
-  why_skill:
-    heading: "Защо се връща като умение"
-    text: "[АНГЕЛ ПИШЕ: 2–3 изречения. Общите AI асистенти вече вършат работата, а като умение Даскал работи вътре в инструмента, който учителят вече ползва.]"
+  why:
+    heading: "Защо се завръща"
+    text: "През последните шест месеца получих много запитвания за Даскал AI. Затова той се завръща безплатно и с всичките си функции, направо в AI асистента, който вече използвате. Новата версия познава 112-те учебни програми за I–XII клас и пълните текстове на 38 закона и наредби, актуални към 12 ноември 2026 г."
 
 install:
-  photo: laptop          # id from content/photos.yml
-  heading: "Инсталиране"
-  # Render as tabs: Claude · ChatGPT · Чрез AI агент. Each tab = numbered steps + screenshot slots.
-  # Steps below are a scaffold; Angel verifies each against the current product UI before Phase 2 launch.
+  id: install
+  heading: "Инсталиране във вашия AI"
+  intro: "Изтеглете daskal.zip и го качете в асистента, който използвате. Разархивирайте го само ако стъпките за вашия асистент го изискват."
+  note: "Проверих стъпките през ноември 2026 г. Платформите сменят менютата си. Ако бутонът се казва другояче, търсете Plugins, Skills или Upload."
+  download_button: "Изтеглете daskal.zip"
+  repo_link: "Файловете в GitHub →"
   tabs:
     - key: claude
       label: "Claude"
-      availability: "Работи и в безплатния план на Claude."   # VERIFY: free plan has skills since Feb 2026; custom upload on free plan unconfirmed
+      availability: "Плъгин · работи с безплатен акаунт"
       steps:
-        - "Изтеглете файла на умението (.zip) от бутона по-долу."
-        - "[АНГЕЛ ПИШЕ: път в настройките на Claude за качване на умение. VERIFY в текущия интерфейс]"
-        - "Включете умението и напишете в нов чат: „Даскал, помогни ми да подготвя урок по…“."
-      alt: "Или го инсталирайте директно от каталога с умения на Claude → (TBD линк)"
+        - "Отворете claude.ai или приложението за компютър."
+        - "В страничното меню отворете Plugins. В по-старите версии пътят е Customize → Plugins."
+        - "Натиснете Add → Upload plugin и изберете daskal.zip."
+        - "В нов разговор напишете /. В списъка трябва да има daskal."
+      notes:
+        - "Плъгинът се записва в акаунта ви и работи и в мобилното приложение на Claude."
+        - "За автоматични обновявания на стъпка 3 изберете Add → Add marketplace, въведете angel-georgiev/daskal.ai, добавете daskal и включете Sync automatically."
+        - "Ако Claude не вижда плъгина, отворете Settings → Capabilities и включете Code execution and file creation (в новия изглед: Create and edit files)."
     - key: chatgpt
       label: "ChatGPT"
-      availability: "В ChatGPT уменията са в платените планове. С безплатен план използвайте резервния вариант по-долу."
+      availability: "Плъгин · работи с безплатен акаунт"
       steps:
-        - "Изтеглете файла на умението (.zip)."
-        - "[АНГЕЛ ПИШЕ: път в ChatGPT за качване на умение. VERIFY]"
-        - "Напишете в нов чат: „Даскал, помогни ми да подготвя урок по…“."
-    - key: agent
-      label: "Чрез AI агент"
-      availability: "Ако работите с AI агент, например Claude Code или Cowork, той може да го инсталира вместо вас."
-      copy_block: "Инсталирайте умението от https://github.com/angel-georgiev/daskal-skill като ново умение и потвърдете, когато е готово."
-  download_button: "Изтеглете умението (.zip)"
-  repo_link: "Кодът и файловете в GitHub →"
+        - "Отворете chatgpt.com на компютър."
+        - "Отворете страницата Plugins от страничното меню."
+        - "Натиснете Add до полето за търсене и изберете Upload plugin archive."
+        - "Изберете daskal.zip. ChatGPT проверява архива, преди да добави плъгина."
+    - key: gemini
+      label: "Gemini"
+      availability: "Умение (Skill) · работи с безплатен акаунт, само от компютър"
+      steps:
+        - "Разархивирайте daskal.zip. В Windows: десен бутон → Extract All. На Mac: двоен клик."
+        - "Отворете gemini.google.com."
+        - "В страничното меню натиснете Customize. Ако не го виждате, натиснете първо More."
+        - "Горе изберете Skills, после Create → Upload."
+        - "Изберете SKILL.md и натиснете Open."
+        - "Добавете всички файлове от папката references/. Файловете от scripts/ не са задължителни."
+        - "Натиснете Upload, прегледайте умението и натиснете Create."
+    - key: grok
+      label: "Grok"
+      availability: "Прикачен архив · работи с безплатен акаунт"
+      steps:
+        - "Отворете нов разговор в grok.com."
+        - "Прикачете daskal.zip с кламерчето."
+        - "Напишете „Действай като даскал“ и задачата си."
+      notes:
+        - "Grok не пази прикачения файл между разговорите. Прикачвайте го във всеки нов разговор."
+    - key: other
+      label: "DeepSeek и други"
+      availability: "Прикачени файлове · за асистенти без плъгини и умения"
+      steps:
+        - "Разархивирайте daskal.zip."
+        - "В нов разговор прикачете SKILL.md, references/tematichna-karta.md и references/osnova.md."
+        - "Ако питате за конкретен закон или наредба, прикачете и съответния zakon-….txt."
+        - "Напишете „Следвай инструкциите в SKILL.md“ и задачата си."
+    - key: bggpt
+      label: "BgGPT"
+      availability: "Три прикачени файла · работи с безплатен акаунт"
+      steps:
+        - "Разархивирайте daskal.zip."
+        - "Прикачете SKILL.md, references/tematichna-karta.md и references/osnova.md."
+        - "Напишете задачата си."
+      notes:
+        - "Трите файла стигат за уроци, разпределения, тестове, дейности и повечето нормативни въпроси. Когато е нужен точен член от закон, асистентът ви казва кой zakon-….txt да прикачите в следващото съобщение."
+    - key: claude-code
+      label: "Claude Code"
+      availability: "За AI агенти · две команди"
+      copy_blocks:
+        - "claude plugin marketplace add angel-georgiev/daskal.ai"
+        - "claude plugin install daskal@daskal-ai"
 
-fallback:
-  heading: "Резервен вариант: като проект"
-  text: "Ако не можете да инсталирате умение, създайте проект в Claude или ChatGPT и поставете инструкциите по-долу. Даскал ще работи по същия начин, само ще трябва да отваряте проекта сами."
-  steps:
-    - "Създайте нов проект (Claude: Projects; ChatGPT: Projects)."
-    - "Копирайте инструкциите по-долу в полето за инструкции на проекта."
-    - "По желание качете учебната програма или ваши материали като файлове в проекта."
-  copy_block: "[АНГЕЛ ПИШЕ: съкратените инструкции на Даскал, с бутон „Копирайте“]"
+usage:
+  heading: "Как да работите с Даскал AI"
+  intro: "Отворете нов разговор и напишете задачата, например „Направи ми урок за Освобождението за 4 клас“. Можете да започнете и с „Действай като даскал“."
+  tips:
+    - { title: "Кратка заявка стига.", text: "Ако не посочите клас или брой часове, Даскал AI избира разумна стойност и я пише в първото изречение, за да я поправите." }
+    - { title: "Опишете се веднъж.", text: "Даскал AI не помни предишните разговори. Запишете предмета, класовете, учебниците и часовете си в личните инструкции на асистента или в инструкциите на проект. Даскал AI ви предлага готов текст за това." }
+    - { title: "Проверете, преди да използвате.", text: "Даскал AI посочва програмата и члена, на които се основава. По ЗПУО (чл. 219) учителят избира методите, затова последната дума е ваша." }
+  disclaimer: "Даскал AI е помощник, а не юридическа консултация. При важни решения сверявайте с текста в „Държавен вестник“."
 
-support:      # first entry point for the support session
-  heading: "Искате Даскал да работи за вашия предмет?"
-  text: "За един учебен час ще настроим Даскал за вашия предмет и класове и ще помогна с каквото още ви трябва. След срещата получавате „План в 1 страница“, а ако срещата не ви е помогнала, връщам парите. Инсталирането е описано изцяло тук и не изисква платена помощ."
+support:
+  heading: "Искате Даскал AI да работи за вашия предмет?"
+  text: "За един учебен час ще настроим Даскал AI за вашия предмет и класове и ще помогна с каквото още ви трябва. След срещата получавате „План в 1 страница“, а ако срещата не ви е помогнала, връщам парите. Инсталирането е описано изцяло тук и не изисква платена помощ."
   button: "Поискайте моята помощ →"
-  href: "/support/"       # same product and price as the general session
+  href: "/support/"
 
-press_mentions:   # "Писаха за Даскал AI" — text links only
-  - { outlet: "Bloomberg TV Bulgaria", url: "https://www.bloombergtv.bg/a/28-update/142959-balgarski-ai-instrument-nosi-potentsiala-da-se-vdigne-nivoto-v-balgarskoto-uchilishte" }
-  - { outlet: "Digitalk", url: "https://digitalk.bg/digitalk_awards/2025/03/12/4755597_transform_it_awards_25_ai_instrumentut_daskal_gpt/" }
-  - { outlet: "Economy.bg", url: "https://economy.bg/innovations/view/60990/Daskal-GPT-V-Bylgariya-startira-pyrviya-bezplaten-AI-instrument-za-uchiteli" }
-  - { outlet: "Bulgaria ON AIR", url: "https://www.bgonair.bg/a/36-sutreshen-blok/385521-daskal-gpt-spestyava-mnogo-vreme-i-dava-svezhi-idei-na-uchitelite" }
-  - { outlet: "Радио Фокус", url: "https://www.focus-news.net/novini/Bylgaria/Angel-Georgiev-Daskal-GPT-pomaga-s-vsichko-ot-koeto-edin-uchitel-bi-imal-nuzhda-predi-da-vleze-v-chas-2494110" }
+press:
+  heading: "Писаха за Даскал AI"
+  items:   # headlines as the outlets published them (from resume.yml archive)
+    - { outlet: "Bloomberg TV", title: "Български AI инструмент носи потенциала да се вдигне нивото в българското училище", url: "https://www.bloombergtv.bg/a/28-update/142959-balgarski-ai-instrument-nosi-potentsiala-da-se-vdigne-nivoto-v-balgarskoto-uchilishte" }
+    - { outlet: "Bulgaria ON AIR", title: "Даскал GPT спестява много време и дава свежи идеи на учителите", url: "https://www.bgonair.bg/a/36-sutreshen-blok/385521-daskal-gpt-spestyava-mnogo-vreme-i-dava-svezhi-idei-na-uchitelite" }
+    - { outlet: "Радио Фокус", title: "„Даскал GPT“ помага с всичко, от което един учител би имал нужда", url: "https://www.focus-news.net/novini/Bylgaria/Angel-Georgiev-Daskal-GPT-pomaga-s-vsichko-ot-koeto-edin-uchitel-bi-imal-nuzhda-predi-da-vleze-v-chas-2494110" }
+    - { outlet: "Economy.bg", title: "В България стартира първият безплатен AI инструмент за учители", url: "https://economy.bg/innovations/view/60990/Daskal-GPT-V-Bylgariya-startira-pyrviya-bezplaten-AI-instrument-za-uchiteli" }
+    - { outlet: "Digitalk", title: "Transform IT Awards ’25: Даскал GPT", url: "https://digitalk.bg/digitalk_awards/2025/03/12/4755597_transform_it_awards_25_ai_instrumentut_daskal_gpt/" }
 
 next:
   heading: "Още от мен"
@@ -85,5 +135,6 @@ next:
     - { text: "„Зелената книга за ученето“ →", href: "/book/" }
 
 legacy_redirects:
-  # Old daskal.ai paths that still receive traffic → /daskal/. LIST TO BE SUPPLIED BY ANGEL.
+  # None (Angel, 13 Nov 2026): teachers used Daskal AI only at daskal.ai itself. Any other old path lands on the 404 page,
+  # which mentions Daskal AI first. Kept as an empty map in case a path is ever needed.
   paths: {}

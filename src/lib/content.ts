@@ -1,7 +1,7 @@
 import { getEntry, type CollectionEntry } from 'astro:content';
 import type { ImageMetadata } from 'astro';
 
-type Name = 'site' | 'photos' | 'landing' | 'offers' | 'schools' | 'companies' | 'resume' | 'support';
+type Name = 'site' | 'photos' | 'landing' | 'offers' | 'schools' | 'companies' | 'resume' | 'support' | 'daskal';
 export async function load<K extends Name>(name: K): Promise<CollectionEntry<K>['data']> {
   const entry = await getEntry(name as any, name);
   if (!entry) throw new Error(`content/${name}.yml did not load`);
@@ -13,7 +13,7 @@ export const PLACEHOLDER_RE = /\b(TBD|TBC|VERIFY|PLACEHOLDER)\b|\[АНГЕЛ П�
 export const isPlaceholder = (s: unknown) => typeof s === 'string' && PLACEHOLDER_RE.test(s);
 
 /** Phase gate: items marked phase: 2 stay hidden until Phase 2. */
-export const CURRENT_PHASE = 1;
+export const CURRENT_PHASE = 2;   // Phase 2 (Daskal) switched on 13 Nov 2026
 export const inPhase = (x: unknown) =>
   !(x && typeof x === 'object' && 'phase' in x && typeof (x as any).phase === 'number' && (x as any).phase > CURRENT_PHASE);
 

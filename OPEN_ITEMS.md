@@ -30,6 +30,9 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | C8 | Heading „Как мога да помогна още“ on `/support/` | Confirmed by Angel (12 Nov 2026), `support.yml → page.ladder.heading` |
 | 2a | Stripe checkout dropdown | Angel chose "Работя в компания" (matches `support.yml`) |
 | T1 | Test payment on the live Stripe link | Done by Angel (12 Nov 2026): works end to end |
+| 13 | Old daskal.ai paths | None needed (Angel, 13 Nov 2026): teachers used Daskal AI only at daskal.ai. Other old paths land on the 404 page, which mentions Daskal AI first |
+| 11 | Daskal skill content, repo, licence | Done by Angel: `github.com/angel-georgiev/daskal.ai`, MIT, plugin + skill, `download/daskal.zip` |
+| 12 | Skills/plugins on free plans | Angel checked the install steps in Nov 2026 (repo README): free accounts work on all six platforms. Re-check when the README changes |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
 
@@ -45,9 +48,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 8 | MSc Digital Business: institution, year | Open (`cv-master.yml`, not built) |
 | 9 | Official titles Microsoft AB-730, AB-731 | Open (`cv-master.yml`, not built) |
 | 10 | SoftUni "10 000+ students daily" | Omitted on the site |
-| 11 | Daskal: skill content, fallback instructions, repo name, licence, install steps, screenshots, directory listing | Phase 2 |
-| 12 | Re-verify skills on free plans (Claude custom upload; ChatGPT Free/Go) | Phase 2 |
-| 13 | Old daskal.ai paths | Phase 2 |
+| D1 | `/daskal/` copy | **Draft, Angel to approve.** 13 Nov: H1 „Даскал AI се завръща. Директно във вашия AI асистент.“, „връща“ → „завръща“ (refund wording „връщам парите“ unchanged) |
 | 14 | Analytics | **Decided: Cloudflare Web Analytics** (Angel, 12 Nov 2026). Code is ready; stays off until go-live (A1). Page views only, no button-click counts. Exception recorded in PRD §7.6 |
 | 16 | 3+ consented testimonials | Later (Angel, 12 Nov 2026). Block hidden until then |
 | 17 | "План в 1 страница" template | Angel, outside repo |
@@ -65,18 +66,6 @@ _None._
 
 ### English-only values and later-phase files (information only)
 
-| Where | Kind | Line |
-|---|---|---|
-| `content/daskal.yml:4` | comment | `# Placeholders marked [АНГЕЛ ПИШЕ] / TBD render visibly on preview builds.` |
-| `content/daskal.yml:11` | comment | `github: "https://github.com/angel-georgiev/daskal-skill"   # name TBC` |
-| `content/daskal.yml:12` | value | `zip_download: "TBD — release asset URL (the .zip of the skill folder)"` |
-| `content/daskal.yml:13` | value | `claude_directory: "TBD — listing URL once published to Claude's skills directory/marketplace"` |
-| `content/daskal.yml:14` | value | `licence: "TBD (proposed: CC BY 4.0 for instructions; MIT for any scripts)"` |
-| `content/daskal.yml:29` | value | `text: "[АНГЕЛ ПИШЕ: 2–3 изречения. Общите AI асистенти вече вършат работата, а като умение Даскал работи вътре в инструмента, който учителят вече ползва.]"` |
-| `content/daskal.yml:39` | comment | `availability: "Работи и в безплатния план на Claude."   # VERIFY: free plan has skills since Feb 2026; custom upload on free plan unconfirmed` |
-| `content/daskal.yml:42` | value | `- "[АНГЕЛ ПИШЕ: път в настройките на Claude за качване на умение. VERIFY в текущия интерфейс]"` |
-| `content/daskal.yml:44` | value | `alt: "Или го инсталирайте директно от каталога с умения на Claude → (TBD линк)"` |
-| `content/daskal.yml:50` | value | `- "[АНГЕЛ ПИШЕ: път в ChatGPT за качване на умение. VERIFY]"` |
-| `content/daskal.yml:66` | value | `copy_block: "[АНГЕЛ ПИШЕ: съкратените инструкции на Даскал, с бутон „Копирайте“]"` |
+_None._
 
 <!-- AUTO:END -->
