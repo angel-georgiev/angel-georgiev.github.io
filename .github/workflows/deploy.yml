@@ -22,7 +22,10 @@ jobs:
       - uses: withastro/action@v6
         with:
           node-version: 22
-          # Preview build: placeholders render visibly. Set SITE_ENV=production only at go-live (PRD §7.2, M6).
+        # Production build for daskal.ai (M6, 13 Nov 2026): canonical URLs, sitemap and OG point to daskal.ai,
+        # and the build fails if any unresolved marker remains in the content.
+        env:
+          SITE_ENV: production
 
   deploy:
     needs: build
