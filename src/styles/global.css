@@ -110,6 +110,7 @@ h2 { font-size: clamp(var(--fs-xl), 4.2vw, var(--fs-2xl)); }
 h3 { font-size: var(--fs-md); line-height: 1.2; }
 p { margin: 0 0 1em; max-width: 66ch; }
 img { max-width: 100%; height: auto; display: block; }
+button, input, select, textarea { font: inherit; }
 
 a { color: var(--link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }

@@ -10,9 +10,7 @@ DNS on Cloudflare (DNS only, grey cloud) → GitHub Pages; Let's Encrypt certifi
 
 ## Still to do after go-live
 
-| # | Item | Where it shows | Status |
-|---|---|---|---|
-| G1 | Stripe after-payment redirect points to `angel-georgiev.github.io/support/thanks/` | Stripe dashboard | **At go-live (M6)** change it to `https://daskal.ai/support/thanks/` |
+Nothing blocking. Open but not blocking: company logo files (4) and testimonials (16), below.
 
 ## Resolved (12 Nov 2026, Angel)
 
@@ -37,6 +35,8 @@ DNS on Cloudflare (DNS only, grey cloud) → GitHub Pages; Let's Encrypt certifi
 | 13 | Old daskal.ai paths | None needed (Angel, 13 Nov 2026): teachers used Daskal AI only at daskal.ai. Other old paths land on the 404 page, which mentions Daskal AI first |
 | 11 | Daskal skill content, repo, licence | Done by Angel: `github.com/angel-georgiev/daskal.ai`, MIT, plugin + skill, `download/daskal.zip` |
 | 12 | Skills/plugins on free plans | Angel checked the install steps in Nov 2026 (repo README): free accounts work on all six platforms. Re-check when the README changes |
+| G1 | Stripe after-payment redirect | Changed to `https://daskal.ai/support/thanks/` by Angel (13 Nov 2026) |
+| 15 | Bulgarian copy review | Done by Angel (13 Nov 2026). Last edits: school-training sentence aligned on landing, `/support/` and `/schools/`; „Какво е Даскал AI“ + Даскал GPT origin (end of 2024) |
 | A1 | Cloudflare Web Analytics | On since 13 Nov 2026: site `daskal.ai`, token in `site.yml → analytics.cloudflare_token`. Page views only; not on `/support/thanks/` or redirect pages |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
@@ -45,7 +45,6 @@ DNS on Cloudflare (DNS only, grey cloud) → GitHub Pages; Let's Encrypt certifi
 
 | # | Item | Status |
 |---|---|---|
-| 15 | Angel reviews all Bulgarian copy | **Open**, not blocking for now (Angel, 12 Nov 2026) |
 | 4 | 11 company logo files | **Open**, not in Phase 1 (Angel, 12 Nov 2026). Names show as grey text (`companies.yml → logos.items`) |
 | 1 | Support price | Decided: 29 € (intro), 39 € regular |
 | 6 | Founder or co-founder for Sindeo and Znam.be | Open (affects `press.yml`, Phase 3) |
