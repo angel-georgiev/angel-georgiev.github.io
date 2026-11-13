@@ -52,7 +52,12 @@ ui:
   in_bulgarian: { en: "in Bulgarian", bg: "на български" }
   last_updated: { en: "Last updated", bg: "Последна актуализация" }
   skip_link:   { en: "Skip to content", bg: "Към съдържанието" }
-  soon:        { en: "Soon", bg: "Скоро" }   # disabled Stripe CTA label (PRD §5.3, confirmed 12 Nov 2026)
+  soon:        { en: "Soon", bg: "Скоро" }
+  # Phase 3 (DRAFT, 13 Nov 2026): one-time language suggestion bar, shown only when the browser language does not match the page.
+  # Keyed by the language of the page it appears on: `bg` is shown on Bulgarian pages (pointing to English), `en` on English pages.
+  lang_suggest: { en: "Тази страница е достъпна и на български.", bg: "This page is also available in English." }
+  lang_suggest_go: { en: "Към българската версия →", bg: "Read it in English →" }
+  close:       { en: "Close", bg: "Затвори" }   # disabled Stripe CTA label (PRD §5.3, confirmed 12 Nov 2026)
 
 footer:
   line: { en: "Training, consulting and speaking:", bg: "Обучения, консултации и лекции:" }
@@ -101,6 +106,12 @@ pages:
     daskal: "Търсите Даскал AI? Разберете повече за него тук:"   # shown first on the 404 page (Angel, 13 Nov 2026; „вие“ like the rest of the site)
     home: "Към началото →"
     support: "Поискайте моята помощ →"
+  not_found_en:   # English half of the bilingual 404 page (DRAFT, Phase 3)
+    h1: "This page doesn't exist."
+    text: "The address may be wrong, or the page may have moved."
+    daskal: "Looking for daskal.AI? Find out more here:"
+    home: "To the home page →"
+    support: "Ask for my help →"
   redirect:
     book_text: "Към книгата на uchene.com →"
     cv_text: "Към резюмето →"

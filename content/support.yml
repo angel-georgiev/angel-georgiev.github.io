@@ -23,7 +23,7 @@ product:
       - { type: "text", label: "С какво да помогна?", max: 255, required: true }
     receipts: "automatic email receipts ON"
     policies_shown: "refund policy + contact email shown on checkout"
-    after_payment_redirect: "https://angel-georgiev.github.io/support/thanks/"   # change to https://daskal.ai/support/thanks/ at go-live (M6)
+    after_payment_redirect: "https://daskal.ai/support/thanks/"   # changed by Angel at go-live, 13 Nov 2026   # change to https://daskal.ai/support/thanks/ at go-live (M6)
     daskal_entry_link: "none: Angel decided on one link only (12 Nov 2026)"
 
 page:
