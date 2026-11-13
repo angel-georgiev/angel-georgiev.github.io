@@ -4,7 +4,11 @@ Kept current by Claude Code. The **hand-maintained** list comes from PRD §13 pl
 
 On preview builds, placeholder strings render visibly (yellow, dashed). A production build (`SITE_ENV=production npm run build`) fails while any Phase 1 marker remains.
 
-## Blocking go-live (affect a public page)
+## Live on daskal.ai (13 Nov 2026)
+
+DNS on Cloudflare (DNS only, grey cloud) → GitHub Pages; Let's Encrypt certificate for daskal.ai, HTTPS enforced; `www`, `http` and angel-georgiev.github.io redirect (301) to https://daskal.ai. Production build (`SITE_ENV=production`) with 0 open markers. Google Workspace MX/SPF records unchanged. Domain verified for the GitHub account (TXT `_github-pages-challenge-angel-georgiev`).
+
+## Still to do after go-live
 
 | # | Item | Where it shows | Status |
 |---|---|---|---|
