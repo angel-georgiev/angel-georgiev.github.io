@@ -44,7 +44,7 @@ const site = obj({
     cover: obj({ file: s, alt: s }),
   }),
   pages: obj({
-    not_found: obj({ meta_title: s, h1: s, text: s, home: s, support: s }),
+    not_found: obj({ meta_title: s, h1: s, text: s, daskal: s, home: s, support: s }),
     redirect: obj({ book_text: s, cv_text: s }),
   }),
 });

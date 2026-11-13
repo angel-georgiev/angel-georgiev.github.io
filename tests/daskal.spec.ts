@@ -58,9 +58,19 @@ test('download and repo links, Phase 2 entry points', async ({ page }) => {
   await expect(page.locator('.daskal-banner')).toHaveAttribute('href', '/daskal/');
 });
 
+test('404 page mentions Daskal AI first', async ({ page }) => {
+  await page.goto('/old-daskal-path/');
+  const first = page.locator('main .dk-first');
+  await expect(first).toContainText(site.pages.not_found.daskal);
+  await expect(first.locator('a')).toHaveAttribute('href', '/daskal/');
+  const yFirst = (await first.boundingBox())!.y;
+  const yH1 = (await page.locator('main h1').boundingBox())!.y;
+  expect(yFirst).toBeLessThan(yH1);
+});
+
 test('legacy daskal.ai paths redirect from the 404 page', async ({ page }) => {
   const entries = Object.entries(d.legacy_redirects.paths ?? {}) as [string, string][];
-  test.skip(entries.length === 0, 'no legacy paths listed in daskal.yml yet');
+  test.skip(entries.length === 0, 'no legacy paths (Angel, 13 Nov 2026): old daskal.ai paths land on the 404 page');
   for (const [from, to] of entries) {
     await page.goto(from);
     await page.waitForURL((u) => u.pathname === new URL(to, 'http://x').pathname, { timeout: 2000 });

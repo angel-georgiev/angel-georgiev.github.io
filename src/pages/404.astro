@@ -16,12 +16,17 @@ const legacy = dk.legacy_redirects.paths;
     </script>
   )}
   <section class="wrap nf">
+    {showDaskal && daskalNav && (
+      <p class="dk-first">{n.daskal} <a href={daskalNav.href}>{daskalNav.bg} →</a></p>
+    )}
     <h1>{n.h1}</h1>
     <p class="lede">{n.text}</p>
-    <p class="links"><a class="textlink" href="/">{n.home}</a><a class="textlink" href="/support/">{n.support}</a>{showDaskal && daskalNav && <a class="textlink" href={daskalNav.href}>{daskalNav.bg} →</a>}</p>
+    <p class="links"><a class="textlink" href="/">{n.home}</a><a class="textlink" href="/support/">{n.support}</a></p>
   </section>
 </Base>
 <style>
-  .nf { padding-block: 4rem 2rem; }
+  .nf { padding-block: 3rem 2rem; }
+  .dk-first { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 0.9rem 1.1rem; font-weight: 700; margin-bottom: 2rem; max-width: 46rem; }
+  .dk-first a { font-weight: 800; }
   .links { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; }
 </style>

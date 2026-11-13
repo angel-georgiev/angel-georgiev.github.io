@@ -30,6 +30,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | C8 | Heading „Как мога да помогна още“ on `/support/` | Confirmed by Angel (12 Nov 2026), `support.yml → page.ladder.heading` |
 | 2a | Stripe checkout dropdown | Angel chose "Работя в компания" (matches `support.yml`) |
 | T1 | Test payment on the live Stripe link | Done by Angel (12 Nov 2026): works end to end |
+| 13 | Old daskal.ai paths | None needed (Angel, 13 Nov 2026): teachers used Daskal AI only at daskal.ai. Other old paths land on the 404 page, which mentions Daskal AI first |
 | 11 | Daskal skill content, repo, licence | Done by Angel: `github.com/angel-georgiev/daskal.ai`, MIT, plugin + skill, `download/daskal.zip` |
 | 12 | Skills/plugins on free plans | Angel checked the install steps in Nov 2026 (repo README): free accounts work on all six platforms. Re-check when the README changes |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
@@ -47,8 +48,7 @@ On preview builds, placeholder strings render visibly (yellow, dashed). A produc
 | 8 | MSc Digital Business: institution, year | Open (`cv-master.yml`, not built) |
 | 9 | Official titles Microsoft AB-730, AB-731 | Open (`cv-master.yml`, not built) |
 | 10 | SoftUni "10 000+ students daily" | Omitted on the site |
-| D1 | `/daskal/` copy (hero, story, „Защо се връща“, install intro, usage tips) | **Draft, Angel to approve.** Edited with the write-article pass; install steps and tips from the repo README in „вие“ form |
-| 13 | Old daskal.ai paths to redirect | **Open (Angel).** Add them to `daskal.yml → legacy_redirects.paths` (old path → new URL); the 404 page redirects them and a test checks each |
+| D1 | `/daskal/` copy | **Draft, Angel to approve.** 13 Nov: H1 „Даскал AI се завръща. Директно във вашия AI асистент.“, „връща“ → „завръща“ (refund wording „връщам парите“ unchanged) |
 | 14 | Analytics | **Decided: Cloudflare Web Analytics** (Angel, 12 Nov 2026). Code is ready; stays off until go-live (A1). Page views only, no button-click counts. Exception recorded in PRD §7.6 |
 | 16 | 3+ consented testimonials | Later (Angel, 12 Nov 2026). Block hidden until then |
 | 17 | "План в 1 страница" template | Angel, outside repo |
