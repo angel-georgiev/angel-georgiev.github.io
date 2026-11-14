@@ -392,7 +392,7 @@ archive:
     type: book
     outlet: A5 books
     title: '„Зелената книга за ученето“: 7-те принципа, които ще променят начина ви на учене'
-    url: https://uchene.com
+    url: /book/
   - year: 2025
     type: award
     outlet: ''

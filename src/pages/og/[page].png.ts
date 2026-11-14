@@ -19,6 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     { params: { page: 'companies' }, props: { name, kicker: co.hero.kicker, title: co.hero.h1_before, highlight: co.hero.h1_highlight, photoId: co.hero.photo } },
     { params: { page: 'resume' }, props: { name, kicker: r.header.role, title: r.meta.title.split('|')[0].trim(), photoId: r.header.photo } },
     { params: { page: 'daskal' }, props: { name, kicker: dk.hero.eyebrow, title: dk.hero.h1, iconFile: dk.package.icon } },
+    { params: { page: 'book' }, props: { name, kicker: site.book.publisher.bg + ', ' + site.book.year, title: site.book.title_bg, highlight: undefined, subtitle: site.book.subtitle_bg, bookCover: site.book.cover.file } },
     { params: { page: 'support' }, props: { name, kicker: su.product.name, title: supTitle, highlight: su.page.h1_highlight, photoId: su.page.proof.photo } },
   ];
   // English versions: same images, English text
@@ -40,7 +41,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const GET: APIRoute = async ({ props }) => {
   const base = { name: props.name, kicker: props.kicker, title: props.title, highlight: props.highlight };
   let png;
-  if (props.iconFile) {
+  if (props.bookCover) {
+    png = await ogPng({ ...base, title: `${props.title}. ${props.subtitle}`, photoPath: join(process.cwd(), 'src/assets/book', props.bookCover), focal: [50, 50] });
+  } else if (props.iconFile) {
     png = await ogPng({ ...base, photoPath: join(process.cwd(), 'src/assets/daskal', props.iconFile), focal: [50, 50], square: true });
   } else {
     const p = await photo(props.photoId);

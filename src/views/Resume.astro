@@ -36,7 +36,7 @@ const jsonld = {
     {
       '@type': 'Book', name: site.book.title_bg, alternateName: site.book.title_en, author: { '@id': p['@id'] },
       isbn: site.book.isbn, inLanguage: 'bg', datePublished: String(site.book.year),
-      publisher: { '@type': 'Organization', name: site.book.publisher[lang] }, url: site.book.url,
+      publisher: { '@type': 'Organization', name: site.book.publisher[lang] }, url: new URL(site.book.url, Astro.site).href,
     },
   ],
 };

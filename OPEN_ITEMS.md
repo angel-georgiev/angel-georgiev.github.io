@@ -44,6 +44,14 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 | 6 | Founder or co-founder for Sindeo and Znam.be | „Основател“ / "Founder" everywhere (Angel, 13 Nov 2026) |
 | 7–9 | obr.education full name, MSc Digital Business details, Microsoft AB-730/731 titles | Closed (Angel, 14 Nov 2026): no full CV on the site, `cv-master.yml` will not be built |
 
+## Phase 5 repoint: uchene.com → daskal.ai/book/ (14 Nov 2026)
+
+| # | Item | Status |
+|---|---|---|
+| U1 | `/book/` page on daskal.ai | Built from the uchene.com copy (write-article pass, approved by Angel). Same Stripe link (`book.yml → product.stripe_link`), confirmation stays in Stripe, Angel ships. 300+ pages (book has 325). Signed-copy offer dropped (not running). No privacy/terms pages: Angel collects no personal data on the site |
+| U2 | uchene.com redirect | **Angel, after this PR is live:** Cloudflare Redirect Rule on the uchene.com zone, 301 every path to `https://daskal.ai/book/`; record proxied (orange cloud). Then retire the Vercel project |
+| U3 | English book page `/en/book/` | Later, with the English digital edition |
+
 ## Not blocking / later phases
 
 | # | Item | Status |
