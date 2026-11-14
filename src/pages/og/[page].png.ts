@@ -42,7 +42,7 @@ export const GET: APIRoute = async ({ props }) => {
   const base = { name: props.name, kicker: props.kicker, title: props.title, highlight: props.highlight };
   let png;
   if (props.bookCover) {
-    png = await ogPng({ ...base, title: `${props.title}. ${props.subtitle}`, photoPath: join(process.cwd(), 'src/assets/book', props.bookCover), focal: [50, 50] });
+    png = await ogPng({ ...base, title: `${props.title}. ${props.subtitle}`, photoPath: join(process.cwd(), 'src/assets/book', props.bookCover), focal: [50, 50], whole: true });
   } else if (props.iconFile) {
     png = await ogPng({ ...base, photoPath: join(process.cwd(), 'src/assets/daskal', props.iconFile), focal: [50, 50], square: true });
   } else {

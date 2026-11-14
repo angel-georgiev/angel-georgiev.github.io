@@ -39,9 +39,11 @@ const wing = () => (wingUri ??= sharp(Buffer.from(wingSvg()), { density: 600 }).
 type El = { type: string; props: Record<string, unknown> };
 const h = (type: string, style: Record<string, unknown>, children?: unknown): El => ({ type, props: { style, children } });
 
-export async function ogPng(o: { kicker: string; title: string; highlight?: string; name: string; photoPath: string; focal: [number, number]; square?: boolean }) {
-  const [pw, ph] = o.square ? [400, 400] : [400, 500];
-  const photo = o.square
+export async function ogPng(o: { kicker: string; title: string; highlight?: string; name: string; photoPath: string; focal: [number, number]; square?: boolean; whole?: boolean }) {
+  // whole: show the image uncropped at full height (the book cover), width from its own aspect ratio
+  const meta = o.whole ? await sharp(o.photoPath).metadata() : undefined;
+  const [pw, ph] = o.square ? [400, 400] : meta ? [Math.round((500 * (meta.width ?? 1)) / (meta.height ?? 1)), 500] : [400, 500];
+  const photo = o.square || o.whole
     ? `data:image/png;base64,${(await sharp(o.photoPath).resize(pw, ph).png().toBuffer()).toString('base64')}`
     : await focalCrop(o.photoPath, o.focal, pw, ph);
   // Satori has no inline layout: flow the title word by word so the highlight continues on the same line.
@@ -59,7 +61,7 @@ export async function ogPng(o: { kicker: string; title: string; highlight?: stri
       ]),
       h('div', { display: 'flex', height: 1 }),
     ]),
-    { type: 'img', props: { src: photo, width: pw, height: ph, style: { borderRadius: 24, alignSelf: 'center', flexShrink: 0 } } },
+    { type: 'img', props: { src: photo, width: pw, height: ph, style: { borderRadius: o.whole ? 6 : 24, alignSelf: 'center', flexShrink: 0, marginLeft: o.whole ? (400 - pw) / 2 : 0 } } },
   ]);
   const svg = await satori(tree as any, { width: 1200, height: 630, fonts });
   return new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
