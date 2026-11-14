@@ -35,7 +35,7 @@ const site = obj({
   analytics: obj({ cloudflare_token: s }),
   i18n: obj({ en_draft: z.boolean() }),
   domain: obj({ preview: s, production: s, meaning: bi }),
-  nav: z.array(obj({ key: s, bg: s, en: s, href: s, phase })),
+  nav: z.array(obj({ key: s, bg: s, en: s.optional(), href: s, phase, only: z.enum(['bg', 'en']).optional() })),
   ui: z.record(s, bi),
   footer: obj({ line: bi, rights: bi, links: z.array(obj({ key: s, bg: s })) }),
   numbers: z.array(obj({ value: s, value_bg: s, en: s, bg: s })),

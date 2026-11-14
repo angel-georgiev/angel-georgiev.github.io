@@ -43,6 +43,7 @@ nav:
   - { key: schools,   bg: "Училища",   en: "Schools",   href: "/schools/" }
   - { key: companies, bg: "Компании",  en: "Companies", href: "/companies/" }
   - { key: resume,    bg: "Резюме",    en: "Résumé",    href: "/resume/" }   # /cv/ redirects here
+  - { key: book,      bg: "Книгата",   href: "/book/", only: bg }   # the book page is Bulgarian only (Angel, 14 Nov 2026)
   - { key: daskal,  bg: "Даскал AI",        en: "daskal.AI",       href: "/daskal/", phase: 2 }
 
 ui:

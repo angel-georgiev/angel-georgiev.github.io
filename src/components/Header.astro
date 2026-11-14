@@ -6,7 +6,7 @@ interface Props { lang: Lang; altPath?: string }
 const { lang, altPath } = Astro.props;
 const site = await load('site');
 const path = Astro.url.pathname;
-const nav = site.nav.filter(inPhase).map((n) => ({ ...n, href: localize(n.href, lang) }));
+const nav = site.nav.filter(inPhase).filter((n) => !n.only || n.only === lang).map((n) => ({ ...n, label: n[lang] ?? n.bg, href: localize(n.href, lang) }));
 const other: Lang = lang === 'bg' ? 'en' : 'bg';
 ---
 <header class="site-header wrap">
@@ -14,7 +14,7 @@ const other: Lang = lang === 'bg' ? 'en' : 'bg';
   <nav>
     <ul>
       {nav.map((n) => (
-        <li><a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n[lang]}</a></li>
+        <li><a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a></li>
       ))}
     </ul>
   </nav>
