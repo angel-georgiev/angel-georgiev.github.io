@@ -53,6 +53,32 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 | U4 | Book after-payment page | `/book/thanks/` built (noindex, no analytics, not in the sitemap). **Angel, after merge:** set the book Stripe link's confirmation to redirect to `https://daskal.ai/book/thanks/`. The page says the Stripe receipt is already in the buyer's inbox: check that receipts are on for the book link too |
 | U3 | English book page `/en/book/` | Later, with the English digital edition |
 
+## Links to check in a browser (L1, 14 Nov 2026)
+
+These 19 external links could not be checked by script: the sites block automated requests or are unreachable from the build container. They stay as links until someone opens them in a normal browser. Dead → keep the entry as plain text (comment out `url:` as done for the six dead links in `resume.yml`); alive → delete the row. Every other external link on the site was checked on 14 Nov 2026.
+
+| Link | In | Why unchecked |
+|---|---|---|
+| https://bnr.bg/burgas/post/101323631/parvi-mladejki-startup-fest-shte-pomaga-v-izbora-na-profesia | `content/resume.yml:878` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
+| https://bnr.bg/horizont/post/101281606/angel-georgiev-znambe-iskame-da-pomognem-na-balgarskite-uchiteli | `content/resume.yml:907` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
+| https://bnr.bg/post/101474795/elektronen-almanah-na-balgarskoto-obrazovanie-sastavat-sled-konkurs-ot-znambe | `content/resume.yml:759` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
+| https://bnr.bg/sofia/post/101374863/40-ot-profesiite-na-badeshteto-predstoi-da-badat-otkriti-i-sazdadeni | `content/resume.yml:860` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
+| https://bnr.bg/sofia/post/101411649/da-nauchim-neshto-novo | `content/resume.yml:807` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
+| https://bnr.bg/sofia/post/101525827/obrazovatelnata-platforma-znambe-s-platforma-za-interaktivni-uroci | `content/resume.yml:705` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
+| https://digitalk.bg/career/2021/05/24/4212861_suzdavat_purviia_almanah_za_obrazovanie_v_podkrepa_na/ | `content/resume.yml:771` | site refuses scripts (403) |
+| https://digitalk.bg/digitalk_awards/2025/03/12/4755597_transform_it_awards_25_ai_instrumentut_daskal_gpt/ | `content/daskal.yml:129, content/en/daskal.yml:138, content/resume.yml:288` | site refuses scripts (403) |
+| https://digitalk.bg/entrepreneurship/2024/04/15/4614605_digitalka1_awards_24_kak_da_obuchim_uchiteli_i_za/ | `content/resume.yml:513` | site refuses scripts (403) |
+| https://economy.bg/innovations/view/60990/Daskal-GPT-V-Bylgariya-startira-pyrviya-bezplaten-AI-instrument-za-uchiteli | `content/daskal.yml:128, content/en/daskal.yml:137, content/resume.yml:282` | site refuses scripts (403) |
+| https://kmeta.bg/каква-е-ролята-на-изкуствения-интелек/ | `content/resume.yml:378` | site refuses scripts (403) |
+| https://www.computerworld.bg/entrepreneurship/2021/01/21/4165754_znambe_startira_platforma_za_interaktivni_uroci/ | `content/resume.yml:813` | host unreachable from the build container |
+| https://www.dnevnik.bg/specialproject/2020/12/09/4137321_internet_kaji_mi_kakuv_iskam_da_stana/ | `content/resume.yml:836` | site refuses scripts (403) |
+| https://www.economy.bg/bulgaria/view/60750/Kak-shte-izglezhda-uchilishteto-na-bydeshteto-i-kakva-shte-e-rolyata-na-AI-v-nego | `content/resume.yml:312` | site refuses scripts (403) |
+| https://www.economy.bg/management/view/61597/Irina-Radoeva-beshe-preizbrana-za-predsedatel-na-US-na-BAIT- | `content/resume.yml:234` | site refuses scripts (403) |
+| https://www.economy.bg/management/view/62425/Angel-Georgiev-se-prisyedinyava-kym-ITCE | `content/resume.yml:193` | site refuses scripts (403) |
+| https://www.economy.bg/marketing/view/60459/Sindeo%E2%80%9C-organizira-bezplatno-obuchenie-za-prilozhenie-na-AI-v-obrazovanieto- | `content/resume.yml:360` | site refuses scripts (403) |
+| https://www.karieri.bg/news/34614_angel_georgiev_vseki_sam_suzdava_svoia_put | `content/resume.yml:970` | site refuses scripts (403) |
+| https://www.plovdiv-press.bg/2025/06/12/%D0%B0%D0%BD%D0%B3%D0%B5%D0%BB-%D0%B3%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B5%D0%B2-%D0%B5-%D0%B8%D0%B7%D0%B1%D1%80%D0%B0%D0%BD-%D0%B7%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD-%D0%BD%D0%B0-%D1%83%D0%BF%D1%80%D0%B0/474393/ | `content/resume.yml:222` | site refuses scripts (403) |
+
 ## Not blocking / later phases
 
 | # | Item | Status |
