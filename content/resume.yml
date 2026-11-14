@@ -652,6 +652,11 @@ archive:
     outlet: Дарик радио · „Дарик кафе“, „40 до 40“
     title: Ангел Георгиев в „40 до 40“
     url: https://darikradio.bg/angel-georgiev-v-40-do-40.html
+  - year: 2022   # added 14 Nov 2026 while checking links; year from the Дарик „40 до 40“ feature above, upload date not checked
+    type: video
+    outlet: Дарик Плюс, YouTube
+    title: „40 до 40“ представя Ангел Георгиев от Знам.бе
+    url: https://www.youtube.com/watch?v=FBxHfWEr1u0
   - year: 2022
     month: 4
     type: video
@@ -691,7 +696,7 @@ archive:
     type: radio
     outlet: БНР Христо Ботев
     title: Алманах с полезни учителски разработки на „Знам.бе“
-    url: https://bnr.bg/hristobotev/post/101532461
+    # url: https://bnr.bg/hristobotev/post/101532461   # link dead (checked 14 Nov 2026), kept as plain text
   - year: 2021
     month: 9
     type: radio
@@ -816,13 +821,13 @@ archive:
     type: radio
     outlet: БНР Варна · На светло
     title: Онлайн турнето на Знам.бе
-    url: https://bnr.bg/varna/post/101385636
+    # url: https://bnr.bg/varna/post/101385636   # link dead (checked 14 Nov 2026), kept as plain text
   - year: 2020
     month: 12
     type: press
     outlet: Монитор, Политика
     title: Учители споделят идеи и практики с подкасти
-    url: https://www.monitor.bg/bg/a/view/uchiteli-spodeljat-idei-i-praktiki-s-podkasti-240912
+    # url: https://www.monitor.bg/bg/a/view/uchiteli-spodeljat-idei-i-praktiki-s-podkasti-240912   # link dead (checked 14 Nov 2026), kept as plain text
   - year: 2020
     month: 12
     type: press
@@ -846,7 +851,7 @@ archive:
     type: tv
     outlet: Канал 3 · Тасева LIVE
     title: Гост е Ангел Георгиев от Знам.бе
-    url: https://kanal3.bg/video/28357-„Taseva-LIVE“-na-20.11.2020-g.:-Gost-e-Angel-Georgiev-ot-Znam.be
+    # url: https://kanal3.bg/video/28357-„Taseva-LIVE“-na-20.11.2020-g.:-Gost-e-Angel-Georgiev-ot-Znam.be   # link dead (checked 14 Nov 2026), kept as plain text
   - year: 2020
     month: 11
     type: radio
@@ -882,7 +887,7 @@ archive:
     type: talk
     outlet: Форум „Шумът“
     title: Панел „Кои са ключовите умения за децата през 21 век?“
-    url: https://profit.bg/balgariya/koi-sa-klyuchovite-umeniya-za-detsata-prez-21-vek/
+    # url: https://profit.bg/balgariya/koi-sa-klyuchovite-umeniya-za-detsata-prez-21-vek/   # link dead (checked 14 Nov 2026), kept as plain text
   - year: 2020
     month: 5
     type: talk
@@ -950,7 +955,7 @@ archive:
     type: video
     outlet: СофтУни
     title: Programming Basics – November 2015
-    url: https://softuni.bg/trainings/resources/video/6641/video-09-november-2015-angel-georgiev-camera-programming-basics-november-2015
+    # url: https://softuni.bg/trainings/resources/video/6641/video-09-november-2015-angel-georgiev-camera-programming-basics-november-2015   # link dead (checked 14 Nov 2026), kept as plain text
   - year: 2015
     month: 5
     type: training

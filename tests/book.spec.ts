@@ -45,3 +45,12 @@ test('/book/thanks/: noindex, no analytics, links back to the book', async ({ pa
   await expect(page.locator(`main a[href="mailto:${site.person.email}"]`)).toHaveCount(1);
   await expect(page.locator('link[hreflang]')).toHaveCount(0);
 });
+
+test('nav: „Книгата“ in Bulgarian only', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('header nav a[href="/book/"]')).toHaveText('Книгата');
+  await page.goto('/en/');
+  await expect(page.locator('header nav a[href="/book/"]')).toHaveCount(0);
+  await page.goto('/book/');
+  await expect(page.locator('header nav a[href="/book/"]')).toHaveAttribute('aria-current', 'page');
+});
