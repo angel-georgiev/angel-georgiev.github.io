@@ -11,7 +11,7 @@ const link = 'link' in t.prepare ? t.prepare.link : undefined;
 const backHref = isBook ? '/book/' : lang === 'en' ? '/en/' : '/';
 const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
 ---
-<Base theme="dark" title={`${t.h1} | ${site.person.name[lang]}`} description={t.text} noindex noTracking alternate={isBook ? false : undefined}>
+<Base theme={isBook ? "light" : "dark"} title={`${t.h1} | ${site.person.name[lang]}`} description={t.text} noindex noTracking alternate={isBook ? false : undefined}>
   <section class="wrap thanks">
     <h1>{t.h1}</h1>
     <p class="lede">{t.text}</p>

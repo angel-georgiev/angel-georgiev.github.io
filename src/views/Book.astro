@@ -39,7 +39,7 @@ const jsonld = {
 };
 const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
-<Base theme="dark" title={b.meta.title} description={b.meta.description} alternate={false} jsonld={jsonld} ogImage="/og/book.png">
+<Base theme="light" title={b.meta.title} description={b.meta.description} alternate={false} jsonld={jsonld} ogImage="/og/book.png">
   <div class="wrap">
     <section class="bk-hero">
       <div>
@@ -126,7 +126,7 @@ const pad = (i: number) => String(i + 1).padStart(2, '0');
   @media (min-width: 900px) { .bk-hero { grid-template-columns: minmax(0, 1fr) 360px; gap: 3.5rem; } }
   .bk-hero h1 { font-size: clamp(2.25rem, 5.5vw, 3.6rem); margin-bottom: 0.3em; }
   .sub { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 2.4vw, 1.55rem); color: var(--gold-text); line-height: 1.2; margin-bottom: 1rem; }
-  .bk-hero :global(.bk-cover) { width: 220px; height: auto; justify-self: center; border-radius: 4px; box-shadow: 0 14px 40px rgb(0 0 0 / 0.45); }
+  .bk-hero :global(.bk-cover) { width: 220px; height: auto; justify-self: center; border-radius: 4px; box-shadow: 0 14px 40px rgb(16 38 29 / 0.3); }
   @media (min-width: 900px) { .bk-hero :global(.bk-cover) { width: 360px; } }
   @media (max-width: 899px) { .bk-hero :global(picture) { order: -1; justify-self: center; } }
 
