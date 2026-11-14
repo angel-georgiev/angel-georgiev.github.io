@@ -223,6 +223,10 @@ const book = obj({
   testimonials: obj({ heading: s, items: z.array(obj({ text: s, name: s, role: s.optional(), link })) }),
   faq: obj({ heading: s, items: z.array(obj({ q: s, a: s })) }),
   order: obj({ heading: s, edition: s, items: z.array(s), button: s, note: s }),
+  thank_you: obj({
+    path: s, h1: s, text: s, fallback: s,
+    prepare: obj({ heading: s, text: s, link }), back: s,
+  }),
 });
 
 const EN = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal'] as const;

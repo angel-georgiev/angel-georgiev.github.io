@@ -3,12 +3,15 @@ import Base from '../layouts/Base.astro';
 import { load } from '../lib/content';
 import { langFromPath } from '../lib/i18n';
 const lang = langFromPath(Astro.url.pathname);
-const s = await load('support', lang);
+// One view for both thank-you pages: /support/thanks/ (support.yml) and /book/thanks/ (book.yml).
+const isBook = Astro.url.pathname.startsWith('/book/');
 const site = await load('site');
-const t = s.thank_you;
+const t = isBook ? (await load('book')).thank_you : (await load('support', lang)).thank_you;
+const link = 'link' in t.prepare ? t.prepare.link : undefined;
+const backHref = isBook ? '/book/' : lang === 'en' ? '/en/' : '/';
 const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
 ---
-<Base theme="dark" title={`${t.h1} | ${site.person.name[lang]}`} description={t.text} noindex noTracking>
+<Base theme="dark" title={`${t.h1} | ${site.person.name[lang]}`} description={t.text} noindex noTracking alternate={isBook ? false : undefined}>
   <section class="wrap thanks">
     <h1>{t.h1}</h1>
     <p class="lede">{t.text}</p>
@@ -16,8 +19,9 @@ const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
     <div class="card prepare">
       <h2>{t.prepare.heading}</h2>
       <p>{t.prepare.text}</p>
+      {link && <p class="more"><a href={link.href}>{link.text}</a></p>}
     </div>
-    <a class="textlink" href={lang === 'en' ? '/en/' : '/'}>{t.back}</a>
+    <a class="textlink" href={backHref}>{t.back}</a>
   </section>
 </Base>
 <style>
@@ -25,4 +29,5 @@ const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
   .prepare { margin: 1.5rem 0 2rem; }
   .prepare h2 { font-size: var(--fs-lg); }
   .prepare p { margin: 0; }
+  .prepare .more { margin-top: 0.75rem; font-weight: 700; }
 </style>

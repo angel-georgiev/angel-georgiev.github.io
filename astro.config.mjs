@@ -41,7 +41,7 @@ const openItems = {
 };
 
 const EN_DRAFT = siteYml.i18n?.en_draft === true;
-const NOT_IN_SITEMAP = ['/cv/', '/404', '/support/thanks/', '/en/support/thanks/', ...(EN_DRAFT ? ['/en/'] : [])];
+const NOT_IN_SITEMAP = ['/cv/', '/404', '/support/thanks/', '/en/support/thanks/', '/book/thanks/', ...(EN_DRAFT ? ['/en/'] : [])];
 
 export default defineConfig({
   site: SITE,

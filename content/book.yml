@@ -105,3 +105,16 @@ order:
     - "Изпращам до 24 часа след поръчката"
   button: "Поръчайте книгата"
   note: "Плащане чрез Stripe."
+
+# /book/thanks/ — Stripe's after-payment page for the book link (Angel sets it in Stripe after go-live).
+# noindex, no analytics, not in the sitemap. Facts from the FAQ above (24 h dispatch, 3–5 working days).
+thank_you:
+  path: "/book/thanks/"
+  h1: "Благодаря! Получих поръчката ви."
+  text: "Ще изпратя книгата до 24 часа на адреса, който посочихте. Доставката в България отнема 3–5 работни дни. Разписката от Stripe вече е в пощата ви."
+  fallback: "Ако имате въпрос за поръчката или искате да промените адреса, пишете на angel@daskal.ai."
+  prepare:
+    heading: "Докато чакате книгата"
+    text: "Пиша бюлетина The Paideia Method за ученето в ерата на AI. Абонирайте се безплатно и ще получавате всеки нов брой по имейл."
+    link: { text: "Абонирайте се за The Paideia Method →", href: "https://thepaideiamethod.substack.com/subscribe" }
+  back: "Обратно към книгата →"

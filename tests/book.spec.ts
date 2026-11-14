@@ -35,3 +35,13 @@ test('internal links to /book/ stay in the same window', async ({ page }) => {
   const a = page.locator('main a[href="/book/"]').first();
   await expect(a).not.toHaveAttribute('target', '_blank');
 });
+
+test('/book/thanks/: noindex, no analytics, links back to the book', async ({ page }) => {
+  await page.goto('/book/thanks/');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
+  await expect(page.locator('h1')).toHaveText(b.thank_you.h1);
+  await expect(page.locator('script[src*="cloudflareinsights"]')).toHaveCount(0);
+  await expect(page.locator('main a[href="/book/"]')).toHaveCount(1);
+  await expect(page.locator(`main a[href="mailto:${site.person.email}"]`)).toHaveCount(1);
+  await expect(page.locator('link[hreflang]')).toHaveCount(0);
+});

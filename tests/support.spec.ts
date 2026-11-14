@@ -76,7 +76,7 @@ test('404 page: status 404, links home and to /support/', async ({ page }) => {
 test('sitemap and robots', async ({ request }) => {
   const sm = await (await request.get('/sitemap-0.xml')).text();
   for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/', '/book/']) expect(sm).toContain(`${p}</loc>`);
-  for (const p of ['/cv/', '/support/thanks/', '404']) expect(sm).not.toContain(p);
+  for (const p of ['/cv/', '/support/thanks/', '/book/thanks/', '404']) expect(sm).not.toContain(p);
   expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap:');
 });
 
