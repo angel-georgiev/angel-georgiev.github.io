@@ -4,6 +4,7 @@ import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { wingSvg } from './wing';
 
 const font = (pkg: string, file: string) =>
   readFileSync(join(process.cwd(), 'node_modules/@fontsource', pkg, 'files', file));
@@ -30,12 +31,19 @@ async function focalCrop(path: string, focal: [number, number], w: number, h: nu
   return `data:image/jpeg;base64,${buf.toString('base64')}`;
 }
 
+// The wing, rasterised once (satori does not support SVG masks).
+let wingUri: Promise<string> | undefined;
+const wing = () => (wingUri ??= sharp(Buffer.from(wingSvg()), { density: 600 }).resize({ height: 104 }).png().toBuffer()
+  .then((b) => `data:image/png;base64,${b.toString('base64')}`));
+
 type El = { type: string; props: Record<string, unknown> };
 const h = (type: string, style: Record<string, unknown>, children?: unknown): El => ({ type, props: { style, children } });
 
-export async function ogPng(o: { kicker: string; title: string; highlight?: string; name: string; photoPath: string; focal: [number, number]; square?: boolean }) {
-  const [pw, ph] = o.square ? [400, 400] : [400, 500];
-  const photo = o.square
+export async function ogPng(o: { kicker: string; title: string; highlight?: string; name: string; photoPath: string; focal: [number, number]; square?: boolean; whole?: boolean }) {
+  // whole: show the image uncropped at full height (the book cover), width from its own aspect ratio
+  const meta = o.whole ? await sharp(o.photoPath).metadata() : undefined;
+  const [pw, ph] = o.square ? [400, 400] : meta ? [Math.round((500 * (meta.width ?? 1)) / (meta.height ?? 1)), 500] : [400, 500];
+  const photo = o.square || o.whole
     ? `data:image/png;base64,${(await sharp(o.photoPath).resize(pw, ph).png().toBuffer()).toString('base64')}`
     : await focalCrop(o.photoPath, o.focal, pw, ph);
   // Satori has no inline layout: flow the title word by word so the highlight continues on the same line.
@@ -43,14 +51,17 @@ export async function ogPng(o: { kicker: string; title: string; highlight?: stri
   const titleParts: El[] = [...words(o.title, C.text), ...(o.highlight ? words(o.highlight, C.gold) : [])];
   const tree = h('div', { width: 1200, height: 630, display: 'flex', background: C.bg, padding: '56px 64px', fontFamily: BODY }, [
     h('div', { display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 616, height: 518, flexShrink: 0, marginRight: 56 }, [
-      h('div', { display: 'flex', fontFamily: DISPLAY, fontSize: 34, color: C.text }, [h('span', {}, o.name), h('span', { color: C.gold }, '.')]),
+      h('div', { display: 'flex', alignItems: 'center', fontFamily: DISPLAY, fontSize: 34, color: C.text }, [
+        { type: 'img', props: { src: await wing(), width: 55, height: 52, style: { marginRight: 14 } } },
+        h('span', {}, o.name), h('span', { color: C.gold }, '.'),
+      ]),
       h('div', { display: 'flex', flexDirection: 'column' }, [
         h('div', { display: 'flex', fontSize: 22, color: C.gold, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 18 }, o.kicker),
         h('div', { display: 'flex', flexWrap: 'wrap', fontFamily: DISPLAY, fontSize: 60, lineHeight: 1.05 }, titleParts),
       ]),
       h('div', { display: 'flex', height: 1 }),
     ]),
-    { type: 'img', props: { src: photo, width: pw, height: ph, style: { borderRadius: 24, alignSelf: 'center', flexShrink: 0 } } },
+    { type: 'img', props: { src: photo, width: pw, height: ph, style: { borderRadius: o.whole ? 6 : 24, alignSelf: 'center', flexShrink: 0, marginLeft: o.whole ? (400 - pw) / 2 : 0 } } },
   ]);
   const svg = await satori(tree as any, { width: 1200, height: 630, fonts });
   return new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();

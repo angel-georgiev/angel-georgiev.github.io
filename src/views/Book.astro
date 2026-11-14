@@ -1,0 +1,170 @@
+---
+// /book/ — „Зелената книга за ученето“ (moved from uchene.com, 14 Nov 2026). Bulgarian only.
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Btn from '../components/Btn.astro';
+import CheckList from '../components/CheckList.astro';
+import { load, nbsp } from '../lib/content';
+import { person } from '../lib/jsonld';
+
+const site = await load('site');
+const b = await load('book');
+const bk = site.book;
+const covers = import.meta.glob<{ default: ImageMetadata }>('/src/assets/book/*', { eager: true });
+const cover = covers[`/src/assets/book/${bk.cover.file}`]?.default;
+if (!cover) throw new Error(`book cover missing: src/assets/book/${bk.cover.file}`);
+
+// Build check: the price shown matches the number sent to search engines.
+if (b.product.price !== `${b.product.price_eur.toFixed(2).replace('.', ',')} €`) {
+  throw new Error(`book.yml: price "${b.product.price}" does not match price_eur ${b.product.price_eur}`);
+}
+if (!b.hero.cta.small.startsWith(b.product.price)) throw new Error('book.yml: hero.cta.small must start with the price');
+
+const edition = `${b.order.edition}, ${bk.publisher.bg}, ${bk.year}, ${bk.pages} страници`;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: bk.title_bg,
+  alternateName: bk.title_en,
+  description: bk.subtitle_bg,
+  author: await person(Astro.site!),
+  isbn: bk.isbn,
+  inLanguage: 'bg',
+  datePublished: String(bk.year),
+  bookFormat: 'https://schema.org/Paperback',
+  publisher: { '@type': 'Organization', name: bk.publisher.bg },
+  url,
+  offers: { '@type': 'Offer', price: b.product.price_eur.toFixed(2), priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url },
+};
+const pad = (i: number) => String(i + 1).padStart(2, '0');
+---
+<Base theme="light" title={b.meta.title} description={b.meta.description} alternate={false} jsonld={jsonld} ogImage="/og/book.png">
+  <div class="wrap">
+    <section class="bk-hero">
+      <div>
+        <p class="kicker">{b.hero.kicker}</p>
+        <h1>{bk.title_bg}</h1>
+        <p class="sub">{bk.subtitle_bg}</p>
+        <p class="lede">{nbsp(b.hero.lede)}</p>
+        <div class="cta-row"><Btn variant="gold" text={b.hero.cta.text} small={b.hero.cta.small} href={b.product.stripe_link} /></div>
+      </div>
+      <Picture src={cover} alt={bk.cover.alt} width={360} widths={[240, 360, 471]} sizes="(min-width: 900px) 360px, 220px" formats={['avif', 'webp']} class="bk-cover" loading="eager" fetchpriority="high" />
+    </section>
+
+    <section class="section about">
+      <h2>{b.about.heading}</h2>
+      <p>{b.about.text}</p>
+      <h3>{b.about.for_whom.heading}</h3>
+      <CheckList items={b.about.for_whom.items} />
+    </section>
+
+    <section class="section">
+      <h2>{b.parts.heading}</h2>
+      <ol class="parts">
+        {b.parts.items.map((p, i) => (
+          <li class="card">
+            <p class="num" aria-hidden="true">{pad(i)}</p>
+            <h3>{p.title}</h3>
+            <figure>
+              <blockquote><p>„{p.quote.text}“</p></blockquote>
+              <figcaption>{p.quote.author}</figcaption>
+            </figure>
+            <p class="part-text">{p.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="muted parts-note">{b.parts.note}</p>
+    </section>
+
+    <section class="section author">
+      <div>
+        <h2>{b.author.heading}</h2>
+        <p>{nbsp(b.author.text)}</p>
+        <p class="links">{b.author.links.map((l) => <a class="textlink" href={l.href}>{l.text}</a>)}</p>
+      </div>
+      <CheckList items={b.author.facts.map(nbsp)} />
+    </section>
+
+    <section class="section">
+      <h2>{b.testimonials.heading}</h2>
+      <ul class="quotes grid-3">
+        {b.testimonials.items.map((t) => (
+          <li class="card">
+            <blockquote><p>{t.text}</p></blockquote>
+            <p class="who">{t.name}</p>
+            {t.role && <p class="role muted">{t.role}</p>}
+            <p class="role"><a href={t.link.href}>{t.link.text}</a></p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section faq">
+      <h2>{b.faq.heading}</h2>
+      {b.faq.items.map((f) => (
+        <details><summary>{f.q}</summary><p>{f.a}</p></details>
+      ))}
+    </section>
+
+    <section class="section" id="order">
+      <div class="order">
+        <h2>{b.order.heading}</h2>
+        <p class="price">{b.product.price}</p>
+        <ul>
+          <li>{edition}</li>
+          {b.order.items.map((x) => <li>{x}</li>)}
+        </ul>
+        <Btn variant="dark" text={b.order.button} href={b.product.stripe_link} />
+        <p class="note">{b.order.note}</p>
+      </div>
+    </section>
+  </div>
+</Base>
+<style>
+  .bk-hero { display: grid; gap: 2rem; padding-top: 2rem; align-items: center; }
+  @media (min-width: 900px) { .bk-hero { grid-template-columns: minmax(0, 1fr) 360px; gap: 3.5rem; } }
+  .bk-hero h1 { font-size: clamp(2.25rem, 5.5vw, 3.6rem); margin-bottom: 0.3em; }
+  .sub { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 2.4vw, 1.55rem); color: var(--gold-text); line-height: 1.2; margin-bottom: 1rem; }
+  .bk-hero :global(.bk-cover) { width: 220px; height: auto; justify-self: center; border-radius: 4px; box-shadow: 0 14px 40px rgb(16 38 29 / 0.3); }
+  @media (min-width: 900px) { .bk-hero :global(.bk-cover) { width: 360px; } }
+  @media (max-width: 899px) { .bk-hero :global(picture) { order: -1; justify-self: center; } }
+
+  .about { max-width: 46rem; }
+  .about h3 { margin-top: 1.25rem; }
+
+  .parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .parts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1040px) { .parts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .num { font-family: var(--font-display); font-weight: 900; font-size: 1.6rem; color: var(--gold-text); line-height: 1; margin: 0 0 0.4rem; }
+  figure { margin: 0 0 0.75rem; padding-left: 0.8rem; border-left: 3px solid var(--gold); }
+  blockquote { margin: 0; }
+  blockquote p { font-style: italic; font-size: 0.9rem; margin: 0 0 0.25rem; }
+  figcaption { font-size: 0.8rem; color: var(--text-muted); }
+  .part-text { font-size: 0.95rem; margin: 0; }
+  .parts-note { margin-top: 1.25rem; }
+
+  .author { display: grid; gap: 1.5rem 3rem; align-items: start; }
+  @media (min-width: 900px) { .author { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+
+  .quotes { list-style: none; margin: 0; padding: 0; }
+  .quotes blockquote p { font-style: normal; font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .who { font-weight: 800; margin: 0; }
+  .role { font-size: 0.85rem; margin: 0.15rem 0 0; }
+
+  .faq { max-width: 46rem; }
+  details { border-bottom: 1px solid var(--border); }
+  summary { cursor: pointer; font-weight: 700; padding: 0.85rem 0; min-height: 24px; }
+  details p { margin: 0 0 1rem; color: var(--text-muted); }
+
+  .order {
+    background: var(--gold); color: var(--on-gold); border-radius: 22px; padding: clamp(1.5rem, 4vw, 2.5rem);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .order h2 { color: var(--on-gold); margin-bottom: 0.3rem; }
+  .price { font-family: var(--font-display); font-weight: 900; font-size: clamp(3rem, 7vw, 4rem); line-height: 1; margin: 0 0 1rem; }
+  .order ul { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+  .order li { padding: 0.15rem 0; }
+  .note { font-size: 0.82rem; margin: 0.75rem 0 0; }
+</style>

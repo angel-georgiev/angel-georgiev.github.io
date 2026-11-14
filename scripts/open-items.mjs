@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = new URL('../', import.meta.url);
 const MARKER = /\b(TBD|TBC|VERIFY|PLACEHOLDER|TO CONFIRM)\b|\[АНГЕЛ ПИШЕ|ДА СЕ ПОТВЪРДИ/;
 // Phase 1 files gate the production build. The rest are listed for information only.
-export const PHASE1 = ['site', 'landing', 'schools', 'companies', 'resume', 'support', 'offers', 'photos', 'daskal'];   // files that gate production (Phase 1 + Phase 2)
+export const PHASE1 = ['site', 'landing', 'schools', 'companies', 'resume', 'support', 'offers', 'photos', 'daskal', 'book'];   // files that gate production (Phase 1 + Phase 2)
 
 // English files (content/en/) gate production only once Angel takes them out of draft (site.yml → i18n.en_draft).
 export function scan() {

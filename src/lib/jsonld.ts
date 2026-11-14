@@ -17,7 +17,7 @@ export async function person(site: URL, lang: Lang = 'bg') {
     image: new URL(img.src, site).href,
     email: `mailto:${s.person.email}`,
     url: new URL('/', site).href,
-    sameAs: [s.links.linkedin, s.links.substack, s.links.tedx, s.links.book_shop, s.links.github],
+    sameAs: [s.links.linkedin, s.links.substack, s.links.tedx, s.links.github],
   };
 }
 

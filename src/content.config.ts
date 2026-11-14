@@ -31,7 +31,7 @@ const site = obj({
     pronunciation: bi,
     languages: z.array(bi),
   }),
-  links: obj({ linkedin: s, substack: s, substack_subscribe: s, book_shop: s, tedx: s, github: s }),
+  links: obj({ linkedin: s, substack: s, substack_subscribe: s, tedx: s, github: s }),
   analytics: obj({ cloudflare_token: s }),
   i18n: obj({ en_draft: z.boolean() }),
   domain: obj({ preview: s, production: s, meaning: bi }),
@@ -47,7 +47,7 @@ const site = obj({
   pages: obj({
     not_found: obj({ meta_title: s, h1: s, text: s, daskal: s, home: s, support: s }),
     not_found_en: obj({ h1: s, text: s, daskal: s, home: s, support: s }),
-    redirect: obj({ book_text: s, cv_text: s }),
+    redirect: obj({ cv_text: s }),
   }),
 });
 
@@ -210,12 +210,32 @@ const daskal = obj({
   legacy_redirects: obj({ paths: z.record(s, s) }),
 });
 
+const book = obj({
+  meta,
+  product: obj({ price_eur: z.number(), price: s, stripe_link: s }),
+  hero: obj({ kicker: s, lede: s, cta: obj({ text: s, small: s }) }),
+  about: obj({ heading: s, text: s, for_whom: obj({ heading: s, items: z.array(s) }) }),
+  parts: obj({
+    heading: s, note: s,
+    items: z.array(obj({ title: s, quote: obj({ text: s, author: s }), text: s })).length(7),
+  }),
+  author: obj({ heading: s, text: s, facts: z.array(s), links: z.array(link) }),
+  testimonials: obj({ heading: s, items: z.array(obj({ text: s, name: s, role: s.optional(), link })) }),
+  faq: obj({ heading: s, items: z.array(obj({ q: s, a: s })) }),
+  order: obj({ heading: s, edition: s, items: z.array(s), button: s, note: s }),
+  thank_you: obj({
+    path: s, h1: s, text: s, fallback: s,
+    prepare: obj({ heading: s, text: s, link }), back: s,
+  }),
+});
+
 const EN = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal'] as const;
 const SCHEMAS = { landing, offers, schools, companies, resume, support, daskal } as const;
 const enCollections = Object.fromEntries(EN.map((n) => [`en_${n}`, defineCollection({ loader: fileEntry(`en_${n}`, `en/${n}.yml`), schema: SCHEMAS[n] })]));
 
 export const collections = {
   ...enCollections,
+  book: defineCollection({ loader: fileEntry('book'), schema: book }),
   press: defineCollection({ loader: fileEntry('press'), schema: press }),
   daskal: defineCollection({ loader: fileEntry('daskal'), schema: daskal }),
   site: defineCollection({ loader: fileEntry('site'), schema: site }),

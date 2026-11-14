@@ -18,7 +18,6 @@ links:
   linkedin: "https://www.linkedin.com/in/angeorgiev"
   substack: "https://thepaideiamethod.substack.com/"
   substack_subscribe: "https://thepaideiamethod.substack.com/subscribe"
-  book_shop: "https://uchene.com"
   tedx: "https://www.ted.com/talks/angel_georgiev_the_role_of_the_teacher_in_the_future_of_education"
   github: "https://github.com/angel-georgiev"
 
@@ -87,7 +86,7 @@ book:
   publisher: { en: "A5 books", bg: "A5 books" }   # imprint of Locus Publishing; use "A5 books" everywhere (Angel, 12 Nov 2026)
   year: 2025
   isbn: "978-954-783-445-3"
-  pages: "320+"
+  pages: "300+"   # 325 pages; show 300+ everywhere (Angel, 14 Nov 2026)
   parts:
     - { en: "Mindset", bg: "Нагласа" }
     - { en: "Method", bg: "Метод" }
@@ -96,7 +95,7 @@ book:
     - { en: "Assessment", bg: "Проверка" }
     - { en: "Memory", bg: "Памет" }
     - { en: "Lifelong learning", bg: "Учене през целия живот" }
-  url: "https://uchene.com"
+  url: "/book/"   # the book page moved from uchene.com (Phase 5 repoint, 14 Nov 2026). uchene.com redirects here
   cover:   # flat cover from uchene.com (Angel, 12 Nov 2026). Publisher on the cover: A5 books.
     file: "zelenata-kniga-cover.jpg"   # src/assets/book/, 471×650
     alt: "Корицата на „Зелената книга за ученето“ от Ангел Георгиев"
@@ -118,5 +117,4 @@ pages:
     home: "To the home page →"
     support: "Ask for my help →"
   redirect:
-    book_text: "Към книгата на uchene.com →"
     cv_text: "Към резюмето →"

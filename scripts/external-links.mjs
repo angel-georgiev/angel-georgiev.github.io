@@ -5,7 +5,8 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 // Internal paths that immediately send the visitor to another site (redirect pages) count as external.
-export const LEAVING_PATHS = ['/book/'];
+// /book/ left this list on 14 Nov 2026: it is a real page now.
+export const LEAVING_PATHS = [];
 
 export function isExternal(href, siteHost) {
   if (LEAVING_PATHS.includes(href)) return true;

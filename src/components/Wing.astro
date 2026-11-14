@@ -1,0 +1,30 @@
+---
+// The wing (Angel's logo, design system "Ангел Георгиев", 14 Nov 2026): four feathers fanning left from one pivot.
+// Top to bottom: Преподаване, Учене, Отговорност and, in the accent, AI.
+// Colours come from tokens, so the mark follows the page theme: dark → gold + mint, light → dark gold + brand green.
+// Each copy needs its own mask ids, hence `id`. Masks sit on a wrapper <g> so their user space is the
+// 120-unit square, not the feather's own transform.
+// `tight` crops the 120-unit square to the feathers' own bounds (x 26–92, y 31–93) plus a small margin,
+// so the mark can sit next to text without the square's empty space.
+interface Props { id: string; size?: number; class?: string; label?: string; tight?: boolean }
+const { id, size = 40, class: cls, label, tight = false } = Astro.props;
+const box = tight ? [23, 28, 72, 68] : [0, 0, 120, 120];
+const w = Math.round((size * box[2]) / box[3]);
+const LEAF = 'M0 0 C -18 -15, -58 -14, -78 0 C -58 14, -18 15, 0 0 Z';
+// [rotation, scale, gap stroke when this feather cuts the one above it]
+const F = [[-16, 0.5, 0], [2, 0.7, 4.86], [20, 0.88, 3.86], [38, 1.0, 3.4]] as const;
+const t = (r: number, s: number) => `translate(91 80) rotate(${r}) scale(${s})`;
+---
+<svg class={cls} viewBox={box.join(' ')} width={w} height={size} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false">
+  <defs>
+    {F.slice(0, 3).map((_, i) => (
+      <mask id={`${id}-m${i}`} maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+        <rect width="120" height="120" fill="#fff" />
+        {F.slice(i + 1).map(([r, s, w]) => <path d={LEAF} transform={t(r, s)} fill="#000" stroke="#000" stroke-width={w} stroke-linejoin="round" />)}
+      </mask>
+    ))}
+  </defs>
+  {F.map(([r, s], i) => (
+    <g mask={i < 3 ? `url(#${id}-m${i})` : undefined}><path d={LEAF} transform={t(r, s)} style={`fill:var(${i === 0 ? '--mint' : '--gold-text'})`} /></g>
+  ))}
+</svg>

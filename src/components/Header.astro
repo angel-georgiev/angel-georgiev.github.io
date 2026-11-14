@@ -1,6 +1,7 @@
 ---
 import { load, inPhase } from '../lib/content';
 import { localize, type Lang } from '../lib/i18n';
+import Wing from './Wing.astro';
 interface Props { lang: Lang; altPath?: string }
 const { lang, altPath } = Astro.props;
 const site = await load('site');
@@ -9,7 +10,7 @@ const nav = site.nav.filter(inPhase).map((n) => ({ ...n, href: localize(n.href, 
 const other: Lang = lang === 'bg' ? 'en' : 'bg';
 ---
 <header class="site-header wrap">
-  <a class="wordmark" href={lang === 'en' ? '/en/' : '/'}>{site.person.name[lang]}<span class="dot" aria-hidden="true">.</span></a>
+  <a class="wordmark" href={lang === 'en' ? '/en/' : '/'}><Wing id="hdr-wing" class="wing" size={30} tight /><span>{site.person.name[lang]}<span class="dot" aria-hidden="true">.</span></span></a>
   <nav>
     <ul>
       {nav.map((n) => (
@@ -27,7 +28,10 @@ const other: Lang = lang === 'bg' ? 'en' : 'bg';
   .wordmark {
     grid-area: brand; font-family: var(--font-display); font-weight: 850; font-size: 1.3rem; letter-spacing: -0.01em;
     color: var(--text); text-decoration: none; padding-block: 0.2rem;
+    display: inline-flex; align-items: center; gap: 0.45rem;
   }
+  /* Lockup (design system): wing left of the wordmark; the 120-unit box has empty space around the feathers */
+  .wing { flex-shrink: 0; margin-block: -0.3rem; }
   .dot { color: var(--gold); }
   nav { grid-area: nav; justify-self: end; }
   ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.25rem; }

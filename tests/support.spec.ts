@@ -65,19 +65,6 @@ test('/support/thanks/ is noindex and has the fallback line', async ({ page }) =
   await expect(page.locator(`a[href="mailto:${site.person.email}"]`).first()).toBeVisible();
 });
 
-test('/book/ reaches uchene.com within 1 s, with and without JS', async ({ browser }) => {
-  for (const javaScriptEnabled of [true, false]) {
-    const ctx = await browser.newContext({ javaScriptEnabled });
-    await ctx.route('https://uchene.com/**', (r) => r.fulfill({ status: 200, contentType: 'text/html', body: '<title>uchene</title>' }));
-    const page = await ctx.newPage();
-    const t0 = Date.now();
-    await page.goto('/book/', { waitUntil: 'commit' });
-    await page.waitForURL('https://uchene.com/**', { timeout: 1000 });
-    expect(Date.now() - t0).toBeLessThan(1000);
-    await ctx.close();
-  }
-});
-
 test('404 page: status 404, links home and to /support/', async ({ page }) => {
   const res = await page.goto('/no-such-page/');
   expect(res?.status()).toBe(404);
@@ -88,8 +75,8 @@ test('404 page: status 404, links home and to /support/', async ({ page }) => {
 
 test('sitemap and robots', async ({ request }) => {
   const sm = await (await request.get('/sitemap-0.xml')).text();
-  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/']) expect(sm).toContain(`${p}</loc>`);
-  for (const p of ['/book/', '/cv/', '/support/thanks/', '404']) expect(sm).not.toContain(p);
+  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/', '/book/']) expect(sm).toContain(`${p}</loc>`);
+  for (const p of ['/cv/', '/support/thanks/', '/book/thanks/', '404']) expect(sm).not.toContain(p);
   expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap:');
 });
 
@@ -111,7 +98,7 @@ test('refund window reads the same everywhere it appears (PRD §11)', () => {
 test('analytics: Cloudflare beacon only when a token is set, never on /support/thanks/', async ({ page }) => {
   const token = String(site.analytics.cloudflare_token ?? '').trim();
   const beacon = 'script[src="https://static.cloudflareinsights.com/beacon.min.js"]';
-  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/']) {
+  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/', '/book/']) {
     await page.goto(p);
     await expect(page.locator(beacon)).toHaveCount(token ? 1 : 0);
     if (token) await expect(page.locator(beacon)).toHaveAttribute('data-cf-beacon', JSON.stringify({ token }));
