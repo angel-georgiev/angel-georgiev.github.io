@@ -4,6 +4,7 @@ import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { wingSvg } from './wing';
 
 const font = (pkg: string, file: string) =>
   readFileSync(join(process.cwd(), 'node_modules/@fontsource', pkg, 'files', file));
@@ -30,6 +31,11 @@ async function focalCrop(path: string, focal: [number, number], w: number, h: nu
   return `data:image/jpeg;base64,${buf.toString('base64')}`;
 }
 
+// The wing, rasterised once (satori does not support SVG masks).
+let wingUri: Promise<string> | undefined;
+const wing = () => (wingUri ??= sharp(Buffer.from(wingSvg()), { density: 600 }).resize({ height: 104 }).png().toBuffer()
+  .then((b) => `data:image/png;base64,${b.toString('base64')}`));
+
 type El = { type: string; props: Record<string, unknown> };
 const h = (type: string, style: Record<string, unknown>, children?: unknown): El => ({ type, props: { style, children } });
 
@@ -43,7 +49,10 @@ export async function ogPng(o: { kicker: string; title: string; highlight?: stri
   const titleParts: El[] = [...words(o.title, C.text), ...(o.highlight ? words(o.highlight, C.gold) : [])];
   const tree = h('div', { width: 1200, height: 630, display: 'flex', background: C.bg, padding: '56px 64px', fontFamily: BODY }, [
     h('div', { display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: 616, height: 518, flexShrink: 0, marginRight: 56 }, [
-      h('div', { display: 'flex', fontFamily: DISPLAY, fontSize: 34, color: C.text }, [h('span', {}, o.name), h('span', { color: C.gold }, '.')]),
+      h('div', { display: 'flex', alignItems: 'center', fontFamily: DISPLAY, fontSize: 34, color: C.text }, [
+        { type: 'img', props: { src: await wing(), width: 55, height: 52, style: { marginRight: 14 } } },
+        h('span', {}, o.name), h('span', { color: C.gold }, '.'),
+      ]),
       h('div', { display: 'flex', flexDirection: 'column' }, [
         h('div', { display: 'flex', fontSize: 22, color: C.gold, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 18 }, o.kicker),
         h('div', { display: 'flex', flexWrap: 'wrap', fontFamily: DISPLAY, fontSize: 60, lineHeight: 1.05 }, titleParts),
