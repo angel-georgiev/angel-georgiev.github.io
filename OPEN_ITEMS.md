@@ -41,16 +41,14 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 | A1 | Cloudflare Web Analytics | On since 13 Nov 2026: site `daskal.ai`, token in `site.yml → analytics.cloudflare_token`. Page views only; not on `/support/thanks/` or redirect pages |
 | B1 | Book publisher: uchene.com cover shows "A5 books", content said „Локус“ | A5 books is an imprint of Locus. Use "A5 books" everywhere: `site.yml → book.publisher`, landing "Пиша", résumé bio and archive, `cv-master.yml` |
 | P1 | EN pronunciation "AHN-gel geh-OR-gee-ev" | Confirmed. Rule: markers in English-only values never block the production build |
+| 6 | Founder or co-founder for Sindeo and Znam.be | „Основател“ / "Founder" everywhere (Angel, 13 Nov 2026) |
+| 7–9 | obr.education full name, MSc Digital Business details, Microsoft AB-730/731 titles | Closed (Angel, 14 Nov 2026): no full CV on the site, `cv-master.yml` will not be built |
 
 ## Not blocking / later phases
 
 | # | Item | Status |
 |---|---|---|
 | 1 | Support price | Decided: 29 € (intro), 39 € regular |
-| 6 | Founder or co-founder for Sindeo and Znam.be | Open (affects `press.yml`, Phase 3) |
-| 7 | Full name of obr.education | Open (`cv-master.yml`, not built) |
-| 8 | MSc Digital Business: institution, year | Open (`cv-master.yml`, not built) |
-| 9 | Official titles Microsoft AB-730, AB-731 | Open (`cv-master.yml`, not built) |
 | 10 | SoftUni "10 000+ students daily" | Omitted on the site |
 | 14 | Analytics | Cloudflare Web Analytics, on since go-live (see A1). Exception recorded in PRD §7.6 |
 | 16 | 3+ consented testimonials | Later (Angel, 12 Nov 2026). Block hidden until then |
