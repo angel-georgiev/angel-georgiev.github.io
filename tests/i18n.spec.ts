@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { companies } from './live';
 import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 
 const site = load(readFileSync('content/site.yml', 'utf8')) as any;
-const PAIRS = [['/', '/en/'], ['/schools/', '/en/schools/'], ['/companies/', '/en/companies/'], ['/resume/', '/en/resume/'], ['/support/', '/en/support/'], ['/daskal/', '/en/daskal/']];
+const PAIRS = [['/', '/en/'], ['/schools/', '/en/schools/'], ...companies(['/companies/', '/en/companies/'] as any), ['/resume/', '/en/resume/'], ['/support/', '/en/support/'], ['/daskal/', '/en/daskal/']];
 
 test('every page links to its counterpart in the other language', async ({ page }) => {
   for (const [bg, en] of PAIRS) {
@@ -36,7 +37,7 @@ test('language bar: suggests English to a non-Bulgarian browser, remembers the c
   await expect(bar.locator('a')).toHaveAttribute('href', '/en/schools/');
   await bar.locator('[data-lang-close]').click();
   await expect(bar).toBeHidden();
-  await page.goto('/companies/');
+  await page.goto('/resume/');
   await expect(page.locator('[data-lang-bar]')).toBeHidden(); // remembered
   await ctx.close();
 });

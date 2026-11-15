@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { companies } from './live';
 import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 
@@ -60,7 +61,7 @@ test('download and repo links, Phase 2 entry points', async ({ page }) => {
   // first thing on the landing page: above the header
   expect((await banner.boundingBox())!.y).toBeLessThan((await page.locator('header').boundingBox())!.y);
   // landing page only
-  for (const p of ['/schools/', '/companies/', '/resume/', '/support/', '/daskal/']) {
+  for (const p of ['/schools/', ...companies('/companies/'), '/resume/', '/support/', '/daskal/']) {
     await page.goto(p);
     await expect(page.locator('.daskal-banner')).toHaveCount(0);
   }

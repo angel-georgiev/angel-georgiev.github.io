@@ -16,6 +16,9 @@ export async function load<K extends Name>(name: K, lang: Lang = 'bg'): Promise<
 export const PLACEHOLDER_RE = /\b(TBD|TBC|VERIFY|PLACEHOLDER)\b|\[АНГЕЛ ПИШЕ/;
 export const isPlaceholder = (s: unknown) => typeof s === 'string' && PLACEHOLDER_RE.test(s);
 
+/** Pages switched on and off in site.yml → live (e.g. companies). */
+export const isLive = async (page: 'companies') => (await load('site')).live[page];
+
 /** Phase gate: items marked phase: 2 stay hidden until Phase 2. */
 export const CURRENT_PHASE = 2;   // Phase 2 (Daskal) switched on 13 Nov 2026
 export const inPhase = (x: unknown) =>

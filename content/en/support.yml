@@ -55,7 +55,7 @@ page:
     heading: "Who it is not for"
     items:
       - "A long-term programme or a subscription. This is one session."
-      - "Delivering a whole project. For that, see the page for companies."
+      - "A whole project from the first meeting. We start with one specific question."
       - "A promised result without your involvement. The plan is yours, and you decide how to apply it."
 
   proof:
@@ -92,6 +92,7 @@ page:
     heading: "Frequently asked questions"
     items:
       - { q: "How does the session work?", a: "Online, by video call. The link comes with the time you choose." }
+      - { q: "Can you help me with a bigger project?", a: "Yes. For example, with a new course, a curriculum or bringing AI into your work. We start with one meeting about a specific question. If we both see a reason to continue after it, we will set the project's price together, based on the scope of the work." }
       - { q: "When will you contact me?", a: "Within 1 working day after payment, at the email address you gave." }
       - { q: "What if none of the offered times suit me?", a: "Write to me and we will find another time." }
       - { q: "Can my school or company pay?", a: "Yes, by bank transfer against an invoice. Write to me at angel@daskal.ai." }

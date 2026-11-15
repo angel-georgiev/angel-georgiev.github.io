@@ -16,7 +16,7 @@ hero:
   lede: "От 20 години обучавам хора в училища, компании и онлайн. През обученията ми са минали над 20 000 души, от бъдещи QA инженери в СофтУни до учители от цялата страна."
   lede_bold: "над 20 000 души"
   cta_primary: { text: "Поискайте моята помощ →", small: "Един учебен час онлайн · 29 €", href: "/support/" }
-  cta_secondary: { text: "Обучение за вашия екип →", small: "За училища и компании", href: "#offers" }
+  cta_secondary: { text: "Обучение за вашето училище →", small: "За училища", href: "#offers" }   # companies hidden (15 Nov 2026); was „Обучение за вашия екип →“ / „За училища и компании“
   textlink: { text: "Вижте резюмето ми", href: "/resume/" }
   photo: desk-smile             # photos.yml id · eye contact with the visitor (swapped 11 Nov 2026)
   badge: { value: "20 000+", label: "обучени души" }
@@ -36,8 +36,8 @@ offers:
   id: offers
   kicker: "Как да работим заедно"
   h2: "Изберете какво ви трябва."
-  intro: "За отделен човек, за училище или за компания."
-  # Cards from offers.yml in order: session (featured), school-training, companies (teaser + button to /companies/), events.
+  intro: "За отделен човек или за училище."
+  # Cards from offers.yml in order: session (featured), school-training, companies (only while site.yml → live.companies), events.
 
 in_action:
   kicker: "Вижте ме в действие"

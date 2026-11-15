@@ -4,7 +4,7 @@ offers:
   - key: session
     title: "Help with a specific question"
     for: "For you"
-    what: "Bring one question about AI, technology, learning or teaching. In a 45-minute online session we look for the answer together, and within 24 hours you receive a one-page plan. If the session did not help you, I refund your money."
+    what: "Bring one question about AI, technology, learning or teaching. In a 45-minute online session we look for the answer together, and within 24 hours you receive a one-page plan. If the session did not help you, I refund your money. After the session we can continue with a bigger project."
     price_line: "€29 introductory price for the first 30 sessions (regular price €39)"
     cta: { text: "Ask for my help →", href: "/en/support/#cta" }
 

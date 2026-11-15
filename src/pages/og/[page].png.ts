@@ -1,6 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { join } from 'node:path';
-import { load, photo } from '../../lib/content';
+import { load, photo, isLive } from '../../lib/content';
 import { ogPng } from '../../lib/og';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -35,7 +35,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     { params: { page: 'en-daskal' }, props: { name: nameEn, kicker: ed.hero.eyebrow, title: ed.hero.h1, iconFile: ed.package.icon } },
     { params: { page: 'en-support' }, props: { name: nameEn, kicker: eu.product.name, title: euTitle, highlight: eu.page.h1_highlight, photoId: eu.page.proof.photo } },
   );
-  return pages;
+  const companies = await isLive('companies');
+  return pages.filter((p) => companies || !p.params.page.endsWith('companies'));
 };
 
 export const GET: APIRoute = async ({ props }) => {

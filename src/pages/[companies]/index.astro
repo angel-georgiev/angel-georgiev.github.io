@@ -1,0 +1,10 @@
+---
+// /companies/ is built only while site.yml → live.companies is true (Angel, 15 Nov 2026: hidden until it goes public).
+// A dynamic route so the build can emit no page at all: the address then shows the 404 page.
+import View from '../../views/Companies.astro';
+import { isLive } from '../../lib/content';
+export async function getStaticPaths() {
+  return (await isLive('companies')) ? [{ params: { companies: 'companies' } }] : [];
+}
+---
+<View />
