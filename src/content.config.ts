@@ -34,6 +34,7 @@ const site = obj({
   links: obj({ linkedin: s, substack: s, substack_subscribe: s, tedx: s, github: s }),
   analytics: obj({ cloudflare_token: s }),
   i18n: obj({ en_draft: z.boolean() }),
+  live: obj({ companies: z.boolean() }),
   domain: obj({ preview: s, production: s, meaning: bi }),
   nav: z.array(obj({ key: s, bg: s, en: s.optional(), href: s, phase, only: z.enum(['bg', 'en']).optional() })),
   ui: z.record(s, bi),

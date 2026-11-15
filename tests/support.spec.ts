@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { companies, COMPANIES_LIVE } from './live';
 import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 import { visibleTestimonials, stripeReady, priceProblems } from '../src/lib/rules';
@@ -75,13 +76,13 @@ test('404 page: status 404, links home and to /support/', async ({ page }) => {
 
 test('sitemap and robots', async ({ request }) => {
   const sm = await (await request.get('/sitemap-0.xml')).text();
-  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/', '/book/']) expect(sm).toContain(`${p}</loc>`);
+  for (const p of ['/', '/schools/', ...companies('/companies/'), '/resume/', '/support/', '/book/']) expect(sm).toContain(`${p}</loc>`);
   for (const p of ['/cv/', '/support/thanks/', '/book/thanks/', '404']) expect(sm).not.toContain(p);
   expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap:');
 });
 
 test('every page has a canonical URL and exactly one H1', async ({ page }) => {
-  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/', '/support/thanks/']) {
+  for (const p of ['/', '/schools/', ...companies('/companies/'), '/resume/', '/support/', '/support/thanks/']) {
     await page.goto(p);
     await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
     await expect(page.locator('h1')).toHaveCount(1);
@@ -98,11 +99,22 @@ test('refund window reads the same everywhere it appears (PRD §11)', () => {
 test('analytics: Cloudflare beacon only when a token is set, never on /support/thanks/', async ({ page }) => {
   const token = String(site.analytics.cloudflare_token ?? '').trim();
   const beacon = 'script[src="https://static.cloudflareinsights.com/beacon.min.js"]';
-  for (const p of ['/', '/schools/', '/companies/', '/resume/', '/support/', '/book/']) {
+  for (const p of ['/', '/schools/', ...companies('/companies/'), '/resume/', '/support/', '/book/']) {
     await page.goto(p);
     await expect(page.locator(beacon)).toHaveCount(token ? 1 : 0);
     if (token) await expect(page.locator(beacon)).toHaveAttribute('data-cf-beacon', JSON.stringify({ token }));
   }
   await page.goto('/support/thanks/');
   await expect(page.locator(beacon)).toHaveCount(0);
+});
+
+test('companies page: not built and not linked while site.yml → live.companies is false', async ({ page, request }) => {
+  test.skip(COMPANIES_LIVE, 'companies page is live');
+  for (const p of ['/companies/', '/en/companies/']) expect((await request.get(p)).status()).toBe(404);
+  for (const p of ['/', '/en/', '/schools/', '/support/', '/en/support/', '/resume/', '/book/', '/daskal/']) {
+    await page.goto(p);
+    await expect(page.locator('a[href*="/companies/"]')).toHaveCount(0);
+  }
+  const sm = await (await request.get('/sitemap-0.xml')).text();
+  expect(sm).not.toContain('/companies/');
 });

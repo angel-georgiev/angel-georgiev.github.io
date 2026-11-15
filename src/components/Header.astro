@@ -1,12 +1,13 @@
 ---
-import { load, inPhase } from '../lib/content';
+import { load, inPhase, isLive } from '../lib/content';
 import { localize, type Lang } from '../lib/i18n';
 import Wing from './Wing.astro';
 interface Props { lang: Lang; altPath?: string }
 const { lang, altPath } = Astro.props;
 const site = await load('site');
 const path = Astro.url.pathname;
-const nav = site.nav.filter(inPhase).filter((n) => !n.only || n.only === lang).map((n) => ({ ...n, label: n[lang] ?? n.bg, href: localize(n.href, lang) }));
+const companies = await isLive('companies');
+const nav = site.nav.filter(inPhase).filter((n) => n.key !== 'companies' || companies).filter((n) => !n.only || n.only === lang).map((n) => ({ ...n, label: n[lang] ?? n.bg, href: localize(n.href, lang) }));
 const other: Lang = lang === 'bg' ? 'en' : 'bg';
 ---
 <header class="site-header wrap">

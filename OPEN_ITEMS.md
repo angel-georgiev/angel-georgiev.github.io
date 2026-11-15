@@ -79,6 +79,12 @@ These 19 external links could not be checked by script: the sites block automate
 | https://www.karieri.bg/news/34614_angel_georgiev_vseki_sam_suzdava_svoia_put | `content/resume.yml:970` | site refuses scripts (403) |
 | https://www.plovdiv-press.bg/2025/06/12/%D0%B0%D0%BD%D0%B3%D0%B5%D0%BB-%D0%B3%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B5%D0%B2-%D0%B5-%D0%B8%D0%B7%D0%B1%D1%80%D0%B0%D0%BD-%D0%B7%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD-%D0%BD%D0%B0-%D1%83%D0%BF%D1%80%D0%B0/474393/ | `content/resume.yml:222` | site refuses scripts (403) |
 
+## Hidden pages
+
+| # | Item | Status |
+|---|---|---|
+| H1 | `/companies/` and `/en/companies/` | Hidden since 15 Nov 2026 (Angel): `site.yml → live.companies: false`. Not built (404), no nav item, no landing card, no share image, not in the sitemap. Content, view and photo stay in the repo. To publish: set it to `true` and merge. The landing hero button and the „За кого не е“ line on `/support/` were reworded while hidden; check them when it goes live |
+
 ## Not blocking / later phases
 
 | # | Item | Status |

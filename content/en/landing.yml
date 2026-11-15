@@ -13,7 +13,7 @@ hero:
   lede: "For 20 years I have trained people in schools, companies and online. More than 20,000 people have taken my trainings, from future QA engineers at SoftUni to teachers across Bulgaria."
   lede_bold: "More than 20,000 people"
   cta_primary: { text: "Ask for my help →", small: "A 45-minute online session · €29", href: "/en/support/" }
-  cta_secondary: { text: "Training for your team →", small: "For schools and companies", href: "#offers" }
+  cta_secondary: { text: "Training for your school →", small: "For schools", href: "#offers" }
   textlink: { text: "See my résumé", href: "/en/resume/" }
   photo: desk-smile
   badge: { value: "20,000+", label: "people trained" }
@@ -33,7 +33,7 @@ offers:
   id: offers
   kicker: "How we can work together"
   h2: "Choose what you need."
-  intro: "For one person, for a school or for a company."
+  intro: "For one person or for a school."
 
 in_action:
   kicker: "See me in action"

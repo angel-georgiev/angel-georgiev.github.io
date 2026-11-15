@@ -8,7 +8,7 @@ import Motif from '../components/Motif.astro';
 import SectionHead from '../components/SectionHead.astro';
 import OfferCard from '../components/landing/OfferCard.astro';
 import { Picture } from 'astro:assets';
-import { load, photo, inPhase, nbsp } from '../lib/content';
+import { load, photo, inPhase, nbsp, isLive } from '../lib/content';
 import { profilePage } from '../lib/jsonld';
 import { langFromPath } from '../lib/i18n';
 
@@ -29,7 +29,7 @@ if (!cover) throw new Error(`book cover missing: src/assets/book/${site.book.cov
 // Lede with the bold phrase (landing.yml: lede + lede_bold)
 const [ledeA, ...ledeRest] = l.hero.lede.split(l.hero.lede_bold);
 if (!ledeRest.length) throw new Error('landing.yml: hero.lede_bold is not part of hero.lede');
-const order = ['session', 'school-training', 'companies', 'events'];
+const order = ['session', 'school-training', ...((await isLive('companies')) ? ['companies'] : []), 'events'];
 const cards = order.map((k) => {
   const o = offers.find((x) => x.key === k);
   if (!o) throw new Error(`offers.yml: missing offer "${k}"`);
