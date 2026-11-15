@@ -50,7 +50,7 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 |---|---|---|
 | U1 | `/book/` page on daskal.ai | Built from the uchene.com copy (write-article pass, approved by Angel). Same Stripe link (`book.yml → product.stripe_link`), confirmation stays in Stripe, Angel ships. 300+ pages (book has 325). Signed-copy offer dropped (not running). No privacy/terms pages: Angel collects no personal data on the site |
 | U2 | uchene.com redirect | **Angel, after this PR is live:** Cloudflare Redirect Rule on the uchene.com zone, 301 every path to `https://daskal.ai/book/`; record proxied (orange cloud). Then retire the Vercel project |
-| U4 | Book after-payment page | `/book/thanks/` built (noindex, no analytics, not in the sitemap). **Angel, after merge:** set the book Stripe link's confirmation to redirect to `https://daskal.ai/book/thanks/`. The page says the Stripe receipt is already in the buyer's inbox: check that receipts are on for the book link too |
+| U4 | Book after-payment page | Done (Angel, 15 Nov 2026): the book Stripe link redirects to `https://daskal.ai/book/thanks/` after payment |
 | U3 | English book page `/en/book/` | Later, with the English digital edition |
 
 ## Links to check in a browser (L1, 14 Nov 2026)
