@@ -994,3 +994,184 @@ archive:
     outlet: Karieri.bg
     title: Всеки сам създава своя път
     url: https://www.karieri.bg/news/34614_angel_georgiev_vseki_sam_suzdava_svoia_put
+  # SoftUni courses and lessons found 15 Nov 2026; each page names Angel as lecturer (checked by script).
+  - year: 2014
+    month: 10
+    type: talk
+    outlet: SoftUni Conf 2014, Боровец
+    title: MVC Frameworks за уеб приложения
+    url: https://softuni.bg/trainings/seminars/details/1061
+  - year: 2014
+    month: 11
+    type: training
+    outlet: СофтУни
+    title: PHP Basics
+    url: https://softuni.bg/trainings/1074/php-basics-nov-2014
+  - year: 2015
+    month: 1
+    type: training
+    outlet: СофтУни
+    title: Programming Basics Omega
+    url: https://softuni.bg/trainings/1079/programming-basics-omega-jan-2015
+  - year: 2016
+    month: 3
+    type: training
+    outlet: СофтУни
+    title: Teamwork and Personal Skills
+    url: https://softuni.bg/trainings/1264/teamwork-and-personal-skills-march-2016
+  - year: 2016
+    month: 3
+    type: training
+    outlet: СофтУни
+    title: Обучение за трейнъри
+    url: https://softuni.bg/trainings/1319/training-for-trainers-march-2016
+  - year: 2016
+    month: 9
+    type: training
+    outlet: СофтУни
+    title: Programming Fundamentals
+    url: https://softuni.bg/trainings/1428/programming-fundamentals-september-2016
+  - year: 2016
+    month: 10
+    type: training
+    outlet: СофтУни
+    title: Software Technologies
+    url: https://softuni.bg/trainings/1430/software-technologies-october-2016
+  - year: 2016
+    month: 11
+    type: training
+    outlet: СофтУни
+    title: Обучение за трейнъри
+    url: https://softuni.bg/trainings/1489/train-the-trainers-november-2016
+  - year: 2021
+    month: 8
+    type: video
+    outlet: SoftUni Digital
+    title: Занятие в курса Marketing Basics
+    url: https://digital.softuni.bg/trainings/3402/marketing-basics-july-2021
+  - year: 2021
+    month: 9
+    type: training
+    outlet: СофтУни
+    title: Programming Fundamentals with JavaScript
+    url: https://softuni.bg/trainings/3449/programming-fundamentals-with-javascript-september-2021
+  - year: 2021
+    month: 11
+    type: video
+    outlet: SoftUni Creative
+    title: Занятие в курса Design Basics
+    url: https://creative.softuni.bg/trainings/1299/design-basics-november-2021
+  - year: 2022
+    month: 1
+    type: training
+    outlet: СофтУни
+    title: Programming Fundamentals with Python
+    url: https://softuni.bg/trainings/3609/programming-fundamentals-with-python-january-2022
+  - year: 2022
+    month: 9
+    type: training
+    outlet: СофтУни
+    title: Python Advanced
+    url: https://softuni.bg/trainings/3848/python-advanced-september-2022
+  - year: 2022
+    month: 10
+    type: video
+    outlet: SoftUni Creative
+    title: Занятие в курса Design Basics
+    url: https://creative.softuni.bg/trainings/1405/design-basics-september-2022
+  - year: 2022
+    month: 10
+    type: training
+    outlet: СофтУни
+    title: Python OOP
+    url: https://softuni.bg/trainings/3849/python-oop-october-2022
+  - year: 2022
+    month: 12
+    type: video
+    outlet: SoftUni Digital
+    title: Занятие в курса Marketing Basics
+    url: https://digital.softuni.bg/trainings/3621/marketing-basics-november-2022
+  - year: 2022
+    month: 12
+    type: video
+    outlet: SoftUni Creative
+    title: Занятие в курса Design Basics
+    url: https://creative.softuni.bg/trainings/1470/design-basics-november-2022
+  - year: 2023
+    month: 4
+    type: video
+    outlet: SoftUni Digital
+    title: Занятие в курса Marketing Basics
+    url: https://digital.softuni.bg/trainings/3655/marketing-basics-march-2023
+  - year: 2023
+    month: 4
+    type: video
+    outlet: SoftUni Creative
+    title: Занятие в курса Design Basics
+    url: https://creative.softuni.bg/trainings/1496/design-basics-march-2023
+  - year: 2023
+    month: 5
+    type: training
+    outlet: СофтУни
+    title: QA Entry Module
+    url: https://softuni.bg/modules/134/entry-module-may-2023/1391
+  - year: 2023
+    month: 5
+    type: training
+    outlet: СофтУни
+    title: QA Fundamentals
+    url: https://softuni.bg/modules/136/qa-fundamentals-may-2023/1397
+  - year: 2023
+    month: 5
+    type: training
+    outlet: СофтУни
+    title: Software Technologies
+    url: https://softuni.bg/trainings/4086/software-technologies-may-2023
+  - year: 2023
+    month: 9
+    type: training
+    outlet: СофтУни
+    title: Programming Fundamentals and Unit Testing
+    url: https://softuni.bg/trainings/4256/programming-fundamentals-and-unit-testing-september-2023
+  - year: 2023
+    month: 10
+    type: training
+    outlet: SoftUni Digital
+    title: AI for Business
+    url: https://digital.softuni.bg/trainings/3738/ai-for-business-october-2023
+  - year: 2024
+    month: 1
+    type: training
+    outlet: СофтУни
+    title: Programming Fundamentals and Unit Testing
+    url: https://softuni.bg/trainings/4385/programming-fundamentals-and-unit-testing-january-2024
+  - year: 2024
+    month: 1
+    type: training
+    outlet: СофтУни
+    title: Programming for QA
+    url: https://softuni.bg/modules/138/programming-for-qa-january-2024/1441
+  - year: 2024
+    month: 1
+    type: training
+    outlet: СофтУни
+    title: Back-End Test Automation
+    url: https://softuni.bg/modules/140/back-end-test-automation-january-2024/1455
+  - year: 2024
+    month: 3
+    type: training
+    outlet: СофтУни
+    title: Programming Advanced for QA
+    url: https://softuni.bg/trainings/4386/programming-advanced-for-qa-march-2024
+  - year: 2025
+    month: 2
+    type: training
+    outlet: СофтУни
+    title: QA Fundamentals and Manual Testing
+    url: https://softuni.bg/trainings/4854/qa-fundamentals-and-manual-testing-february-2025
+  - year: 2025
+    month: 6
+    type: training
+    outlet: СофтУни
+    title: IT Career Booster
+    url: https://softuni.bg/trainings/5071/it-career-booster-june-2025
