@@ -79,6 +79,33 @@ These 19 external links could not be checked by script: the sites block automate
 | https://www.karieri.bg/news/34614_angel_georgiev_vseki_sam_suzdava_svoia_put | `content/resume.yml:970` | site refuses scripts (403) |
 | https://www.plovdiv-press.bg/2025/06/12/%D0%B0%D0%BD%D0%B3%D0%B5%D0%BB-%D0%B3%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B5%D0%B2-%D0%B5-%D0%B8%D0%B7%D0%B1%D1%80%D0%B0%D0%BD-%D0%B7%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD-%D0%BD%D0%B0-%D1%83%D0%BF%D1%80%D0%B0/474393/ | `content/resume.yml:222` | site refuses scripts (403) |
 
+## Phase 4: courses (scope added 15 Nov 2026)
+
+Phase 4 now has two parts. Nothing is built yet; both start with a planning pass.
+
+| # | Item | Status |
+|---|---|---|
+| C1 | **Course history**: the free and paid courses Angel has taught, shown on his own site (daskal.ai), with the option of moving course material here instead of linking elsewhere. Example: [Приложение на ИИ в образованието, януари 2025](https://sindeo.org/trainings/passed/prilozhenie-na-ii-v-obrazovanieto/) (Синдео, with Светлин Наков, free, online, recordings with lifetime access, 4 modules and an exam, supported by the SoftUni Foundation) | Open. Inventory started, see below |
+| C2 | **The Paideia Method**, the free intro course (`content/course.yml`, placeholder only) | Open, as before |
+
+**C1 inventory so far.** The résumé archive already lists 15 courses (`resume.yml`, type `training`: Синдео 2024–2026, СофтУни 2015–2023, Коалиция за медийна грамотност 2021). The Синдео "past trainings" list (checked 15 Nov 2026) has 8 courses with Angel as a teacher, with dates and listed prices:
+
+| Course (Синдео) | With | Date | Listed price |
+|---|---|---|---|
+| Успешни стратегии и подходи за продуктивни учебни часове | — | 10 Mar 2024 | 50.62 € |
+| Приложение на изкуствен интелект в образованието | Светлин Наков | 22 Jan 2025 | free (was 46.01 €) |
+| Експертно използване на изкуствен интелект в образованието | Джеймс Йоловски | 23 Apr 2025 | 40.00 € |
+| Работа с информация | Ирина Филипова | 7 Oct 2025 | 25.05 € |
+| Комуникация и колаборация | Ирина Филипова | 21 Oct 2025 | 25.05 € |
+| Създаване на съдържание | Ирина Филипова | 4 Nov 2025 | 25.05 € |
+| Киберсигурност и защита | Ирина Филипова | 18 Nov 2025 | 25.05 € |
+| Решаване на технически проблеми | Ирина Филипова | 2 Dec 2025 | 25.05 € |
+
+**To decide in the planning pass:**
+- Which courses to show (Синдео, СофтУни, Коалиция, others) and whether the course history is its own page or a section of `/resume/` or the course page.
+- What each entry shows: title, date, format, free or paid, co-teachers, what participants learned, a link.
+- **Moving material here (load-bearing):** the recordings and materials sit on Синдео and СофтУни, several were co-taught, and some were supported by the SoftUni Foundation. Moving them needs agreement from co-teachers and the platform owners. Until then, the site can list the courses and link to them.
+
 ## Hidden pages
 
 | # | Item | Status |
