@@ -169,10 +169,35 @@ archive:
     title: Дискусия във ФНОИ за AI в образованието
     url: https://utroruse.com/article/1161083/
   - year: 2025
+    month: 12
+    type: training
+    outlet: Академия „Синдео“
+    title: Решаване на технически проблеми, с Ирина Филипова   # цикъл „Дигитални компетентности“, 2.12.2025
+    url: https://sindeo.org/trainings/passed/reshavane-na-tehnicheski-problemi-dekemvri-2025/
+  - year: 2025
+    month: 11
+    type: training
+    outlet: Академия „Синдео“
+    title: Киберсигурност и защита, с Ирина Филипова   # цикъл „Дигитални компетентности“, 18.11.2025
+    url: https://sindeo.org/trainings/passed/kibersigurnost-i-zashtita-noemvri-2025/
+  - year: 2025
+    month: 11
+    type: training
+    outlet: Академия „Синдео“
+    title: Създаване на съдържание, с Ирина Филипова   # цикъл „Дигитални компетентности“, 4.11.2025
+    url: https://sindeo.org/trainings/passed/sazdavane-na-sadarzhanie-noemvri-2025/
+  - year: 2025
     month: 10
     type: training
     outlet: Академия „Синдео“
-    title: Цикъл „Дигитални компетентности“ с Ирина Филипова, 5 занятия
+    title: Комуникация и колаборация, с Ирина Филипова   # цикъл „Дигитални компетентности“, 21.10.2025
+    url: https://sindeo.org/trainings/passed/komunikatsiya-i-kolaboratsiya-oktomvri-2025/
+  - year: 2025
+    month: 10
+    type: training
+    outlet: Академия „Синдео“
+    title: Работа с информация, с Ирина Филипова   # цикъл „Дигитални компетентности“, 7.10.2025
+    url: https://sindeo.org/trainings/passed/rabota-s-informatsiya-oktomvri-2025/
   - year: 2025
     month: 9
     type: talk
@@ -196,6 +221,7 @@ archive:
     type: training
     outlet: Академия „Синдео“
     title: Въведение в приложното образование, с Теодора Димитрова
+    url: https://sindeo.org/trainings/obucheniya/vavedenie-v-prilozhno-obrazovanie-septemvri-2025/
   - year: 2025
     month: 6
     type: tv
