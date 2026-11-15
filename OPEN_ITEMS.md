@@ -49,7 +49,7 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 | # | Item | Status |
 |---|---|---|
 | U1 | `/book/` page on daskal.ai | Built from the uchene.com copy (write-article pass, approved by Angel). Same Stripe link (`book.yml → product.stripe_link`), confirmation stays in Stripe, Angel ships. 300+ pages (book has 325). Signed-copy offer dropped (not running). No privacy/terms pages: Angel collects no personal data on the site |
-| U2 | uchene.com redirect | **Angel:** Cloudflare Redirect Rule on the uchene.com zone, 301 every path to `https://daskal.ai/book/`; apex and `www` records proxied (orange cloud). The Vercel project stays (Angel, 15 Nov 2026) as the old version of the page, used in his courses: remove only the uchene.com domain from it, keep the project and its repo |
+| U2 | uchene.com redirect | Done (Angel, 15 Nov 2026), checked: `uchene.com`, `www.uchene.com`, `http://` and any path 301 to `https://daskal.ai/book/`, query strings kept. The old Vercel project stays (Angel) as the earlier version of the page, used in his courses; only the domain was removed from it |
 | U4 | Book after-payment page | Done (Angel, 15 Nov 2026): the book Stripe link redirects to `https://daskal.ai/book/thanks/` after payment |
 | U3 | English book page `/en/book/` | Later, with the English digital edition |
 
