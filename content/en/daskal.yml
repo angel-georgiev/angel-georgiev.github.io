@@ -72,7 +72,7 @@ install:
         - "In the side menu, click Customize. If you don't see it, click More first."
         - "At the top, choose Skills, then Create → Upload."
         - "Choose SKILL.md and click Open."
-        - "Add all files from the references/ folder. The files from scripts/ are optional."
+        - "Add all files from the references/ folder."
         - "Click Upload, review the skill and click Create."
     - key: grok
       label: "Grok"
