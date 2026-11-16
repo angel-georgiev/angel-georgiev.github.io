@@ -1175,3 +1175,31 @@ archive:
     outlet: СофтУни
     title: IT Career Booster
     url: https://softuni.bg/trainings/5071/it-career-booster-june-2025
+  # Confirmed by Angel (16 Nov 2026); the SoftUni pages no longer list the lecturer. No working page for the three without a link.
+  - year: 2015
+    month: 3
+    type: training
+    outlet: СофтУни
+    title: Programming Basics
+  - year: 2017
+    month: 6
+    type: training
+    outlet: СофтУни
+    title: Основи на програмирането за учители
+  - year: 2017
+    month: 7
+    type: training
+    outlet: СофтУни
+    title: Увод в програмирането за учители
+  - year: 2017
+    month: 7
+    type: training
+    outlet: СофтУни
+    title: Обучение за трейнъри
+    url: https://softuni.bg/trainings/1709/train-the-trainers-july-2017
+  - year: 2019
+    month: 11
+    type: training
+    outlet: СофтУни
+    title: Обучение за трейнъри
+    url: https://softuni.bg/trainings/2615/train-the-trainers-november-2019
