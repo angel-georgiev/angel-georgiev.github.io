@@ -53,58 +53,9 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 | U4 | Book after-payment page | Done (Angel, 15 Nov 2026): the book Stripe link redirects to `https://daskal.ai/book/thanks/` after payment |
 | U3 | English book page `/en/book/` | Later, with the English digital edition |
 
-## Links to check in a browser (L1, 14 Nov 2026)
+## Links checked in a browser (L1, done 17 Nov 2026)
 
-These 19 external links could not be checked by script: the sites block automated requests or are unreachable from the build container. They stay as links until someone opens them in a normal browser. Dead → keep the entry as plain text (comment out `url:` as done for the six dead links in `resume.yml`); alive → delete the row. Every other external link on the site was checked on 14 Nov 2026.
-
-| Link | In | Why unchecked |
-|---|---|---|
-| https://bnr.bg/burgas/post/101323631/parvi-mladejki-startup-fest-shte-pomaga-v-izbora-na-profesia | `content/resume.yml:878` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
-| https://bnr.bg/horizont/post/101281606/angel-georgiev-znambe-iskame-da-pomognem-na-balgarskite-uchiteli | `content/resume.yml:907` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
-| https://bnr.bg/post/101474795/elektronen-almanah-na-balgarskoto-obrazovanie-sastavat-sled-konkurs-ot-znambe | `content/resume.yml:759` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
-| https://bnr.bg/sofia/post/101374863/40-ot-profesiite-na-badeshteto-predstoi-da-badat-otkriti-i-sazdadeni | `content/resume.yml:860` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
-| https://bnr.bg/sofia/post/101411649/da-nauchim-neshto-novo | `content/resume.yml:807` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
-| https://bnr.bg/sofia/post/101525827/obrazovatelnata-platforma-znambe-s-platforma-za-interaktivni-uroci | `content/resume.yml:705` | bnr.bg sends it to old-news.bnr.bg, which refuses scripts |
-| https://digitalk.bg/career/2021/05/24/4212861_suzdavat_purviia_almanah_za_obrazovanie_v_podkrepa_na/ | `content/resume.yml:771` | site refuses scripts (403) |
-| https://digitalk.bg/digitalk_awards/2025/03/12/4755597_transform_it_awards_25_ai_instrumentut_daskal_gpt/ | `content/daskal.yml:129, content/en/daskal.yml:138, content/resume.yml:288` | site refuses scripts (403) |
-| https://digitalk.bg/entrepreneurship/2024/04/15/4614605_digitalka1_awards_24_kak_da_obuchim_uchiteli_i_za/ | `content/resume.yml:513` | site refuses scripts (403) |
-| https://economy.bg/innovations/view/60990/Daskal-GPT-V-Bylgariya-startira-pyrviya-bezplaten-AI-instrument-za-uchiteli | `content/daskal.yml:128, content/en/daskal.yml:137, content/resume.yml:282` | site refuses scripts (403) |
-| https://kmeta.bg/каква-е-ролята-на-изкуствения-интелек/ | `content/resume.yml:378` | site refuses scripts (403) |
-| https://www.computerworld.bg/entrepreneurship/2021/01/21/4165754_znambe_startira_platforma_za_interaktivni_uroci/ | `content/resume.yml:813` | host unreachable from the build container |
-| https://www.dnevnik.bg/specialproject/2020/12/09/4137321_internet_kaji_mi_kakuv_iskam_da_stana/ | `content/resume.yml:836` | site refuses scripts (403) |
-| https://www.economy.bg/bulgaria/view/60750/Kak-shte-izglezhda-uchilishteto-na-bydeshteto-i-kakva-shte-e-rolyata-na-AI-v-nego | `content/resume.yml:312` | site refuses scripts (403) |
-| https://www.economy.bg/management/view/61597/Irina-Radoeva-beshe-preizbrana-za-predsedatel-na-US-na-BAIT- | `content/resume.yml:234` | site refuses scripts (403) |
-| https://www.economy.bg/management/view/62425/Angel-Georgiev-se-prisyedinyava-kym-ITCE | `content/resume.yml:193` | site refuses scripts (403) |
-| https://www.economy.bg/marketing/view/60459/Sindeo%E2%80%9C-organizira-bezplatno-obuchenie-za-prilozhenie-na-AI-v-obrazovanieto- | `content/resume.yml:360` | site refuses scripts (403) |
-| https://www.karieri.bg/news/34614_angel_georgiev_vseki_sam_suzdava_svoia_put | `content/resume.yml:970` | site refuses scripts (403) |
-| https://www.plovdiv-press.bg/2025/06/12/%D0%B0%D0%BD%D0%B3%D0%B5%D0%BB-%D0%B3%D0%B5%D0%BE%D1%80%D0%B3%D0%B8%D0%B5%D0%B2-%D0%B5-%D0%B8%D0%B7%D0%B1%D1%80%D0%B0%D0%BD-%D0%B7%D0%B0-%D1%87%D0%BB%D0%B5%D0%BD-%D0%BD%D0%B0-%D1%83%D0%BF%D1%80%D0%B0/474393/ | `content/resume.yml:222` | site refuses scripts (403) |
-
-## Phase 4: courses (scope added 15 Nov 2026)
-
-Phase 4 now has two parts. Nothing is built yet; both start with a planning pass.
-
-| # | Item | Status |
-|---|---|---|
-| C1 | **Course history**: the free and paid courses Angel has taught, shown on his own site (daskal.ai), with the option of moving course material here instead of linking elsewhere. Example: [Приложение на ИИ в образованието, януари 2025](https://sindeo.org/trainings/passed/prilozhenie-na-ii-v-obrazovanieto/) (Синдео, with Светлин Наков, free, online, recordings with lifetime access, 4 modules and an exam, supported by the SoftUni Foundation) | Open. Inventory started, see below |
-| C2 | **The Paideia Method**, the free intro course (`content/course.yml`, placeholder only) | Open, as before |
-
-**C1 inventory so far.** The résumé archive already lists 15 courses (`resume.yml`, type `training`: Синдео 2024–2026, СофтУни 2015–2023, Коалиция за медийна грамотност 2021). The Синдео "past trainings" list (checked 15 Nov 2026) has 8 courses with Angel as a teacher, with dates and listed prices:
-
-| Course (Синдео) | With | Date | Listed price |
-|---|---|---|---|
-| Успешни стратегии и подходи за продуктивни учебни часове | — | 10 Mar 2024 | 50.62 € |
-| Приложение на изкуствен интелект в образованието | Светлин Наков | 22 Jan 2025 | free (was 46.01 €) |
-| Експертно използване на изкуствен интелект в образованието | Джеймс Йоловски | 23 Apr 2025 | 40.00 € |
-| Работа с информация | Ирина Филипова | 7 Oct 2025 | 25.05 € |
-| Комуникация и колаборация | Ирина Филипова | 21 Oct 2025 | 25.05 € |
-| Създаване на съдържание | Ирина Филипова | 4 Nov 2025 | 25.05 € |
-| Киберсигурност и защита | Ирина Филипова | 18 Nov 2025 | 25.05 € |
-| Решаване на технически проблеми | Ирина Филипова | 2 Dec 2025 | 25.05 € |
-
-**To decide in the planning pass:**
-- Which courses to show (Синдео, СофтУни, Коалиция, others) and whether the course history is its own page or a section of `/resume/` or the course page.
-- What each entry shows: title, date, format, free or paid, co-teachers, what participants learned, a link.
-- **Moving material here (load-bearing):** the recordings and materials sit on Синдео and СофтУни, several were co-taught, and some were supported by the SoftUni Foundation. Moving them needs agreement from co-teachers and the platform owners. Until then, the site can list the courses and link to them.
+Angel opened the 19 links that scripts could not check. 12 work and stay as links (digitalk.bg ×3, economy.bg ×5, kmeta.bg, dnevnik.bg, karieri.bg, plovdiv-press.bg). 7 are dead and are now plain text in `resume.yml`: the six old bnr.bg articles (they forward to old-news.bnr.bg) and the computerworld.bg article.
 
 ## Hidden pages
 
