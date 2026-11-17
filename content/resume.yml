@@ -728,7 +728,7 @@ archive:
     type: radio
     outlet: БНР Радио София
     title: Знам.бе вече и с интерактивни уроци
-    url: https://bnr.bg/sofia/post/101525827/obrazovatelnata-platforma-znambe-s-platforma-za-interaktivni-uroci
+    # url: https://bnr.bg/sofia/post/101525827/obrazovatelnata-platforma-znambe-s-platforma-za-interaktivni-uroci   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2021
     month: 9
     type: training
@@ -782,7 +782,7 @@ archive:
     type: radio
     outlet: БНР
     title: Електронен алманах на българското образование след конкурс от Знам.бе
-    url: https://bnr.bg/post/101474795/elektronen-almanah-na-balgarskoto-obrazovanie-sastavat-sled-konkurs-ot-znambe
+    # url: https://bnr.bg/post/101474795/elektronen-almanah-na-balgarskoto-obrazovanie-sastavat-sled-konkurs-ot-znambe   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2021
     month: 5
     type: press
@@ -830,13 +830,13 @@ archive:
     type: radio
     outlet: БНР Радио София
     title: Да научим нещо ново
-    url: https://bnr.bg/sofia/post/101411649/da-nauchim-neshto-novo
+    # url: https://bnr.bg/sofia/post/101411649/da-nauchim-neshto-novo   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2021
     month: 1
     type: press
     outlet: Computerworld
     title: Знам.бе стартира платформа за интерактивни уроци
-    url: https://www.computerworld.bg/entrepreneurship/2021/01/21/4165754_znambe_startira_platforma_za_interaktivni_uroci/
+    # url: https://www.computerworld.bg/entrepreneurship/2021/01/21/4165754_znambe_startira_platforma_za_interaktivni_uroci/   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2021
     type: award
     outlet: ''
@@ -883,7 +883,7 @@ archive:
     type: radio
     outlet: БНР Радио София
     title: 40% от професиите на бъдещето предстои да бъдат открити
-    url: https://bnr.bg/sofia/post/101374863/40-ot-profesiite-na-badeshteto-predstoi-da-badat-otkriti-i-sazdadeni
+    # url: https://bnr.bg/sofia/post/101374863/40-ot-profesiite-na-badeshteto-predstoi-da-badat-otkriti-i-sazdadeni   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2020
     month: 11
     type: talk
@@ -901,7 +901,7 @@ archive:
     type: talk
     outlet: Youth StartUp Fest, Бургас
     title: Лекция „Как да намеря своята професия“
-    url: https://bnr.bg/burgas/post/101323631/parvi-mladejki-startup-fest-shte-pomaga-v-izbora-na-profesia
+    # url: https://bnr.bg/burgas/post/101323631/parvi-mladejki-startup-fest-shte-pomaga-v-izbora-na-profesia   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2020
     month: 7
     type: tv
@@ -930,7 +930,7 @@ archive:
     type: radio
     outlet: БНР Хоризонт · Преди всички
     title: 'Ангел Георгиев, „Знам.бе“: Искаме да помогнем на българските учители'
-    url: https://bnr.bg/horizont/post/101281606/angel-georgiev-znambe-iskame-da-pomognem-na-balgarskite-uchiteli
+    # url: https://bnr.bg/horizont/post/101281606/angel-georgiev-znambe-iskame-da-pomognem-na-balgarskite-uchiteli   # link dead (Angel checked in a browser, 17 Nov 2026), kept as plain text
   - year: 2020
     type: talk
     outlet: Знам.бе (подкаст, водещ)
@@ -1175,3 +1175,31 @@ archive:
     outlet: СофтУни
     title: IT Career Booster
     url: https://softuni.bg/trainings/5071/it-career-booster-june-2025
+  # Confirmed by Angel (16 Nov 2026); the SoftUni pages no longer list the lecturer. No working page for the three without a link.
+  - year: 2015
+    month: 3
+    type: training
+    outlet: СофтУни
+    title: Programming Basics
+  - year: 2017
+    month: 6
+    type: training
+    outlet: СофтУни
+    title: Основи на програмирането за учители
+  - year: 2017
+    month: 7
+    type: training
+    outlet: СофтУни
+    title: Увод в програмирането за учители
+  - year: 2017
+    month: 7
+    type: training
+    outlet: СофтУни
+    title: Обучение за трейнъри
+    url: https://softuni.bg/trainings/1709/train-the-trainers-july-2017
+  - year: 2019
+    month: 11
+    type: training
+    outlet: СофтУни
+    title: Обучение за трейнъри
+    url: https://softuni.bg/trainings/2615/train-the-trainers-november-2019
