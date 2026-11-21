@@ -41,16 +41,20 @@ domain:
   meaning: { en: "daskal means teacher", bg: "даскал означава учител" }
 
 nav:
-  # Phase 1 (BG only, at root). EN routes later under /en/.
-  # Logo links to "/". Order matches PRD §4: Помощ · Училища · Компании · Резюме.
+  # Logo links to "/". Order (Angel, 17 Nov 2026): Помощ · Училища · Компании (only while live.companies) · Книгата · Даскал AI · Резюме · Контакт.
   - { key: support,   bg: "Помощ",     en: "Help",      href: "/support/" }
   - { key: schools,   bg: "Училища",   en: "Schools",   href: "/schools/" }
   - { key: companies, bg: "Компании",  en: "Companies", href: "/companies/" }
-  - { key: resume,    bg: "Резюме",    en: "Résumé",    href: "/resume/" }   # /cv/ redirects here
   - { key: book,      bg: "Книгата",   href: "/book/", only: bg }   # the book page is Bulgarian only (Angel, 14 Nov 2026)
   - { key: daskal,  bg: "Даскал AI",        en: "daskal.AI",       href: "/daskal/", phase: 2 }
+  - { key: resume,    bg: "Резюме",    en: "Résumé",    href: "/resume/" }   # /cv/ redirects here. Second to last, before Контакт (Angel, 17 Nov 2026)
+  - { key: contact,   bg: "Контакт",   en: "Contact",   href: "/contact/" }   # always last (Angel, 17 Nov 2026)
 
 ui:
+  # Rule (Angel, 21 Nov 2026): contact details appear only on /contact/. Elsewhere, text that refers to it uses this phrase,
+  # which renders as a link to the contact page. Only exception: the résumé links to LinkedIn for the full bio.
+  contact_page: { en: "the contact page", bg: "страницата за контакт" }
+  contact_link: { en: "Contact →", bg: "Контакт →" }
   lang_switch: { en: "Български", bg: "English" }
   theme_light: { en: "Light", bg: "Светла" }
   theme_dark:  { en: "Dark",  bg: "Тъмна" }
@@ -72,7 +76,6 @@ footer:
   rights: { en: "© Angel Georgiev", bg: "© Ангел Георгиев" }
   # Link labels in the footer (confirmed by Angel 12 Nov 2026). URLs come from `links` above.
   links:
-    - { key: linkedin, bg: "LinkedIn" }
     - { key: substack, bg: "The Paideia Method" }
 
 # Key numbers. Wording is fixed: always "trained", never "transformed". Never show a combined total.

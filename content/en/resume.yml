@@ -12,9 +12,9 @@ header:
   linkedin:
     text: My full professional experience is on LinkedIn →
     href: https://www.linkedin.com/in/angeorgiev
-  email:
-    text: angel@daskal.ai
-    href: mailto:angel@daskal.ai
+  contact:   # contact details live only on the contact page (Angel, 21 Nov 2026); LinkedIn stays here for the full bio
+    text: Invite me →
+    href: /en/contact/
 bio:
   heading: Short bio
   note: 'For organisers and media: copy and use freely.'
@@ -31,6 +31,7 @@ photos:
     label: Portrait, dark background
   - id: portrait-square
     label: Square, for avatars
+    max: 1000   # profile uploads often cap at 500 KB–1 MB (Angel, 21 Nov 2026); the original is 1906×1906, 1.1 MB
   - id: desk-smile
     label: At work
   button: Download

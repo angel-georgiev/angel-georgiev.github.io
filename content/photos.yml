@@ -62,7 +62,7 @@ photos:
     alt: "Портрет на Ангел Георгиев"
     alt_en: "Portrait of Angel Georgiev"
     focal: [50, 30]
-    use: ["/resume/ downloads only (avatars, speaker cards)"]
+    use: ["/resume/ downloads (avatars, speaker cards)", "/contact/ share image"]
 
 not_used:
   - "DSC_4007: shows Sindeo branding (past role)."

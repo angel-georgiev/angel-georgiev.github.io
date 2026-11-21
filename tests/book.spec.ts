@@ -42,7 +42,7 @@ test('/book/thanks/: noindex, no analytics, links back to the book', async ({ pa
   await expect(page.locator('h1')).toHaveText(b.thank_you.h1);
   await expect(page.locator('script[src*="cloudflareinsights"]')).toHaveCount(0);
   await expect(page.locator('main a[href="/book/"]')).toHaveCount(1);
-  await expect(page.locator(`main a[href="mailto:${site.person.email}"]`)).toHaveCount(1);
+  await expect(page.locator('main a[href="/contact/"]')).toHaveCount(1);
   await expect(page.locator('link[hreflang]')).toHaveCount(0);
 });
 

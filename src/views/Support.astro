@@ -4,6 +4,7 @@ import Pic from '../components/Pic.astro';
 import CheckList from '../components/CheckList.astro';
 import Steps from '../components/Steps.astro';
 import SupportCta from '../components/SupportCta.astro';
+import ContactText from '../components/ContactText.astro';
 import OfferCard from '../components/landing/OfferCard.astro';
 import { load, photo, inPhase, nbsp } from '../lib/content';
 import { visibleTestimonials } from '../lib/rules';
@@ -103,7 +104,7 @@ const jsonld = {
     <section class="section faq">
       <h2>{pg.faq.heading}</h2>
       {pg.faq.items.map((f) => (
-        <details><summary>{f.q}</summary><p>{f.a}</p></details>
+        <details><summary>{f.q}</summary><p><ContactText text={f.a} lang={lang} /></p></details>
       ))}
     </section>
 

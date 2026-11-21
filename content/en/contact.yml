@@ -1,0 +1,117 @@
+# /en/contact/ — English version of content/contact.yml (same structure). Trainings in English on request.
+
+meta:
+  title: "Invitations: talks, moderating, trainings and interviews | Angel Georgiev"
+  description: "Invite Angel Georgiev as a speaker, moderator or trainer, or for an interview. He replies within 2 working days."
+
+hero:
+  h1: "Invite me to your event, training or interview."
+  intro: "For 20 years I have trained people, spoken to audiences and led discussions. Tell me what you are planning, and within 2 working days I will reply whether and how I can take part."
+
+cards:
+  - key: talk
+    title: "Talk or panel"
+    text: "A talk, a keynote or a seat on a panel. Topics I speak about:"
+    topics: true
+    after: "Looking for another topic in these areas? Write to me."
+    button: "Invite me to speak →"
+    subject: "Speaking invitation: [event]"
+    body: |
+      Dear Angel,
+
+      We would like to invite you to speak at [event], organised by [organisation].
+
+      When: [date and time]
+      Where: [city and venue / online]
+      Format: [talk / keynote / panel], about [length] minutes
+      Topic: [topic or "your suggestion"]
+      Audience: [who they are], about [number] people
+      Language: [English / Bulgarian]
+
+      What we would like the audience to take away: [one or two sentences]
+
+      Best regards,
+      [name, role, phone]
+  - key: moderate
+    title: "Moderating and hosting"
+    text: "I moderate a panel or a discussion, or host a whole event: I introduce the speakers, ask the questions and keep time."
+    button: "Invite me to moderate →"
+    subject: "Moderator invitation: [event]"
+    body: |
+      Dear Angel,
+
+      We would like to invite you to [moderate a panel / host] [event], organised by [organisation].
+
+      When: [date and time]
+      Where: [city and venue / online]
+      Topic of the panel or event: [topic]
+      Speakers: [number and who they are, if you know]
+      Length: [minutes / hours]
+      Audience: [who they are], about [number] people
+      Language: [English / Bulgarian]
+
+      Best regards,
+      [name, role, phone]
+  - key: training
+    title: "Training for your team"
+    text: "A training prepared for your people: teachers, lecturers or staff. In person or online, in English or Bulgarian. The training for schools shows how I work."
+    link: { text: "See the training for schools →", href: "/en/schools/" }
+    button: "Ask for a training →"
+    subject: "Training enquiry: [organisation]"
+    body: |
+      Dear Angel,
+
+      We are looking for a training for [who the participants are] at [organisation].
+
+      What we want them to be able to do afterwards: [one or two sentences]
+      How many people: [number]
+      Experience with AI today: [beginners / use it sometimes / use it every day]
+      Format: [in person in … / online]
+      Possible dates: [period]
+      Length: [hours or days, if you know]
+      Language: [English / Bulgarian]
+
+      Best regards,
+      [name, role, phone]
+  - key: interview
+    title: "Interview"
+    text: "An interview for TV, radio, a podcast or print, on the topics of my talks or on a current question about AI and education."
+    button: "Invite me for an interview →"
+    subject: "Interview request: [media]"
+    body: |
+      Dear Angel,
+
+      We would like to invite you for an interview on [show / publication] at [media].
+
+      Topic: [topic]
+      When: [date and time] (deadline: [if any])
+      Format: [live / recorded], [in the studio / online / by phone]
+      Length: [minutes]
+
+      Best regards,
+      [name, role, phone]
+
+brief:
+  heading: "What to tell me"
+  items:
+    - "the event or media outlet and the organisation behind it"
+    - "date and time"
+    - "city and venue, or online"
+    - "who the audience is and how many people"
+    - "format and length"
+    - "language: English or Bulgarian"
+
+press:
+  heading: "Preparing an announcement?"
+  text: "The press kit has a shorter and a longer bio, photos, a text for introducing me on stage and how to pronounce my name. Copy freely, no need to ask."
+  link: { text: "Go to the press kit →", href: "/en/resume/#press" }
+
+direct:
+  heading: "Direct contact"
+  location_label: "Where I am"
+  formats: "In person or online"
+  email_label: "Email"
+  copy: "Copy the email"
+  copied: "Copied"
+  linkedin_label: "LinkedIn"
+  copy_linkedin: "Copy the profile"

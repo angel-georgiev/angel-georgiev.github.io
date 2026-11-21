@@ -57,6 +57,10 @@ Nothing blocking. Open but not blocking: testimonials (16), below.
 
 Angel opened the 19 links that scripts could not check. 12 work and stay as links (digitalk.bg ×3, economy.bg ×5, kmeta.bg, dnevnik.bg, karieri.bg, plovdiv-press.bg). 7 are dead and are now plain text in `resume.yml`: the six old bnr.bg articles (they forward to old-news.bnr.bg) and the computerworld.bg article.
 
+## Contact page (17 Nov 2026)
+
+`/contact/` and `/en/contact/`: invitations for talks and panels, moderating and hosting, trainings and interviews. Copy approved by Angel (write-article pass). Each button opens a pre-filled email; no form, nothing stored on the site; no fees on the page. Reply promise: 2 working days. Menu order: … · Резюме · Контакт (last). The landing „Лекции, панели и интервюта“ card now links here.
+
 ## Hidden pages
 
 | # | Item | Status |

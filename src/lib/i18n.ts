@@ -14,7 +14,7 @@ export const pathIn = (path: string, lang: Lang) => {
 };
 
 // Internal paths that exist in both languages. Others (/book/, /cv/, assets) are shared.
-const LOCALIZED = ['/', '/schools/', '/companies/', '/resume/', '/support/', '/support/thanks/', '/daskal/'];
+const LOCALIZED = ['/', '/schools/', '/companies/', '/resume/', '/support/', '/support/thanks/', '/daskal/', '/contact/'];
 
 /** Prefix an internal link for the given language when that page exists in it. Leaves external, mailto and anchors alone. */
 export function localize(href: string, lang: Lang) {

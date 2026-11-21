@@ -15,7 +15,6 @@ export async function person(site: URL, lang: Lang = 'bg') {
     alternateName: s.person.name[lang === 'bg' ? 'en' : 'bg'],
     jobTitle: r.header.role,
     image: new URL(img.src, site).href,
-    email: `mailto:${s.person.email}`,
     url: new URL('/', site).href,
     sameAs: [s.links.linkedin, s.links.substack, s.links.tedx, s.links.github],
   };

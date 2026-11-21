@@ -11,6 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const r = await load('resume');
   const su = await load('support');
   const dk = await load('daskal');
+  const ct = await load('contact');
   const name = site.person.name.bg;
   const supTitle = su.page.h1.replace(su.page.h1_highlight, '').trim();
   const pages = [
@@ -20,10 +21,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     { params: { page: 'resume' }, props: { name, kicker: r.header.role, title: r.meta.title.split('|')[0].trim(), photoId: r.header.photo } },
     { params: { page: 'daskal' }, props: { name, kicker: dk.hero.eyebrow, title: dk.hero.h1, iconFile: dk.package.icon } },
     { params: { page: 'book' }, props: { name, kicker: site.book.publisher.bg + ', ' + site.book.year, title: site.book.title_bg, highlight: undefined, subtitle: site.book.subtitle_bg, bookCover: site.book.cover.file } },
+    { params: { page: 'contact' }, props: { name, kicker: ct.cards.map((x) => x.title).join(' · '), title: ct.hero.h1, photoId: 'portrait-square' } },
     { params: { page: 'support' }, props: { name, kicker: su.product.name, title: supTitle, highlight: su.page.h1_highlight, photoId: su.page.proof.photo } },
   ];
   // English versions: same images, English text
   const el = await load('landing', 'en'), es = await load('schools', 'en'), ec = await load('companies', 'en');
+  const ec2 = await load('contact', 'en');
   const er = await load('resume', 'en'), eu = await load('support', 'en'), ed = await load('daskal', 'en');
   const nameEn = site.person.name.en;
   const euTitle = eu.page.h1.replace(eu.page.h1_highlight, '').trim();
@@ -33,6 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     { params: { page: 'en-companies' }, props: { name: nameEn, kicker: ec.hero.kicker, title: ec.hero.h1_before, highlight: ec.hero.h1_highlight, photoId: ec.hero.photo } },
     { params: { page: 'en-resume' }, props: { name: nameEn, kicker: er.header.role, title: er.meta.title.split('|')[0].trim(), photoId: er.header.photo } },
     { params: { page: 'en-daskal' }, props: { name: nameEn, kicker: ed.hero.eyebrow, title: ed.hero.h1, iconFile: ed.package.icon } },
+    { params: { page: 'en-contact' }, props: { name: nameEn, kicker: ec2.cards.map((x) => x.title).join(' · '), title: ec2.hero.h1, photoId: 'portrait-square' } },
     { params: { page: 'en-support' }, props: { name: nameEn, kicker: eu.product.name, title: euTitle, highlight: eu.page.h1_highlight, photoId: eu.page.proof.photo } },
   );
   const companies = await isLive('companies');

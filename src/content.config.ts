@@ -129,9 +129,9 @@ const companies = obj({
 const archiveType = z.enum(['tv', 'radio', 'press', 'talk', 'video', 'training', 'award', 'article', 'book']);
 const resume = obj({
   meta,
-  header: obj({ name: s, role: s, photo: s, linkedin: link, email: link }),
+  header: obj({ name: s, role: s, photo: s, linkedin: link, contact: link }),
   bio: obj({ heading: s, note: s, text: s, copy_button: s, copied: s }),
-  photos: obj({ heading: s, note: s, items: z.array(obj({ id: s, label: s })), button: s }),
+  photos: obj({ heading: s, note: s, items: z.array(obj({ id: s, label: s, max: z.number().int().optional() })), button: s }),
   archive: obj({
     heading: s, intro: s, search_placeholder: s,
     filters: z.array(obj({ key: z.union([z.literal('all'), archiveType]), label: s })),
@@ -230,13 +230,26 @@ const book = obj({
   }),
 });
 
-const EN = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal'] as const;
-const SCHEMAS = { landing, offers, schools, companies, resume, support, daskal } as const;
+const contact = obj({
+  meta,
+  hero: obj({ h1: s, intro: s }),
+  cards: z.array(obj({
+    key: s, title: s, text: s, topics: z.boolean().optional(), after: s.optional(), link: link.optional(),
+    button: s, subject: s, body: s,
+  })).min(1),
+  brief: obj({ heading: s, items: z.array(s) }),
+  press: obj({ heading: s, text: s, link }),
+  direct: obj({ heading: s, location_label: s, formats: s, email_label: s, copy: s, copied: s, linkedin_label: s, copy_linkedin: s }),
+});
+
+const EN = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal', 'contact'] as const;
+const SCHEMAS = { landing, offers, schools, companies, resume, support, daskal, contact } as const;
 const enCollections = Object.fromEntries(EN.map((n) => [`en_${n}`, defineCollection({ loader: fileEntry(`en_${n}`, `en/${n}.yml`), schema: SCHEMAS[n] })]));
 
 export const collections = {
   ...enCollections,
   book: defineCollection({ loader: fileEntry('book'), schema: book }),
+  contact: defineCollection({ loader: fileEntry('contact'), schema: contact }),
   press: defineCollection({ loader: fileEntry('press'), schema: press }),
   daskal: defineCollection({ loader: fileEntry('daskal'), schema: daskal }),
   site: defineCollection({ loader: fileEntry('site'), schema: site }),

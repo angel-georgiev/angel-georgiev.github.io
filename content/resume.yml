@@ -14,9 +14,9 @@ header:
   linkedin:
     text: Пълният професионален опит е в LinkedIn →
     href: https://www.linkedin.com/in/angeorgiev
-  email:
-    text: angel@daskal.ai
-    href: mailto:angel@daskal.ai
+  contact:   # contact details live only on the contact page (Angel, 21 Nov 2026); LinkedIn stays here for the full bio
+    text: Поканете ме →
+    href: /contact/
 bio:
   heading: Кратко резюме
   note: 'За организатори и медии: копирайте и използвайте свободно.'
@@ -36,6 +36,7 @@ photos:
     label: Портрет, тъмен фон
   - id: portrait-square
     label: Квадратен, за аватар
+    max: 1000   # profile uploads often cap at 500 KB–1 MB (Angel, 21 Nov 2026); the original is 1906×1906, 1.1 MB
   - id: desk-smile
     label: На работа
   button: Изтеглете

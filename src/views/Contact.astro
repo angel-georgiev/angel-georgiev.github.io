@@ -1,0 +1,94 @@
+---
+// /contact/ and /en/contact/ — invitations for talks, moderating, trainings and interviews (Angel, 17 Nov 2026).
+// Each card's button opens a pre-filled email (contact.yml → cards[].subject/body). No form: nothing is stored on the site.
+import Base from '../layouts/Base.astro';
+import CheckList from '../components/CheckList.astro';
+import CopyButton from '../components/CopyButton.astro';
+import { load, nbsp } from '../lib/content';
+import { langFromPath } from '../lib/i18n';
+
+const lang = langFromPath(Astro.url.pathname);
+const c = await load('contact', lang);
+const site = await load('site');
+const press = await load('press');
+const email = site.person.email;
+const mailto = (subject: string, body: string) =>
+  `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.trimEnd().replace(/\n/g, '\r\n'))}`;
+const topics = press.topics.items.map((t) => t[lang]);
+const linkedinShort = site.links.linkedin.replace(/^https?:\/\/(www\.)?/, '');
+---
+<Base theme="light" title={c.meta.title} description={c.meta.description} ogImage={lang === 'en' ? '/og/en-contact.png' : '/og/contact.png'}>
+  <div class="wrap">
+    <section class="intro">
+      <h1>{c.hero.h1}</h1>
+      <p class="lede">{nbsp(c.hero.intro)}</p>
+    </section>
+
+    <section class="section">
+      <ul class="cards">
+        {c.cards.map((card) => (
+          <li class="card" id={card.key}>
+            <h2>{card.title}</h2>
+            <p>{card.text}</p>
+            {card.topics && <CheckList items={topics} />}
+            {card.after && <p class="after">{card.after}</p>}
+            <div class="actions">
+              <a class="btn btn-gold" href={mailto(card.subject, card.body)} data-mail={card.key}><span class="btn-text">{card.button}</span></a>
+              {card.link && <a class="textlink" href={card.link.href}>{card.link.text}</a>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section grid-2 two">
+      <div>
+        <h2 class="h3">{c.brief.heading}</h2>
+        <CheckList items={c.brief.items} />
+      </div>
+      <div>
+        <h2 class="h3">{c.press.heading}</h2>
+        <p>{c.press.text}</p>
+        <a class="textlink" href={c.press.link.href}>{c.press.link.text}</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card direct">
+        <h2 class="h3">{c.direct.heading}</h2>
+        <dl>
+          <div><dt>{c.direct.location_label}</dt><dd>{site.person.location[lang]} · {c.direct.formats}</dd></div>
+          <div><dt>{c.direct.email_label}</dt><dd><a href={`mailto:${email}`}>{email}</a><CopyButton text={email} label={c.direct.copy} copied={c.direct.copied} /></dd></div>
+          <div><dt>{c.direct.linkedin_label}</dt><dd><a href={site.links.linkedin}>{linkedinShort}</a><CopyButton text={site.links.linkedin} label={c.direct.copy_linkedin} copied={c.direct.copied} /></dd></div>
+        </dl>
+      </div>
+    </section>
+  </div>
+</Base>
+<style>
+  .intro { padding-top: 2rem; max-width: 52rem; }
+  .intro h1 { font-size: clamp(2.25rem, 5vw, 3.4rem); }
+  /* Talk card tall on the left, moderating and interview stacked on the right, training full width below (Angel, 21 Nov 2026) */
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr;
+    grid-template-areas: 'talk' 'moderate' 'interview' 'training'; }
+  @media (min-width: 900px) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: 'talk moderate' 'talk interview' 'training training'; }
+    #training { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 2.5rem; align-items: end; }
+    #training h2, #training > p { grid-column: 1; }
+    #training .actions { grid-column: 2; grid-row: 1 / span 2; padding-top: 0; flex-direction: column; align-items: flex-start; }
+  }
+  #talk { grid-area: talk; } #moderate { grid-area: moderate; } #interview { grid-area: interview; } #training { grid-area: training; }
+  .cards .card { display: flex; flex-direction: column; padding: clamp(1.25rem, 3vw, 1.75rem); }
+  .cards h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+  .after { margin: 0.75rem 0 0; color: var(--text-muted); font-size: 0.95rem; }
+  .actions { margin-top: auto; padding-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; }
+  .two { align-items: start; gap: 1.5rem 2.5rem; }
+  .h3 { font-size: var(--fs-lg) !important; }
+  .direct { max-width: 40rem; }
+  dl { margin: 0; display: grid; gap: 0.6rem; }
+  dl div { display: grid; grid-template-columns: 8rem 1fr; gap: 0.75rem; align-items: center; }
+  dt { color: var(--text-muted); }
+  dd { margin: 0; font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; }
+  dd :global(.copy-btn) { min-height: 40px; padding: 0.4rem 0.85rem; font-size: 0.85rem; }
+  @media (max-width: 519px) { dl div { grid-template-columns: 1fr; gap: 0; } }
+</style>

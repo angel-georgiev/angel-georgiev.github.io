@@ -9,7 +9,7 @@ hero:
   h1_before: "Better processes in your team."
   h1_highlight: "With AI where it helps."
   lede: "I consult and train teams to improve the way they work. We start from the process and add AI only where it saves time or reduces errors."
-  cta_primary: { text: "Ask for a meeting →", small: "A conversation about your process", href: "mailto:angel@daskal.ai?subject=Meeting%20about%20a%20process" }
+  cta_primary: { text: "Ask for a meeting →", small: "A conversation about your process", href: "/en/contact/" }
   cta_secondary: { text: "See the services ↓", small: "Diagnostics, training, implementation", href: "#services" }
   photo: laptop
 
@@ -36,20 +36,20 @@ services:
       bullets: ["One day with your team", "A map of 2–3 key processes", "A written report with priorities: what to improve, where AI helps and where it doesn't"]
       price: "€900"
       price_note: "for one day · the same price as the training for schools"
-      cta: { text: "Ask for a diagnostic →", href: "mailto:angel@daskal.ai?subject=Process%20diagnostics" }
+      cta: { text: "Ask for a diagnostic →", href: "/en/contact/" }
       featured: true
     - key: team-training
       label: "Training"
       title: "AI in your team's work"
       bullets: ["A full day of practice", "Exercises on the team's real tasks", "Ready templates the team uses from the next day"]
       price: "On request"
-      cta: { text: "Write to me →", href: "mailto:angel@daskal.ai?subject=Team%20training" }
+      cta: { text: "Write to me →", href: "/en/contact/" }
     - key: implementation
       label: "Consulting"
       title: "Implementation with support"
       bullets: ["4–8 weeks", "We redesign 1–2 processes and pilot them", "I support the team until people are used to the new way of working"]
       price: "On request"
-      cta: { text: "Write to me →", href: "mailto:angel@daskal.ai?subject=Implementation" }
+      cta: { text: "Write to me →", href: "/en/contact/" }
   also: "Also: an internal academy and train-the-trainer (skills matrix, a method for internal trainers) · a “How to learn faster” workshop for teams, based on The Green Book of Learning."
 
 cases:
@@ -74,4 +74,4 @@ cases:
 final_cta:
   h2: "Tell me about the process you want to improve."
   text: "The first conversation is free and takes 30 minutes."
-  cta: { text: "Ask for a meeting →", href: "mailto:angel@daskal.ai?subject=Meeting%20about%20a%20process" }
+  cta: { text: "Ask for a meeting →", href: "/en/contact/" }

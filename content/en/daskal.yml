@@ -120,7 +120,7 @@ other_system:
   heading: "Teaching under another curriculum?"
   text: "daskal.AI follows the Bulgarian system today. If you would like something like it for your country or school system, drop me a line and we will see what is possible."
   button: "Write to me →"
-  href: "mailto:angel@daskal.ai?subject=daskal.AI%20for%20another%20education%20system"
+  href: "/en/contact/"
 
 support:
   heading: "Want daskal.AI to work for your subject?"
