@@ -31,6 +31,7 @@ photos:
     label: Portrait, dark background
   - id: portrait-square
     label: Square, for avatars
+    max: 1000   # profile uploads often cap at 500 KB–1 MB (Angel, 21 Nov 2026); the original is 1906×1906, 1.1 MB
   - id: desk-smile
     label: At work
   button: Download

@@ -131,7 +131,7 @@ const resume = obj({
   meta,
   header: obj({ name: s, role: s, photo: s, linkedin: link, email: link }),
   bio: obj({ heading: s, note: s, text: s, copy_button: s, copied: s }),
-  photos: obj({ heading: s, note: s, items: z.array(obj({ id: s, label: s })), button: s }),
+  photos: obj({ heading: s, note: s, items: z.array(obj({ id: s, label: s, max: z.number().int().optional() })), button: s }),
   archive: obj({
     heading: s, intro: s, search_placeholder: s,
     filters: z.array(obj({ key: z.union([z.literal('all'), archiveType]), label: s })),

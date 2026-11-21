@@ -36,6 +36,7 @@ photos:
     label: Портрет, тъмен фон
   - id: portrait-square
     label: Квадратен, за аватар
+    max: 1000   # profile uploads often cap at 500 KB–1 MB (Angel, 21 Nov 2026); the original is 1906×1906, 1.1 MB
   - id: desk-smile
     label: На работа
   button: Изтеглете

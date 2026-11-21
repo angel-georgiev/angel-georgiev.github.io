@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Pic from '../components/Pic.astro';
 import Btn from '../components/Btn.astro';
@@ -13,7 +14,14 @@ const rBg = lang === 'en' ? await load('resume') : r;   // archive items live in
 const press = await load('press');
 const site = await load('site');
 const head = await photo(r.header.photo, lang);
-const downloads = await Promise.all(r.photos.items.map(async (it) => ({ ...it, p: await photo(it.id, lang) })));
+// `max` (resume.yml → photos.items) serves a smaller JPG for profile uploads, which often cap files at 500 KB–1 MB.
+const downloads = await Promise.all(r.photos.items.map(async (it) => {
+  const p = await photo(it.id, lang);
+  if (!it.max) return { ...it, p, src: p.img.src, w: p.img.width, h: p.img.height, file: p.file };
+  const small = await getImage({ src: p.img, width: it.max, format: 'jpg', quality: 85 });
+  const w = it.max, h = Math.round((p.img.height * it.max) / p.img.width);
+  return { ...it, p, src: small.src, w, h, file: p.file.replace(/\.jpg$/, `-${w}.jpg`) };
+}));
 
 // Archive: newest year first, then month (items without a month last within their year), stable otherwise.
 const label = Object.fromEntries(r.archive.filters.map((f) => [f.key, f.label]));
@@ -71,8 +79,8 @@ const jsonld = {
             <Pic id={d.id} aspect={[4, 5]} sizes="(min-width: 900px) 260px, (min-width: 520px) 45vw, 90vw" maxWidth={640} />
             <div class="dl-body">
               <h3>{d.label}</h3>
-              <p class="dims">JPG · {d.p.img.width}×{d.p.img.height}</p>
-              <a class="btn btn-outline dl-btn" href={d.p.img.src} download={d.p.file}>{r.photos.button}<span class="visually-hidden">: {d.label}</span></a>
+              <p class="dims">JPG · {d.w}×{d.h}</p>
+              <a class="btn btn-outline dl-btn" href={d.src} download={d.file}>{r.photos.button}<span class="visually-hidden">: {d.label}</span></a>
             </div>
           </li>
         ))}

@@ -53,15 +53,18 @@ test('bio copy button copies the exact plain text and resets after 1.6 s', async
   await ctx.close();
 });
 
-test('photo downloads point at the full-resolution originals', async ({ page, request }) => {
+test('photo downloads: full-resolution originals, except items with `max` (under 1 MB for profile uploads)', async ({ page, request }) => {
   await page.goto('/resume/');
   const links = page.locator('#photos a[download]');
   await expect(links).toHaveCount(r.photos.items.length);
-  for (const href of await links.evaluateAll((as) => as.map((a) => a.getAttribute('href')!))) {
+  const hrefs = await links.evaluateAll((as) => as.map((a) => a.getAttribute('href')!));
+  for (const [i, href] of hrefs.entries()) {
     const res = await request.get(href);
     expect(res.status()).toBe(200);
     expect(res.headers()['content-type']).toContain('image/jpeg');
-    expect((await res.body()).length).toBeGreaterThan(1_000_000);
+    const size = (await res.body()).length;
+    if (r.photos.items[i].max) expect(size).toBeLessThan(1_000_000);
+    else expect(size).toBeGreaterThan(1_000_000);
   }
 });
 
