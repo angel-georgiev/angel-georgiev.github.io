@@ -113,4 +113,5 @@ direct:
   email_label: "Email"
   copy: "Copy the email"
   copied: "Copied"
-  linkedin: "LinkedIn →"
+  linkedin_label: "LinkedIn"
+  copy_linkedin: "Copy the profile"

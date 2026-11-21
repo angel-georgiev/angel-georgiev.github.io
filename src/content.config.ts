@@ -239,7 +239,7 @@ const contact = obj({
   })).min(1),
   brief: obj({ heading: s, items: z.array(s) }),
   press: obj({ heading: s, text: s, link }),
-  direct: obj({ heading: s, location_label: s, formats: s, email_label: s, copy: s, copied: s, linkedin: s }),
+  direct: obj({ heading: s, location_label: s, formats: s, email_label: s, copy: s, copied: s, linkedin_label: s, copy_linkedin: s }),
 });
 
 const EN = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal', 'contact'] as const;

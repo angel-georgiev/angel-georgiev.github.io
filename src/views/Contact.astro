@@ -15,6 +15,7 @@ const email = site.person.email;
 const mailto = (subject: string, body: string) =>
   `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.trimEnd().replace(/\n/g, '\r\n'))}`;
 const topics = press.topics.items.map((t) => t[lang]);
+const linkedinShort = site.links.linkedin.replace(/^https?:\/\/(www\.)?/, '');
 ---
 <Base theme="light" title={c.meta.title} description={c.meta.description} ogImage={lang === 'en' ? '/og/en-contact.png' : '/og/contact.png'}>
   <div class="wrap">
@@ -57,12 +58,9 @@ const topics = press.topics.items.map((t) => t[lang]);
         <h2 class="h3">{c.direct.heading}</h2>
         <dl>
           <div><dt>{c.direct.location_label}</dt><dd>{site.person.location[lang]} · {c.direct.formats}</dd></div>
-          <div><dt>{c.direct.email_label}</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+          <div><dt>{c.direct.email_label}</dt><dd><a href={`mailto:${email}`}>{email}</a><CopyButton text={email} label={c.direct.copy} copied={c.direct.copied} /></dd></div>
+          <div><dt>{c.direct.linkedin_label}</dt><dd><a href={site.links.linkedin}>{linkedinShort}</a><CopyButton text={site.links.linkedin} label={c.direct.copy_linkedin} copied={c.direct.copied} /></dd></div>
         </dl>
-        <div class="actions">
-          <CopyButton text={email} label={c.direct.copy} copied={c.direct.copied} />
-          <a class="textlink" href={site.links.linkedin}>{c.direct.linkedin}</a>
-        </div>
       </div>
     </section>
   </div>
@@ -70,8 +68,16 @@ const topics = press.topics.items.map((t) => t[lang]);
 <style>
   .intro { padding-top: 2rem; max-width: 52rem; }
   .intro h1 { font-size: clamp(2.25rem, 5vw, 3.4rem); }
-  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
-  @media (min-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* Talk card tall on the left, moderating and interview stacked on the right, training full width below (Angel, 21 Nov 2026) */
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr;
+    grid-template-areas: 'talk' 'moderate' 'interview' 'training'; }
+  @media (min-width: 900px) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: 'talk moderate' 'talk interview' 'training training'; }
+    #training { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 2.5rem; align-items: end; }
+    #training h2, #training > p { grid-column: 1; }
+    #training .actions { grid-column: 2; grid-row: 1 / span 2; padding-top: 0; flex-direction: column; align-items: flex-start; }
+  }
+  #talk { grid-area: talk; } #moderate { grid-area: moderate; } #interview { grid-area: interview; } #training { grid-area: training; }
   .cards .card { display: flex; flex-direction: column; padding: clamp(1.25rem, 3vw, 1.75rem); }
   .cards h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
   .after { margin: 0.75rem 0 0; color: var(--text-muted); font-size: 0.95rem; }
@@ -80,8 +86,9 @@ const topics = press.topics.items.map((t) => t[lang]);
   .h3 { font-size: var(--fs-lg) !important; }
   .direct { max-width: 40rem; }
   dl { margin: 0; display: grid; gap: 0.6rem; }
-  dl div { display: grid; grid-template-columns: 8rem 1fr; gap: 0.75rem; }
+  dl div { display: grid; grid-template-columns: 8rem 1fr; gap: 0.75rem; align-items: center; }
   dt { color: var(--text-muted); }
-  dd { margin: 0; font-weight: 700; }
+  dd { margin: 0; font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; }
+  dd :global(.copy-btn) { min-height: 40px; padding: 0.4rem 0.85rem; font-size: 0.85rem; }
   @media (max-width: 519px) { dl div { grid-template-columns: 1fr; gap: 0; } }
 </style>

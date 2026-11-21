@@ -39,8 +39,13 @@ test('direct contact card: location, email and a working copy button', async ({ 
   const card = page.locator('.direct');
   await expect(card).toContainText(site.person.location.bg);
   await expect(card.locator(`a[href="mailto:${site.person.email}"]`)).toBeVisible();
-  await card.locator('button').click();
+  const buttons = card.locator('button');
+  await expect(buttons).toHaveCount(2);
+  await buttons.nth(0).click();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(site.person.email);
+  await expect(card.locator(`a[href="${site.links.linkedin}"]`)).toBeVisible();
+  await buttons.nth(1).click();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(site.links.linkedin);
 });
 
 test('landing talks card points to the contact page', async ({ page }) => {
