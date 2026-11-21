@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 
 const site = load(readFileSync('content/site.yml', 'utf8')) as any;
-const PAIRS = [['/', '/en/'], ['/schools/', '/en/schools/'], ...companies(['/companies/', '/en/companies/'] as any), ['/resume/', '/en/resume/'], ['/support/', '/en/support/'], ['/daskal/', '/en/daskal/']];
+const PAIRS = [['/', '/en/'], ['/schools/', '/en/schools/'], ...companies(['/companies/', '/en/companies/'] as any), ['/resume/', '/en/resume/'], ['/support/', '/en/support/'], ['/daskal/', '/en/daskal/'], ['/contact/', '/en/contact/']];
 
 test('every page links to its counterpart in the other language', async ({ page }) => {
   for (const [bg, en] of PAIRS) {

@@ -2,8 +2,8 @@ import { getEntry, type CollectionEntry } from 'astro:content';
 import type { Lang } from './i18n';
 import type { ImageMetadata } from 'astro';
 
-type Name = 'site' | 'photos' | 'landing' | 'offers' | 'schools' | 'companies' | 'resume' | 'support' | 'daskal' | 'press' | 'book';
-const TRANSLATED = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal'];
+type Name = 'site' | 'photos' | 'landing' | 'offers' | 'schools' | 'companies' | 'resume' | 'support' | 'daskal' | 'press' | 'book' | 'contact';
+const TRANSLATED = ['landing', 'offers', 'schools', 'companies', 'resume', 'support', 'daskal', 'contact'];
 /** Load a content file. With lang 'en', translated files come from content/en/ (same schema). */
 export async function load<K extends Name>(name: K, lang: Lang = 'bg'): Promise<CollectionEntry<K>['data']> {
   const id = lang === 'en' && TRANSLATED.includes(name) ? `en_${name}` : name;

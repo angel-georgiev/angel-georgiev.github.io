@@ -33,4 +33,4 @@ offers:
     for: "За събития и медии"
     what: "Говоря за AI в образованието, ученето и бъдещето на работата."
     price_line: "По запитване"
-    cta: { text: "Пишете ми →", href: "mailto:angel@daskal.ai?subject=Лекция%20или%20интервю" }
+    cta: { text: "Пишете ми →", href: "/contact/" }   # was a bare mailto (changed 17 Nov 2026)

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { companies } from './live';
 import AxeBuilder from '@axe-core/playwright';
 
-const PAGES = ['/', '/schools/', ...companies('/companies/'), '/resume/', '/support/', '/support/thanks/', '/daskal/', '/book/', '/book/thanks/', '/cv/', '/no-such-page/', '/en/', '/en/schools/', ...companies('/en/companies/'), '/en/resume/', '/en/support/', '/en/support/thanks/', '/en/daskal/'];
+const PAGES = ['/', '/schools/', ...companies('/companies/'), '/resume/', '/support/', '/support/thanks/', '/daskal/', '/book/', '/book/thanks/', '/contact/', '/cv/', '/no-such-page/', '/en/', '/en/schools/', ...companies('/en/companies/'), '/en/resume/', '/en/support/', '/en/support/thanks/', '/en/daskal/', '/en/contact/'];
 for (const [w, h] of [[1440, 900], [390, 844]]) {
   for (const path of PAGES) {
     test(`axe: 0 violations on ${path} at ${w}px`, async ({ page }) => {
