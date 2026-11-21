@@ -95,7 +95,7 @@ page:
       - { q: "Can you help me with a bigger project?", a: "Yes. For example, with a new course, a curriculum or bringing AI into your work. We start with one meeting about a specific question. If we both see a reason to continue after it, we will set the project's price together, based on the scope of the work." }
       - { q: "When will you contact me?", a: "Within 1 working day after payment, at the email address you gave." }
       - { q: "What if none of the offered times suit me?", a: "Write to me and we will find another time." }
-      - { q: "Can my school or company pay?", a: "Yes, by bank transfer against an invoice. Write to me at angel@daskal.ai." }
+      - { q: "Can my school or company pay?", a: "Yes, by bank transfer against an invoice. Write to me through the contact page." }
       - { q: "Will I get a receipt?", a: "Yes, Stripe sends a receipt to your email automatically." }
       - { q: "What if the session doesn't help me?", a: "Write to me within 2 days after it and I will refund your money." }
       - { q: "Which language is the session in?", a: "English or Bulgarian, as you prefer." }
@@ -105,7 +105,7 @@ page:
 
   cta:
     button: "Ask for my help · €29"
-    note: "Payment is through Stripe. If your school or company wants to pay by bank transfer, write to me at angel@daskal.ai."
+    note: "Payment is through Stripe. If your school or company wants to pay by bank transfer, write to me through the contact page."
     repeat: "after proof and again after FAQ"
 
 thank_you:
@@ -113,7 +113,7 @@ thank_you:
   robots: "noindex"
   h1: "Thank you! I have received your request."
   text: "Within 1 working day I will contact you personally at the email address you gave and send you a link to choose a time. Your Stripe receipt is already in your inbox."
-  fallback: "If you don't hear from me within 1 working day, check your spam folder or write to angel@daskal.ai."
+  fallback: "If you don't hear from me within 1 working day, check your spam folder or write to me through the contact page."
   prepare:
     heading: "While you wait"
     text: "Think about the last time you ran into this question and what you tried then. That way we will use the time best."

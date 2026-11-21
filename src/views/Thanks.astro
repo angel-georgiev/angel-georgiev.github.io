@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ContactText from '../components/ContactText.astro';
 import { load } from '../lib/content';
 import { langFromPath } from '../lib/i18n';
 const lang = langFromPath(Astro.url.pathname);
@@ -9,13 +10,12 @@ const site = await load('site');
 const t = isBook ? (await load('book')).thank_you : (await load('support', lang)).thank_you;
 const link = 'link' in t.prepare ? t.prepare.link : undefined;
 const backHref = isBook ? '/book/' : lang === 'en' ? '/en/' : '/';
-const [fbBefore, fbAfter] = t.fallback.split(site.person.email);
 ---
 <Base theme={isBook ? "light" : "dark"} title={`${t.h1} | ${site.person.name[lang]}`} description={t.text} noindex noTracking alternate={isBook ? false : undefined}>
   <section class="wrap thanks">
     <h1>{t.h1}</h1>
     <p class="lede">{t.text}</p>
-    <p>{fbBefore}{fbAfter !== undefined && <><a href={`mailto:${site.person.email}`}>{site.person.email}</a>{fbAfter}</>}</p>
+    <p><ContactText text={t.fallback} lang={lang} /></p>
     <div class="card prepare">
       <h2>{t.prepare.heading}</h2>
       <p>{t.prepare.text}</p>

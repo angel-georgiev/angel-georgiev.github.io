@@ -63,7 +63,7 @@ test('/support/thanks/ is noindex and has the fallback line', async ({ page }) =
   await page.goto('/support/thanks/');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
   await expect(page.locator('h1')).toHaveText(s.thank_you.h1);
-  await expect(page.locator(`a[href="mailto:${site.person.email}"]`).first()).toBeVisible();
+  await expect(page.locator('main a[href="/contact/"]').first()).toBeVisible();
 });
 
 test('404 page: status 404, links home and to /support/', async ({ page }) => {

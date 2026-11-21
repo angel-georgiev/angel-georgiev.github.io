@@ -52,3 +52,18 @@ test('landing talks card points to the contact page', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('main a[href="/contact/"]').first()).toBeVisible();
 });
+
+test('contact details only on the contact page; résumé keeps LinkedIn only', async ({ page }) => {
+  const pages = ['/', '/en/', '/schools/', '/en/schools/', '/support/', '/en/support/', '/support/thanks/', '/book/', '/book/thanks/',
+    '/daskal/', '/en/daskal/', '/resume/', '/en/resume/', '/no-such-page/'];
+  for (const p of pages) {
+    await page.goto(p);
+    await expect(page.locator('a[href^="mailto:"]'), p).toHaveCount(0);
+    expect(await page.locator('body').innerText(), p).not.toContain(site.person.email);
+    const li = page.locator(`a[href^="${site.links.linkedin}"]`);
+    if (p.includes('resume')) await expect(li, p).toHaveCount(1);
+    else await expect(li, p).toHaveCount(0);
+  }
+  await page.goto('/contact/');
+  await expect(page.locator(`a[href="mailto:${site.person.email}"]`).first()).toBeVisible();
+});

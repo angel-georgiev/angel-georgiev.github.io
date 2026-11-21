@@ -10,7 +10,7 @@ hero:
   h1_before: "AI in the classroom."
   h1_highlight: "Teachers use what they learned the very next day."
   lede: "I come to your school or we meet online. Teachers prepare lessons, materials and tests with AI for their own subject and learn how to help students use AI honestly and responsibly. After the project, each teacher receives a certificate with 1 qualification credit."
-  cta_primary: { text: "Ask for a date →", small: "€900 per school", href: "mailto:angel@daskal.ai?subject=Training%20for%20a%20school" }
+  cta_primary: { text: "Ask for a date →", small: "€900 per school", href: "/en/contact/#training" }
   cta_secondary: { text: "See the programme ↓", small: "What we do together", href: "#program" }
   partner: "in partnership with SmarTest"
   photo: writing-laugh
@@ -76,4 +76,4 @@ individual:
 final_cta:
   h2: "Choose a date for your school."
   text: "Write to me with the number of teachers and the days that suit you."
-  cta: { text: "Ask for a date →", href: "mailto:angel@daskal.ai?subject=Training%20for%20a%20school" }
+  cta: { text: "Ask for a date →", href: "/en/contact/#training" }

@@ -129,7 +129,7 @@ const companies = obj({
 const archiveType = z.enum(['tv', 'radio', 'press', 'talk', 'video', 'training', 'award', 'article', 'book']);
 const resume = obj({
   meta,
-  header: obj({ name: s, role: s, photo: s, linkedin: link, email: link }),
+  header: obj({ name: s, role: s, photo: s, linkedin: link, contact: link }),
   bio: obj({ heading: s, note: s, text: s, copy_button: s, copied: s }),
   photos: obj({ heading: s, note: s, items: z.array(obj({ id: s, label: s, max: z.number().int().optional() })), button: s }),
   archive: obj({

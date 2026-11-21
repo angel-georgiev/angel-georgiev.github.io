@@ -12,9 +12,9 @@ header:
   linkedin:
     text: My full professional experience is on LinkedIn →
     href: https://www.linkedin.com/in/angeorgiev
-  email:
-    text: angel@daskal.ai
-    href: mailto:angel@daskal.ai
+  contact:   # contact details live only on the contact page (Angel, 21 Nov 2026); LinkedIn stays here for the full bio
+    text: Invite me →
+    href: /en/contact/
 bio:
   heading: Short bio
   note: 'For organisers and media: copy and use freely.'

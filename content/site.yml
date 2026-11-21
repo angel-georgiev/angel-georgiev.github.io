@@ -51,6 +51,10 @@ nav:
   - { key: contact,   bg: "Контакт",   en: "Contact",   href: "/contact/" }   # always last (Angel, 17 Nov 2026)
 
 ui:
+  # Rule (Angel, 21 Nov 2026): contact details appear only on /contact/. Elsewhere, text that refers to it uses this phrase,
+  # which renders as a link to the contact page. Only exception: the résumé links to LinkedIn for the full bio.
+  contact_page: { en: "the contact page", bg: "страницата за контакт" }
+  contact_link: { en: "Contact →", bg: "Контакт →" }
   lang_switch: { en: "Български", bg: "English" }
   theme_light: { en: "Light", bg: "Светла" }
   theme_dark:  { en: "Dark",  bg: "Тъмна" }
@@ -72,7 +76,6 @@ footer:
   rights: { en: "© Angel Georgiev", bg: "© Ангел Георгиев" }
   # Link labels in the footer (confirmed by Angel 12 Nov 2026). URLs come from `links` above.
   links:
-    - { key: linkedin, bg: "LinkedIn" }
     - { key: substack, bg: "The Paideia Method" }
 
 # Key numbers. Wording is fixed: always "trained", never "transformed". Never show a combined total.

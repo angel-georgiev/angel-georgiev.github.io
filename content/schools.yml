@@ -16,7 +16,7 @@ hero:
   h1_before: "AI в класната стая."
   h1_highlight: "Учителите прилагат наученото още на следващия ден."
   lede: "Идвам в училището или се срещаме онлайн. Учителите подготвят уроци, материали и тестове с AI по своя предмет и научават как да помогнат на учениците да използват AI честно и отговорно. След проекта всеки получава удостоверение с 1 квалификационен кредит."
-  cta_primary: { text: "Попитайте за дата →", small: "900 € за училище", href: "mailto:angel@daskal.ai?subject=Обучение%20за%20училище" }
+  cta_primary: { text: "Попитайте за дата →", small: "900 € за училище", href: "/contact/#training" }
   cta_secondary: { text: "Вижте програмата ↓", small: "Какво правим заедно", href: "#program" }
   partner: "в партньорство със СмарТест"
   photo: writing-laugh   # DK only (12 Nov 2026): warm, pen and notebook, like preparing a lesson
@@ -82,4 +82,4 @@ individual:
 final_cta:
   h2: "Изберете дата за вашето училище."
   text: "Пишете ми с броя учители и удобните за вас дни."
-  cta: { text: "Попитайте за дата →", href: "mailto:angel@daskal.ai?subject=Обучение%20за%20училище" }
+  cta: { text: "Попитайте за дата →", href: "/contact/#training" }

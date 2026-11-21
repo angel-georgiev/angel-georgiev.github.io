@@ -1,0 +1,13 @@
+---
+// Renders `text`, turning the phrase site.yml → ui.contact_page ("страницата за контакт") into a link to /contact/.
+// Contact details appear only on the contact page (Angel, 21 Nov 2026); other pages point to it with this phrase.
+import { load } from '../lib/content';
+import { localize, type Lang } from '../lib/i18n';
+interface Props { text: string; lang: Lang }
+const { text, lang } = Astro.props;
+const site = await load('site');
+const phrase = site.ui.contact_page[lang];
+const i = text.indexOf(phrase);
+const href = localize('/contact/', lang);
+---
+{i < 0 ? text : <>{text.slice(0, i)}<a href={href}>{phrase}</a>{text.slice(i + phrase.length)}</>}
